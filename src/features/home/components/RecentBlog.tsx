@@ -31,7 +31,7 @@ const BLOG_POSTS = [
     coverImage:
       'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     slug: 'documentary-filmmaking-africa',
-    author: 'Kwame Asante',
+    author: 'Joseph Kabogo',
     date: '2024-04-22',
     readTime: '8 min read',
   },
@@ -44,7 +44,7 @@ const BLOG_POSTS = [
     coverImage:
       'https://images.pexels.com/photos/1884577/pexels-photo-1884577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     slug: 'brand-films-vs-commercials',
-    author: 'Aisha Mohammed',
+    author: 'MAryann Wairimu',
     date: '2024-03-10',
     readTime: '5 min read',
   },

@@ -37,7 +37,7 @@ const POSTS: Record<string, PostData> = {
     title: 'The Future of African Documentary in the Streaming Age',
     excerpt: 'As Netflix, Prime Video, and Apple TV+ invest billions in African content, what does the streaming era mean for independent documentary filmmakers?',
     category: 'Documentary',
-    author: 'Dennis Osei',
+    author: 'Dennis Ochieng',
     authorRole: 'CEO & Creative Director',
     authorBio: 'Dennis is an award-winning filmmaker with 15+ years of experience. His documentaries have screened at TIFF, Sundance, and FESPACO.',
     authorAvatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
@@ -86,7 +86,7 @@ const POSTS: Record<string, PostData> = {
     title: 'A Complete Brand Identity Guide for African Startups',
     excerpt: 'Why your startup needs a cohesive brand identity from day one, and how to build one without breaking the bank.',
     category: 'Branding',
-    author: 'Abena Korkor',
+    author: 'Austin Lengala',
     authorRole: 'Brand Strategy Lead',
     authorBio: 'Abena is a former TBWA creative strategist who now leads brand strategy for Africa\'s fastest-growing startups.',
     authorAvatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
@@ -126,11 +126,11 @@ const POSTS: Record<string, PostData> = {
 };
 
 const ARTICLES_LOOKUP: Record<string, { title: string; excerpt: string; category: string; imageId: string; author: string; date: string; readTime: string }> = {
-  'drone-cinematography-regulations-africa': { title: 'Drone Cinematography: Navigating Regulations Across Africa', excerpt: 'Our licensed aerial team breaks down what filmmakers need to know.', category: 'Technology', imageId: '1884577', author: 'Kwame Mensah', date: '2024-04-30', readTime: '5 min read' },
-  'behind-the-lens-voices-of-the-nile': { title: 'Behind the Lens: Making Voices of the Nile', excerpt: 'The six-month journey of embedding with Nile communities.', category: 'Behind the Scenes', imageId: '7247399', author: 'Dennis Osei', date: '2024-04-08', readTime: '12 min read' },
-  '4k-vs-8k-production-guide': { title: '4K vs. 8K: What Resolution Actually Matters', excerpt: "When does resolution matter — and when doesn't it?", category: 'Technology', imageId: '3756132', author: 'Kwame Mensah', date: '2024-03-28', readTime: '6 min read' },
-  'building-pan-african-brand-voice': { title: 'Building a Pan-African Brand Voice', excerpt: 'Messaging that resonates across diverse African markets.', category: 'Branding', imageId: '3866149', author: 'Abena Korkor', date: '2024-03-20', readTime: '9 min read' },
-  'social-media-video-trends-2024': { title: 'Social Media Video Trends 2024', excerpt: 'The formats driving organic reach on every platform.', category: 'Industry', imageId: '3379932', author: 'Efua Boateng', date: '2024-03-12', readTime: '5 min read' },
+  'drone-cinematography-regulations-africa': { title: 'Drone Cinematography: Navigating Regulations Across Africa', excerpt: 'Our licensed aerial team breaks down what filmmakers need to know.', category: 'Technology', imageId: '1884577', author: 'Joseph Kabogo', date: '2024-04-30', readTime: '5 min read' },
+  'behind-the-lens-voices-of-the-nile': { title: 'Behind the Lens: Making Voices of the Nile', excerpt: 'The six-month journey of embedding with Nile communities.', category: 'Behind the Scenes', imageId: '7247399', author: 'Dennis Ochieng', date: '2024-04-08', readTime: '12 min read' },
+  '4k-vs-8k-production-guide': { title: '4K vs. 8K: What Resolution Actually Matters', excerpt: "When does resolution matter — and when doesn't it?", category: 'Technology', imageId: '3756132', author: 'Joseph Kabogo', date: '2024-03-28', readTime: '6 min read' },
+  'building-pan-african-brand-voice': { title: 'Building a Pan-African Brand Voice', excerpt: 'Messaging that resonates across diverse African markets.', category: 'Branding', imageId: '3866149', author: 'Austin Lengala', date: '2024-03-20', readTime: '9 min read' },
+  'social-media-video-trends-2024': { title: 'Social Media Video Trends 2024', excerpt: 'The formats driving organic reach on every platform.', category: 'Industry', imageId: '3379932', author: 'Emilly Karanja', date: '2024-03-12', readTime: '5 min read' },
 };
 
 // Fallback for unknown slugs

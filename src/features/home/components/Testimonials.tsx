@@ -8,64 +8,64 @@ import TestimonialCard from '@/components/ui/TestimonialCard';
 import type { Testimonial } from '@/types';
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
 
 // ─── Static fallback testimonials ─────────────────────────────────────────────
 
 const FALLBACK_TESTIMONIALS: Omit<Testimonial, 'id' | 'created_at' | 'updated_at'>[] = [
   {
-    client_name: 'Amara Osei-Bonsu',
+    client_name: 'Amara Bobb',
     client_title: 'Chief Marketing Officer',
-    client_company: 'Stellar Communications Africa',
+    client_company: 'Emerging Leaders Foundation (ELF) Africa,',
     client_avatar_url: null,
     content:
-      'Dencast Global transformed our brand story into a cinematic masterpiece. Their ability to capture authentic emotion while maintaining the highest production standards is truly unmatched on the continent.',
+      'Dencast amplifies Africa’s development voices through impactful storytelling, partnering with Africatalyst and ELF to produce documentaries, livestreams, and content that sparks dialogue and inspires lasting change.',
     rating: 5,
     is_featured: true,
     sort_order: 1,
   },
   {
-    client_name: 'Dr. Fatima Al-Rashid',
+    client_name: 'Dr. Fatima Rashid',
     client_title: 'Director of Communications',
-    client_company: 'UN Habitat Regional Office',
+    client_company: 'European Union Conference',
     client_avatar_url: null,
     content:
-      "The documentary they produced for our housing initiative reached over 2 million viewers and drove policy conversations at ministerial level. The team's dedication to storytelling with purpose is exceptional.",
+      "Dencast documented the EU in Kenya’s first Europe Day Football Tournament across five counties and livestreamed key transformation events, capturing unity, youth spirit, and lasting impact.",
     rating: 5,
     is_featured: true,
     sort_order: 2,
   },
   {
-    client_name: 'James Mwangi-Kariuki',
-    client_title: 'Head of Brand',
-    client_company: 'Nairobi Metropolitan Bank',
+    client_name: 'Wendy Boit',
+    client_title: 'Head of Sustainability and ESG',
+    client_company: 'Sasini PLC',
     client_avatar_url: null,
     content:
-      "We've worked with production companies across three continents, and Dencast Global stands out for their creative ambition, professionalism, and ability to deliver on every promise — on time and on budget.",
+      "For three years, Dencast has partnered with Sasini PLC to document its sustainability journey across tea, coffee, macadamia, and avocado value chains, turning farm-to-factory impact into powerful visual stories.",
     rating: 5,
     is_featured: true,
     sort_order: 3,
   },
   {
-    client_name: 'Sophie Nkemdirim',
-    client_title: 'Creative Director',
-    client_company: 'Lagos Fashion Council',
+    client_name: 'Sophia Achieng',
+    client_title: 'Special Advisor',
+    client_company: 'Africatalyst',
     client_avatar_url: null,
     content:
-      'Our fashion week coverage reached an international audience we never thought possible. The visual language they crafted perfectly bridged African aesthetics with global appeal. Simply outstanding work.',
+      'Dencast partnered with Africatalyst for two years to amplify high-impact Nairobi events through strategic storytelling, event coverage, and content that sparks conversations and drives change across Africa.',
     rating: 5,
     is_featured: true,
     sort_order: 4,
   },
   {
-    client_name: 'Peter van der Berg',
-    client_title: 'Regional Director',
-    client_company: 'Deutsche Gesellschaft für Internationale',
+    client_name: 'Priscilla Ngare',
+    client_title: 'Event Manager',
+    client_company: 'Reproductive Health Network Kenya (RHNK)',
     client_avatar_url: null,
     content:
-      'The impact documentary Dencast produced for our agricultural programme in East Africa exceeded every expectation. Their ground-level storytelling approach created genuine empathy and drove real donor engagement.',
+      'Dencast delivered full 360 conference coverage for RHNK 2024 in Mombasa, including videography, photography, livestreams, and breakout recordings for 800+ delegates with exceptional clarity and impact.',
     rating: 5,
     is_featured: false,
     sort_order: 5,
@@ -73,10 +73,10 @@ const FALLBACK_TESTIMONIALS: Omit<Testimonial, 'id' | 'created_at' | 'updated_at
   {
     client_name: 'Wanjiku Mwenda',
     client_title: 'Founder & CEO',
-    client_company: 'Savanna Tech Hub',
+    client_company: 'The Amakove Wala Show',
     client_avatar_url: null,
     content:
-      "From our product launch video to ongoing social content, Dencast consistently delivers premium quality that elevates our brand above the noise. They are true creative partners, not just a vendor.",
+      "We partnered with The Amakove Wala Show from ideation to post-production, shaping authentic, socially driven episodes with expert guests to spark honest conversations that uplift and challenge.",
     rating: 5,
     is_featured: false,
     sort_order: 6,

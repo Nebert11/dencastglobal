@@ -1,17 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, Globe, Camera, Layers, Clock, Palette } from 'lucide-react';
+import { Globe, Camera, Layers, Clock, Palette } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 
 // ─── Reasons data ─────────────────────────────────────────────────────────────
 
 const reasons = [
-  {
-    icon: Award,
-    title: 'Award-Winning Team',
-    description:
-      'Our directors and creatives are recognised internationally — bringing festival-calibre craft to every project we take on.',
-  },
+  // {
+  //   icon: Award,
+  //   title: 'Award-Winning Team',
+  //   description:
+  //     'Our directors and creatives are recognised internationally — bringing festival-calibre craft to every project we take on.',
+  // },
   {
     icon: Globe,
     title: 'Global Experience',

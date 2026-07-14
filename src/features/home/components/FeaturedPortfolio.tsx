@@ -6,6 +6,13 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import MediaCard from '@/components/ui/MediaCard';
 import Button from '@/components/ui/Button';
 
+// Images
+import work1 from '/dencast_images/sasini_conference.jpg'
+import work2 from '/dencast_images/rhnk.jpg';
+import work3 from '/dencast_images/africatalyst.jpg';
+import work4 from '/dencast_images/elf.png';
+import work5 from '/dencast_images/amakowe.jpg';
+// import work6 from '/dencast_images/rhnk.jpg';
 // ─── Static portfolio data ────────────────────────────────────────────────────
 
 interface PortfolioItem {
@@ -21,62 +28,48 @@ interface PortfolioItem {
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: '1',
-    title: 'Voices of the Rift Valley — Feature Documentary',
-    category: 'Documentary',
-    categorySlug: 'documentary',
-    image:
-      'https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    slug: 'voices-of-the-rift-valley',
+    title: 'Sasini Annual Report Campaign',
+    category: 'Corporate',
+    categorySlug: 'corporate',
+    image: work1,
+    slug: 'sasini-annual-report',
     featured: true,
   },
   {
     id: '2',
-    title: 'Safaricom Annual Report Campaign',
-    category: 'Corporate',
-    categorySlug: 'corporate',
-    image:
-      'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2',
-    slug: 'safaricom-annual-report',
+    title: 'Reproductive Health Network Kenya',
+    category: 'Health',
+    categorySlug: 'health',
+    image: work2,
+    slug: 'rhnk',
   },
   {
     id: '3',
-    title: 'Heritage Threads — Brand Identity',
-    category: 'Branding',
-    categorySlug: 'branding',
-    image:
-      'https://images.pexels.com/photos/1884577/pexels-photo-1884577.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2',
-    slug: 'heritage-threads-brand',
+    title: 'Elevating Conversations Across Africa',
+    category: 'Climate & Sustainability',
+    categorySlug: 'climate-sustainability',
+    image: work3,
+    slug: 'elevating-conversations-across-africa',
   },
   {
     id: '4',
-    title: 'East Africa Wildlife Portrait Series',
-    category: 'Photography',
-    categorySlug: 'photography',
-    image:
-      'https://images.pexels.com/photos/3756132/pexels-photo-3756132.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2',
-    slug: 'ea-wildlife-portrait-series',
+    title: 'Emerging Leaders Foundation (ELF) Africa',
+    category: 'Leadership',
+    categorySlug: 'leadership',
+    image: work4,
+    slug: 'emerging-leaders-foundation-elf-africa',
   },
   {
     id: '5',
-    title: 'Nairobi Fashion Week 2024 Coverage',
-    category: 'Photography',
-    categorySlug: 'photography',
-    image:
-      'https://images.pexels.com/photos/7034014/pexels-photo-7034014.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2',
-    slug: 'nairobi-fashion-week-2024',
-  },
-  {
-    id: '6',
-    title: 'UN Habitat Conference — Live Production',
-    category: 'Corporate',
-    categorySlug: 'corporate',
-    image:
-      'https://images.pexels.com/photos/7247399/pexels-photo-7247399.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2',
-    slug: 'un-habitat-conference',
+    title: 'Bringing The Amakove Wala Show to Life',
+    category: 'Conversations',
+    categorySlug: 'conversations',
+    image: work5,
+    slug: 'bringing-the-amakove-wala-show-to-life',
   },
 ];
 
-const FILTER_TABS = ['All', 'Documentary', 'Corporate', 'Photography', 'Branding'];
+const FILTER_TABS = ['All', 'Health', 'Conversations', 'Leadership', 'Climate & Sustainability', 'Corporate'];
 
 // ─── FeaturedPortfolio ────────────────────────────────────────────────────────
 

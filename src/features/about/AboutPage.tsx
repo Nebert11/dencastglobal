@@ -93,7 +93,7 @@ const TEAM_MEMBERS = [
     social: { linkedin: '#', instagram: '#' },
   },
   {
-    // name: 'Abena Korkor',
+    // name: 'Austin Lengala',
     // role: 'Brand Strategy Lead',
     // bio: "Former TBWA creative strategist who now leads brand narratives for Africa's fastest-growing companies.",
     avatar: backgroundImage,
@@ -107,7 +107,7 @@ const TEAM_MEMBERS = [
     social: { linkedin: '#' },
   },
   {
-    // name: 'Efua Boateng',
+    // name: 'Emilly Karanja',
     // role: 'Head of Digital Content',
     // bio: 'Social media strategist and content creator driving 50M+ organic views across client channels.',
     avatar: dencastCrew,
@@ -244,6 +244,7 @@ const StorySection: React.FC = () => {
                 alt="Dencast Global team at work"
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-black/10" />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0056A6]/30 to-transparent" />
             </div>
             {/* Floating stat card */}
