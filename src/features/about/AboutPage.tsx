@@ -11,6 +11,14 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import { SITE_NAME } from '@/utils/constants';
 
+//Images
+import backgroundImage from '/dencast_images/CREW.jpg';
+import CEO from '/dencast_images/Machio-CEO.png';
+import allan from '/dencast_images/Allan-Odera.jpg';
+import macharia from '/dencast_images/Valentino-Macharia.jpg';
+import sound from '/dencast_images/13.jpg';
+import dencastCrew from '/dencast_images/Dencast-Crew-13.jpg';
+
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
 const fadeUp = {
@@ -63,45 +71,45 @@ const CORE_VALUES = [
 
 const TEAM_MEMBERS = [
   {
-    name: 'Dennis Osei',
-    role: 'CEO & Creative Director',
-    bio: 'Award-winning filmmaker with 15+ years crafting stories across Africa and beyond.',
-    avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+    name: 'Dennis Machio',
+    role: 'CEO & Founder',
+    bio: 'Dennis Machio is a visionary Director, Producer, and Editor with 15+ years of experience who leads Dencast Global in crafting visually stunning, emotionally powerful stories that inspire lasting impact.',
+    avatar: CEO,
     social: { twitter: '#', linkedin: '#', instagram: '#' },
   },
   {
-    name: 'Ama Asante',
-    role: 'Head of Documentary',
-    bio: 'Documentary specialist whose films have screened at TIFF, Sundance, and FESPACO.',
-    avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+    name: 'Allan Odera',
+    role: 'Head of Video and Graphics',
+    bio: 'Allan Odera is a Multimedia University–trained video and graphics editor who combines technical precision, creative motion design, and storytelling mastery to craft polished, impactful productions at Dencast Global.',
+    avatar: allan,
     social: { twitter: '#', linkedin: '#' },
   },
   {
-    name: 'Kwame Mensah',
-    role: 'Lead Cinematographer',
-    bio: 'Master of cinematic visual language, with credits on three internationally distributed films.',
-    avatar: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+    name: 'Valentino Macharia',
+    role: 'Head of Broadcasting and Television Production',
+    bio: 'Valentino Macharia is a veteran live TV director delivering precise, innovative, and visually powerful storytelling at Dencast Global.',
+    avatar: macharia,
     social: { linkedin: '#', instagram: '#' },
   },
   {
-    name: 'Abena Korkor',
-    role: 'Brand Strategy Lead',
-    bio: "Former TBWA creative strategist who now leads brand narratives for Africa's fastest-growing companies.",
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+    // name: 'Abena Korkor',
+    // role: 'Brand Strategy Lead',
+    // bio: "Former TBWA creative strategist who now leads brand narratives for Africa's fastest-growing companies.",
+    avatar: backgroundImage,
     social: { twitter: '#', linkedin: '#', website: '#' },
   },
   {
-    name: 'Nana Yaw Boateng',
-    role: 'Post-Production Supervisor',
-    bio: 'DaVinci Resolve certified colorist and Avid editor with a decade of broadcast experience.',
-    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+    // name: 'Nana Yaw Boateng',
+    // role: 'Post-Production Supervisor',
+    // bio: 'DaVinci Resolve certified colorist and Avid editor with a decade of broadcast experience.',
+    avatar: sound,
     social: { linkedin: '#' },
   },
   {
-    name: 'Efua Boateng',
-    role: 'Head of Digital Content',
-    bio: 'Social media strategist and content creator driving 50M+ organic views across client channels.',
-    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+    // name: 'Efua Boateng',
+    // role: 'Head of Digital Content',
+    // bio: 'Social media strategist and content creator driving 50M+ organic views across client channels.',
+    avatar: dencastCrew,
     social: { twitter: '#', instagram: '#', linkedin: '#' },
   },
 ];
@@ -123,7 +131,13 @@ const CLIENTS = [
 // ─── Section: Hero ────────────────────────────────────────────────────────────
 
 const HeroBanner: React.FC = () => (
-  <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden bg-[#0056A6]">
+  <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+    <div
+      className="absolute inset-0 bg-cover bg-center"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+      aria-hidden="true"
+    />
+    <div className="absolute inset-0 bg-[#0056A6]/65" aria-hidden="true" />
     {/* Background pattern */}
     <div className="absolute inset-0 opacity-10"
       style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, #ffffff 1px, transparent 1px), radial-gradient(circle at 80% 20%, #ffffff 1px, transparent 1px)', backgroundSize: '60px 60px' }}
