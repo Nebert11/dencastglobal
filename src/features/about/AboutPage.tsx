@@ -13,6 +13,7 @@ import { SITE_NAME } from '@/utils/constants';
 
 //Images
 import backgroundImage from '/dencast_images/CREW.jpg';
+import teamImage from '/dencast_images/9-scaled.jpg';
 import CEO from '/dencast_images/Machio-CEO.png';
 import allan from '/dencast_images/Allan-Odera.jpg';
 import macharia from '/dencast_images/Valentino-Macharia.jpg';
@@ -115,12 +116,9 @@ const TEAM_MEMBERS = [
 ];
 
 const TIMELINE = [
-  { year: '2014', title: 'Founded in Accra', desc: "Dencast Global was founded with a single camera and an unstoppable vision to tell Africa's stories to the world." },
-  { year: '2016', title: 'First International Documentary', desc: 'Our debut feature documentary premiered at the Africa International Film Festival, earning Best Documentary.' },
-  { year: '2018', title: 'Expanded to 5 Countries', desc: 'Opened production offices in Lagos, Nairobi, Johannesburg, and London to serve pan-African clients.' },
-  { year: '2020', title: 'Digital & Livestreaming Division', desc: 'Launched our livestreaming and digital content vertical, producing 200+ live events during the pandemic era.' },
-  { year: '2022', title: '100+ Global Projects', desc: 'Crossed the milestone of 100 completed productions spanning documentaries, commercials, and brand campaigns.' },
-  { year: '2024', title: 'Pan-African Excellence Award', desc: "Recognised as Africa's Most Innovative Media Production Company at the African Media Awards." },
+  { year: '2021', title: 'A Journey Rooted in Excellence', desc: "Machio’s journey began at Michezo Afrika, Kenya’s leading sports news outlet, where he served as the lead producer and editor. As a co-founder of Michezo Afrika, he played a pivotal role in revolutionizing sports media, blending in-depth analysis with dynamic visuals that captivated audiences. Fueled by a desire to expand the boundaries of storytelling beyond sports, Machio launched Bungoma Pictures—a production company dedicated to documentary filmmaking and visual storytelling. Through Bungoma Pictures, he continued to explore powerful, immersive narratives, shining a light on untold stories and impactful moments." },
+  { year: '2022', title: 'The Evolution: Dencast Global', desc: 'In 2021, Bungoma Pictures evolved into Dencast Global, a cutting-edge production and creative media agency. This transformation marked a new era—one defined by world-class productions that have garnered regional and global acclaim. Today, Dencast Global stands at the forefront of media innovation, partnering with leading brands across industries to deliver high-impact content that transcends boundaries.' },
+  { year: 'Currently', title: 'A Legacy of Trust and Excellence', desc: "Dencast Global’s success is built on trust, creativity, and an unwavering commitment to quality. Our rich portfolio features celebrated brands that have entrusted us to bring their vision to life, ensuring that every frame, every scene, and every moment tells a story that matters. From documentaries and commercials to corporate films and digital campaigns, Dencast Global continues to redefine storytelling—one production at a time." },
 ];
 
 const CLIENTS = [
@@ -242,7 +240,7 @@ const StorySection: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
               <img
-                src="https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src={teamImage}
                 alt="Dencast Global team at work"
                 className="w-full h-full object-cover"
               />
@@ -256,7 +254,7 @@ const StorySection: React.FC = () => {
             >
               <div className="flex items-center gap-4">
                 <div className="text-center">
-                  <p className="text-3xl font-black text-[#0056A6]">10+</p>
+                  <p className="text-3xl font-black text-[#0056A6]">5+</p>
                   <p className="text-xs text-slate-500 uppercase tracking-wider mt-0.5">Years</p>
                 </div>
                 <div className="w-px h-10 bg-slate-200" />
@@ -282,16 +280,16 @@ const StorySection: React.FC = () => {
               <SectionLabel label="Our Story" />
             </motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900 leading-tight">
-              From a Single Camera to a<span className="text-[#0056A6]"> Continental Voice</span>
+              A Vision Built on<span className="text-[#0056A6]"> Storytelling Excellence</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="mt-5 text-slate-600 leading-relaxed">
-              In 2014, founder Dennis Osei set up a camera in a modest Accra studio and filmed a short documentary about the life of a Makola Market trader. That film — watched by over a million people online — became the spark that ignited Dencast Global.
+              At the heart of Dencast Global is a passion for storytelling, one that began with a vision to craft compelling narratives that inspire, inform, and leave a lasting impact.
             </motion.p>
             <motion.p variants={fadeUp} className="mt-4 text-slate-600 leading-relaxed">
-              A decade later, we are a full-service creative media company with offices in five countries, a roster of 30+ creatives, and a portfolio spanning Netflix-commissioned documentaries, Fortune 500 brand campaigns, and grassroots community storytelling projects.
+              Founded by renowned Kenyan producer Dennis Machio, Dencast Global is the product of years of dedication to the art of cinematography and storytelling.
             </motion.p>
             <motion.p variants={fadeUp} className="mt-4 text-slate-600 leading-relaxed">
-              Every project — regardless of budget or scale — is approached with the same commitment: to create something that makes people feel, think, and act.
+              With a rich background in media production, Machio has spent his career shaping how stories are told on screen.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-8">
               <Link to="/contact">
@@ -443,8 +441,8 @@ const TimelineSection: React.FC = () => {
           className="text-center mb-16"
         >
           <motion.div variants={fadeUp}><SectionLabel label="Our Journey" light center /></motion.div>
-          <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-white">
-            A Decade of Impact
+          <motion.h2 variants={fadeUp} className="mt-4 text-3xl sm:text-4xl font-black text-white">
+            A Legacy of Excellence in Visual Storytelling
           </motion.h2>
         </motion.div>
 
@@ -581,3 +579,6 @@ const AboutPage: React.FC = () => (
 );
 
 export default AboutPage;
+
+
+
