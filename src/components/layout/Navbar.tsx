@@ -73,7 +73,7 @@ const NAV_LINKS = [
   { label: 'Home',      to: '/'          },
   { label: 'About',     to: '/about'     },
   { label: 'Portfolio', to: '/portfolio' },
-  { label: 'Blog',      to: '/blog'      },
+  { label: 'News',      to: '/blog'      },
   { label: 'Contact',   to: '/contact'   },
 ];
 
@@ -83,7 +83,7 @@ const MOBILE_ALL_LINKS = [
   { label: 'Home',                      to: '/',             group: 'main'     },
   { label: 'About',                     to: '/about',        group: 'main'     },
   { label: 'Portfolio',                 to: '/portfolio',    group: 'main'     },
-  { label: 'Blog',                      to: '/blog',         group: 'main'     },
+  { label: 'News',                      to: '/news',         group: 'main'     },
   { label: 'Contact',                   to: '/contact',      group: 'main'     },
   { label: 'All Services',              to: '/services',     group: 'services' },
   { label: 'Documentary Production',    to: '/documentary',  group: 'services' },
@@ -117,22 +117,22 @@ const drawerVariants = {
 
 const Logo: React.FC<{ scrolled: boolean }> = ({ scrolled }) => (
   <Link to="/" className="flex items-center gap-2.5 select-none flex-shrink-0">
-    <span className="relative flex items-center justify-center w-9 h-9">
-      <Film size={28} className={cn('transition-colors duration-300', scrolled ? 'text-[#0056A6]' : 'text-white')} />
-      <span className="absolute left-0 top-0 flex flex-col justify-between h-full py-1 pointer-events-none">
-        {[0, 1, 2].map(i => (
-          <span key={i} className={cn('w-1.5 h-1 rounded-sm block transition-colors duration-300', scrolled ? 'bg-[#0056A6]/30' : 'bg-white/30')} />
-        ))}
-      </span>
-    </span>
-    <span className="leading-none">
-      <span className={cn('block text-xl font-black tracking-[0.12em] uppercase transition-colors duration-300', scrolled ? 'text-[#0056A6]' : 'text-white')}>
-        DENCAST
-      </span>
-      <span className="block text-[10px] font-semibold tracking-[0.28em] uppercase text-[#D72638]">
-        GLOBAL
-      </span>
-    </span>
+    <img
+      src="/image.png"
+      alt="Dencast Global"
+      className={cn(
+        'h-10 w-auto object-contain transition-all duration-300',
+        scrolled ? 'brightness-100 saturate-100' : 'brightness-100'
+      )}
+      style={
+        scrolled
+          ? {
+              filter:
+                'brightness(0) saturate(100%) invert(23%) sepia(88%) saturate(2204%) hue-rotate(194deg) brightness(95%) contrast(102%)',
+            }
+          : undefined
+      }
+    />
   </Link>
 );
 
@@ -480,7 +480,7 @@ const Navbar: React.FC = () => {
 
           {/* Desktop CTA buttons */}
           <div className="hidden lg:flex items-center gap-2.5 flex-shrink-0">
-            <Link
+            {/* <Link
               to="/admin/login"
               className={cn(
                 'flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200',
@@ -490,12 +490,12 @@ const Navbar: React.FC = () => {
               )}
             >
               <LogIn size={12} /> Admin
-            </Link>
+            </Link> */}
             <Link
               to="/contact"
               className="px-5 py-2 rounded-lg bg-[#D72638] text-white text-sm font-bold hover:bg-[#b01e2e] transition-colors shadow-lg shadow-[#D72638]/25"
             >
-              Get a Quote
+              Contact Us
             </Link>
           </div>
 

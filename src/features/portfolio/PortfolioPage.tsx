@@ -25,7 +25,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
   { id: '1', slug: 'voices-of-the-nile', title: 'Voices of the Nile', category: 'Documentary', image: '3379934', featured: true },
   { id: '2', slug: 'mtn-brand-relaunch', title: 'MTN Brand Relaunch Campaign', category: 'Branding', image: '2873486' },
   { id: '3', slug: 'accra-fashion-week', title: 'Accra Fashion Week 2024', category: 'Events', image: '1884577' },
-  { id: '4', slug: 'corporate-summit-2024', title: 'Pan-African Corporate Summit', category: 'Corporate', image: '3785170' },
+  { id: '4', slug: 'corporate-summit-2024', title: 'Pan-African Corporate Summit', category: 'Corporate', image: '3756132' },
   { id: '5', slug: 'kasapreko-commercial', title: 'Kasapreko TVC — Born Here', category: 'Commercial', image: '7034014' },
   { id: '6', slug: 'golden-stool-portrait-series', title: 'Golden Stool Portrait Series', category: 'Photography', image: '7247399' },
   { id: '7', slug: 'tech-innovators-doc', title: 'Africa Tech Innovators', category: 'Documentary', image: '3756132' },

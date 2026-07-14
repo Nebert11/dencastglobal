@@ -1,4 +1,4 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Hero from './components/Hero';
 import TrustedBy from './components/TrustedBy';
@@ -65,10 +65,14 @@ function useLenis() {
 
 const HomePage: React.FC = () => {
   const [heroData, setHeroData] = useState<HeroContent | null>(null);
+  const hasFetchedHeroRef = useRef(false);
 
   useLenis();
 
   useEffect(() => {
+    if (hasFetchedHeroRef.current) return;
+    hasFetchedHeroRef.current = true;
+
     getHeroContent().then((res) => {
       if (res.data) setHeroData(res.data);
     });

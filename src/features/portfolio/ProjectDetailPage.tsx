@@ -48,7 +48,7 @@ const PROJECTS: Record<string, ProjectData> = {
     challenge: { heading: 'The Challenge', body: 'The client needed a feature documentary that would bring international attention to water scarcity along the Nile Basin while humanising the 400 million people whose livelihoods depend on it. Existing coverage was either overly academic or sensationalised, failing to connect with global audiences.' },
     solution: { heading: 'Our Solution', body: 'We embedded a small crew in three communities over six months — Ethiopia, Sudan, and Egypt — building deep trust and capturing intimate, nuanced stories. We used a hybrid observational-participatory approach, allowing subjects to hold cameras and narrate their own experiences. The result is a film that is both politically substantive and deeply human.' },
     results: { heading: 'The Results', body: 'The film premiered at the Carthage Film Festival and was acquired by Al Jazeera English. It has since been screened in 22 countries, sparked two parliamentary debates on trans-boundary water policy, and won the Best African Documentary award at FESPACO 2024. Digital distribution generated 2.3M views in the first 90 days.' },
-    gallery: ['3379934', '2873486', '1884577', '3785170', '7034014', '7247399'],
+    gallery: ['3379934', '2873486', '1884577', '3756132', '7034014', '7247399'],
     relatedSlugs: ['tech-innovators-doc', 'harvest-time-film', 'mtn-brand-relaunch'],
   },
   'mtn-brand-relaunch': {
@@ -63,7 +63,7 @@ const PROJECTS: Record<string, ProjectData> = {
     challenge: { heading: 'The Challenge', body: 'MTN needed a pan-African brand refresh that would resonate across 21 markets while maintaining brand consistency. Previous campaigns had failed to connect emotionally with younger demographics, resulting in declining brand affinity scores among 18–35 year olds.' },
     solution: { heading: 'Our Solution', body: 'We developed a pan-African brand narrative anchored in the concept of Bright Futures — celebrating African excellence and ambition. We produced a flagship 60-second TVC, 200+ social assets, and a brand photography library featuring real people from across the continent.' },
     results: { heading: 'The Results', body: 'Brand affinity among the 18–35 segment increased by 34% in tracked markets. The TVC achieved 45M views in its first month across digital platforms. The campaign won the Pan-African Marketing Excellence Award and was shortlisted at Cannes Lions.' },
-    gallery: ['2873486', '3379934', '1884577', '3785170', '7034014', '7247399'],
+    gallery: ['2873486', '3379934', '1884577', '3756132', '7034014', '7247399'],
     relatedSlugs: ['kasapreko-commercial', 'stanbic-investor-day', 'voices-of-the-nile'],
   },
 };

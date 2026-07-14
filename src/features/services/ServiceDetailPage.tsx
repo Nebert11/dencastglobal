@@ -35,7 +35,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'Our documentary production team brings decades of combined experience to every project. We handle everything from the initial concept and research phase through principal photography, post-production, and final distribution — ensuring your story reaches the audience it deserves.',
     features: ['4K & 8K Cinema Camera Packages', 'Multi-lingual production capability', 'Archival research & fact-checking', 'Original score composition', 'Festival submission strategy', 'International distribution network', 'Subtitling & localisation'],
-    galleryImages: ['3379934', '2873486', '1884577', '3785170', '7034014', '7247399'],
+    galleryImages: ['3379934', '2873486', '1884577', '3756132', '7034014', '7247399'],
     whyUs: [
       { icon: Eye, title: 'Authentic Storytelling', desc: 'We immerse ourselves in every subject before filming, ensuring authentic and respectful narratives.' },
       { icon: Cpu, title: 'Cutting-Edge Technology', desc: '4K/8K cinema cameras, drone cinematography, and professional post-production suites.' },
@@ -46,7 +46,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'We deliver flawless live production for events of any scale. Our multi-camera broadcast crews, redundant streaming infrastructure, and experienced technical directors ensure your live event reaches a global audience without a single dropped frame.',
     features: ['Multi-camera live switching', 'Up to 4K streaming resolution', 'Redundant internet connectivity', 'Platform-agnostic delivery', 'Live graphics & lower thirds', 'Real-time audience engagement tools', 'Post-event VOD package'],
-    galleryImages: ['2873486', '3379934', '1884577', '3785170', '7034014', '7247399'],
+    galleryImages: ['2873486', '3379934', '1884577', '3756132', '7034014', '7247399'],
     whyUs: [
       { icon: Eye, title: 'Zero-Downtime Delivery', desc: 'Triple-redundant systems ensure your stream never drops, no matter what.' },
       { icon: Cpu, title: 'Multi-Platform Broadcasting', desc: 'YouTube, Facebook, Zoom, Teams, Twitch — we stream everywhere simultaneously.' },
@@ -57,7 +57,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/1884577/pexels-photo-1884577.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'Our photography team produces images that transcend documentation — they tell stories. From editorial portraits and commercial product shots to large-scale event coverage and aerial photography, every image is crafted with intention.',
     features: ['Medium format & full-frame cameras', 'Studio & location lighting', 'Aerial / drone photography', 'Retouching & colour grading', 'Same-day delivery available', 'Print-ready high-resolution files', 'Commercial licensing packages'],
-    galleryImages: ['1884577', '3379934', '2873486', '3785170', '7034014', '7247399'],
+    galleryImages: ['1884577', '3379934', '2873486', '3756132', '7034014', '7247399'],
     whyUs: [
       { icon: Eye, title: 'Award-Winning Photographers', desc: 'Our photographers have been published in Vogue Africa, Forbes, and National Geographic.' },
       { icon: Cpu, title: 'Studio & Field Ready', desc: 'Fully equipped mobile studio that travels anywhere on the continent.' },
@@ -65,10 +65,10 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     ],
   },
   'videography': {
-    heroImage: 'https://images.pexels.com/photos/3785170/pexels-photo-3785170.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
+    heroImage: 'https://images.pexels.com/photos/3756132/pexels-photo-3756132.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'High-production-value video content that elevates your brand and drives results. Our videography teams are equipped for everything from intimate interview setups to large multi-camera corporate productions.',
     features: ['Cinema-grade camera packages', 'Professional lighting & grip', 'Colour grading & VFX', 'Motion graphics & animation', 'Multi-format delivery', 'Scripting & storyboarding', '360° video capability'],
-    galleryImages: ['3785170', '3379934', '2873486', '1884577', '7034014', '7247399'],
+    galleryImages: ['3756132', '3379934', '2873486', '1884577', '7034014', '7247399'],
     whyUs: [
       { icon: Eye, title: 'Cinematic Quality', desc: 'Every video is crafted with the attention to detail of a feature film production.' },
       { icon: Cpu, title: 'Full Post-Production', desc: 'In-house colour grading, VFX, and audio mixing for end-to-end quality control.' },
@@ -79,7 +79,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/7034014/pexels-photo-7034014.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'Strategic brand development that positions you clearly in a crowded market. We combine deep market research, consumer insight, and creative thinking to build brands that resonate, differentiate, and endure.',
     features: ['Brand audit & competitive analysis', 'Brand positioning & messaging', 'Visual identity systems', 'Brand guidelines documentation', 'Campaign strategy & planning', 'Brand voice & tone development', 'Internal brand activation'],
-    galleryImages: ['7034014', '3379934', '2873486', '1884577', '3785170', '7247399'],
+    galleryImages: ['7034014', '3379934', '2873486', '1884577', '3756132', '7247399'],
     whyUs: [
       { icon: Eye, title: 'Data-Driven Strategy', desc: 'Every brand recommendation is backed by market research and consumer insights.' },
       { icon: Cpu, title: 'Creative Execution', desc: 'Strategy and creative execution under one roof for seamless brand development.' },
@@ -90,7 +90,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/7247399/pexels-photo-7247399.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'Bold, boundary-pushing creative media that captures attention and refuses to be forgotten. We conceptualise and execute multimedia campaigns, motion graphics, and experimental content that makes your audience stop scrolling.',
     features: ['2D & 3D motion graphics', 'Animated explainer videos', 'Interactive digital experiences', 'Conceptual campaign development', 'Mixed media productions', 'Social-first content series', 'Branded entertainment'],
-    galleryImages: ['7247399', '3379934', '2873486', '1884577', '3785170', '7034014'],
+    galleryImages: ['7247399', '3379934', '2873486', '1884577', '3756132', '7034014'],
     whyUs: [
       { icon: Eye, title: 'Boundless Creativity', desc: 'No brief is too ambitious — we thrive on creative challenges that others won\'t attempt.' },
       { icon: Cpu, title: 'Multimedia Expertise', desc: 'Animation, VFX, interactive design — our team spans every creative discipline.' },
@@ -101,7 +101,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/3756132/pexels-photo-3756132.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'Licensed aerial cinematography and photography that unlocks perspectives impossible to achieve from the ground. Our drone pilots are CAA-certified and experienced in complex environments from urban cityscapes to remote wilderness.',
     features: ['4K & 6K aerial cinematography', 'CAA-certified pilots', 'Night aerial photography', 'Thermal imaging capability', 'Mapping & survey flights', 'Live aerial streaming', 'Permit handling included'],
-    galleryImages: ['3756132', '3379934', '2873486', '1884577', '3785170', '7034014'],
+    galleryImages: ['3756132', '3379934', '2873486', '1884577', '3756132', '7034014'],
     whyUs: [
       { icon: Eye, title: 'CAA-Certified Pilots', desc: 'All our drone pilots hold current aviation authority certifications for commercial operations.' },
       { icon: Cpu, title: 'Premium Drone Fleet', desc: 'DJI Inspire 3, Matrice 350, and Autel Robotics for every project need.' },
@@ -112,7 +112,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/3866149/pexels-photo-3866149.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'Clear, compelling corporate communications that align your organisation from the C-suite to the frontline. We produce executive messaging videos, investor presentations, internal communications, and annual reports that speak with one powerful voice.',
     features: ['Executive video messaging', 'Investor presentation production', 'Annual report design & video', 'Internal comms strategy', 'Town hall & AGM production', 'Employee onboarding content', 'Crisis communication support'],
-    galleryImages: ['3866149', '3379934', '2873486', '1884577', '3785170', '7034014'],
+    galleryImages: ['3866149', '3379934', '2873486', '1884577', '3756132', '7034014'],
     whyUs: [
       { icon: Eye, title: 'Board-Level Experience', desc: 'We understand corporate governance and produce content that satisfies all stakeholders.' },
       { icon: Cpu, title: 'Discretion Guaranteed', desc: 'Strict NDAs and confidentiality protocols for all sensitive corporate projects.' },
@@ -123,7 +123,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/3379932/pexels-photo-3379932.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'TV commercials, online ads, and product films engineered to convert. We combine compelling creative with strategic thinking to produce commercials that build brand equity and drive sales across all media platforms.',
     features: ['TVC production (15s, 30s, 60s)', 'Digital ad formats (pre-roll, stories)', 'Product filming & styling', 'Celebrity & talent management', 'Jingle & audio branding', 'A/B testing creative variants', 'Media buying consultation'],
-    galleryImages: ['3379932', '3379934', '2873486', '1884577', '3785170', '7034014'],
+    galleryImages: ['3379932', '3379934', '2873486', '1884577', '3756132', '7034014'],
     whyUs: [
       { icon: Eye, title: 'Broadcast Standard Quality', desc: 'Our commercials meet the technical specifications of every major African broadcaster.' },
       { icon: Cpu, title: 'Creative & Strategy Combined', desc: 'We don\'t just produce great ads — we ensure they work in the media plan.' },
@@ -134,7 +134,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: 'https://images.pexels.com/photos/7034014/pexels-photo-7034014.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
     overview: 'Scroll-stopping digital-first content engineered for engagement. We create content series, social media campaigns, and digital experiences that build communities, drive traffic, and convert audiences into loyal customers.',
     features: ['Social media content calendars', 'Short-form video (Reels, TikTok)', 'Podcast production', 'Newsletter content', 'SEO content strategy', 'Influencer campaign management', 'Analytics & performance reporting'],
-    galleryImages: ['7034014', '3379934', '2873486', '1884577', '3785170', '7247399'],
+    galleryImages: ['7034014', '3379934', '2873486', '1884577', '3756132', '7247399'],
     whyUs: [
       { icon: Eye, title: 'Platform-Native Expertise', desc: 'Our team lives and breathes Instagram, TikTok, YouTube, and LinkedIn algorithms.' },
       { icon: Cpu, title: 'Data-Driven Creation', desc: 'Every content decision is informed by analytics and performance data.' },

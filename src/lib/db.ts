@@ -11,16 +11,12 @@
  *   import { db } from '@/lib/db';
  *   await db.from('projects').update({ title: 'foo', updated_at: new Date().toISOString() }).eq('id', id);
  */
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+import supabase from './supabase';
 
 // A permissive (untyped) client for admin mutations that pass extra fields
 // the strict generated types would reject.
+// Reuse the shared singleton to avoid multiple GoTrueClient instances.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const db = createClient<any>(supabaseUrl, supabaseAnonKey, {
-  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
-});
+export const db = supabase as any;
 
 export default db;

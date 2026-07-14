@@ -53,7 +53,7 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'Photography',
     categorySlug: 'photography',
     image:
-      'https://images.pexels.com/photos/3785170/pexels-photo-3785170.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2',
+      'https://images.pexels.com/photos/3756132/pexels-photo-3756132.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=2',
     slug: 'ea-wildlife-portrait-series',
   },
   {

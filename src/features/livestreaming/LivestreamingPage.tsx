@@ -100,7 +100,7 @@ const PACKAGES = [
 const PAST_EVENTS = [
   { title: 'Pan-African Economic Forum 2024', image: '2873486', attendees: '5,000+', views: '220K' },
   { title: 'Afropop World Festival', image: '1884577', attendees: '15,000', views: '1.2M' },
-  { title: 'Ghana Tech Summit', image: '3785170', attendees: '2,500', views: '85K' },
+  { title: 'Ghana Tech Summit', image: '3756132', attendees: '2,500', views: '85K' },
   { title: 'Africa CEO Forum', image: '7034014', attendees: '1,800', views: '340K' },
 ];
 

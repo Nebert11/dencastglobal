@@ -180,6 +180,6 @@ export const SOCIAL_PLATFORMS: SocialPlatformEntry[] = [
 
 export const SITE_NAME = 'Dencast Global';
 export const SITE_TAGLINE = 'Telling Africa\'s Stories to the World';
-export const CONTACT_EMAIL = 'hello@dencastglobal.com';
+export const CONTACT_EMAIL = 'info@dencastglobal.co.ke';
 export const DEFAULT_PAGE_SIZE = 9;
 export const HERO_VIDEO_FALLBACK = '/assets/hero-poster.jpg';

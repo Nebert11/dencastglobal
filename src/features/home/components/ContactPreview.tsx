@@ -8,16 +8,16 @@ const contactItems = [
   {
     icon: Phone,
     label: 'Phone / WhatsApp',
-    value: '+254 700 000 000',
-    href: 'tel:+254700000000',
+    value: '+254 721 710 397',
+    href: 'tel:+254721710397',
     color: '#0056A6',
     sublabel: 'Mon – Fri, 8am – 6pm EAT',
   },
   {
     icon: Mail,
     label: 'Email Us',
-    value: 'hello@dencastglobal.com',
-    href: 'mailto:hello@dencastglobal.com',
+    value: 'info@dencastglobal.co.ke',
+    href: 'mailto:info@dencastglobal.co.ke',
     color: '#D72638',
     sublabel: 'We respond within 24 hours',
   },
@@ -27,7 +27,7 @@ const contactItems = [
     value: 'Nairobi, Kenya',
     href: 'https://maps.google.com/?q=Nairobi+Kenya',
     color: '#0056A6',
-    sublabel: 'The Karen Hub, Karen Road',
+    sublabel: 'Kenya ParkView Suites Nyerere Road Nairobi.',
   },
 ];
 

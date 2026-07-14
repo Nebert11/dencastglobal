@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Film,
+  // Film,
   Instagram,
   Facebook,
   Twitter,
@@ -12,10 +12,9 @@ import {
   Phone,
   MapPin,
   MessageCircle,
-  Send,
   ChevronRight,
+  LogIn,
 } from 'lucide-react';
-import { cn } from '@/utils/cn';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -48,11 +47,11 @@ const PORTFOLIO_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/dencastglobal' },
-  { icon: Facebook,  label: 'Facebook',  href: 'https://facebook.com/dencastglobal' },
-  { icon: Twitter,   label: 'Twitter/X', href: 'https://twitter.com/dencastglobal' },
-  { icon: Linkedin,  label: 'LinkedIn',  href: 'https://linkedin.com/company/dencastglobal' },
-  { icon: Youtube,   label: 'YouTube',   href: 'https://youtube.com/@dencastglobal' },
+  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/dencastglobal/' },
+  { icon: Facebook,  label: 'Facebook',  href: 'https://www.facebook.com/dencastglobal' },
+  { icon: Twitter,   label: 'Twitter/X', href: 'https://x.com/DencastL' },
+  { icon: Linkedin,  label: 'LinkedIn',  href: 'https://ke.linkedin.com/in/dencast-global-976b66224' },
+  { icon: Youtube,   label: 'YouTube',   href: 'https://www.youtube.com/channel/UCJniNcZ9-nOK_jkCzDEkK5g/about' },
 ];
 
 // ─── Animation variants ───────────────────────────────────────────────────────
@@ -91,70 +90,6 @@ const FooterHeading: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   </h3>
 );
 
-// ─── Newsletter signup ────────────────────────────────────────────────────────
-
-const Newsletter: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setStatus('loading');
-    // Replace with real subscription logic
-    await new Promise(r => setTimeout(r, 1000));
-    setStatus('success');
-    setEmail('');
-  };
-
-  return (
-    <motion.div variants={fadeUp} className="border-t border-white/10 pt-10 pb-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <h4 className="text-white font-bold text-lg">Stay in the loop</h4>
-            <p className="text-slate-400 text-sm mt-1">Get the latest news, projects and insights from Dencast Global.</p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="flex items-center gap-2 w-full md:w-auto">
-            <div className="relative flex-1 md:w-72">
-              <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
-              <input
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                disabled={status === 'loading' || status === 'success'}
-                className="w-full pl-9 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#0056A6] focus:ring-1 focus:ring-[#0056A6] transition-colors disabled:opacity-60"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={status === 'loading' || status === 'success'}
-              className={cn(
-                'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 flex-shrink-0',
-                status === 'success'
-                  ? 'bg-green-600 text-white cursor-default'
-                  : 'bg-[#D72638] text-white hover:bg-[#b01e2e] disabled:opacity-60'
-              )}
-            >
-              {status === 'success' ? (
-                <>✓ Subscribed</>
-              ) : (
-                <>
-                  <Send size={14} />
-                  Subscribe
-                </>
-              )}
-            </button>
-          </form>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
 const Footer: React.FC = () => {
@@ -176,16 +111,23 @@ const Footer: React.FC = () => {
             <div className="lg:col-span-1">
               {/* Logo */}
               <Link to="/" className="inline-flex items-center gap-2.5 mb-5 group">
-                <Film size={26} className="text-[#0056A6]" />
-                <span className="leading-none">
-                  <span className="block text-lg font-black tracking-[0.12em] uppercase text-white">DENCAST</span>
-                  <span className="block text-[10px] font-semibold tracking-[0.28em] uppercase text-[#D72638]">GLOBAL</span>
-                </span>
+                <img
+                  src="/image.png"
+                  alt="Dencast Global"
+                  className="h-12 w-auto object-contain"
+                />
               </Link>
 
               <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">
                 Award-winning creative media production company delivering cinematic excellence across documentary, commercial, and digital content globally.
               </p>
+
+              <Link
+                to="/admin/login"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200 border-white text-white hover:bg-[#D72638] hover:text-white hover:border-[#D72638]"
+              >
+                <LogIn size={10} /> Login
+              </Link>
 
               {/* Social icons */}
               <div className="flex items-center gap-3">
@@ -233,21 +175,21 @@ const Footer: React.FC = () => {
                 <FooterHeading>Contact</FooterHeading>
                 <ul className="space-y-3">
                   <li>
-                    <a href="mailto:hello@dencastglobal.com" className="flex items-start gap-2.5 text-slate-400 hover:text-white text-sm transition-colors group">
+                    <a href="mailto:info@dencastglobal.co.ke" className="flex items-start gap-2.5 text-slate-400 hover:text-white text-sm transition-colors group">
                       <Mail size={14} className="mt-0.5 flex-shrink-0 text-[#0056A6]" />
-                      hello@dencastglobal.com
+                      info@dencastglobal.co.ke
                     </a>
                   </li>
                   <li>
-                    <a href="tel:+1234567890" className="flex items-start gap-2.5 text-slate-400 hover:text-white text-sm transition-colors group">
+                    <a href="tel:+254721710397" className="flex items-start gap-2.5 text-slate-400 hover:text-white text-sm transition-colors group">
                       <Phone size={14} className="mt-0.5 flex-shrink-0 text-[#0056A6]" />
-                      +1 (234) 567-890
+                      +254 721 710 397
                     </a>
                   </li>
                   <li>
                     <span className="flex items-start gap-2.5 text-slate-400 text-sm">
                       <MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#0056A6]" />
-                      123 Creative Ave, Media District, CA 90210
+                      ParkView Suites Nyerere Road Nairobi, Kenya
                     </span>
                   </li>
                   <li>
@@ -268,7 +210,7 @@ const Footer: React.FC = () => {
         </motion.div>
 
         {/* ── Newsletter ───────────────────────────────────────── */}
-        <Newsletter />
+        {/* <Newsletter /> */}
 
         {/* ── Bottom bar ──────────────────────────────────────── */}
         <motion.div

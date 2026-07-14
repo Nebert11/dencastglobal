@@ -233,10 +233,10 @@ export default function ManageSiteSettings() {
         <Section title="Contact Information">
           <div className="grid sm:grid-cols-2 gap-4">
             <Field label="Contact Email" error={errors.contact_email?.message}>
-              <input {...register('contact_email')} placeholder="hello@dencastglobal.com" className={inputClass(!!errors.contact_email)} />
+              <input {...register('contact_email')} placeholder="info@dencastglobal.co.ke" className={inputClass(!!errors.contact_email)} />
             </Field>
             <Field label="Contact Phone">
-              <input {...register('contact_phone')} placeholder="+1 (234) 567-8900" className={inputClass()} />
+              <input {...register('contact_phone')} placeholder="+254-721-710-3970" className={inputClass()} />
             </Field>
             <Field label="WhatsApp Number">
               <input {...register('whatsapp_number')} placeholder="+1234567890 (E.164 format)" className={inputClass()} />

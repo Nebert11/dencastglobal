@@ -192,7 +192,7 @@ const ContactPage: React.FC = () => {
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Phone</p>
                       <a href="tel:+1234567890" className="text-slate-800 font-semibold hover:text-[#0056A6] transition-colors">
-                        +1 (234) 567-890
+                        +254-721-710-397
                       </a>
                     </div>
                   </li>
@@ -233,9 +233,8 @@ const ContactPage: React.FC = () => {
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Office</p>
                       <p className="text-slate-700 text-sm leading-relaxed">
-                        45 Independence Avenue<br />
-                        Media District, Accra<br />
-                        Ghana, West Africa
+                        ParkView Suites Nyerere<br />
+                        Road Nairobi, Kenya
                       </p>
                     </div>
                   </li>

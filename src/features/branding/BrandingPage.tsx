@@ -46,7 +46,7 @@ const CASE_STUDIES = [
     challenge: 'Reposition an agricultural company as a technology-led precision farming platform.',
     result: 'Secured $2.5M seed funding within 6 months of rebrand. Media coverage in 8 countries.',
     before: '1884577',
-    after: '3785170',
+    after: '3756132',
     color: '#2e7d32',
   },
   {

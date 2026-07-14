@@ -226,7 +226,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
             type="tel"
             value={values.phone}
             onChange={set('phone')}
-            placeholder="+1 (234) 567-890"
+            placeholder="+254-721-710-397"
             className={inputClass(false)}
           />
         </Field>

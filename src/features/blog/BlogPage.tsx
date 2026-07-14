@@ -13,7 +13,7 @@ import { subscribeNewsletter } from '@/services/supabase.service';
 
 const CATEGORIES = ['All', 'Documentary', 'Branding', 'Technology', 'Events', 'Industry', 'Behind the Scenes'];
 
-const PEXELS_IDS = ['3379934', '2873486', '1884577', '3785170', '7034014', '7247399', '3756132', '3866149', '3379932'];
+const PEXELS_IDS = ['3379934', '2873486', '1884577', '3756132', '7034014', '7247399', '3756132', '3866149', '3379932'];
 
 interface Article {
   id: string;

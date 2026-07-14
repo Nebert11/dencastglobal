@@ -7,6 +7,8 @@ import Button from '@/components/ui/Button';
 import ScrollIndicator from '@/components/ui/ScrollIndicator';
 import type { HeroContent } from '@/types';
 
+const backgroundVideo = '/videos/background.mp4';
+
 // ─── Static fallback ──────────────────────────────────────────────────────────
 
 const FALLBACK: Partial<HeroContent> = {
@@ -16,8 +18,7 @@ const FALLBACK: Partial<HeroContent> = {
   cta_primary_url: '/portfolio',
   cta_secondary_text: 'Get In Touch',
   cta_secondary_url: '/contact',
-  background_video_url:
-    'https://player.vimeo.com/external/370467553.hd.mp4?s=ce49c8c6d8e28a89298ffb4c53a2e842e2ad0da1&profile_id=175&oauth2_token_id=57447761',
+  background_video_url: backgroundVideo,
 };
 
 interface HeroProps {

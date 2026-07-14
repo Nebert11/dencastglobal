@@ -25,12 +25,18 @@ import type {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
+const loggedErrors = new Set<string>();
+const isSupabaseCmsEnabled = import.meta.env.VITE_USE_SUPABASE_CMS === 'true';
+
 function ok<T>(data: T): ApiResponse<T> {
   return { data, error: null, status: 'success' };
 }
 
 function fail<T>(message: string): ApiResponse<T> {
-  console.error('[SupabaseService]', message);
+  if (!loggedErrors.has(message)) {
+    console.error('[SupabaseService]', message);
+    loggedErrors.add(message);
+  }
   return { data: null, error: message, status: 'error' };
 }
 
@@ -72,6 +78,10 @@ function paginatedFail<T>(message: string): PaginatedResponse<T> {
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
 export async function getHeroContent(): Promise<ApiResponse<HeroContent>> {
+  if (!isSupabaseCmsEnabled) {
+    return ok(null as unknown as HeroContent);
+  }
+
   const { data, error } = await supabase
     .from('hero_content')
     .select('*')
@@ -80,7 +90,12 @@ export async function getHeroContent(): Promise<ApiResponse<HeroContent>> {
     .limit(1)
     .maybeSingle();
 
-  if (error) return fail(error.message);
+  if (error) {
+    if (error.message.includes("Could not find the table 'public.hero_content'")) {
+      return ok(null as unknown as HeroContent);
+    }
+    return fail(error.message);
+  }
   return ok(data as unknown as HeroContent);
 }
 
