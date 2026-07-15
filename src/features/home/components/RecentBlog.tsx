@@ -6,6 +6,11 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import BlogCard from '@/components/ui/BlogCard';
 import Button from '@/components/ui/Button';
 
+//Images
+import brand from '/dencast_images/Dencast-Crew-27.jpg';
+import documentary from '/dencast_images/team.jpg';
+import film from '/dencast_images/9-scaled.jpg';
+
 // ─── Static fallback blog posts ───────────────────────────────────────────────
 
 const BLOG_POSTS = [
@@ -15,8 +20,7 @@ const BLOG_POSTS = [
     excerpt:
       'In a world of dwindling attention spans, the opening moments of any film or video are everything. We break down the techniques master cinematographers use to hook viewers instantly.',
     category: 'Film Production',
-    coverImage:
-      'https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    coverImage: film,
     slug: 'art-of-visual-storytelling',
     author: 'Dencast Editorial',
     date: '2024-05-15',
@@ -28,8 +32,7 @@ const BLOG_POSTS = [
     excerpt:
       "Africa is one of the world's richest storytelling landscapes — but too often, global productions reduce complex communities to tired tropes. Here's how we do it differently.",
     category: 'Documentary',
-    coverImage:
-      'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    coverImage: documentary,
     slug: 'documentary-filmmaking-africa',
     author: 'Joseph Kabogo',
     date: '2024-04-22',
@@ -41,10 +44,9 @@ const BLOG_POSTS = [
     excerpt:
       'The 30-second TV spot still has its place, but brand films are reshaping how companies build lasting emotional connections with their audiences. We compare the two formats.',
     category: 'Brand Strategy',
-    coverImage:
-      'https://images.pexels.com/photos/1884577/pexels-photo-1884577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    coverImage: brand,
     slug: 'brand-films-vs-commercials',
-    author: 'MAryann Wairimu',
+    author: 'Maryann Wairimu',
     date: '2024-03-10',
     readTime: '5 min read',
   },
