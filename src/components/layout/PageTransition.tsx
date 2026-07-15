@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
@@ -35,6 +35,10 @@ const variants = {
 const PageTransition: React.FC<PageTransitionProps> = ({ children, pageKey }) => {
   const location = useLocation();
   const key = pageKey ?? location.pathname;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <AnimatePresence mode="wait" initial={false}>

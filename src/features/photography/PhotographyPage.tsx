@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
-  Camera, Monitor, Users, Package, Layers, Edit3,
+  Camera, Monitor, Users, Package, Edit3,
   Navigation, Aperture, Video, Film, ChevronRight, ArrowRight, CheckCircle2,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -44,9 +44,23 @@ const CAMERAS = [
 ];
 
 const GALLERY_IMAGES = [
-  '3379934', '2873486', '1884577', '3756132', '7034014', '7247399',
-  '3756132', '3866149', '3379932', '2379004',
+  '3379934',
+  '2873486',
+  '1884577',
+  '/dencast_images/event1.jpg',
+  '7034014',
+  '7247399',
+  '/dencast_images/White-Beach-Palace.jpg',
+  '/dencast_images/sasini_conference.jpg',
+  '3379932',
+  '2379004',
 ];
+
+const getGalleryImageSrc = (image: string) => (
+  image.startsWith('/')
+    ? image
+    : `https://images.pexels.com/photos/${image}/pexels-photo-${image}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`
+);
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
@@ -80,9 +94,9 @@ const PhotographyPage: React.FC = () => {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-[1.02]"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/1884577/pexels-photo-1884577.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2)' }}
+          style={{ backgroundImage: 'url(/dencast_images/16.jpg)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/90" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
           <motion.nav
@@ -209,16 +223,16 @@ const PhotographyPage: React.FC = () => {
           </motion.div>
 
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-            {GALLERY_IMAGES.map((id, i) => (
+            {GALLERY_IMAGES.map((image, i) => (
               <motion.div
-                key={id}
+                key={`${image}-${i}`}
                 initial={{ opacity: 0, scale: 0.95 }} animate={galleryInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 className="break-inside-avoid"
               >
                 <div className="relative overflow-hidden rounded-xl group">
                   <img
-                    src={`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
+                    src={getGalleryImageSrc(image)}
                     alt={`Portfolio item ${i + 1}`}
                     className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />

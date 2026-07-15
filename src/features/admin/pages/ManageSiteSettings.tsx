@@ -239,7 +239,7 @@ export default function ManageSiteSettings() {
               <input {...register('contact_phone')} placeholder="+254-721-710-3970" className={inputClass()} />
             </Field>
             <Field label="WhatsApp Number">
-              <input {...register('whatsapp_number')} placeholder="+1234567890 (E.164 format)" className={inputClass()} />
+              <input {...register('whatsapp_number')} placeholder="++254721710397 (E.164 format)" className={inputClass()} />
             </Field>
           </div>
           <Field label="Address">

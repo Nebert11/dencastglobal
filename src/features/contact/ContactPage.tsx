@@ -139,7 +139,7 @@ const ContactPage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-10 inline-flex items-center gap-8 bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20"
           >
-            {[['24h', 'Response Time'], ['Free', 'Consultation'], ['5', 'Countries']].map(([val, lbl]) => (
+            {[['24h', 'Response Time'], ['Free', 'Consultation'], ['20', 'Countries']].map(([val, lbl]) => (
               <div key={lbl} className="text-center">
                 <p className="text-2xl font-black text-white">{val}</p>
                 <p className="text-white/60 text-xs mt-0.5">{lbl}</p>
@@ -191,7 +191,7 @@ const ContactPage: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Phone</p>
-                      <a href="tel:+1234567890" className="text-slate-800 font-semibold hover:text-[#0056A6] transition-colors">
+                      <a href="tel:++254721710397" className="text-slate-800 font-semibold hover:text-[#0056A6] transition-colors">
                         +254-721-710-397
                       </a>
                     </div>
@@ -216,7 +216,7 @@ const ContactPage: React.FC = () => {
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">WhatsApp</p>
                       <a
-                        href="https://wa.me/1234567890"
+                        href="https://wa.me/+254721710397"
                         target="_blank" rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold rounded-xl transition-colors"
                       >

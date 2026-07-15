@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import {
   ChevronRight, Calendar, Clock, Eye, User, Tag,
-  Twitter, Linkedin, Link as LinkIcon, ArrowLeft, ArrowRight,
+  Twitter, Linkedin, Link as LinkIcon, ArrowLeft,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import BlogCard from '@/components/ui/BlogCard';
@@ -34,52 +34,47 @@ interface PostData {
 const POSTS: Record<string, PostData> = {
   'future-of-african-documentary-2024': {
     slug: 'future-of-african-documentary-2024',
-    title: 'The Future of African Documentary in the Streaming Age',
-    excerpt: 'As Netflix, Prime Video, and Apple TV+ invest billions in African content, what does the streaming era mean for independent documentary filmmakers?',
-    category: 'Documentary',
-    author: 'Dennis Ochieng',
+    title: 'Capturing the Room and the Stream: Lessons from a High-Stakes Conference Panel in Nairobi',
+    excerpt: 'A packed panel at the African Development Bank Annual Meetings in Nairobi shows why modern event coverage is no longer just about recording a stage. It is about building a broadcast-ready experience that works for delegates in the room and viewers online.',
+    category: 'Events',
+    author: 'Dennis Machio',
     authorRole: 'CEO & Creative Director',
-    authorBio: 'Dennis is an award-winning filmmaker with 15+ years of experience. His documentaries have screened at TIFF, Sundance, and FESPACO.',
-    authorAvatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+    authorBio: 'Dennis is an award-winning creative director with 15+ years of experience. His event films and livestreams have supported launches, conferences, and brand activations across Africa.',
+    authorAvatar: '/dencast_images/Machio-CEO.png',
     date: '2024-05-15',
     readTime: '8 min read',
     views: '4,820',
-    imageId: '3379934',
-    tags: ['Documentary', 'Streaming', 'Africa', 'Film Industry', 'Netflix', 'Content Creation'],
+    imageId: '3756132',
+    tags: ['Events', 'Livestreaming', 'Africa', 'Broadcast', 'Production', 'Content Creation'],
     tableOfContents: [
-      { id: 'intro', label: 'The Streaming Landscape in Africa' },
-      { id: 'opportunities', label: 'Unprecedented Opportunities' },
-      { id: 'challenges', label: 'The New Challenges' },
-      { id: 'model', label: 'A New Production Model' },
-      { id: 'future', label: 'What the Future Holds' },
+      { id: 'intro', label: 'The Weight of the Room' },
+      { id: 'opportunities', label: 'Why the Stakes Are Higher' },
+      { id: 'challenges', label: 'What Good Coverage Must Solve' },
+      { id: 'model', label: 'Broadcast-Ready Thinking' },
+      { id: 'future', label: 'What the Future Looks Like' },
     ],
     content: `
-<h2 id="intro">The Streaming Landscape in Africa</h2>
-<p>The numbers tell a remarkable story. Netflix invested over $1 billion in African content between 2016 and 2022. Amazon Prime Video has localised its platform in key African markets. Apple TV+ has acquired multiple African-origin projects. And a new generation of pan-African streaming platforms — Showmax, Canal+ Africa, Buni TV — are competing aggressively for local content.</p>
-<p>For African documentary filmmakers, this represents both an extraordinary opportunity and a fundamental disruption of the traditional production model. The old pathway — make a film, submit to festivals, secure a broadcast deal, wait — is being replaced by something faster, more commercial, but also potentially more creatively limiting.</p>
+<h2 id="intro">The Weight of the Room</h2>
+<p>The image says a lot about where event production is headed. A formal panel sits beneath a large branded backdrop at the African Development Bank Annual Meetings in Nairobi, with a live audience watching closely. It is exactly the kind of setting where coverage has to do more than document what happened. It has to translate the energy, authority, and credibility of the room into something that also works on screen.</p>
+<p>That shift matters. High-level conferences like this one are no longer designed only for the people seated in front of the stage. They are built for a wider ecosystem of stakeholders: policymakers, investors, media teams, remote delegates, sponsors, and online audiences who expect to experience the event in real time. For production teams, that means every camera angle, audio feed, and lighting decision carries more weight than ever.</p>
 
-<h2 id="opportunities">Unprecedented Opportunities</h2>
-<p>The most immediate benefit is simple: there's more money available for African stories than at any point in history. Streaming platforms need volume, they need diversity, and they have discovered that African stories travel remarkably well globally.</p>
-<p>Consider the success of "Queen Sono" on Netflix, or the global reach of documentaries like "14 Peaks' and various African wildlife series. These aren't just African success stories — they're proof that global audiences have an appetite for content from and about the African continent.</p>
-<blockquote>"We used to wait three years for a distribution deal. Now we can be in 190 countries on day one."</blockquote>
-<p>For documentary filmmakers specifically, streaming platforms offer something the traditional model rarely could: a guarantee that your film will actually be seen by a meaningful audience. The tragedy of great documentaries languishing unseen after festival runs is well-documented. Streaming theoretically solves that.</p>
+<h2 id="opportunities">Why the Stakes Are Higher</h2>
+<p>A panel like this creates a specific challenge. The stage is visually rich, but the message depends on clarity. The backdrop, the flags, the branding, and the line of speakers all need to be captured cleanly without losing the texture of the room. The audience should feel present, not flattened. The conversation should feel immediate, not staged. That balance is what separates basic documentation from strategic event coverage.</p>
+<p>Livestreaming raises the bar further. A conference keynote or panel discussion cannot rely on post-production to fix weak audio, poor framing, or missed cues. The live audience and the remote viewer have different needs, but they are consuming the same moment. The production has to serve both. That is why hybrid events demand planning that starts long before the first speaker takes the microphone.</p>
 
-<h2 id="challenges">The New Challenges</h2>
-<p>But the streaming era is not without its complications for documentary filmmakers. The first and most significant is creative control. Streaming platforms are not arts councils — they are entertainment businesses with specific audience targets, completion rate benchmarks, and algorithmic priorities.</p>
-<p>A documentary that is artistically audacious but alienates viewers in the first twelve minutes is a problem for a platform that measures success in retention metrics. The pressure to deliver compelling narrative hooks, episodic structures, and "watchable" characters is real and persistent.</p>
-<p>There is also the issue of rights. Traditional documentary deals often retained certain rights with filmmakers — the ability to screen at festivals, broadcast on national television, use footage for educational purposes. Streaming deals increasingly demand global, exclusive, perpetual rights. For stories about communities, this raises genuine ethical questions about ownership and representation.</p>
+<h2 id="challenges">What Good Coverage Must Solve</h2>
+<p>That does not mean the work is simple. The challenge is not just to capture the panel, but to do so without flattening the room. The production has to preserve the seriousness of the meeting, the visual order of the stage, and the human rhythm of the conversation.</p>
+<p>At the same time, coverage has to work for a second audience that may never enter the venue. Remote viewers need clean framing, steady pacing, and audio that lets the discussion breathe. In practice, that means event coverage is now part journalism, part broadcast production, and part brand storytelling.</p>
+<p>The conference environment also leaves little room for error. A small miss in focus, sound, or timing can weaken the sense of authority that the event is trying to project. In that sense, the production team is not just recording the panel. It is helping define how the panel is remembered.</p>
 
-<h2 id="model">A New Production Model</h2>
-<p>The filmmakers and production companies navigating this landscape most successfully seem to be operating with a hybrid model: developing projects with sufficient commercial appeal to attract streaming interest while maintaining creative control through co-production structures, limited exclusivity windows, and careful rights negotiations.</p>
-<p>At Dencast Global, this has meant developing what we call "social documentary' projects — films that address significant social issues with the cinematic quality of feature documentaries but structured around streaming consumption patterns. Three acts. Clear character arcs. Emotional payoffs.</p>
-<p>This isn't a betrayal of the documentary form. It's an adaptation to a changed distribution landscape — one that, if navigated well, can get vital African stories in front of fifty times more viewers than the festival circuit ever could.</p>
+<h2 id="model">Broadcast-Ready Thinking</h2>
+<p>At Dencast Global, this is the kind of production environment that defines our approach. We think of event coverage as a layered deliverable: live broadcast, stills, short-form social content, and a polished recap all coming from the same visual language. When done well, a single conference session can fuel PR, stakeholder communications, digital marketing, and archive footage at once.</p>
+<p>The Nairobi panel also highlights another truth: in-person events still matter deeply. The room has gravity. People lean in, listen, and respond in ways that are hard to replicate on a screen. Good event coverage does not try to replace that energy. It makes it visible. It preserves the authority of the room while extending its reach far beyond the venue.</p>
 
-<h2 id="future">What the Future Holds</h2>
-<p>We believe the next five years will see the emergence of a genuinely sustainable independent documentary ecosystem in Africa — one built on a combination of streaming commissions, co-production partnerships, brand partnerships, and impact funding.</p>
-<p>The filmmakers who will thrive are those who can speak both languages: the artistic language of authentic documentary storytelling and the commercial language of platforms and their audiences. This is not a compromise. It is a sophisticated professional skill, and it is absolutely teachable and learnable.</p>
-<p>Africa's stories are the most compelling on earth. The streaming era has given us the distribution infrastructure to tell those stories to the world. The challenge now is ensuring that as we scale up, we don't lose the authenticity and creative courage that make our work worth watching in the first place.</p>
+<h2 id="future">What the Future Looks Like</h2>
+<p>That is the future of event media in Africa. Not just recording what happened, but making sure the moment can travel. Not just covering the stage, but building a broadcast experience around it. The best productions will be the ones that make a conference panel feel as important online as it does in the room.</p>
     `,
-    relatedSlugs: ['drone-cinematography-regulations-africa', 'behind-the-lens-voices-of-the-nile', '4k-vs-8k-production-guide'],
+    relatedSlugs: ['hybrid-events-production-guide', 'social-media-video-trends-2024', 'drone-cinematography-regulations-africa'],
   },
   'brand-identity-guide-african-startups': {
     slug: 'brand-identity-guide-african-startups',
@@ -127,7 +122,7 @@ const POSTS: Record<string, PostData> = {
 
 const ARTICLES_LOOKUP: Record<string, { title: string; excerpt: string; category: string; imageId: string; author: string; date: string; readTime: string }> = {
   'drone-cinematography-regulations-africa': { title: 'Drone Cinematography: Navigating Regulations Across Africa', excerpt: 'Our licensed aerial team breaks down what filmmakers need to know.', category: 'Technology', imageId: '1884577', author: 'Joseph Kabogo', date: '2024-04-30', readTime: '5 min read' },
-  'behind-the-lens-voices-of-the-nile': { title: 'Behind the Lens: Making Voices of the Nile', excerpt: 'The six-month journey of embedding with Nile communities.', category: 'Behind the Scenes', imageId: '7247399', author: 'Dennis Ochieng', date: '2024-04-08', readTime: '12 min read' },
+  'behind-the-lens-voices-of-the-nile': { title: 'Behind the Lens: Making Voices of the Nile', excerpt: 'The six-month journey of embedding with Nile communities.', category: 'Behind the Scenes', imageId: '7247399', author: 'Dennis Machio', date: '2024-04-08', readTime: '12 min read' },
   '4k-vs-8k-production-guide': { title: '4K vs. 8K: What Resolution Actually Matters', excerpt: "When does resolution matter — and when doesn't it?", category: 'Technology', imageId: '3756132', author: 'Joseph Kabogo', date: '2024-03-28', readTime: '6 min read' },
   'building-pan-african-brand-voice': { title: 'Building a Pan-African Brand Voice', excerpt: 'Messaging that resonates across diverse African markets.', category: 'Branding', imageId: '3866149', author: 'Austin Lengala', date: '2024-03-20', readTime: '9 min read' },
   'social-media-video-trends-2024': { title: 'Social Media Video Trends 2024', excerpt: 'The formats driving organic reach on every platform.', category: 'Industry', imageId: '3379932', author: 'Emilly Karanja', date: '2024-03-12', readTime: '5 min read' },

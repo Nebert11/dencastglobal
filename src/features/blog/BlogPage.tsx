@@ -11,9 +11,16 @@ import { subscribeNewsletter } from '@/services/supabase.service';
 
 // ─── Static articles ──────────────────────────────────────────────────────────
 
+
 const CATEGORIES = ['All', 'Documentary', 'Branding', 'Technology', 'Events', 'Industry', 'Behind the Scenes'];
 
-const PEXELS_IDS = ['3379934', '2873486', '1884577', '3756132', '7034014', '7247399', '3756132', '3866149', '3379932'];
+const PEXELS_IDS = ['3379934', '/dencast_images/Dencast-Crew-11.jpg', '/dencast_images/Drone%20.jpg', '/dencast_images/9.png', '/dencast_images/DSC_5424-scaled.jpg', '/dencast_images/team.jpg', '/dencast_images/event1.jpg', '/dencast_images/amakowe.jpg', '/dencast_images/Virtual-livestreaming-scaled.jpg'];
+
+const getCoverImage = (imageId: string) => (
+  imageId.startsWith('/')
+    ? imageId
+    : `https://images.pexels.com/photos/${imageId}/pexels-photo-${imageId}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`
+);
 
 interface Article {
   id: string;
@@ -32,13 +39,13 @@ const ARTICLES: Article[] = [
   {
     id: '1',
     slug: 'future-of-african-documentary-2024',
-    title: 'The Future of African Documentary in the Streaming Age',
-    excerpt: 'As Netflix, Prime Video, and Apple TV+ invest billions in African content, what does the streaming era mean for independent documentary filmmakers on the continent? We explore the opportunities and challenges.',
-    category: 'Documentary',
-    author: 'Dennis Ochieng',
+    title: 'Capturing the Room and the Stream: Lessons from a High-Stakes Conference Panel in Nairobi',
+    excerpt: 'A packed panel at the African Development Bank Annual Meetings in Nairobi shows why modern event coverage is no longer just about recording a stage. It is about building a broadcast-ready experience that works for delegates in the room and viewers online.',
+    category: 'Events',
+    author: 'Dennis Machio',
     date: '2024-05-15',
     readTime: '8 min read',
-    imageId: PEXELS_IDS[0],
+    imageId: PEXELS_IDS[3],
     featured: true,
   },
   {
@@ -69,7 +76,7 @@ const ARTICLES: Article[] = [
     title: 'The Ultimate Guide to Hybrid Event Production in 2024',
     excerpt: 'In-person meets digital: how to produce events that deliver an exceptional experience for both your room audience and your global online viewers simultaneously.',
     category: 'Events',
-    author: 'Dennis Ochieng',
+    author: 'Dennis Machio',
     date: '2024-04-22',
     readTime: '10 min read',
     imageId: PEXELS_IDS[3],
@@ -89,18 +96,18 @@ const ARTICLES: Article[] = [
     id: '6',
     slug: 'behind-the-lens-voices-of-the-nile',
     title: 'Behind the Lens: Making Voices of the Nile',
-    excerpt: 'Director Dennis Ochieng shares the six-month journey of embedding with Nile communities — the trust built, the challenges faced, and the moments that changed everything.',
+    excerpt: 'Director Dennis Machio shares the six-month journey of embedding with Nile communities — the trust built, the challenges faced, and the moments that changed everything.',
     category: 'Behind the Scenes',
-    author: 'Dennis Ochieng',
+    author: 'Dennis Machio',
     date: '2024-04-08',
     readTime: '12 min read',
     imageId: PEXELS_IDS[5],
   },
   {
     id: '7',
-    slug: '4k-vs-8k-production-guide',
-    title: '4K vs. 8K: What Resolution Actually Matters for Your Production',
-    excerpt: 'Should you invest in 8K cinema for your next project? Our cinematography team gives an honest breakdown of when resolution matters — and when it doesn\'t.',
+    slug: 'capturing-room-stream-nairobi',
+    title: 'Capturing the Room and the Stream: Lessons from a High-Stakes Conference Panel in Nairobi',
+    excerpt: 'A packed panel at the African Development Bank Annual Meetings in Nairobi shows why modern event coverage is no longer just about recording a stage. It is about building a broadcast-ready experience that works for delegates in the room and viewers online.',
     category: 'Technology',
     author: 'Joseph Kabogo',
     date: '2024-03-28',
@@ -292,7 +299,7 @@ const BlogPage: React.FC = () => {
             >
               <Link to={`/blog/${featured.slug}`} className="block relative aspect-[4/3] lg:aspect-auto overflow-hidden">
                 <img
-                  src={`https://images.pexels.com/photos/${featured.imageId}/pexels-photo-${featured.imageId}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
+                  src={getCoverImage(featured.imageId)}
                   alt={featured.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
@@ -392,7 +399,7 @@ const BlogPage: React.FC = () => {
                         title={article.title}
                         excerpt={article.excerpt}
                         category={article.category}
-                        coverImage={`https://images.pexels.com/photos/${article.imageId}/pexels-photo-${article.imageId}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
+                        coverImage={getCoverImage(article.imageId)}
                         slug={article.slug}
                         author={article.author}
                         date={article.date}
@@ -468,7 +475,7 @@ const BlogPage: React.FC = () => {
                     <Link key={a.id} to={`/blog/${a.slug}`} className="flex items-start gap-3 group">
                       <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
                         <img
-                          src={`https://images.pexels.com/photos/${a.imageId}/pexels-photo-${a.imageId}.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&dpr=2`}
+                          src={getCoverImage(a.imageId)}
                           alt={a.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         />

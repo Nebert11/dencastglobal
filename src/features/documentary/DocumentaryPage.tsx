@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
   Search, FileText, Film, Camera, Monitor, Globe,
-  ChevronRight, ArrowRight, Award, Users, Tv,
+  ChevronRight, ArrowRight, Users, Tv,
   CheckCircle2, Play,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -149,7 +149,7 @@ const DocumentaryPage: React.FC = () => {
 
               <motion.div variants={fadeUp} className="mt-8 grid grid-cols-3 gap-4">
                 {[
-                  { icon: Award, val: '12+', lbl: 'Festival Awards' },
+                  // { icon: Award, val: '12+', lbl: 'Festival Awards' },
                   { icon: Tv, val: '8', lbl: 'Broadcast Deals' },
                   { icon: Users, val: '50M+', lbl: 'Lives Touched' },
                 ].map(({ icon: Icon, val, lbl }) => (
