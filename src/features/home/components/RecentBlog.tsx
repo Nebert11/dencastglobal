@@ -8,7 +8,7 @@ import Button from '@/components/ui/Button';
 
 //Images
 import brand from '/dencast_images/Dencast-Crew-27.jpg';
-import documentary from '/dencast_images/team.jpg';
+import documentary from '/dencast_images/TEAM.jpg';
 import film from '/dencast_images/9-scaled.jpg';
 
 // ─── Static fallback blog posts ───────────────────────────────────────────────
