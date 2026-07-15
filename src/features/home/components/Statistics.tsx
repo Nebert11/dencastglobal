@@ -16,14 +16,14 @@ const stats = [
     value: '5',
     suffix: '+',
     label: 'Years of Excellence',
-    description: 'Serving clients since 2013 with unmatched quality',
+    description: 'Serving clients since 2021 with unmatched quality',
     icon: <Film size={22} />,
   },
   {
     value: '100',
     suffix: '+',
     label: 'Happy Clients',
-    description: 'From startups to Fortune 500 companies globally',
+    description: 'From startups to Fortune over 100 companies globally',
     icon: <Users size={22} />,
   },
   {
@@ -75,7 +75,7 @@ const Statistics: React.FC = () => {
             Our Impact in Numbers
           </h2>
           <p className="mt-3 text-slate-500 text-base max-w-xl mx-auto">
-            A decade of consistent excellence, measurable results, and stories that have shaped
+          5+ years of consistent excellence, measurable results, and stories that have shaped
             brands and moved audiences globally.
           </p>
         </div>

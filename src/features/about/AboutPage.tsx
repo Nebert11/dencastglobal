@@ -265,7 +265,7 @@ const StorySection: React.FC = () => {
                 </div>
                 <div className="w-px h-10 bg-slate-200" />
                 <div className="text-center">
-                  <p className="text-3xl font-black text-[#0056A6]">5</p>
+                  <p className="text-3xl font-black text-[#0056A6]">20+</p>
                   <p className="text-xs text-slate-500 uppercase tracking-wider mt-0.5">Countries</p>
                 </div>
               </div>
