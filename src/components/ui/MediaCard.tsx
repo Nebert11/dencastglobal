@@ -29,6 +29,11 @@ const MediaCard: React.FC<MediaCardProps> = ({
   const href = type === 'service' ? `/services/${slug}` : `/portfolio/${slug}`;
   const cta  = type === 'service' ? 'View Service' : 'View Project';
 
+  // Handle both local images and Pexels IDs
+  const imageUrl = image.includes('/') || image.includes('.')
+    ? image
+    : `https://images.pexels.com/photos/${image}/pexels-photo-${image}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+
   return (
     <Link to={href} className={cn('block group outline-none', className)}>
       <motion.article
@@ -39,7 +44,7 @@ const MediaCard: React.FC<MediaCardProps> = ({
         {/* ── Image ── */}
         <div className="relative aspect-[4/3] overflow-hidden">
           <motion.img
-            src={image}
+            src={imageUrl}
             alt={title}
             loading="lazy"
             className="w-full h-full object-cover"

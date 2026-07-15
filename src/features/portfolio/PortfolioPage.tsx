@@ -8,9 +8,24 @@ import Button from '@/components/ui/Button';
 import MediaCard from '@/components/ui/MediaCard';
 import { SITE_NAME } from '@/utils/constants';
 
+
+//Images
+import sasiniConference from '/dencast_images/sasini_conference.jpg';
+import amakowe from '/dencast_images/amakowe.jpg';
+import africatalyst from '/dencast_images/africatalyst.jpg';
+import europeday from '/dencast_images/DSC_3798-scaled.jpg';
+import elf from '/dencast_images/elf.png';
+import event1 from '/dencast_images/event1.jpg';
+import rhnk from '/dencast_images/rhnk.jpg';
+import liveStreaming from '/dencast_images/Virtual-livestreaming-scaled.jpg';
+import whiteBeach from '/dencast_images/White-Beach-Palace.jpg';
+import basketball from '/dencast_images/basketball.jpg';
+import conference from '/dencast_images/conference.png';
+import graphics from '/dencast_images/image.png';
+
 // ─── Static portfolio data ────────────────────────────────────────────────────
 
-const CATEGORIES = ['All', 'Documentary', 'Corporate', 'Photography', 'Events', 'Branding', 'Commercial'];
+const CATEGORIES = ['All', 'Corporate', 'Photography', 'Events', 'Streaming', 'Commercial', 'Graphics Design'];
 
 interface PortfolioItem {
   id: string;
@@ -22,29 +37,29 @@ interface PortfolioItem {
 }
 
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
-  { id: '1', slug: 'voices-of-the-nile', title: 'Voices of the Nile', category: 'Documentary', image: '3379934', featured: true },
-  { id: '2', slug: 'mtn-brand-relaunch', title: 'MTN Brand Relaunch Campaign', category: 'Branding', image: '2873486' },
-  { id: '3', slug: 'accra-fashion-week', title: 'Accra Fashion Week 2024', category: 'Events', image: '1884577' },
-  { id: '4', slug: 'corporate-summit-2024', title: 'Pan-African Corporate Summit', category: 'Corporate', image: '3756132' },
-  { id: '5', slug: 'kasapreko-commercial', title: 'Kasapreko TVC — Born Here', category: 'Commercial', image: '7034014' },
-  { id: '6', slug: 'golden-stool-portrait-series', title: 'Golden Stool Portrait Series', category: 'Photography', image: '7247399' },
-  { id: '7', slug: 'tech-innovators-doc', title: 'Africa Tech Innovators', category: 'Documentary', image: '3756132' },
-  { id: '8', slug: 'harvest-time-film', title: 'Harvest Time — Short Film', category: 'Documentary', image: '3866149' },
-  { id: '9', slug: 'stanbic-investor-day', title: 'Stanbic Investor Day', category: 'Corporate', image: '3379932' },
-  { id: '10', slug: 'ghana-music-awards', title: 'Ghana Music Awards 2024', category: 'Events', image: '2379004' },
-  { id: '11', slug: 'nestle-product-launch', title: 'Nestlé Product Launch Film', category: 'Commercial', image: '1181686' },
-  { id: '12', slug: 'makola-market-story', title: 'Makola Market Stories', category: 'Photography', image: '1516680' },
+  { id: '1', slug: 'voices-of-the-nile', title: 'Sasini Annual Report', category: 'Corporate', image: sasiniConference, featured: true },
+  { id: '2', slug: 'mtn-brand-relaunch', title: 'The Amakowe Wala Show', category: 'Streaming', image: amakowe },
+  { id: '3', slug: 'accra-fashion-week', title: "Amplifying Africa's Voice", category: 'Events', image: africatalyst },
+  { id: '4', slug: 'corporate-summit-2024', title: 'Europe Day Football Kenya', category: 'Corporate', image: europeday },
+  { id: '5', slug: 'kasapreko-commercial', title: 'Building Leaders Through Story', category: 'Commercial', image: elf },
+  { id: '6', slug: 'golden-stool-portrait-series', title: 'African Development Bank Forum', category: 'Photography', image: event1 },
+  { id: '7', slug: 'tech-innovators-doc', title: 'RHNK Conference 2024 ', category: 'Events', image: rhnk },
+  { id: '8', slug: 'harvest-time-film', title: 'Live Streaming', category: 'Streaming', image: liveStreaming },
+  { id: '9', slug: 'stanbic-investor-day', title: 'Hotel Photography', category: 'Commercial', image: whiteBeach },
+  { id: '10', slug: 'ghana-music-awards', title: 'Basketball Event', category: 'Events', image: basketball },
+  { id: '11', slug: 'nestle-product-launch', title: 'Conference Coverage', category: 'Events', image: conference },
+  { id: '12', slug: 'makola-market-story', title: 'Graphics Design', category: 'Graphics Design', image: graphics },
 ];
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, ease: 'easeOut', delay: i * 0.08 },
-  }),
-};
+// const fadeUp = {
+//   hidden: { opacity: 0, y: 40 },
+//   visible: (i = 0) => ({
+//     opacity: 1, y: 0,
+//     transition: { duration: 0.6, ease: 'easeOut', delay: i * 0.08 },
+//   }),
+// };
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
 
@@ -214,7 +229,7 @@ const PortfolioPage: React.FC = () => {
                       <MediaCard
                         title={item.title}
                         category={item.category}
-                        image={`https://images.pexels.com/photos/${item.image}/pexels-photo-${item.image}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
+                        image={item.image}
                         slug={item.slug}
                         type="project"
                       />
