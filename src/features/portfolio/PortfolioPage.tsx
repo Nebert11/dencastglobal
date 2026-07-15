@@ -20,7 +20,7 @@ import rhnk from '/dencast_images/rhnk.jpg';
 import liveStreaming from '/dencast_images/Virtual-livestreaming-scaled.jpg';
 import whiteBeach from '/dencast_images/White-Beach-Palace.jpg';
 import basketball from '/dencast_images/basketball.jpg';
-import conference from '/dencast_images/conference.png';
+import conference from '/dencast_images/CONFERENCE.png';
 import graphics from '/dencast_images/image.png';
 
 // ─── Static portfolio data ────────────────────────────────────────────────────
