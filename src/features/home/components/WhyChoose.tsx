@@ -16,7 +16,7 @@ const reasons = [
     icon: Globe,
     title: 'Global Experience',
     description:
-      "We've produced work in 25+ countries, bringing diverse cultural perspectives and logistical expertise to every production.",
+      "We've produced work in 20+countries, bringing diverse cultural perspectives and logistical expertise to every production.",
   },
   {
     icon: Camera,

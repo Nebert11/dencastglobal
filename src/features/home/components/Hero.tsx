@@ -251,7 +251,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             transition={{ delay: 2, duration: 0.8 }}
             className="mt-14 flex flex-wrap items-center gap-6"
           >
-            {['500+ Projects', '10+ Years', '200+ Clients', '25+ Countries'].map((stat) => (
+            {['500+ Projects', '5+Years', '100+ Clients', '20+Countries'].map((stat) => (
               <div key={stat} className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#D72638]" />
                 <span className="text-white/60 text-xs font-semibold tracking-widest uppercase">

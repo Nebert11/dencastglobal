@@ -61,7 +61,7 @@ const PROJECTS: Record<string, ProjectData> = {
     videoId: 'dQw4w9WgXcQ',
     services: ['Brand Strategy', 'TVC Production', 'Photography', 'Digital Content'],
     challenge: { heading: 'The Challenge', body: 'MTN needed a pan-African brand refresh that would resonate across 21 markets while maintaining brand consistency. Previous campaigns had failed to connect emotionally with younger demographics, resulting in declining brand affinity scores among 18–35 year olds.' },
-    solution: { heading: 'Our Solution', body: 'We developed a pan-African brand narrative anchored in the concept of Bright Futures — celebrating African excellence and ambition. We produced a flagship 60-second TVC, 200+ social assets, and a brand photography library featuring real people from across the continent.' },
+    solution: { heading: 'Our Solution', body: 'We developed a pan-African brand narrative anchored in the concept of Bright Futures — celebrating African excellence and ambition. We produced a flagship 60-second TVC, 100+ social assets, and a brand photography library featuring real people from across the continent.' },
     results: { heading: 'The Results', body: 'Brand affinity among the 18–35 segment increased by 34% in tracked markets. The TVC achieved 45M views in its first month across digital platforms. The campaign won the Pan-African Marketing Excellence Award and was shortlisted at Cannes Lions.' },
     gallery: ['2873486', '3379934', '1884577', '3756132', '7034014', '7247399'],
     relatedSlugs: ['kasapreko-commercial', 'stanbic-investor-day', 'voices-of-the-nile'],

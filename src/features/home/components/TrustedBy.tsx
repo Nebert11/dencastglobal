@@ -6,18 +6,18 @@ import type { Client } from '@/types';
 // ─── Static fallback clients ──────────────────────────────────────────────────
 
 const FALLBACK_CLIENTS: Array<{ id: string; name: string; bg: string; text: string }> = [
-  { id: '1', name: 'Safaricom PLC', bg: '#00A651', text: '#ffffff' },
-  { id: '2', name: 'Kenya Airways', bg: '#C8102E', text: '#ffffff' },
-  { id: '3', name: 'Equity Bank', bg: '#D72638', text: '#ffffff' },
-  { id: '4', name: 'Nation Media Group', bg: '#0056A6', text: '#ffffff' },
-  { id: '5', name: 'KCB Group', bg: '#003580', text: '#ffffff' },
-  { id: '6', name: 'Jubilee Insurance', bg: '#1A1A2E', text: '#ffffff' },
-  { id: '7', name: 'EABL', bg: '#7B1113', text: '#ffffff' },
-  { id: '8', name: 'Co-operative Bank', bg: '#005B99', text: '#ffffff' },
-  { id: '9', name: 'Twiga Foods', bg: '#F4A200', text: '#1a1a1a' },
-  { id: '10', name: 'Bamburi Cement', bg: '#F16522', text: '#ffffff' },
-  { id: '11', name: 'NCBA Bank', bg: '#2D2D2D', text: '#ffffff' },
-  { id: '12', name: 'Stanbic Bank', bg: '#1B5299', text: '#ffffff' },
+  { id: '1', name: 'Sasini2 PLC', bg: '#00A651', text: '#ffffff' },
+  { id: '2', name: 'Afreximbank', bg: '#C8102E', text: '#ffffff' },
+  { id: '3', name: 'Africatalyst', bg: '#D72638', text: '#ffffff' },
+  { id: '4', name: 'European Union', bg: '#0056A6', text: '#ffffff' },
+  { id: '5', name: 'White Beach Palace', bg: '#003580', text: '#ffffff' },
+  { id: '6', name: 'Knowledge Empowering Youth', bg: '#1A1A2E', text: '#ffffff' },
+  { id: '7', name: 'RHNK', bg: '#7B1113', text: '#ffffff' },
+  { id: '8', name: 'VWT', bg: '#005B99', text: '#ffffff' },
+  { id: '9', name: 'Michezo Africa', bg: '#F4A200', text: '#1a1a1a' },
+  { id: '10', name: 'Emerging Leaders Foundation', bg: '#F16522', text: '#ffffff' },
+  { id: '11', name: 'ibac', bg: '#2D2D2D', text: '#ffffff' },
+  { id: '12', name: 'Bible Society of Kenya', bg: '#1B5299', text: '#ffffff' },
 ];
 
 interface TrustedByProps {

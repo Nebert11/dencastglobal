@@ -81,7 +81,7 @@ const TEAM_MEMBERS = [
   {
     name: 'Allan Odera',
     role: 'Head of Video and Graphics',
-    bio: 'Allan Odera is a Multimedia University–trained video and graphics editor who combines technical precision, creative motion design, and storytelling mastery to craft polished, impactful productions at Dencast Global.',
+    bio: 'Allan Odera is a video and graphics editor who combines technical precision, creative motion design, and storytelling mastery to craft polished, impactful productions at Dencast Global.',
     avatar: allan,
     social: { twitter: '#', linkedin: '#' },
   },
@@ -122,8 +122,8 @@ const TIMELINE = [
 ];
 
 const CLIENTS = [
-  'MTN Group', 'Nestlé Africa', 'Vodafone Ghana', 'GCB Bank', 'Ghana Tourism', 'UNICEF',
-  'Accra City Hotel', 'Stanbic Bank', 'Kasapreko', 'British Council',
+  'Sasini PLC', 'ELF', 'KEY', 'White Beach Palace', 'Europe Day Kenya', 'IBAC',
+  'Michezo Africa', 'Afreximbank', 'Africatalyst', 'European Union',
 ];
 
 // ─── Section: Hero ────────────────────────────────────────────────────────────
@@ -563,7 +563,7 @@ const AboutPage: React.FC = () => (
   <>
     <Helmet>
       <title>About Us | {SITE_NAME}</title>
-      <meta name="description" content="Learn about Dencast Global — Africa's premier creative media production company with 10+ years of storytelling excellence across documentary, photography, branding and live events." />
+      <meta name="description" content="Learn about Dencast Global — Africa's premier creative media production company with 5+years of storytelling excellence across documentary, photography, branding and live events." />
       <meta property="og:title" content={`About Us | ${SITE_NAME}`} />
       <meta property="og:type" content="website" />
     </Helmet>

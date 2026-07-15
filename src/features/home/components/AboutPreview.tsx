@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Award, Film, Globe } from 'lucide-react';
+import {  Film, Globe } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
+
+import smallPreviewImage from '/dencast_images/camera.jpg';
 
 // ─── Key highlights ───────────────────────────────────────────────────────────
 
 const highlights = [
-  {
-    icon: Award,
-    title: 'Award-Winning Productions',
-    description:
-      'Our work has earned recognition at international film festivals and brand excellence awards across three continents.',
-  },
+  // {
+  //   icon: Award,
+  //   title: 'Award-Winning Productions',
+  //   description:
+  //     'Our work has earned recognition at international film festivals and brand excellence awards across three continents.',
+  // },
   {
     icon: Film,
     title: 'Full-Service Film Studio',
@@ -24,7 +26,7 @@ const highlights = [
     icon: Globe,
     title: 'Global Reach, Local Heart',
     description:
-      'Operating in 25+ countries while deeply rooted in African storytelling, culture, and creative excellence.',
+      'Operating in 20+countries while deeply rooted in African storytelling, culture, and creative excellence.',
   },
 ];
 
@@ -56,7 +58,7 @@ const AboutPreview: React.FC = () => {
 
               {/* Experience badge */}
               <div className="absolute bottom-6 left-6 bg-white rounded-xl px-5 py-3 shadow-lg">
-                <p className="text-3xl font-black text-[#0056A6] leading-none">10+</p>
+                <p className="text-3xl font-black text-[#0056A6] leading-none">5+</p>
                 <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mt-0.5">
                   Years of Excellence
                 </p>
@@ -70,7 +72,7 @@ const AboutPreview: React.FC = () => {
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
             >
               <img
-                src="https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=2"
+                src={smallPreviewImage}
                 alt="Behind the scenes production"
                 className="w-full aspect-square object-cover"
                 loading="lazy"
@@ -94,7 +96,7 @@ const AboutPreview: React.FC = () => {
             <SectionLabel label="About Us" />
 
             <h2 className="text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight tracking-tight">
-              A Decade of{' '}
+              5 years of{' '}
               <span className="relative">
                 Premium
                 <span className="absolute -bottom-1 left-0 right-0 h-1 bg-[#D72638] rounded-full" />
