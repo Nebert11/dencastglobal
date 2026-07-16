@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useParams, Navigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import {
   ChevronRight, Calendar, Tag, User, Share2,
-  Twitter, Linkedin, Link as LinkIcon, Play, ArrowRight,
+  Twitter, Linkedin, Link as LinkIcon, ArrowRight,
   CheckCircle2,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -43,7 +43,7 @@ const PROJECTS: Record<string, ProjectData> = {
     client: 'Africa Documentary Fund',
     date: 'March 2024',
     heroImage: '3379934',
-    videoId: 'dQw4w9WgXcQ',
+    videoId: '2HF4pXkmntk',
     services: ['Documentary Production', 'Cinematography', 'Post-Production', 'Distribution'],
     challenge: { heading: 'The Challenge', body: 'The client needed a feature documentary that would bring international attention to water scarcity along the Nile Basin while humanising the 400 million people whose livelihoods depend on it. Existing coverage was either overly academic or sensationalised, failing to connect with global audiences.' },
     solution: { heading: 'Our Solution', body: 'We embedded a small crew in three communities over six months — Ethiopia, Sudan, and Egypt — building deep trust and capturing intimate, nuanced stories. We used a hybrid observational-participatory approach, allowing subjects to hold cameras and narrate their own experiences. The result is a film that is both politically substantive and deeply human.' },
@@ -58,7 +58,7 @@ const PROJECTS: Record<string, ProjectData> = {
     client: 'MTN Group',
     date: 'January 2024',
     heroImage: '2873486',
-    videoId: 'dQw4w9WgXcQ',
+    videoId: '2HF4pXkmntk',
     services: ['Brand Strategy', 'TVC Production', 'Photography', 'Digital Content'],
     challenge: { heading: 'The Challenge', body: 'MTN needed a pan-African brand refresh that would resonate across 21 markets while maintaining brand consistency. Previous campaigns had failed to connect emotionally with younger demographics, resulting in declining brand affinity scores among 18–35 year olds.' },
     solution: { heading: 'Our Solution', body: 'We developed a pan-African brand narrative anchored in the concept of Bright Futures — celebrating African excellence and ambition. We produced a flagship 60-second TVC, 100+ social assets, and a brand photography library featuring real people from across the continent.' },
