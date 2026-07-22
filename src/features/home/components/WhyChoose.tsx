@@ -16,7 +16,7 @@ const reasons = [
     icon: Globe,
     title: 'Global Experience',
     description:
-      "We've produced work in 20+countries, bringing diverse cultural perspectives and logistical expertise to every production.",
+      "We've produced work across diverse markets, bringing strong cultural perspectives and logistical expertise to every production.",
   },
   {
     icon: Camera,
@@ -103,7 +103,7 @@ const WhyChoose: React.FC = () => {
             <span className="text-[#D72638]">Meets Excellence</span>
           </h2>
           <p className="mt-4 text-white/60 text-base leading-relaxed">
-            Six reasons why Africa's leading brands, global organisations, and visionary creators
+            The reasons why Africa's leading brands, global organisations, and visionary creators
             choose Dencast Global for their most important stories.
           </p>
         </div>

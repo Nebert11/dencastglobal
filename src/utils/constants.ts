@@ -31,6 +31,24 @@ export const SERVICES: ServiceEntry[] = [
       'Professional photography across editorial, commercial, portrait, and event genres. Every image is crafted to tell a story and elevate your brand.',
   },
   {
+    id: 'events-management',
+    name: 'Events Management',
+    slug: 'events-management',
+    icon: 'Briefcase',
+    tagline: 'Seamless experiences, lasting impressions',
+    description:
+      'Professional planning, coordination, branding, production, and technical management for conferences, corporate events, launches, award ceremonies, exhibitions, and hybrid experiences.',
+  },
+  {
+    id: 'audio-management-soundtrack-development',
+    name: 'Audio Management & Soundtrack Development',
+    slug: 'audio-management-soundtrack-development',
+    icon: 'Music',
+    tagline: 'Sound that connects, music that moves',
+    description:
+      'Professional live sound management, audio recording, mixing, voice-over production, sound design, and original soundtrack development for events, documentaries, films, commercials, and digital productions.',
+  },
+  {
     id: 'videography',
     name: 'Videography',
     slug: 'videography',

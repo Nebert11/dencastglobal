@@ -3,7 +3,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
-  Film, Radio, Camera, Video, Target, Palette,
+  Film, Radio, Camera, Video, Target, Palette, Music,
   Navigation, Briefcase, TrendingUp, LayoutDashboard,
   ChevronRight, ArrowRight, CheckCircle2, Search,
   Layers, Eye, Cpu,
@@ -16,7 +16,7 @@ import { SERVICES, SITE_NAME } from '@/utils/constants';
 // ─── Icon map ─────────────────────────────────────────────────────────────────
 
 const ICON_MAP: Record<string, React.ElementType> = {
-  Film, Radio, Camera, Video, Target, Palette,
+  Film, Radio, Camera, Video, Target, Palette, Music,
   Navigation, Briefcase, TrendingUp, LayoutDashboard,
 };
 
@@ -62,6 +62,28 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
       { icon: Eye, title: 'Award-Winning Photographers', desc: 'Our photographers have been published in Vogue Africa, Forbes, and National Geographic.' },
       { icon: Cpu, title: 'Studio & Field Ready', desc: 'Fully equipped mobile studio that travels anywhere on the continent.' },
       { icon: Layers, title: 'Fast Turnaround', desc: 'Professionally edited images delivered within 48 hours of shoot.' },
+    ],
+  },
+  'events-management': {
+    heroImage: 'https://images.pexels.com/photos/7034014/pexels-photo-7034014.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
+    overview: 'Dencast Global delivers professionally planned and creatively executed events that bring people, brands, and ideas together. From conferences, corporate functions, launches, award ceremonies, exhibitions, and hybrid events to high-profile public engagements, we manage every detail with precision.',
+    features: ['Concept development and event strategy', 'Event branding and visual identity', 'Production coordination and stage management', 'Guest experience and protocol support', 'Technical management and on-site support', 'Integrated photography, videography, and livestreaming', 'Post-event evaluation and reporting'],
+    galleryImages: ['7034014', '3379934', '2873486', '1884577', '3756132', '7247399'],
+    whyUs: [
+      { icon: Eye, title: 'End-to-End Coordination', desc: 'From concept to execution, we align every production detail to your event goals.' },
+      { icon: Cpu, title: 'Hybrid Event Expertise', desc: 'We combine in-person excellence with dependable virtual and hybrid delivery.' },
+      { icon: Layers, title: 'Audience-First Experiences', desc: 'Every touchpoint is designed to communicate clearly and leave a lasting impression.' },
+    ],
+  },
+  'audio-management-soundtrack-development': {
+    heroImage: 'https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2',
+    overview: 'Dencast Global provides professional audio management and original soundtrack development for events, films, documentaries, commercials, and digital productions. From clear conference sound to cinematic scoring, we ensure every word is heard and every moment is felt.',
+    features: ['Live sound system setup and engineering', 'Microphone planning and live mixing', 'Audio recording and post-production cleanup', 'Voice-over recording and direction', 'Custom sound design and effects', 'Original music beds and theme development', 'Final mastering for broadcast and digital'],
+    galleryImages: ['164938', '3379934', '1884577', '2873486', '3756132', '7247399'],
+    whyUs: [
+      { icon: Eye, title: 'Clarity and Presence', desc: 'We optimize every environment so speech, music, and ambience are consistently clear.' },
+      { icon: Cpu, title: 'Production-Ready Audio', desc: 'Our team covers live, studio, and post workflows with professional-grade tools.' },
+      { icon: Layers, title: 'Original Sonic Identity', desc: 'Custom soundtrack work gives your events and productions a memorable signature.' },
     ],
   },
   'videography': {
@@ -257,9 +279,9 @@ const ServiceDetailPage: React.FC = () => {
               </h2>
               <p className="mt-5 text-slate-600 leading-relaxed text-lg">{content.overview}</p>
               <div className="mt-8">
-                <Link to="/contact">
+                <Link to="/portfolio">
                   <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
-                    Start Your Project
+                    Explore Our Work
                   </Button>
                 </Link>
               </div>
@@ -418,15 +440,15 @@ const ServiceDetailPage: React.FC = () => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionLabel label="Get Started" light center />
           <h2 className="mt-4 text-4xl font-black text-white">
-            Ready to Start Your Project?
+            Explore Our Work
           </h2>
           <p className="mt-5 text-white/70 text-lg">
-            Let's discuss your {service.name.toLowerCase()} needs and create something extraordinary together.
+            Discover how our {service.name.toLowerCase()} projects are crafted from concept to delivery.
           </p>
           <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
-            <Link to="/contact">
+            <Link to="/portfolio">
               <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
-                Start Your Project
+                Explore Our Work
               </Button>
             </Link>
             <Link to="/portfolio">

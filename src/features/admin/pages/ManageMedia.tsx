@@ -209,9 +209,20 @@ export default function ManageMedia() {
 
         const { error } = await db.from('media_files').insert({
           name: file.name,
+          // New schema columns
           url: fakeUrl,
           type: file.type,
           size: file.size,
+          // Legacy schema columns kept in some environments
+          file_url: fakeUrl,
+          file_type: file.type.startsWith('image/')
+            ? 'image'
+            : file.type.startsWith('video/')
+              ? 'video'
+              : 'document',
+          file_size: file.size,
+          mime_type: file.type,
+          original_name: file.name,
           alt_text: null,
           uploaded_by: null,
         });

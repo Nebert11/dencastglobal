@@ -27,6 +27,7 @@ import AdminLogin from '@/features/admin/AdminLogin';
 import AdminLayout from '@/features/admin/layout/AdminLayout';
 import Dashboard from '@/features/admin/pages/Dashboard';
 import ManageHero from '@/features/admin/pages/ManageHero';
+import ManageAbout from '@/features/admin/pages/ManageAbout';
 import ManageProjects from '@/features/admin/pages/ManageProjects';
 import ManageServices from '@/features/admin/pages/ManageServices';
 import ManageBlogPosts from '@/features/admin/pages/ManageBlogPosts';
@@ -98,6 +99,7 @@ export default function App() {
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="hero" element={<ManageHero />} />
+              <Route path="about" element={<ManageAbout />} />
               <Route path="statistics" element={<ManageStatistics />} />
               <Route path="services" element={<ManageServices />} />
               <Route path="projects" element={<ManageProjects />} />

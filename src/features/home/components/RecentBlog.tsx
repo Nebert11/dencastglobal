@@ -16,15 +16,15 @@ import film from '/dencast_images/9-scaled.jpg';
 const BLOG_POSTS = [
   {
     id: '1',
-    title: 'The Art of Visual Storytelling: How to Move Audiences in the First 10 Seconds',
+    title: 'The Art of Visual Storytelling: How to Move Audiences in the First Moments',
     excerpt:
       'In a world of dwindling attention spans, the opening moments of any film or video are everything. We break down the techniques master cinematographers use to hook viewers instantly.',
     category: 'Film Production',
     coverImage: film,
     slug: 'art-of-visual-storytelling',
     author: 'Dencast Editorial',
-    date: '2024-05-15',
-    readTime: '6 min read',
+    date: 'recent',
+    readTime: 'Quick read',
   },
   {
     id: '2',
@@ -35,20 +35,20 @@ const BLOG_POSTS = [
     coverImage: documentary,
     slug: 'documentary-filmmaking-africa',
     author: 'Joseph Kabogo',
-    date: '2024-04-22',
-    readTime: '8 min read',
+    date: 'recent',
+    readTime: 'In-depth read',
   },
   {
     id: '3',
     title: 'Brand Films vs. Commercials: Which Format Drives Long-Term Brand Equity?',
     excerpt:
-      'The 30-second TV spot still has its place, but brand films are reshaping how companies build lasting emotional connections with their audiences. We compare the two formats.',
+      'Traditional TV spots still have their place, but brand films are reshaping how companies build lasting emotional connections with their audiences. We compare the two formats.',
     category: 'Brand Strategy',
     coverImage: brand,
     slug: 'brand-films-vs-commercials',
     author: 'Maryann Wairimu',
-    date: '2024-03-10',
-    readTime: '5 min read',
+    date: 'recent',
+    readTime: 'Featured read',
   },
 ];
 

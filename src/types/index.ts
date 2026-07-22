@@ -49,6 +49,7 @@ export interface HeroContent {
   id: string;
   headline: string;
   subheadline: string | null;
+  description?: string | null;
   cta_primary_text: string | null;
   cta_primary_url: string | null;
   cta_secondary_text: string | null;
@@ -223,6 +224,8 @@ export interface ContactMessage {
   message: string;
   service_interest: string | null;
   status: MessageStatus;
+  reply_message?: string | null;
+  replied_at?: string | null;
   created_at: string;
   updated_at: string;
 }

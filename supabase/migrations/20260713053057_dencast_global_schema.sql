@@ -424,7 +424,7 @@ CREATE TABLE IF NOT EXISTS contact_messages (
   service_interest text,
   subject text,
   message text NOT NULL,
-  status text DEFAULT 'unread' CHECK (status IN ('unread', 'read', 'replied', 'archived')),
+  status text DEFAULT 'new' CHECK (status IN ('new', 'read', 'replied', 'archived')),
   reply_message text,
   replied_at timestamptz,
   ip_address text,

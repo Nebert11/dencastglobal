@@ -19,7 +19,7 @@ const contactItems = [
     value: 'info@dencastglobal.co.ke',
     href: 'mailto:info@dencastglobal.co.ke',
     color: '#D72638',
-    sublabel: 'We respond within 24 hours',
+    sublabel: 'We respond promptly during business days',
   },
   {
     icon: MapPin,

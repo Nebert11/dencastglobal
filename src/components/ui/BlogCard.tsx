@@ -31,11 +31,15 @@ const BlogCard: React.FC<BlogCardProps> = ({
   readTime,
   className,
 }) => {
-  const formattedDate = new Date(date).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
+  const dateCandidate = new Date(date);
+  const hasValidDate = !Number.isNaN(dateCandidate.getTime());
+  const formattedDate = hasValidDate
+    ? dateCandidate.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      })
+    : 'Recently published';
 
   return (
     <motion.article

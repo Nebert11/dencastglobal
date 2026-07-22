@@ -43,7 +43,7 @@ const FALLBACK_TESTIMONIALS: Omit<Testimonial, 'id' | 'created_at' | 'updated_at
     client_company: 'Sasini PLC',
     client_avatar_url: null,
     content:
-      "For three years, Dencast has partnered with Sasini PLC to document its sustainability journey across tea, coffee, macadamia, and avocado value chains, turning farm-to-factory impact into powerful visual stories.",
+      'Dencast has partnered with Sasini PLC to document its sustainability journey across tea, coffee, macadamia, and avocado value chains, turning farm-to-factory impact into powerful visual stories.',
     rating: 5,
     is_featured: true,
     sort_order: 3,
@@ -54,7 +54,7 @@ const FALLBACK_TESTIMONIALS: Omit<Testimonial, 'id' | 'created_at' | 'updated_at
     client_company: 'Africatalyst',
     client_avatar_url: null,
     content:
-      'Dencast partnered with Africatalyst for two years to amplify high-impact Nairobi events through strategic storytelling, event coverage, and content that sparks conversations and drives change across Africa.',
+      'Dencast partnered with Africatalyst to amplify high-impact Nairobi events through strategic storytelling, event coverage, and content that sparks conversations and drives change across Africa.',
     rating: 5,
     is_featured: true,
     sort_order: 4,
@@ -65,7 +65,7 @@ const FALLBACK_TESTIMONIALS: Omit<Testimonial, 'id' | 'created_at' | 'updated_at
     client_company: 'Reproductive Health Network Kenya (RHNK)',
     client_avatar_url: null,
     content:
-      'Dencast delivered full 360 conference coverage for RHNK 2024 in Mombasa, including videography, photography, livestreams, and breakout recordings for 800+ delegates with exceptional clarity and impact.',
+      'Dencast delivered full conference coverage for RHNK in Mombasa, including videography, photography, livestreams, and breakout recordings for a large delegate audience with exceptional clarity and impact.',
     rating: 5,
     is_featured: false,
     sort_order: 5,

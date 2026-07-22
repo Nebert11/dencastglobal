@@ -14,6 +14,8 @@ const backgroundVideo = '/videos/background.mp4';
 const FALLBACK: Partial<HeroContent> = {
   headline: 'We Tell Stories That Move the World',
   subheadline: 'Premium Creative Media & Film Production',
+  description:
+    'We are a world-class creative media and film production company dedicated to crafting cinematic stories that captivate audiences, elevate brands, and leave a lasting impression on the global stage.',
   cta_primary_text: 'Explore Our Work',
   cta_primary_url: '/portfolio',
   cta_secondary_text: 'Get In Touch',
@@ -218,9 +220,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             ref={descRef}
             className="mt-4 max-w-2xl text-white/70 text-base sm:text-lg leading-relaxed opacity-0"
           >
-            We are a world-class creative media and film production company dedicated to crafting
-            cinematic stories that captivate audiences, elevate brands, and leave a lasting
-            impression on the global stage.
+            {hero.description ?? FALLBACK.description}
           </p>
 
           {/* CTAs */}
@@ -244,22 +244,6 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             </Link>
           </div>
 
-          {/* Trust strip */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 0.8 }}
-            className="mt-14 flex flex-wrap items-center gap-6"
-          >
-            {['500+ Projects', '5+Years', '100+ Clients', '20+Countries'].map((stat) => (
-              <div key={stat} className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D72638]" />
-                <span className="text-white/60 text-xs font-semibold tracking-widest uppercase">
-                  {stat}
-                </span>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </div>
 

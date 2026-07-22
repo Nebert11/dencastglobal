@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
-  Film, Radio, Camera, Video, Target, Palette,
+  Film, Radio, Camera, Video, Target, Palette, Music,
   Navigation, Briefcase, TrendingUp, LayoutDashboard,
   ArrowRight, ChevronRight, Sparkles,
 } from 'lucide-react';
@@ -15,7 +15,7 @@ import { SERVICES, SITE_NAME } from '@/utils/constants';
 // ─── Icon map ─────────────────────────────────────────────────────────────────
 
 const ICON_MAP: Record<string, React.ElementType> = {
-  Film, Radio, Camera, Video, Target, Palette,
+  Film, Radio, Camera, Video, Target, Palette, Music,
   Navigation, Briefcase, TrendingUp, LayoutDashboard,
 };
 
@@ -26,7 +26,7 @@ const CATEGORIES = [
     id: 'production',
     label: 'Production',
     color: '#0056A6',
-    slugs: ['documentary-production', 'livestreaming-events', 'videography', 'commercial-productions'],
+    slugs: ['documentary-production', 'livestreaming-events', 'videography', 'commercial-productions', 'events-management'],
   },
   {
     id: 'photography',
@@ -44,7 +44,7 @@ const CATEGORIES = [
     id: 'digital',
     label: 'Digital',
     color: '#D72638',
-    slugs: ['digital-content-creation'],
+    slugs: ['digital-content-creation', 'audio-management-soundtrack-development'],
   },
 ];
 
@@ -89,7 +89,7 @@ const HeroBanner: React.FC = () => (
         className="inline-flex items-center gap-2 bg-[#D72638]/20 border border-[#D72638]/30 text-[#D72638] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
       >
         <Sparkles size={12} />
-        10 World-Class Services
+        World-Class Services
       </motion.div>
 
       <motion.h1
@@ -130,11 +130,10 @@ const IntroSection: React.FC = () => {
               We offer an end-to-end suite of creative media services — from initial concept and strategy through production and distribution. Whether you need a single deliverable or a full-scale media campaign, Dencast Global has the expertise, equipment, and creative vision to bring it to life.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-8 grid grid-cols-2 gap-4">
-              {[['10+', 'Services Offered'], ['100+', 'Projects Delivered'], ['50+', 'Global Clients'], ['5', 'Countries']]
-                .map(([val, lbl]) => (
-                  <div key={lbl} className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-                    <p className="text-2xl font-black text-[#0056A6]">{val}</p>
-                    <p className="text-slate-500 text-sm mt-0.5">{lbl}</p>
+              {['End-to-End Delivery', 'Creative Precision', 'Global Collaboration', 'Audience-First Storytelling']
+                .map((label) => (
+                  <div key={label} className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                    <p className="text-sm font-bold text-[#0056A6] uppercase tracking-wide">{label}</p>
                   </div>
                 ))}
             </motion.div>
@@ -224,20 +223,15 @@ const CTASection: React.FC = () => {
           >
             <motion.div variants={fadeUp}><SectionLabel label="Custom Packages" light center /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-white leading-tight">
-              Need a Custom Package?
+              Explore Our Work
             </motion.h2>
             <motion.p variants={fadeUp} className="mt-5 text-white/80 text-lg max-w-2xl mx-auto">
-              Every project is unique. Tell us about your goals and budget, and we'll craft a tailored media solution that delivers maximum impact.
+              See how our documentary, livestreaming, photography, events, and brand productions come to life across real projects.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-10 flex items-center justify-center gap-4 flex-wrap">
-              <Link to="/contact">
-                <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
-                  Get a Free Consultation
-                </Button>
-              </Link>
               <Link to="/portfolio">
-                <Button variant="ghost" size="lg">
-                  View Our Portfolio
+                <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
+                  Explore Our Work
                 </Button>
               </Link>
             </motion.div>

@@ -26,7 +26,7 @@ const highlights = [
     icon: Globe,
     title: 'Global Reach, Local Heart',
     description:
-      'Operating in 20+countries while deeply rooted in African storytelling, culture, and creative excellence.',
+      'Working across diverse markets while deeply rooted in African storytelling, culture, and creative excellence.',
   },
 ];
 
@@ -56,11 +56,11 @@ const AboutPreview: React.FC = () => {
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#001a3a]/60 via-transparent to-transparent" />
 
-              {/* Experience badge */}
+              {/* Storytelling badge */}
               <div className="absolute bottom-6 left-6 bg-white rounded-xl px-5 py-3 shadow-lg">
-                <p className="text-3xl font-black text-[#0056A6] leading-none">5+</p>
+                <p className="text-lg font-black text-[#0056A6] leading-none">Storytelling Excellence</p>
                 <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mt-0.5">
-                  Years of Excellence
+                  Cinematic Craft
                 </p>
               </div>
             </div>
@@ -96,25 +96,22 @@ const AboutPreview: React.FC = () => {
             <SectionLabel label="About Us" />
 
             <h2 className="text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight tracking-tight">
-              5 years of{' '}
+              We Tell Stories That{' '}
               <span className="relative">
-                Premium
+                Move the World
                 <span className="absolute -bottom-1 left-0 right-0 h-1 bg-[#D72638] rounded-full" />
               </span>{' '}
-              Storytelling
             </h2>
 
             <p className="text-slate-600 text-base leading-relaxed">
-              Dencast Global is a premier creative media and film production company founded on the
-              belief that powerful storytelling can change the world. Headquartered in Nairobi with
-              a global footprint, we partner with brands, governments, NGOs, and visionaries to
-              create cinematic content that resonates, inspires, and endures.
+              Dencast Global is a world-class creative media, branding, and audiovisual production
+              company committed to transforming ideas into powerful visual experiences.
             </p>
 
             <p className="text-slate-500 text-sm leading-relaxed">
-              From feature-length documentaries to high-impact commercial campaigns, our team of
-              directors, cinematographers, editors, and strategists brings unmatched craft and
-              passion to every frame.
+              From concept development and creative direction to filming, photography, sound,
+              post-production, and brand communication, we deliver premium content designed for
+              today's global audience.
             </p>
 
             {/* Highlights */}

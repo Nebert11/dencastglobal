@@ -134,18 +134,6 @@ const ContactPage: React.FC = () => {
             Have a project in mind? Ready to tell your story? We'd love to hear from you.
           </motion.p>
 
-          {/* Quick stat bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-10 inline-flex items-center gap-8 bg-white/10 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/20"
-          >
-            {[['24h', 'Response Time'], ['Free', 'Consultation'], ['20', 'Countries']].map(([val, lbl]) => (
-              <div key={lbl} className="text-center">
-                <p className="text-2xl font-black text-white">{val}</p>
-                <p className="text-white/60 text-xs mt-0.5">{lbl}</p>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
@@ -161,12 +149,12 @@ const ContactPage: React.FC = () => {
               className="lg:col-span-3"
             >
               <motion.div variants={fadeUp}>
-                <SectionLabel label="Send a Message" />
+                <SectionLabel label="Free Consultation" />
                 <h2 className="mt-4 text-3xl font-black text-slate-900 mb-2">
                   Tell Us About Your Project
                 </h2>
                 <p className="text-slate-500 mb-8">
-                  Fill in the form below and one of our team members will get back to you within 24 hours.
+                  Fill in the form below and one of our team members will get back to you promptly.
                 </p>
               </motion.div>
 

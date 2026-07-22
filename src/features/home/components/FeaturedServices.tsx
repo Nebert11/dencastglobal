@@ -10,6 +10,7 @@ import {
   Palette,
   Navigation,
   Briefcase,
+  Music,
   TrendingUp,
   LayoutDashboard,
   ArrowRight,
@@ -30,6 +31,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   Palette: <Palette size={22} />,
   Navigation: <Navigation size={22} />,
   Briefcase: <Briefcase size={22} />,
+  Music: <Music size={22} />,
   TrendingUp: <TrendingUp size={22} />,
   LayoutDashboard: <LayoutDashboard size={22} />,
 };
@@ -51,8 +53,18 @@ const itemVariants = {
 };
 
 const FeaturedServices: React.FC = () => {
-  // Show only the first 6 services in the homepage preview
-  const featured = SERVICES.slice(0, 6);
+  // Keep homepage service panels intentional and stable even if service order changes.
+  const featuredSlugs = [
+    'documentary-production',
+    'livestreaming-events',
+    'photography',
+    'events-management',
+    'audio-management-soundtrack-development',
+    'videography',
+  ];
+  const featured = featuredSlugs
+    .map((slug) => SERVICES.find((service) => service.slug === slug))
+    .filter((service): service is (typeof SERVICES)[number] => Boolean(service));
 
   return (
     <section className="py-24 bg-white">
@@ -106,13 +118,11 @@ const FeaturedServices: React.FC = () => {
           className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 p-8 rounded-2xl bg-[#0056A6]/5 border border-[#0056A6]/10"
         >
           <p className="text-slate-600 text-sm text-center sm:text-left">
-            Need something more tailored?{' '}
-            <span className="font-semibold text-[#0056A6]">We offer custom packages</span> for
-            every budget and scope.
+            Explore how we craft compelling stories and premium productions across industries.
           </p>
-          <Link to="/contact" className="flex-shrink-0">
+          <Link to="/portfolio" className="flex-shrink-0">
             <Button variant="primary" size="md">
-              Request a Custom Quote
+              Explore Our Work
             </Button>
           </Link>
         </motion.div>

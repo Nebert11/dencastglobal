@@ -19,6 +19,30 @@ import { cn } from '@/utils/cn';
 import type { ContactMessage, MessageStatus } from '@/types';
 import { format } from 'date-fns';
 
+async function toUserFriendlyError(err: unknown): Promise<string> {
+  if (err && typeof err === 'object') {
+    const maybe = err as {
+      message?: string;
+      context?: { json?: () => Promise<{ error?: string; message?: string }> };
+    };
+
+    if (typeof maybe.context?.json === 'function') {
+      try {
+        const payload = await maybe.context.json();
+        return payload?.error || payload?.message || maybe.message || 'Failed to send reply';
+      } catch {
+        return maybe.message || 'Failed to send reply';
+      }
+    }
+
+    if (typeof maybe.message === 'string' && maybe.message.trim()) {
+      return maybe.message;
+    }
+  }
+
+  return 'Failed to send reply';
+}
+
 // ─── Status config ────────────────────────────────────────────────────────────
 
 interface StatusConfig {
@@ -100,9 +124,46 @@ export default function ManageContactMessages() {
     if (!selected || !replyText.trim()) return;
     setReplying(true);
     try {
-      await updateStatus(selected.id, 'replied');
-      toast.success('Reply saved and status updated!');
+      const subject = selected.subject?.trim()
+        ? `Re: ${selected.subject}`
+        : 'Re: Your message to Dencast Global';
+
+      const { data, error } = await supabase.functions.invoke('send-contact-reply', {
+        body: {
+          messageId: selected.id,
+          toEmail: selected.email,
+          toName: selected.name,
+          subject,
+          replyMessage: replyText.trim(),
+          originalMessage: selected.message,
+        },
+      });
+
+      if (error) {
+        throw new Error(error.message || 'Failed to send email reply');
+      }
+
+      if (!data?.success) {
+        throw new Error(data?.error || 'Reply could not be delivered');
+      }
+
+      await qc.invalidateQueries({ queryKey: ['adminMessages'] });
+      await qc.invalidateQueries({ queryKey: ['unreadMessages'] });
+
+      setSelected((prev) => (prev
+        ? {
+            ...prev,
+            status: 'replied',
+            reply_message: replyText.trim(),
+            replied_at: new Date().toISOString(),
+          }
+        : null));
+
+      toast.success('Reply email sent successfully!');
       setReplyText('');
+    } catch (err: unknown) {
+      const errMsg = await toUserFriendlyError(err);
+      toast.error(errMsg);
     } finally {
       setReplying(false);
     }
@@ -299,24 +360,24 @@ export default function ManageContactMessages() {
                 {/* Reply form */}
                 <div className="mt-5 pt-5 border-t border-gray-100">
                   <p className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                    <Reply size={16} className="text-[#0056A6]" /> Reply Note
+                    <Reply size={16} className="text-[#0056A6]" /> Reply Email
                   </p>
                   <textarea
                     value={replyText}
                     onChange={(e) => setReplyText(e.target.value)}
                     rows={4}
-                    placeholder="Write your reply or notes here…"
+                    placeholder="Write the email reply that will be sent to this user..."
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#0056A6]/30 focus:border-[#0056A6] bg-gray-50 resize-vertical"
                   />
                   <div className="flex items-center justify-between mt-3">
-                    <p className="text-xs text-gray-400">Note is saved internally and marks message as replied.</p>
+                    <p className="text-xs text-gray-400">This sends an actual email reply and marks message as replied.</p>
                     <button
                       onClick={handleReply}
                       disabled={!replyText.trim() || replying}
                       className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] disabled:opacity-50 transition-colors"
                     >
                       <Reply size={14} />
-                      {replying ? 'Saving…' : 'Save Reply'}
+                      {replying ? 'Sending...' : 'Send Reply'}
                     </button>
                   </div>
                 </div>

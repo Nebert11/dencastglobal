@@ -270,9 +270,9 @@ const PortfolioPage: React.FC = () => {
             Your project could be the next story in our portfolio. Let's talk.
           </p>
           <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
-            <Link to="/contact">
+            <Link to="/portfolio">
               <Button variant="primary" size="lg" rightIcon={<ChevronRight size={16} />}>
-                Start a Project
+                Explore Our Work
               </Button>
             </Link>
           </div>

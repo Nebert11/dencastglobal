@@ -29,6 +29,7 @@ import {
   FolderOpen,
   Link2,
   Shield,
+  Info,
 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { signOut, getCurrentUser, getProfile } from '@/services/auth.service';
@@ -66,7 +67,8 @@ function useNavSections(unreadCount: number): NavSection[] {
       title: 'CONTENT',
       items: [
         { label: 'Hero', href: '/admin/hero', icon: <Film size={ICON_SIZE} /> },
-        { label: 'About / Statistics', href: '/admin/statistics', icon: <BarChart2 size={ICON_SIZE} /> },
+        { label: 'About Us', href: '/admin/about', icon: <Info size={ICON_SIZE} /> },
+        { label: 'Statistics', href: '/admin/statistics', icon: <BarChart2 size={ICON_SIZE} /> },
         { label: 'Services', href: '/admin/services', icon: <Briefcase size={ICON_SIZE} /> },
         { label: 'Portfolio', href: '/admin/projects', icon: <FolderOpen size={ICON_SIZE} /> },
         { label: 'Blog Posts', href: '/admin/blog', icon: <BookOpen size={ICON_SIZE} /> },
@@ -230,6 +232,7 @@ function usePageTitle(pathname: string): string {
   const map: Record<string, string> = {
     '/admin/dashboard': 'Dashboard',
     '/admin/hero': 'Manage Hero',
+    '/admin/about': 'Manage About Us',
     '/admin/statistics': 'Manage Statistics',
     '/admin/services': 'Manage Services',
     '/admin/projects': 'Manage Portfolio',

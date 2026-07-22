@@ -27,6 +27,7 @@ import type {
 
 const loggedErrors = new Set<string>();
 const isSupabaseCmsEnabled = import.meta.env.VITE_USE_SUPABASE_CMS === 'true';
+const isContactNotifyEnabled = import.meta.env.VITE_ENABLE_CONTACT_NOTIFY === 'true';
 
 function ok<T>(data: T): ApiResponse<T> {
   return { data, error: null, status: 'success' };
@@ -375,6 +376,26 @@ export async function submitContactMessage(
     .single();
 
   if (error) return fail(error.message);
+
+  // Best-effort inbox notification: keep contact capture successful even if email provider fails.
+  if (isContactNotifyEnabled) {
+    supabase.functions
+      .invoke('notify-contact-message', {
+        body: {
+          id: data.id,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone ?? null,
+          subject: formData.subject ?? null,
+          message: formData.message,
+          service_interest: formData.service_interest ?? null,
+        },
+      })
+      .catch((notifyErr) => {
+        console.error('[SupabaseService] notify-contact-message failed', notifyErr);
+      });
+  }
+
   return ok(data as ContactMessage);
 }
 

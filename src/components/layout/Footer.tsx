@@ -51,7 +51,7 @@ const SOCIAL_LINKS = [
   { icon: Facebook,  label: 'Facebook',  href: 'https://www.facebook.com/dencastglobal' },
   { icon: Twitter,   label: 'Twitter/X', href: 'https://x.com/DencastL' },
   { icon: Linkedin,  label: 'LinkedIn',  href: 'https://ke.linkedin.com/in/dencast-global-976b66224' },
-  { icon: Youtube,   label: 'YouTube',   href: 'https://www.youtube.com/channel/UCJniNcZ9-nOK_jkCzDEkK5g/about' },
+  { icon: Youtube,   label: 'YouTube',   href: 'https://www.youtube.com/@dencastglobal3672' },
 ];
 
 // ─── Animation variants ───────────────────────────────────────────────────────

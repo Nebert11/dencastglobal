@@ -181,7 +181,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
         </div>
         <h3 className="text-2xl font-black text-slate-900 mb-3">Message Sent!</h3>
         <p className="text-slate-600 mb-8 max-w-sm leading-relaxed">
-          Thank you for reaching out. Our team will review your message and get back to you within 24 hours.
+          Thank you for reaching out. Our team will review your message and get back to you promptly.
         </p>
         <button
           onClick={() => setSubmitStatus('idle')}
@@ -310,7 +310,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
           Send Message
         </Button>
         <p className="mt-3 text-xs text-slate-400 text-center">
-          We typically respond within 24 hours during business days.
+          We typically respond promptly during business days.
         </p>
       </div>
     </form>

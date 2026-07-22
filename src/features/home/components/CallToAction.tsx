@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Phone, Mail, CheckCircle, Loader2 } from 'lucide-react';
+import { ArrowRight, Mail, CheckCircle, Loader2 } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { subscribeNewsletter } from '@/services/supabase.service';
 
@@ -73,7 +73,7 @@ const CallToAction: React.FC = () => {
         >
           <span className="w-2 h-2 rounded-full bg-[#D72638] animate-pulse" />
           <span className="text-[#D72638] text-xs font-bold tracking-[0.3em] uppercase">
-            Start a Project
+            Explore
           </span>
         </motion.div>
 
@@ -85,8 +85,8 @@ const CallToAction: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight"
         >
-          Ready to Tell{' '}
-          <span className="text-[#D72638]">Your Story?</span>
+          Explore Our{' '}
+          <span className="text-[#D72638]">Work</span>
         </motion.h2>
 
         {/* Sub-text */}
@@ -97,8 +97,8 @@ const CallToAction: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-5 text-white/70 text-lg leading-relaxed max-w-2xl mx-auto"
         >
-          Whether you have a fully-formed brief or just a spark of an idea, our team is ready to
-          partner with you and craft something that the world will remember.
+          See how we bring stories, brands, campaigns, and live productions to life through
+          cinematic craft and intentional execution.
         </motion.p>
 
         {/* CTA buttons */}
@@ -109,16 +109,16 @@ const CallToAction: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          <Link to="/contact">
+          <Link to="/portfolio">
             <Button variant="primary" size="lg" rightIcon={<ArrowRight size={18} />}>
-              Start a Project
+              Explore Our Work
             </Button>
           </Link>
-          <a href="tel:+254700000000">
-            <Button variant="ghost" size="lg" leftIcon={<Phone size={16} />}>
-              Call Us Now
+          <Link to="/contact">
+            <Button variant="ghost" size="lg" rightIcon={<ArrowRight size={16} />}>
+              Contact Us
             </Button>
-          </a>
+          </Link>
         </motion.div>
 
         {/* Divider */}
@@ -131,7 +131,7 @@ const CallToAction: React.FC = () => {
         >
           <div className="flex-1 h-px bg-white/15" />
           <span className="text-white/40 text-xs font-semibold tracking-widest uppercase">
-            Or get a quick quote
+            Stay Updated
           </span>
           <div className="flex-1 h-px bg-white/15" />
         </motion.div>
@@ -175,7 +175,7 @@ const CallToAction: React.FC = () => {
                 Sending…
               </span>
             ) : (
-              'Get a Quote'
+              'Subscribe'
             )}
           </Button>
         </motion.form>
@@ -197,7 +197,7 @@ const CallToAction: React.FC = () => {
           transition={{ delay: 0.7 }}
           className="mt-6 text-white/30 text-xs"
         >
-          No spam. Unsubscribe anytime. We respond within 24 hours.
+          No spam. Unsubscribe anytime. We reply promptly.
         </motion.p>
       </div>
     </section>

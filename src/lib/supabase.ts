@@ -236,6 +236,8 @@ export interface Database {
           message: string;
           service_interest: string | null;
           status: 'new' | 'read' | 'replied' | 'archived';
+          reply_message: string | null;
+          replied_at: string | null;
           created_at: string;
           updated_at: string;
         };

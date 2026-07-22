@@ -11,7 +11,6 @@ import type { HeroContent } from '@/types';
 // ─── Lazy-loaded below-fold sections ─────────────────────────────────────────
 const FeaturedPortfolio = lazy(() => import('./components/FeaturedPortfolio'));
 const WhyChoose = lazy(() => import('./components/WhyChoose'));
-const Statistics = lazy(() => import('./components/Statistics'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
 const RecentBlog = lazy(() => import('./components/RecentBlog'));
 const CallToAction = lazy(() => import('./components/CallToAction'));
@@ -109,48 +108,43 @@ const HomePage: React.FC = () => {
         {/* ── 1. Hero (above fold — eager) ── */}
         <Hero data={heroData} />
 
-        {/* ── 2. Trusted By ── */}
-        <TrustedBy />
-
-        {/* ── 3. About Preview ── */}
+        {/* ── 2. About Preview ── */}
         <AboutPreview />
 
-        {/* ── 4. Featured Services ── */}
+        {/* ── 3. Featured Services ── */}
         <FeaturedServices />
 
         {/* ── Below-fold sections: lazy loaded ── */}
         <Suspense fallback={<SectionSkeleton height="h-[600px]" />}>
-          {/* ── 5. Portfolio Preview ── */}
+          {/* ── 4. Portfolio Preview ── */}
           <FeaturedPortfolio />
         </Suspense>
+
+        {/* ── 5. Trusted By ── */}
+        <TrustedBy />
 
         <Suspense fallback={<SectionSkeleton height="h-[480px]" />}>
           {/* ── 6. Why Choose ── */}
           <WhyChoose />
         </Suspense>
 
-        <Suspense fallback={<SectionSkeleton height="h-72" />}>
-          {/* ── 7. Statistics ── */}
-          <Statistics />
-        </Suspense>
-
         <Suspense fallback={<SectionSkeleton height="h-[500px]" />}>
-          {/* ── 8. Testimonials ── */}
+          {/* ── 7. Testimonials ── */}
           <Testimonials />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton height="h-[480px]" />}>
-          {/* ── 9. Recent Blog ── */}
+          {/* ── 8. Recent Blog ── */}
           <RecentBlog />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton height="h-80" />}>
-          {/* ── 10. Call To Action ── */}
+          {/* ── 9. Call To Action ── */}
           <CallToAction />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton height="h-36" />}>
-          {/* ── 11. Contact Preview ── */}
+          {/* ── 10. Contact Preview ── */}
           <ContactPreview />
         </Suspense>
       </main>
