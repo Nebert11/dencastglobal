@@ -16,6 +16,7 @@ import {
 import { useQuery } from '@tanstack/react-query';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
+import { getClientLogoUrl } from '@/utils/clientLogos';
 import { SITE_NAME } from '@/utils/constants';
 import {
   getClients,
@@ -480,17 +481,30 @@ const ClientsSection: React.FC<{ clientNames: string[]; content: AboutContent }>
           animate={inView ? 'visible' : 'hidden'}
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6"
         >
-          {clientNames.map((client, i) => (
-            <motion.div
-              key={`${client}-${i}`}
-              custom={i}
-              variants={fadeUp}
-              whileHover={{ y: -4, scale: 1.03 }}
-              className="flex items-center justify-center h-20 bg-slate-50 hover:bg-[#0056A6]/5 rounded-xl border border-slate-100 hover:border-[#0056A6]/20 transition-all duration-300 px-4"
-            >
-              <span className="text-slate-600 font-bold text-sm text-center leading-tight">{client}</span>
-            </motion.div>
-          ))}
+          {clientNames.map((client, i) => {
+            const logoUrl = getClientLogoUrl(client);
+
+            return (
+              <motion.div
+                key={`${client}-${i}`}
+                custom={i}
+                variants={fadeUp}
+                whileHover={{ y: -4, scale: 1.03 }}
+                className="flex items-center justify-center h-24 bg-slate-50 hover:bg-[#0056A6]/5 rounded-xl border border-slate-100 hover:border-[#0056A6]/20 transition-all duration-300 px-4"
+              >
+                {logoUrl ? (
+                  <img
+                    src={logoUrl}
+                    alt={`${client} logo`}
+                    className="max-h-12 max-w-full object-contain"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span className="text-slate-600 font-bold text-sm text-center leading-tight">{client}</span>
+                )}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

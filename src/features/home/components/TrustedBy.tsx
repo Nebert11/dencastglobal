@@ -1,23 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SectionLabel from '@/components/ui/SectionLabel';
+import { getClientLogoUrl } from '@/utils/clientLogos';
 import type { Client } from '@/types';
 
 // ─── Static fallback clients ──────────────────────────────────────────────────
 
-const FALLBACK_CLIENTS: Array<{ id: string; name: string; bg: string; text: string }> = [
-  { id: '1', name: 'Sasini2 PLC', bg: '#00A651', text: '#ffffff' },
-  { id: '2', name: 'Afreximbank', bg: '#C8102E', text: '#ffffff' },
-  { id: '3', name: 'Africatalyst', bg: '#D72638', text: '#ffffff' },
-  { id: '4', name: 'European Union', bg: '#0056A6', text: '#ffffff' },
-  { id: '5', name: 'White Beach Palace', bg: '#003580', text: '#ffffff' },
-  { id: '6', name: 'Knowledge Empowering Youth', bg: '#1A1A2E', text: '#ffffff' },
-  { id: '7', name: 'RHNK', bg: '#7B1113', text: '#ffffff' },
-  { id: '8', name: 'VWT', bg: '#005B99', text: '#ffffff' },
-  { id: '9', name: 'Michezo Africa', bg: '#F4A200', text: '#1a1a1a' },
-  { id: '10', name: 'Emerging Leaders Foundation', bg: '#F16522', text: '#ffffff' },
-  { id: '11', name: 'ibac', bg: '#2D2D2D', text: '#ffffff' },
-  { id: '12', name: 'Bible Society of Kenya', bg: '#1B5299', text: '#ffffff' },
+const FALLBACK_CLIENTS: Array<{ id: string; name: string }> = [
+  { id: '1', name: 'Sasini PLC' },
+  { id: '2', name: 'Afreximbank' },
+  { id: '3', name: 'Africatalyst' },
+  { id: '4', name: 'European Union' },
+  { id: '5', name: 'White Beach Palace' },
+  { id: '6', name: 'Knowledge Empowering Youth' },
+  { id: '7', name: 'RHNK' },
+  { id: '8', name: 'Michezo Africa' },
+  { id: '9', name: 'ELF Africa' },
+  { id: '10', name: 'Ibac' },
+  { id: '11', name: 'Bible Society of Kenya' },
+  { id: '12', name: 'Image Registrars' },
 ];
 
 interface TrustedByProps {
@@ -26,23 +27,39 @@ interface TrustedByProps {
 
 // ─── Logo pill placeholder ────────────────────────────────────────────────────
 
-const LogoPill: React.FC<{ name: string; bg: string; text: string }> = ({ name, bg, text }) => (
-  <div
-    className="flex-shrink-0 flex items-center justify-center px-7 py-3.5 rounded-xl shadow-sm border border-white"
-    style={{ backgroundColor: bg, minWidth: 160 }}
-  >
-    <span className="font-bold text-sm tracking-wide whitespace-nowrap" style={{ color: text }}>
-      {name}
-    </span>
-  </div>
-);
+const LogoPill: React.FC<{ name: string; variant?: 'light' | 'default' }> = ({ name, variant = 'default' }) => {
+  const logoUrl = getClientLogoUrl(name);
+
+  return (
+    <div
+      className={`flex-shrink-0 flex items-center justify-center px-6 py-3.5 rounded-xl shadow-sm border min-w-[160px] h-[72px] ${
+        variant === 'light'
+          ? 'bg-slate-100 border-slate-200'
+          : 'bg-white border-slate-200'
+      }`}
+    >
+      {logoUrl ? (
+        <img
+          src={logoUrl}
+          alt={`${name} logo`}
+          className="max-h-10 max-w-[130px] object-contain"
+          loading="lazy"
+        />
+      ) : (
+        <span className="font-bold text-sm tracking-wide whitespace-nowrap text-slate-600">
+          {name}
+        </span>
+      )}
+    </div>
+  );
+};
 
 // ─── TrustedBy ────────────────────────────────────────────────────────────────
 
 const TrustedBy: React.FC<TrustedByProps> = ({ clients }) => {
   const items =
     clients && clients.length > 0
-      ? clients.map((c) => ({ id: c.id, name: c.name, bg: '#0056A6', text: '#fff' }))
+      ? clients.map((c) => ({ id: c.id, name: c.name }))
       : FALLBACK_CLIENTS;
 
   // Duplicate for seamless loop
@@ -76,7 +93,7 @@ const TrustedBy: React.FC<TrustedByProps> = ({ clients }) => {
           }}
         >
           {doubled.map((client, i) => (
-            <LogoPill key={`${client.id}-${i}`} name={client.name} bg={client.bg} text={client.text} />
+            <LogoPill key={`${client.id}-${i}`} name={client.name} />
           ))}
         </motion.div>
       </div>
@@ -101,8 +118,7 @@ const TrustedBy: React.FC<TrustedByProps> = ({ clients }) => {
             <LogoPill
               key={`${client.id}-rev-${i}`}
               name={client.name}
-              bg="#f1f5f9"
-              text="#0056A6"
+              variant="light"
             />
           ))}
         </motion.div>
