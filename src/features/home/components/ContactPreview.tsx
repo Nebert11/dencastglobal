@@ -24,10 +24,10 @@ const contactItems = [
   {
     icon: MapPin,
     label: 'Our Location',
-    value: 'Nairobi, Kenya',
-    href: 'https://maps.google.com/?q=Nairobi+Kenya',
+    value: 'ParkView Suites, Room 101',
+    href: 'https://maps.google.com/?q=ParkView+Suites+Nyerere+Road+Nairobi',
     color: '#0056A6',
-    sublabel: 'Kenya ParkView Suites Nyerere Road Nairobi.',
+    sublabel: 'Nyerere Road, Nairobi | P.O Box 18895-00100',
   },
 ];
 

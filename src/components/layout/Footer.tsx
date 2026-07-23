@@ -183,18 +183,18 @@ const Footer: React.FC = () => {
                   <li>
                     <a href="tel:+254721710397" className="flex items-start gap-2.5 text-slate-400 hover:text-white text-sm transition-colors group">
                       <Phone size={14} className="mt-0.5 flex-shrink-0 text-[#0056A6]" />
-                      +254 721710397
+                      +254 721 710 397
                     </a>
                   </li>
                   <li>
                     <span className="flex items-start gap-2.5 text-slate-400 text-sm">
                       <MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#0056A6]" />
-                      ParkView Suites Nyerere Road Nairobi, Kenya
+                      P.O Box 18895-00100, Nairobi | ParkView Suites, Room 101, Nyerere Road
                     </span>
                   </li>
                   <li>
                     <a
-                      href="https://wa.me/+254721710397"
+                      href="https://wa.me/254721710397"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 mt-1 px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-xs font-semibold rounded-lg transition-colors duration-200"

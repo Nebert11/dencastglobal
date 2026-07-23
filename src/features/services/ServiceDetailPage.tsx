@@ -27,6 +27,8 @@ interface ServiceRichContent {
   overview: string;
   features: string[];
   galleryImages: string[];
+  mediaSectionTitle?: string;
+  mediaLinks?: { title: string; url: string }[];
   whyUs: { icon: React.ElementType; title: string; desc: string }[];
 }
 
@@ -36,6 +38,16 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     overview: 'Our documentary production team brings decades of combined experience to every project. We handle everything from the initial concept and research phase through principal photography, post-production, and final distribution — ensuring your story reaches the audience it deserves.',
     features: ['4K & 8K Cinema Camera Packages', 'Multi-lingual production capability', 'Archival research & fact-checking', 'Original score composition', 'Festival submission strategy', 'International distribution network', 'Subtitling & localisation'],
     galleryImages: ['3379934', '2873486', '1884577', '3756132', '7034014', '7247399'],
+    mediaSectionTitle: 'Documentaries',
+    mediaLinks: [
+      { title: 'Sasini PLC Sustainability Documentary 2023 ', url: 'https://www.youtube.com/watch?v=WDHIUaR6i-c&t=3s' },
+      { title: 'Our Genesis. Our Heritage. Our Aspiration.  ', url: 'https://www.youtube.com/watch?v=ZBoB9kyjIw4' },
+      { title: 'Buzz Women Inspiration Fellowship', url: 'https://www.youtube.com/watch?v=oG_IAvExIqM&t=37s' },
+      { title: 'Tunaweza Impact Documentary ', url: 'https://www.youtube.com/watch?v=IybO1Rr95ek&t=2s' },
+      { title: 'Shaping Young Leaders through the Bible ', url: 'https://www.youtube.com/watch?v=NgUnE8g_z6I&t=42s' },
+      { title: 'Catalysing Leaders Graduation  ', url: 'https://www.youtube.com/watch?v=_3NKliaLP-c&t=54s' },
+      // { title: 'Documentary Feature 7', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
+    ],
     whyUs: [
       { icon: Eye, title: 'Authentic Storytelling', desc: 'We immerse ourselves in every subject before filming, ensuring authentic and respectful narratives.' },
       { icon: Cpu, title: 'Cutting-Edge Technology', desc: '4K/8K cinema cameras, drone cinematography, and professional post-production suites.' },
@@ -47,6 +59,16 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     overview: 'We deliver flawless live production for events of any scale. Our multi-camera broadcast crews, redundant streaming infrastructure, and experienced technical directors ensure your live event reaches a global audience without a single dropped frame.',
     features: ['Multi-camera live switching', 'Up to 4K streaming resolution', 'Redundant internet connectivity', 'Platform-agnostic delivery', 'Live graphics & lower thirds', 'Real-time audience engagement tools', 'Post-event VOD package'],
     galleryImages: ['2873486', '3379934', '1884577', '3756132', '7034014', '7247399'],
+    mediaSectionTitle: 'Livestream',
+    mediaLinks: [
+      { title: 'Sasini Impact Livestream', url: 'https://www.youtube.com/watch?v=F0sANQiiRxE&t=33s' },
+      { title: 'Tunaweza project report launch  ', url: 'https://www.youtube.com/watch?v=82Ex2fbk96o&t=3979s' },
+      { title: 'Equity Bank 22nd Annual AGM 2026 ', url: 'https://www.youtube.com/watch?v=Mx4MYVYGcnE' },
+      { title: "6TH National ECD Stakeholder's Conference", url: 'https://www.youtube.com/watch?v=Q7H3QgmaKp8&t=5075s' },
+      { title: 'Empowering Women & Men Through Enhanced Childcare Support System ', url: 'https://www.youtube.com/watch?v=eVXun6P1x98' },
+      { title: "6TH National ECD Stakeholder's Conference ", url: 'https://www.youtube.com/watch?v=aMxamcefU8Y&t=5594s' },
+      // { title: 'Livestream Session 7', url: 'https://www.youtube.com/watch?v=ueiIbj_OiV8&t=4s' },
+    ],
     whyUs: [
       { icon: Eye, title: 'Zero-Downtime Delivery', desc: 'Triple-redundant systems ensure your stream never drops, no matter what.' },
       { icon: Cpu, title: 'Multi-Platform Broadcasting', desc: 'YouTube, Facebook, Zoom, Teams, Twitch — we stream everywhere simultaneously.' },
@@ -102,6 +124,13 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     overview: 'Strategic brand development that positions you clearly in a crowded market. We combine deep market research, consumer insight, and creative thinking to build brands that resonate, differentiate, and endure.',
     features: ['Brand audit & competitive analysis', 'Brand positioning & messaging', 'Visual identity systems', 'Brand guidelines documentation', 'Campaign strategy & planning', 'Brand voice & tone development', 'Internal brand activation'],
     galleryImages: ['7034014', '3379934', '2873486', '1884577', '3756132', '7247399'],
+    mediaSectionTitle: 'Creative branding',
+    mediaLinks: [
+      { title: 'Creative Branding Showcase', url: 'https://www.youtube.com/watch?v=TZSWsi-XMn8&t=19s' },
+      { title: 'RHNK Conference Report', url: 'https://rhnk.org/documents/RHNK%208TH%20Conference_Report%20Final.pdf' },
+      { title: 'RHNK Conference', url: 'https://rhnk.org/conference' },
+      { title: 'RHNK Conference Resources', url: 'https://rhnk.org/conference/resources#resources-policy-briefs' },
+    ],
     whyUs: [
       { icon: Eye, title: 'Data-Driven Strategy', desc: 'Every brand recommendation is backed by market research and consumer insights.' },
       { icon: Cpu, title: 'Creative Execution', desc: 'Strategy and creative execution under one roof for seamless brand development.' },
@@ -113,6 +142,13 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     overview: 'Bold, boundary-pushing creative media that captures attention and refuses to be forgotten. We conceptualise and execute multimedia campaigns, motion graphics, and experimental content that makes your audience stop scrolling.',
     features: ['2D & 3D motion graphics', 'Animated explainer videos', 'Interactive digital experiences', 'Conceptual campaign development', 'Mixed media productions', 'Social-first content series', 'Branded entertainment'],
     galleryImages: ['7247399', '3379934', '2873486', '1884577', '3756132', '7034014'],
+    mediaSectionTitle: 'Digital Campaigns',
+    mediaLinks: [
+      { title: 'KEPSA CEO - EU Business Forum Promo Video', url: 'https://www.youtube.com/watch?v=xxhgNvMs5i8' },
+      { title: 'Embassy of Sweden EU Business Forum Promo Video', url: 'https://www.youtube.com/watch?v=eGKVpdyiBSw' },
+      { title: 'EU Shamba Pride', url: 'https://www.youtube.com/watch?v=PxF-Oz5O2xg' },
+      // { title: 'Digital Campaign 4', url: 'https://www.youtube.com/watch?v=632y28-SHt8&t=38s' },
+    ],
     whyUs: [
       { icon: Eye, title: 'Boundless Creativity', desc: 'No brief is too ambitious — we thrive on creative challenges that others won\'t attempt.' },
       { icon: Cpu, title: 'Multimedia Expertise', desc: 'Animation, VFX, interactive design — our team spans every creative discipline.' },
@@ -135,6 +171,13 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     overview: 'Clear, compelling corporate communications that align your organisation from the C-suite to the frontline. We produce executive messaging videos, investor presentations, internal communications, and annual reports that speak with one powerful voice.',
     features: ['Executive video messaging', 'Investor presentation production', 'Annual report design & video', 'Internal comms strategy', 'Town hall & AGM production', 'Employee onboarding content', 'Crisis communication support'],
     galleryImages: ['3866149', '3379934', '2873486', '1884577', '3756132', '7034014'],
+    mediaSectionTitle: 'Corporate Productions',
+    mediaLinks: [
+      { title: 'Sasini Impact Corporate Film', url: 'https://www.youtube.com/watch?v=F0sANQiiRxE&t=33s' },
+      { title: 'Corporate Production 2', url: 'https://www.youtube.com/watch?v=kIpukvtuV48' },
+      { title: 'RHNK How to Register, Submit Abstract and Become a Conference Sponsor ', url: 'https://www.youtube.com/watch?v=TZSWsi-XMn8&t=19s' },
+      { title: 'Corporate Production 4', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
+    ],
     whyUs: [
       { icon: Eye, title: 'Board-Level Experience', desc: 'We understand corporate governance and produce content that satisfies all stakeholders.' },
       { icon: Cpu, title: 'Discretion Guaranteed', desc: 'Strict NDAs and confidentiality protocols for all sensitive corporate projects.' },
@@ -157,6 +200,12 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     overview: 'Scroll-stopping digital-first content engineered for engagement. We create content series, social media campaigns, and digital experiences that build communities, drive traffic, and convert audiences into loyal customers.',
     features: ['Social media content calendars', 'Short-form video (Reels, TikTok)', 'Podcast production', 'Newsletter content', 'SEO content strategy', 'Influencer campaign management', 'Analytics & performance reporting'],
     galleryImages: ['7034014', '3379934', '2873486', '1884577', '3756132', '7247399'],
+    mediaSectionTitle: 'Digital Content',
+    mediaLinks: [
+      { title: 'Dencast Global: Malindi by Day', url: 'https://www.youtube.com/watch?v=pYOevHo8v7Q' },
+      { title: 'EU KE Global Gateway - Green Energy', url: 'https://www.youtube.com/watch?v=JKVNraadnmw' },
+      { title: 'Sasini plc sustainable development goals', url: 'https://www.youtube.com/watch?v=-NO6J79zJbg&t=5s' },
+    ],
     whyUs: [
       { icon: Eye, title: 'Platform-Native Expertise', desc: 'Our team lives and breathes Instagram, TikTok, YouTube, and LinkedIn algorithms.' },
       { icon: Cpu, title: 'Data-Driven Creation', desc: 'Every content decision is informed by analytics and performance data.' },
@@ -366,6 +415,37 @@ const ServiceDetailPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── Featured Videos & Resources ── */}
+      {content.mediaLinks && content.mediaLinks.length > 0 && (
+        <section className="py-24 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <SectionLabel label="Featured Media" center />
+              <h2 className="mt-4 text-4xl font-black text-slate-900">
+                {content.mediaSectionTitle ?? 'Videos & Resources'}
+              </h2>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {content.mediaLinks.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 hover:border-[#0056A6]/40 hover:bg-[#0056A6]/5 transition-all duration-300"
+                >
+                  <span className="text-sm font-semibold text-slate-700 group-hover:text-[#0056A6] transition-colors">
+                    {link.title}
+                  </span>
+                  <ArrowRight size={16} className="text-[#D72638] flex-shrink-0" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Why Choose Us ── */}
       <section ref={whyRef} className="py-24 bg-[#0056A6]">

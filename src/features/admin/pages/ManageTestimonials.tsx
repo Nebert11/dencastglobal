@@ -143,8 +143,8 @@ function TestimonialModal({ open, onClose, editing, onSaved }: ModalProps) {
               <input {...register('client_company')} placeholder="Acme Corp" className={inputClass()} />
             </Field>
           </div>
-          <Field label="Avatar URL" error={errors.client_avatar_url?.message}>
-            <input {...register('client_avatar_url')} placeholder="https://…" className={inputClass(!!errors.client_avatar_url)} />
+          <Field label="Client Image URL" error={errors.client_avatar_url?.message}>
+            <input {...register('client_avatar_url')} placeholder="https://..." className={inputClass(!!errors.client_avatar_url)} />
           </Field>
           <Field label="Testimonial Content *" error={errors.content?.message}>
             <textarea {...register('content')} rows={4} placeholder="What they said…" className={inputClass(!!errors.content, true)} />

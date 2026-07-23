@@ -256,11 +256,14 @@ const BlogPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section className="relative py-32 bg-[#0056A6] overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'radial-gradient(circle at 30% 60%, #ffffff 1px, transparent 1px)', backgroundSize: '50px 50px' }}
+      <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0056A6] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/dencast_images/stories.png)' }}
+          aria-hidden="true"
         />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="absolute inset-0 bg-[#0056A6]/65" aria-hidden="true" />
+        {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.nav
             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-center gap-2 text-white/50 text-sm mb-6"
@@ -282,7 +285,9 @@ const BlogPage: React.FC = () => {
           >
             Industry insights, creative process stories, and the thinking behind Africa's most powerful media.
           </motion.p>
-        </div>
+        </div> */}
+        
+
       </section>
 
       {/* ── Featured Article ── */}

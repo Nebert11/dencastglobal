@@ -27,28 +27,28 @@ import { cn } from '@/utils/cn';
 const FEATURED_SERVICES = [
   {
     name: 'Documentary Production',
-    slug: '/documentary',
+    slug: '/services/documentary-production',
     icon: Film,
     description: 'Award-winning cinematic storytelling',
     badge: 'Featured',
   },
   {
     name: 'Livestreaming & Events',
-    slug: '/livestreaming',
+    slug: '/services/livestreaming-events',
     icon: Zap,
     description: 'Professional global broadcast solutions',
     badge: 'Featured',
   },
   {
     name: 'Photography & Videography',
-    slug: '/photography',
+    slug: '/services/photography',
     icon: Camera,
     description: 'Compelling visuals that move audiences',
     badge: 'Featured',
   },
   {
     name: 'Branding & Creative Media',
-    slug: '/branding',
+    slug: '/services/brand-strategy',
     icon: Lightbulb,
     description: 'Strategic brand identity & campaigns',
     badge: 'Featured',
@@ -86,10 +86,10 @@ const MOBILE_ALL_LINKS = [
   { label: 'News',                      to: '/news',         group: 'main'     },
   { label: 'Contact',                   to: '/contact',      group: 'main'     },
   { label: 'All Services',              to: '/services',     group: 'services' },
-  { label: 'Documentary Production',    to: '/documentary',  group: 'services' },
-  { label: 'Livestreaming & Events',    to: '/livestreaming',group: 'services' },
-  { label: 'Photography & Videography', to: '/photography',  group: 'services' },
-  { label: 'Branding & Creative Media', to: '/branding',     group: 'services' },
+  { label: 'Documentary Production',    to: '/services/documentary-production',  group: 'services' },
+  { label: 'Livestreaming & Events',    to: '/services/livestreaming-events',    group: 'services' },
+  { label: 'Photography & Videography', to: '/services/photography',             group: 'services' },
+  { label: 'Branding & Creative Media', to: '/services/brand-strategy',          group: 'services' },
   { label: 'Videography',               to: '/services/videography',              group: 'services' },
   { label: 'Brand Strategy',            to: '/services/brand-strategy',           group: 'services' },
   { label: 'Creative Media',            to: '/services/creative-media',           group: 'services' },
@@ -143,7 +143,7 @@ const ServicesMegaDropdown: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { isScrolled } = useScrollPosition();
   const location = useLocation();
-  const isActive = location.pathname.startsWith('/services') || location.pathname === '/documentary' || location.pathname === '/livestreaming' || location.pathname === '/photography' || location.pathname === '/branding';
+  const isActive = location.pathname.startsWith('/services');
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {

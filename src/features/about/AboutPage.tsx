@@ -9,10 +9,11 @@ import {
   Zap,
   Users,
   TrendingUp,
-  ChevronRight,
+ 
   ArrowRight,
   Play,
 } from 'lucide-react';
+// ChevronRight,
 import { useQuery } from '@tanstack/react-query';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -24,7 +25,7 @@ import {
 } from '@/services/supabase.service';
 import type { Client, SiteSettings } from '@/types';
 
-import backgroundImage from '/dencast_images/CREW.jpg';
+import backgroundImage from '/dencast_images/about_dencast.png';
 import teamImage from '/dencast_images/9-scaled.jpg';
 
 const fadeUp = {
@@ -78,34 +79,24 @@ type AboutContent = {
 
 const DEFAULT_CORE_VALUES: CoreValue[] = [
   {
-    title: 'Creativity',
+    title: 'Dedication',
     description:
-      'We push creative boundaries to produce media that surprises, moves, and resonates deeply with every audience.',
+      'We commit fully to every brief, timeline, and production detail to ensure quality outcomes for every client.',
   },
   {
-    title: 'Excellence',
+    title: 'Passion',
     description:
-      'From pre-production planning to final delivery, we hold ourselves to the highest industry standards in every project.',
-  },
-  {
-    title: 'Integrity',
-    description:
-      'Honest storytelling and transparent partnerships form the bedrock of everything we create and every relationship we build.',
+      'Storytelling is at the center of what we do, and our team brings energy and heart to every project from concept to delivery.',
   },
   {
     title: 'Innovation',
     description:
-      'We embrace emerging technologies and bold ideas to stay ahead of the curve.',
+      'We use superior equipment, modern workflows, and forward-thinking ideas to produce communication solutions that stand out.',
   },
   {
-    title: 'Collaboration',
+    title: 'Creativity',
     description:
-      'Great stories emerge from great partnerships. We work closely with clients, talent, and communities.',
-  },
-  {
-    title: 'Impact',
-    description:
-      'Every frame we craft is engineered to spark conversation and drive measurable outcomes for our clients.',
+      'We transform concepts into memorable visual experiences that connect with audiences and elevate brands.',
   },
 ];
 
@@ -140,21 +131,24 @@ const DEFAULT_CLIENTS = [
   'European Union',
 ];
 
+
+//heroSubtitle: Shaping Brands. Telling Stories. Inspiring Audiences.
+//heroTitle: 'Where Your Story Becomes Our Mission'
 const DEFAULT_CONTENT: AboutContent = {
   heroBackgroundImageUrl: backgroundImage,
-  heroTitle: 'We Tell Stories That Move the World',
+  heroTitle: '',
   heroSubtitle:
-    'Creative Stories. Cinematic Productions. Brands That Stand Out.',
-  missionTitle: 'Creative Stories. Cinematic Productions. Brands That Stand Out.',
+    '',
+  missionTitle: 'Shaping Brands. Telling Stories. Inspiring Audiences.',
   missionBody:
-    'Dencast Global is a world-class creative media, branding, and audiovisual production company committed to transforming ideas into powerful visual experiences.\n\nWe craft cinematic stories that connect with audiences, strengthen brands, and create lasting impact. From concept development and creative direction to filming, photography, sound, post-production, and brand communication, we deliver premium content designed for today\'s global audience.\n\nAt Dencast Global, we do more than produce content, we capture moments, tell meaningful stories, and build brands that deserve to be seen and remembered.',
+    'Dencast Global Limited is a leading production and creative agency founded in 2015. We specialize in developing meticulously crafted media products and end-to-end production services across branding experiences, digital content, commercials, niche cinematography, corporate productions, social media campaigns, and docu-style marketing.\n\nOur Vision: To be global pacesetters in cinematographic works.\n\nOur Mission: To use technology, superior equipment, and innovation through creative efforts to provide inimitable communication, marketing, and digital solutions for all our clients.',
   storyImageUrl: teamImage,
-  storyTitle: 'Years of Captivating Storytelling',
+  storyTitle: 'About Dencast Global',
   storyBody:
-    'Dencast Global is a premier creative media and film production company built on the belief that powerful storytelling can shape perspectives, inspire action, and create lasting impact.\n\nHeadquartered in Nairobi and working across diverse markets, we partner with brands, governments, NGOs, institutions, and visionary leaders to produce cinematic content that connects with audiences and stands the test of time.\n\nFrom feature-length documentaries and corporate films to commercial campaigns, branded content, and digital productions, our team of directors, cinematographers, editors, producers, and creative strategists brings exceptional skill, originality, and passion to every project.',
+    'At Dencast Global, every project is more than a deliverable. It is a story, a vision, and a brand brought vividly to life. By combining creativity, technology, and strategy, we provide communication and knowledge-management solutions that connect with audiences and deliver measurable impact.\n\nOur creative consultants, communication strategists, copywriters, photographers, videographers, event managers, and printers work in synergy to ensure your brand, your story, and your vision shine across every platform.\n\nFrom concept to execution, our people transform ideas into powerful experiences that help your story not just be told, but truly stand out.',
   coreValuesTitle: 'What We Stand For',
   coreValuesSubtitle:
-    'Six principles that guide every decision, every frame, and every partnership at Dencast Global.',
+    'The four pillars that shape our culture and every project we deliver: Dedication, Passion, Innovation, and Creativity.',
   coreValues: DEFAULT_CORE_VALUES,
   teamTitle: 'Our Team',
   teamSubtitle:
@@ -165,7 +159,7 @@ const DEFAULT_CONTENT: AboutContent = {
   ctaLabel: 'Get Involved',
   ctaTitle: 'Join Our Story',
   ctaBody:
-    "Whether you're a brand with a vision, a storyteller with a script, or an investor who believes in the power of African media, there's a place for you in this story.",
+    "Whether you are building a brand, launching a campaign, or producing a signature event, Dencast Global is ready to bring your vision to life.",
 };
 
 function parseJsonArray<T>(value: unknown, fallback: T[]): T[] {
@@ -210,7 +204,7 @@ const HeroBanner: React.FC<{ content: AboutContent }> = ({ content }) => (
     <div className="absolute bottom-0 right-0 w-1/3 h-full bg-[#D72638]/15 clip-diagonal pointer-events-none" />
 
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-28">
-      <motion.nav
+      {/* <motion.nav
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -222,7 +216,7 @@ const HeroBanner: React.FC<{ content: AboutContent }> = ({ content }) => (
         </Link>
         <ChevronRight size={14} />
         <span className="text-white font-medium">About</span>
-      </motion.nav>
+      </motion.nav> */}
 
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
@@ -587,11 +581,11 @@ const AboutPage: React.FC = () => {
   }, [settingsResponse?.data]);
 
   const clientNames = useMemo<string[]>(() => {
-    const fromBackend = (clientsResponse?.data?.data ?? [])
+    const fromBackend = (clientsResponse?.data ?? [])
       .map((client: Client) => client.name)
       .filter(Boolean);
     return fromBackend.length > 0 ? fromBackend : DEFAULT_CLIENTS;
-  }, [clientsResponse?.data?.data]);
+  }, [clientsResponse?.data]);
 
   return (
     <>

@@ -103,7 +103,7 @@ const HeroBanner: React.FC = () => (
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
         className="text-white/70 text-xl max-w-2xl mx-auto leading-relaxed"
       >
-        From cinematic documentaries to brand strategy — we deliver comprehensive creative media solutions that make your story impossible to ignore.
+        With years of experience and a distinguished client roster, we deliver expert production, marketing, and digital solutions that help brands and organizations stand out and shine.
       </motion.p>
     </div>
   </section>
@@ -124,13 +124,13 @@ const IntroSection: React.FC = () => {
           >
             <motion.div variants={fadeUp}><SectionLabel label="What We Do" /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900 leading-tight">
-              Comprehensive Media Services for the <span className="text-[#0056A6]">Modern World</span>
+              Our Service Scope for <span className="text-[#0056A6]">Brands, Events, and Campaigns</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="mt-5 text-slate-600 leading-relaxed">
-              We offer an end-to-end suite of creative media services — from initial concept and strategy through production and distribution. Whether you need a single deliverable or a full-scale media campaign, Dencast Global has the expertise, equipment, and creative vision to bring it to life.
+              We offer expert, high-quality services tailored to both corporate and social events. From documentaries and digital content to event management, audio production, script writing, podcasts, and graphics, our team delivers practical solutions with creative precision.
             </motion.p>
             <motion.div variants={fadeUp} className="mt-8 grid grid-cols-2 gap-4">
-              {['End-to-End Delivery', 'Creative Precision', 'Global Collaboration', 'Audience-First Storytelling']
+              {['Documentaries', 'Digital Content', 'Virtual and Hybrid Events', 'Event Audio Management']
                 .map((label) => (
                   <div key={label} className="bg-slate-50 rounded-xl p-4 border border-slate-100">
                     <p className="text-sm font-bold text-[#0056A6] uppercase tracking-wide">{label}</p>

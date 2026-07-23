@@ -271,8 +271,9 @@ export default function ManageAbout() {
 
       await qc.invalidateQueries({ queryKey: ['siteSettings'] });
       toast.success('About content saved!');
-    } catch (err: any) {
-      toast.error(err.message ?? 'Failed to save about content');
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to save about content';
+      toast.error(message);
     } finally {
       setSaving(false);
     }

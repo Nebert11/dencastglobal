@@ -18,15 +18,15 @@ const highlights = [
   // },
   {
     icon: Film,
-    title: 'Full-Service Film Studio',
+    title: 'End-to-End Production Services',
     description:
-      'From pre-production planning to final colour grade and delivery, we handle every stage of your creative journey in-house.',
+      'From branding experiences and commercials to niche cinematography and corporate productions, we deliver refined media solutions.',
   },
   {
     icon: Globe,
-    title: 'Global Reach, Local Heart',
+    title: 'Digital Content and Campaigns',
     description:
-      'Working across diverse markets while deeply rooted in African storytelling, culture, and creative excellence.',
+      'We combine creativity, technology, and strategy to produce communication and marketing content that connects and performs.',
   },
 ];
 
@@ -58,9 +58,9 @@ const AboutPreview: React.FC = () => {
 
               {/* Storytelling badge */}
               <div className="absolute bottom-6 left-6 bg-white rounded-xl px-5 py-3 shadow-lg">
-                <p className="text-lg font-black text-[#0056A6] leading-none">Storytelling Excellence</p>
+                <p className="text-lg font-black text-[#0056A6] leading-none">Since 2015</p>
                 <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mt-0.5">
-                  Cinematic Craft
+                  Creative Media Agency
                 </p>
               </div>
             </div>
@@ -96,22 +96,22 @@ const AboutPreview: React.FC = () => {
             <SectionLabel label="About Us" />
 
             <h2 className="text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight tracking-tight">
-              We Tell Stories That{' '}
+              Where Your Story{' '}
               <span className="relative">
-                Move the World
+                Becomes Our Mission
                 <span className="absolute -bottom-1 left-0 right-0 h-1 bg-[#D72638] rounded-full" />
               </span>{' '}
             </h2>
 
             <p className="text-slate-600 text-base leading-relaxed">
-              Dencast Global is a world-class creative media, branding, and audiovisual production
-              company committed to transforming ideas into powerful visual experiences.
+              Dencast Global Limited is a premier branding and creative media agency that develops
+              meticulously crafted media products and end-to-end production services.
             </p>
 
             <p className="text-slate-500 text-sm leading-relaxed">
-              From concept development and creative direction to filming, photography, sound,
-              post-production, and brand communication, we deliver premium content designed for
-              today's global audience.
+              At Dencast Global, every project is more than a deliverable. It is your story,
+              vision, and brand brought vividly to life through strategy, creativity, and
+              innovation.
             </p>
 
             {/* Highlights */}

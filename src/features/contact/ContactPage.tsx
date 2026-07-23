@@ -1,16 +1,17 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
   Phone, Mail, MapPin, MessageCircle, Clock,
-  ChevronRight, Instagram, Facebook, Twitter,
+   Instagram, Facebook, Twitter,
   Linkedin, Youtube, ChevronDown,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import ContactForm from './components/ContactForm';
 import { SITE_NAME, CONTACT_EMAIL } from '@/utils/constants';
 
+//ChevronRight,
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const FAQS = [
@@ -99,7 +100,13 @@ const ContactPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section className="relative py-32 bg-[#0056A6] overflow-hidden">
+      <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0056A6] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/dencast_images/lets_create.png)' }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-[#0056A6]/65" aria-hidden="true" />
         {/* Decorative pattern */}
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'radial-gradient(circle at 25% 25%, #ffffff 1px, transparent 1px), radial-gradient(circle at 75% 75%, #ffffff 1px, transparent 1px)', backgroundSize: '60px 60px' }}
@@ -109,7 +116,7 @@ const ContactPage: React.FC = () => {
           style={{ background: 'linear-gradient(135deg, transparent 50%, rgba(215,38,56,0.15) 50%)' }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.nav
             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-center gap-2 text-white/50 text-sm mb-6"
@@ -131,10 +138,12 @@ const ContactPage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
             className="text-white/70 text-xl max-w-2xl mx-auto"
           >
-            Have a project in mind? Ready to tell your story? We'd love to hear from you.
+            Contact us today. Let the world know.
           </motion.p>
 
-        </div>
+        </div> */}
+        
+
       </section>
 
       {/* ── Main two-column layout ── */}
@@ -179,7 +188,7 @@ const ContactPage: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Phone</p>
-                      <a href="tel:++254721710397" className="text-slate-800 font-semibold hover:text-[#0056A6] transition-colors">
+                      <a href="tel:+254721710397" className="text-slate-800 font-semibold hover:text-[#0056A6] transition-colors">
                         +254-721-710-397
                       </a>
                     </div>
@@ -204,7 +213,7 @@ const ContactPage: React.FC = () => {
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">WhatsApp</p>
                       <a
-                        href="https://wa.me/+254721710397"
+                        href="https://wa.me/254721710397"
                         target="_blank" rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold rounded-xl transition-colors"
                       >
@@ -221,8 +230,9 @@ const ContactPage: React.FC = () => {
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Office</p>
                       <p className="text-slate-700 text-sm leading-relaxed">
-                        ParkView Suites Nyerere<br />
-                        Road Nairobi, Kenya
+                        P.O Box 18895-00100, Nairobi<br />
+                        ParkView Suites, Room 101,<br />
+                        Nyerere Road, Nairobi
                       </p>
                     </div>
                   </li>

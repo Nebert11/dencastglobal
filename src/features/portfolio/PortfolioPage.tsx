@@ -36,6 +36,15 @@ interface PortfolioItem {
   featured?: boolean;
 }
 
+const PORTFOLIO_VIDEO_LINKS = [
+  { title: 'Sasini Report Launch', url: 'https://www.youtube.com/watch?v=QnnVSv48PIM&t=1787s' },
+  { title: 'EU Ambassador', url: 'https://www.youtube.com/watch?v=WIWK8EugC1c' },
+  { title: 'RHNK Pan-African Conference 2025 Highlights ', url: 'https://www.youtube.com/watch?v=_0hFwZtRoqU' },
+  { title: 'ELF-Africa Annual Report ', url: 'https://www.youtube.com/watch?v=EgTs8_Bm_RQ&t=20s' },
+  { title: 'THE AMAKOVE WALA SHOW 1 - Divorce and Separation ', url: 'https://www.youtube.com/watch?v=D1QvoiMpK-Q&t=23s' },
+  { title: 'RHNK Pan-African Conference 2026 ', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
+];
+
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
   { id: '1', slug: 'voices-of-the-nile', title: 'Sasini Annual Report', category: 'Corporate', image: sasiniConference, featured: true },
   { id: '2', slug: 'mtn-brand-relaunch', title: 'The Amakowe Wala Show', category: 'Streaming', image: amakowe },
@@ -74,12 +83,13 @@ const cardVariants = {
 const HeroBanner: React.FC = () => (
   <section className="relative min-h-[55vh] flex items-center justify-center bg-[#001f3f] overflow-hidden">
     <div
-      className="absolute inset-0 bg-cover bg-center opacity-25"
-      style={{ backgroundImage: 'url(https://images.pexels.com/photos/3756132/pexels-photo-3756132.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2)' }}
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-[#001f3f]/60 to-[#001f3f]" />
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/dencast_images/portfolio.png)' }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-[#0056A6]/65" aria-hidden="true" />
 
-    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-28">
+    {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-28">
       <motion.nav
         initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
         className="flex items-center justify-center gap-2 text-white/50 text-sm mb-6"
@@ -102,7 +112,7 @@ const HeroBanner: React.FC = () => (
       >
         A showcase of our most impactful work — from cinematic documentaries to global brand campaigns.
       </motion.p>
-    </div>
+    </div> */}
   </section>
 );
 
@@ -145,6 +155,30 @@ const PortfolioPage: React.FC = () => {
       </Helmet>
 
       <HeroBanner />
+
+      {/* ── Portfolio Video Highlights ── */}
+      <section className="py-12 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionLabel label="Featured Videos" />
+          <h2 className="mt-3 text-2xl sm:text-3xl font-black text-slate-900">Portfolio - Some of our best</h2>
+          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {PORTFOLIO_VIDEO_LINKS.map((video) => (
+              <a
+                key={video.url}
+                href={video.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 hover:border-[#0056A6]/40 hover:bg-[#0056A6]/5 transition-all duration-300"
+              >
+                <span className="text-sm font-semibold text-slate-700 group-hover:text-[#0056A6] transition-colors">
+                  {video.title}
+                </span>
+                <ChevronRight size={16} className="text-[#D72638] flex-shrink-0" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Filter & Search ── */}
       <section className="py-12 bg-white border-b border-slate-100 sticky top-16 z-20 shadow-sm">
