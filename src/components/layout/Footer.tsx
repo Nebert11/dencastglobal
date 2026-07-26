@@ -152,7 +152,7 @@ const Footer: React.FC = () => {
             <div>
               <FooterHeading>Company</FooterHeading>
               <ul className="space-y-2.5">
-                {COMPANY_LINKS.map(l => <FooterLinkItem key={l.to} {...l} />)}
+                {COMPANY_LINKS.map(l => <FooterLinkItem key={`${l.to}-${l.label}`} {...l} />)}
               </ul>
             </div>
 

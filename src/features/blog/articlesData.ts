@@ -19,6 +19,8 @@ export interface BlogArticle {
   relatedSlugs: string[];
 }
 
+
+
 const IMAGE_BASE = '/articles_and_insights%20';
 
 export const BLOG_ARTICLES: BlogArticle[] = [
@@ -29,12 +31,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     excerpt:
       'From the Maasai Mara to the Kenyan coast and Lake Turkana, Kenya offers extraordinary visual variety for filmmakers in a single country.',
     category: 'Documentary',
-    author: 'Carolyne Wangare',
+    author: 'Dennis Machio',
     authorRole: 'Film Writer & Production Communications',
     authorBio:
       'Carolyne writes about production realities in Kenya, helping international crews understand locations, regulation, and practical execution.',
     authorAvatar:
-      'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+      `${IMAGE_BASE}/dennis_machio.jpg`,
     date: '2026-07-01',
     readTime: '8 min read',
     views: '2,410',
