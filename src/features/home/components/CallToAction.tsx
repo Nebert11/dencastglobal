@@ -37,11 +37,11 @@ const CallToAction: React.FC = () => {
   return (
     <section className="relative py-28 overflow-hidden">
       {/* ── Background gradient ── */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0056A6] via-[#003d82] to-[#001a3a]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#25408F] via-[#003d82] to-[#001a3a]" />
 
       {/* ── Animated motion blobs ── */}
       <motion.div
-        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#D72638]/10 blur-3xl pointer-events-none"
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#D3232E]/10 blur-3xl pointer-events-none"
         animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -71,8 +71,8 @@ const CallToAction: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 mb-6"
         >
-          <span className="w-2 h-2 rounded-full bg-[#D72638] animate-pulse" />
-          <span className="text-[#D72638] text-xs font-bold tracking-[0.3em] uppercase">
+          <span className="w-2 h-2 rounded-full bg-[#D3232E] animate-pulse" />
+          <span className="text-[#D3232E] text-xs font-bold tracking-[0.3em] uppercase">
             Explore
           </span>
         </motion.div>
@@ -86,7 +86,7 @@ const CallToAction: React.FC = () => {
           className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight"
         >
           Explore Our{' '}
-          <span className="text-[#D72638]">Work</span>
+          <span className="text-[#D3232E]">Work</span>
         </motion.h2>
 
         {/* Sub-text */}
@@ -153,7 +153,7 @@ const CallToAction: React.FC = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email address"
               disabled={status === 'loading' || status === 'success'}
-              className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-[#D72638]/60 backdrop-blur-sm disabled:opacity-60"
+              className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/40 text-sm focus:outline-none focus:ring-2 focus:ring-[#D3232E]/60 backdrop-blur-sm disabled:opacity-60"
             />
           </div>
           <Button

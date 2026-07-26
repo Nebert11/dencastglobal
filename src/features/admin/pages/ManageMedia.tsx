@@ -54,12 +54,12 @@ function UploadArea({ onUpload, uploading }: UploadAreaProps) {
       onClick={() => fileRef.current?.click()}
       className={cn(
         'border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center gap-3 cursor-pointer transition-colors',
-        dragging ? 'border-[#0056A6] bg-blue-50' : 'border-gray-200 hover:border-[#0056A6]/50 hover:bg-gray-50',
+        dragging ? 'border-[#25408F] bg-blue-50' : 'border-gray-200 hover:border-[#25408F]/50 hover:bg-gray-50',
         uploading && 'pointer-events-none opacity-70'
       )}
     >
-      <div className="w-12 h-12 rounded-2xl bg-[#0056A6]/10 flex items-center justify-center">
-        <Upload size={22} className="text-[#0056A6]" />
+      <div className="w-12 h-12 rounded-2xl bg-[#25408F]/10 flex items-center justify-center">
+        <Upload size={22} className="text-[#25408F]" />
       </div>
       <div className="text-center">
         <p className="font-semibold text-gray-700">{uploading ? 'Uploading…' : 'Drop files here or click to upload'}</p>
@@ -142,7 +142,7 @@ function DetailModal({ file, onClose, onDelete }: DetailModalProps) {
             <p className="text-xs font-semibold text-gray-500 mb-1.5">File URL</p>
             <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2">
               <p className="text-xs text-gray-600 flex-1 truncate font-mono">{file.url}</p>
-              <button onClick={copyUrl} className="flex-shrink-0 text-gray-400 hover:text-[#0056A6] transition-colors">
+              <button onClick={copyUrl} className="flex-shrink-0 text-gray-400 hover:text-[#25408F] transition-colors">
                 {copied ? <Check size={15} className="text-green-500" /> : <Copy size={15} />}
               </button>
             </div>
@@ -152,12 +152,12 @@ function DetailModal({ file, onClose, onDelete }: DetailModalProps) {
         <div className="flex justify-between items-center p-4 border-t border-gray-100">
           <button
             onClick={() => { onDelete(file.id); onClose(); }}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-[#D72638] hover:bg-red-50 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-[#D3232E] hover:bg-red-50 transition-colors"
           >
             <Trash2 size={15} /> Delete
           </button>
           <button onClick={copyUrl}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors">
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors">
             {copied ? <Check size={15} /> : <Copy size={15} />}
             {copied ? 'Copied!' : 'Copy URL'}
           </button>
@@ -273,7 +273,7 @@ export default function ManageMedia() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by filename…"
-            className="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-[#0056A6]/30 bg-white"
+            className="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-[#25408F]/30 bg-white"
           />
         </div>
         <div className="flex gap-1">
@@ -283,7 +283,7 @@ export default function ManageMedia() {
               onClick={() => setTypeFilter(tab.value)}
               className={cn(
                 'px-3 py-2 rounded-xl text-sm font-semibold transition-colors',
-                typeFilter === tab.value ? 'bg-[#0056A6] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+                typeFilter === tab.value ? 'bg-[#25408F] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
               )}
             >
               {tab.label}
@@ -310,7 +310,7 @@ export default function ManageMedia() {
             <div
               key={file.id}
               onClick={() => setSelected(file)}
-              className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden cursor-pointer hover:ring-2 hover:ring-[#0056A6] transition-all"
+              className="group relative aspect-square bg-gray-100 rounded-xl overflow-hidden cursor-pointer hover:ring-2 hover:ring-[#25408F] transition-all"
             >
               {file.type.startsWith('image/') ? (
                 <img src={file.url} alt={file.alt_text ?? file.name} className="w-full h-full object-cover" />
@@ -327,7 +327,7 @@ export default function ManageMedia() {
                 <p className="text-white/70 text-[10px]">{formatBytes(file.size)}</p>
                 <button
                   onClick={(e) => { e.stopPropagation(); handleDelete(file.id); }}
-                  className="mt-1 p-1.5 rounded-lg bg-[#D72638]/80 text-white hover:bg-[#D72638] transition-colors"
+                  className="mt-1 p-1.5 rounded-lg bg-[#D3232E]/80 text-white hover:bg-[#D3232E] transition-colors"
                 >
                   <Trash2 size={13} />
                 </button>

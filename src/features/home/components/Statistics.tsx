@@ -46,17 +46,17 @@ const Statistics: React.FC = () => {
         aria-hidden
       >
         <div
-          className="absolute -left-20 top-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-[#0056A6]/5"
+          className="absolute -left-20 top-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-[#25408F]/5"
         />
         <div
-          className="absolute -right-20 top-1/2 -translate-y-1/2 w-56 h-56 rounded-full bg-[#D72638]/5"
+          className="absolute -right-20 top-1/2 -translate-y-1/2 w-56 h-56 rounded-full bg-[#D3232E]/5"
         />
         {/* Diagonal stripe accent */}
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
             backgroundImage:
-              'repeating-linear-gradient(45deg, #0056A6, #0056A6 1px, transparent 1px, transparent 40px)',
+              'repeating-linear-gradient(45deg, #25408F, #25408F 1px, transparent 1px, transparent 40px)',
           }}
         />
       </div>
@@ -65,13 +65,13 @@ const Statistics: React.FC = () => {
         {/* ── Section heading ── */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2.5 mb-3">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#D72638]" />
-            <span className="inline-block w-8 h-0.5 bg-[#D72638] rounded-full" />
-            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#D72638]">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#D3232E]" />
+            <span className="inline-block w-8 h-0.5 bg-[#D3232E] rounded-full" />
+            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#D3232E]">
               By The Numbers
             </span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-black text-[#25408F] leading-tight">
             Our Impact in Numbers
           </h2>
           <p className="mt-3 text-slate-500 text-base max-w-xl mx-auto">
@@ -85,7 +85,7 @@ const Statistics: React.FC = () => {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="relative rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-[#0056A6]/20 transition-all duration-300"
+              className="relative rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-[#25408F]/20 transition-all duration-300"
             >
               <AnimatedCounter
                 value={stat.value}
@@ -102,7 +102,7 @@ const Statistics: React.FC = () => {
         <div className="mt-14 text-center">
           <p className="text-slate-400 text-sm font-medium tracking-wide">
             Numbers don't tell the whole story —{' '}
-            <span className="text-[#0056A6] font-semibold">ours do.</span>
+            <span className="text-[#25408F] font-semibold">ours do.</span>
           </p>
         </div>
       </div>

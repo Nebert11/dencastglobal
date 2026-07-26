@@ -29,7 +29,7 @@ type StatWithDesc = Statistic & { description?: string };
 function inputClass(error = false) {
   return cn(
     'w-full px-4 py-2.5 rounded-xl border text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors bg-gray-50',
-    'focus:bg-white focus:ring-2 focus:ring-[#0056A6]/30 focus:border-[#0056A6]',
+    'focus:bg-white focus:ring-2 focus:ring-[#25408F]/30 focus:border-[#25408F]',
     error ? 'border-red-400 bg-red-50' : 'border-gray-200'
   );
 }
@@ -131,14 +131,14 @@ function StatModal({ open, onClose, editing, onSaved }: ModalProps) {
             <input type="number" {...register('sort_order')} className={inputClass()} />
           </Field>
           <label className="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" {...register('is_active')} className="w-4 h-4 rounded accent-[#0056A6]" />
+            <input type="checkbox" {...register('is_active')} className="w-4 h-4 rounded accent-[#25408F]" />
             <span className="text-sm text-gray-700">Active (visible on site)</span>
           </label>
         </form>
         <div className="flex justify-end gap-3 p-5 border-t border-gray-100">
           <button onClick={onClose} className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">Cancel</button>
           <button onClick={handleSubmit(onSubmit)} disabled={saving}
-            className="px-5 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors disabled:opacity-70">
+            className="px-5 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors disabled:opacity-70">
             {saving ? 'Saving…' : editing ? 'Update' : 'Create'}
           </button>
         </div>
@@ -164,13 +164,13 @@ function StatCard({ stat, onEdit }: StatCardProps) {
     )}>
       <button
         onClick={onEdit}
-        className="absolute top-3 right-3 p-1.5 rounded-lg text-gray-300 hover:text-[#0056A6] hover:bg-blue-50 transition-colors"
+        className="absolute top-3 right-3 p-1.5 rounded-lg text-gray-300 hover:text-[#25408F] hover:bg-blue-50 transition-colors"
       >
         <Pencil size={14} />
       </button>
 
-      <div className="w-10 h-10 rounded-xl bg-[#0056A6]/10 flex items-center justify-center mb-4">
-        <TrendingUp size={20} className="text-[#0056A6]" />
+      <div className="w-10 h-10 rounded-xl bg-[#25408F]/10 flex items-center justify-center mb-4">
+        <TrendingUp size={20} className="text-[#25408F]" />
       </div>
 
       <p className="text-3xl font-bold text-gray-900 mb-1">{displayValue}</p>
@@ -214,13 +214,13 @@ export default function ManageStatistics() {
           <p className="text-sm text-gray-500 mt-0.5">Edit the stats shown on the homepage (e.g. "500+ Projects")</p>
         </div>
         <button onClick={() => { setEditing(null); setModalOpen(true); }}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors">
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors">
           <Plus size={16} /> Add Statistic
         </button>
       </div>
 
       {/* Preview banner */}
-      <div className="bg-gradient-to-r from-[#0056A6] to-[#003d7a] rounded-2xl p-5 mb-6 text-white">
+      <div className="bg-gradient-to-r from-[#25408F] to-[#1f3576] rounded-2xl p-5 mb-6 text-white">
         <p className="text-xs font-semibold text-blue-200 uppercase tracking-wide mb-3">Live Preview</p>
         {isLoading ? (
           <div className="flex gap-8">
@@ -267,7 +267,7 @@ export default function ManageStatistics() {
           ))}
           <button
             onClick={() => { setEditing(null); setModalOpen(true); }}
-            className="flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-2xl p-6 hover:border-[#0056A6]/50 hover:bg-blue-50/50 transition-colors text-gray-400 hover:text-[#0056A6] gap-2"
+            className="flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-2xl p-6 hover:border-[#25408F]/50 hover:bg-blue-50/50 transition-colors text-gray-400 hover:text-[#25408F] gap-2"
           >
             <Plus size={24} />
             <span className="text-sm font-semibold">Add new</span>

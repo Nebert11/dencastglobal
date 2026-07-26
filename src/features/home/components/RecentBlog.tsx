@@ -72,9 +72,9 @@ const RecentBlog: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
           <div>
             <SectionLabel label="Our Blog" />
-            <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight tracking-tight">
+            <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#25408F] leading-tight tracking-tight">
               Insights &{' '}
-              <span className="text-[#D72638]">Stories</span>
+              <span className="text-[#D3232E]">Stories</span>
             </h2>
             <p className="mt-3 text-slate-500 text-base max-w-lg leading-relaxed">
               Perspectives on film, brand storytelling, visual culture, and the craft of creative
@@ -118,7 +118,7 @@ const RecentBlog: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-14 p-8 rounded-2xl bg-[#f0f6ff] border border-[#0056A6]/10 flex flex-col sm:flex-row items-center gap-6"
+          className="mt-14 p-8 rounded-2xl bg-[#f0f6ff] border border-[#25408F]/10 flex flex-col sm:flex-row items-center gap-6"
         >
           <div className="flex-1 text-center sm:text-left">
             <h4 className="text-slate-800 font-bold text-lg">
@@ -132,7 +132,7 @@ const RecentBlog: React.FC = () => {
             <input
               type="email"
               placeholder="your@email.com"
-              className="px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0056A6]/30 bg-white min-w-[220px]"
+              className="px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#25408F]/30 bg-white min-w-[220px]"
             />
             <Button variant="secondary" size="md">
               Subscribe

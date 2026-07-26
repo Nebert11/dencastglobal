@@ -10,7 +10,7 @@ const contactItems = [
     label: 'Phone / WhatsApp',
     value: '+254 721 710 397',
     href: 'tel:+254721710397',
-    color: '#0056A6',
+    color: '#25408F',
     sublabel: 'Mon – Fri, 8am – 6pm EAT',
   },
   {
@@ -18,7 +18,7 @@ const contactItems = [
     label: 'Email Us',
     value: 'info@dencastglobal.co.ke',
     href: 'mailto:info@dencastglobal.co.ke',
-    color: '#D72638',
+    color: '#D3232E',
     sublabel: 'We respond promptly during business days',
   },
   {
@@ -26,7 +26,7 @@ const contactItems = [
     label: 'Our Location',
     value: 'ParkView Suites, Room 101',
     href: 'https://maps.google.com/?q=ParkView+Suites+Nyerere+Road+Nairobi',
-    color: '#0056A6',
+    color: '#25408F',
     sublabel: 'Nyerere Road, Nairobi | P.O Box 18895-00100',
   },
 ];
@@ -49,7 +49,7 @@ const ContactPreview: React.FC = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -4, boxShadow: '0 16px 40px -8px rgba(0,0,0,0.1)' }}
-              className="group flex items-center gap-5 p-6 rounded-2xl border border-slate-100 bg-white shadow-sm hover:border-[#0056A6]/20 transition-all duration-300 cursor-pointer"
+              className="group flex items-center gap-5 p-6 rounded-2xl border border-slate-100 bg-white shadow-sm hover:border-[#25408F]/20 transition-all duration-300 cursor-pointer"
             >
               {/* Icon */}
               <div
@@ -68,7 +68,7 @@ const ContactPreview: React.FC = () => {
                   className="font-bold text-slate-800 text-sm truncate group-hover:transition-colors duration-200"
                   style={{ ['--hover-color' as string]: color }}
                 >
-                  <span className="group-hover:text-[#0056A6] transition-colors duration-200">
+                  <span className="group-hover:text-[#25408F] transition-colors duration-200">
                     {value}
                   </span>
                 </p>

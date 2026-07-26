@@ -38,7 +38,7 @@ const CASE_STUDIES = [
     result: 'Brand reached 500K impressions in 90 days. 40% increase in sign-up conversion.',
     before: '3379934',
     after: '2873486',
-    color: '#0056A6',
+    color: '#25408F',
   },
   {
     brand: 'Nkosuo Farms',
@@ -56,7 +56,7 @@ const CASE_STUDIES = [
     result: '3 international stockists signed. Brand featured in Vogue Africa & Forbes.',
     before: '7034014',
     after: '7247399',
-    color: '#D72638',
+    color: '#D3232E',
   },
 ];
 
@@ -101,7 +101,7 @@ const BrandingPage: React.FC = () => {
           animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
           transition={{ repeat: Infinity, repeatType: 'reverse', duration: 8 }}
           className="absolute inset-0 opacity-30"
-          style={{ background: 'radial-gradient(ellipse at 20% 50%, #0056A6 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, #D72638 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse at 20% 50%, #25408F 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, #D3232E 0%, transparent 60%)' }}
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
@@ -120,7 +120,7 @@ const BrandingPage: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
             className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
           >
-            <Sparkles size={12} className="text-[#D72638]" />
+            <Sparkles size={12} className="text-[#D3232E]" />
             Imagination Made Tangible
           </motion.div>
 
@@ -128,7 +128,7 @@ const BrandingPage: React.FC = () => {
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
             className="text-6xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight mb-6"
           >
-            Branding &<br /><span className="text-[#D72638]">Creative</span> Media
+            Branding &<br /><span className="text-[#D3232E]">Creative</span> Media
           </motion.h1>
 
           <motion.p
@@ -169,10 +169,10 @@ const BrandingPage: React.FC = () => {
                   key={svc.title}
                   custom={i} variants={fadeUp} initial="hidden" animate={servicesInView ? 'visible' : 'hidden'}
                   whileHover={{ y: -5 }}
-                  className="group p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl hover:border-[#0056A6]/20 transition-all duration-300"
+                  className="group p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl hover:border-[#25408F]/20 transition-all duration-300"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#0056A6]/10 group-hover:bg-[#0056A6] flex items-center justify-center mb-5 transition-colors duration-300">
-                    <Icon size={24} className="text-[#0056A6] group-hover:text-white transition-colors duration-300" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#25408F]/10 group-hover:bg-[#25408F] flex items-center justify-center mb-5 transition-colors duration-300">
+                    <Icon size={24} className="text-[#25408F] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <h3 className="font-bold text-slate-900 text-xl mb-2">{svc.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{svc.desc}</p>
@@ -184,7 +184,7 @@ const BrandingPage: React.FC = () => {
       </section>
 
       {/* ── Brand Process ── */}
-      <section ref={processRef} className="py-24 bg-[#0056A6]">
+      <section ref={processRef} className="py-24 bg-[#25408F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={stagger} initial="hidden" animate={processInView ? 'visible' : 'hidden'} className="text-center mb-16">
             <motion.div variants={fadeUp}><SectionLabel label="Our Process" light center /></motion.div>
@@ -203,7 +203,7 @@ const BrandingPage: React.FC = () => {
                   custom={i} variants={fadeUp} initial="hidden" animate={processInView ? 'visible' : 'hidden'}
                   className="relative text-center"
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white text-[#0056A6] font-black text-xl mb-5 shadow-lg relative z-10">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white text-[#25408F] font-black text-xl mb-5 shadow-lg relative z-10">
                     {step.step}
                   </div>
                   <h3 className="font-bold text-white text-base mb-2">{step.title}</h3>
@@ -260,7 +260,7 @@ const BrandingPage: React.FC = () => {
                       <p className={`text-sm leading-relaxed ${i % 2 !== 0 ? 'text-white/80' : 'text-slate-600'}`}>{study.challenge}</p>
                     </div>
                     <div>
-                      <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${i % 2 !== 0 ? 'text-[#D72638]' : 'text-[#0056A6]'}`}>Results</p>
+                      <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${i % 2 !== 0 ? 'text-[#D3232E]' : 'text-[#25408F]'}`}>Results</p>
                       <p className={`text-sm leading-relaxed ${i % 2 !== 0 ? 'text-white/80' : 'text-slate-600'}`}>{study.result}</p>
                     </div>
                   </div>
@@ -316,7 +316,7 @@ const BrandingPage: React.FC = () => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionLabel label="Start Your Brand Journey" light center />
           <h2 className="mt-4 text-4xl font-black text-white">
-            Ready to Build Something <span className="text-[#D72638]">Iconic</span>?
+            Ready to Build Something <span className="text-[#D3232E]">Iconic</span>?
           </h2>
           <p className="mt-4 text-white/70 text-lg mb-10 max-w-2xl mx-auto">
             Whether you're launching a new brand or transforming an existing one, we have the strategy and creativity to make it exceptional.

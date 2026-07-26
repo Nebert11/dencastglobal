@@ -39,14 +39,14 @@ const SectionLabel: React.FC<SectionLabelProps> = ({
       {/* Eyebrow */}
       <div className={cn('flex items-center gap-2.5', center && 'justify-center')}>
         {/* Red dot */}
-        <span className="inline-block w-2 h-2 rounded-full bg-[#D72638] flex-shrink-0" />
+        <span className="inline-block w-2 h-2 rounded-full bg-[#D3232E] flex-shrink-0" />
         {/* Red accent line */}
-        <span className="inline-block w-8 h-0.5 bg-[#D72638] rounded-full flex-shrink-0" />
+        <span className="inline-block w-8 h-0.5 bg-[#D3232E] rounded-full flex-shrink-0" />
         {/* Label text */}
         <span
           className={cn(
             'text-xs font-bold tracking-[0.25em] uppercase',
-            light ? 'text-[#D72638]' : 'text-[#D72638]'
+            light ? 'text-[#D3232E]' : 'text-[#D3232E]'
           )}
         >
           {label}
@@ -58,7 +58,7 @@ const SectionLabel: React.FC<SectionLabelProps> = ({
         <p
           className={cn(
             'text-3xl sm:text-4xl font-black leading-tight tracking-tight',
-            light ? 'text-white' : 'text-[#0056A6]'
+            light ? 'text-white' : 'text-[#25408F]'
           )}
         >
           {subtitle}

@@ -153,7 +153,7 @@ const DEFAULTS: AboutForm = {
 function inputClass(error = false, textarea = false) {
   return cn(
     'w-full px-4 py-2.5 rounded-xl border text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors bg-gray-50',
-    'focus:bg-white focus:ring-2 focus:ring-[#0056A6]/30 focus:border-[#0056A6]',
+    'focus:bg-white focus:ring-2 focus:ring-[#25408F]/30 focus:border-[#25408F]',
     error ? 'border-red-400 bg-red-50' : 'border-gray-200',
     textarea && 'resize-vertical min-h-[90px]'
   );
@@ -446,7 +446,7 @@ export default function ManageAbout() {
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors disabled:opacity-70"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors disabled:opacity-70"
           >
             <Save size={16} /> {saving ? 'Saving...' : 'Save About Content'}
           </button>

@@ -92,7 +92,7 @@ const FloatingShape: React.FC<{
   delay?: number;
   color?: string;
   opacity?: number;
-}> = ({ size, top, left, right, delay = 0, color = '#0056A6', opacity = 0.15 }) => (
+}> = ({ size, top, left, right, delay = 0, color = '#25408F', opacity = 0.15 }) => (
   <motion.div
     className="absolute rounded-full pointer-events-none"
     style={{
@@ -123,6 +123,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
   const hero = { ...FALLBACK, ...data };
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const subRef = useRef<HTMLParagraphElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -144,15 +145,27 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
     );
   }, []);
 
+  // Ensure hero copy appears first, then start background video after 5 seconds.
+  useEffect(() => {
+    const timer = window.setTimeout(() => setVideoReady(true), 5000);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!videoReady || !videoRef.current) return;
+    videoRef.current.play().catch(() => {
+      // Autoplay can be blocked in some browsers; keep static hero background.
+    });
+  }, [videoReady]);
+
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#001a3a]">
       {/* ── Background Video ── */}
-      {!videoError && hero.background_video_url && (
+      {!videoError && videoReady && hero.background_video_url && (
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           src={hero.background_video_url}
-          autoPlay
           muted
           loop
           playsInline
@@ -161,7 +174,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
       )}
 
       {/* ── Gradient overlay ── */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#001a3a]/90 via-[#0056A6]/50 to-[#001a3a]/80 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#001a3a]/90 via-[#25408F]/50 to-[#001a3a]/80 z-10" />
 
       {/* ── Scan line texture ── */}
       <div
@@ -178,13 +191,13 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         className="absolute -right-32 top-0 w-[500px] h-full z-10 opacity-10 pointer-events-none"
         style={{
           background:
-            'linear-gradient(135deg, transparent 45%, #D72638 45%, #D72638 55%, transparent 55%)',
+            'linear-gradient(135deg, transparent 45%, #D3232E 45%, #D3232E 55%, transparent 55%)',
         }}
       />
 
       {/* ── Floating shapes ── */}
-      <FloatingShape size={400} top="-10%" right="-5%" delay={0} color="#0056A6" opacity={0.12} />
-      <FloatingShape size={250} top="60%" left="-5%" delay={2} color="#D72638" opacity={0.08} />
+      <FloatingShape size={400} top="-10%" right="-5%" delay={0} color="#25408F" opacity={0.12} />
+      <FloatingShape size={250} top="60%" left="-5%" delay={2} color="#D3232E" opacity={0.08} />
       <FloatingShape size={180} top="30%" right="10%" delay={1.5} color="#ffffff" opacity={0.05} />
 
       {/* ── Main content ── */}
@@ -197,11 +210,11 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-2.5 mb-6"
           >
-            <span className="flex h-2 w-2 rounded-full bg-[#D72638] animate-pulse" />
-            <span className="text-[#D72638] text-xs font-bold tracking-[0.3em] uppercase">
+            <span className="flex h-2 w-2 rounded-full bg-[#D3232E] animate-pulse" />
+            <span className="text-[#D3232E] text-xs font-bold tracking-[0.3em] uppercase">
               Dencast Global
             </span>
-            <span className="h-px w-12 bg-[#D72638]/60" />
+            <span className="h-px w-12 bg-[#D3232E]/60" />
           </motion.div>
 
           {/* Headline */}
@@ -210,7 +223,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
           {/* Subheadline */}
           <p
             ref={subRef}
-            className="mt-4 text-lg sm:text-xl lg:text-2xl font-semibold text-[#D72638] tracking-wide opacity-0"
+            className="mt-4 text-lg sm:text-xl lg:text-2xl font-semibold text-[#D3232E] tracking-wide opacity-0"
           >
             {hero.subheadline ?? 'Premium Creative Media & Film Production'}
           </p>

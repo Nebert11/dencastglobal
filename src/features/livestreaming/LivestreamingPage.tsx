@@ -39,7 +39,7 @@ const PLATFORMS = [
   { name: 'Zoom Webinar', color: '#2D8CFF', icon: Video },
   { name: 'MS Teams', color: '#6264A7', icon: MessageSquare },
   { name: 'Twitch', color: '#9146FF', icon: Radio },
-  { name: 'Custom RTMP', color: '#0056A6', icon: Wifi },
+  { name: 'Custom RTMP', color: '#25408F', icon: Wifi },
 ];
 
 const PAST_EVENTS = [
@@ -87,7 +87,7 @@ const LivestreamingPage: React.FC = () => {
         <div className="absolute top-32 left-1/2 -translate-x-1/2">
           <motion.div
             animate={{ opacity: [1, 0.4, 1] }} transition={{ repeat: Infinity, duration: 1.5 }}
-            className="flex items-center gap-2 bg-[#D72638] px-4 py-2 rounded-full"
+            className="flex items-center gap-2 bg-[#D3232E] px-4 py-2 rounded-full"
           >
             <span className="w-2 h-2 rounded-full bg-white" />
             <span className="text-white text-xs font-black uppercase tracking-widest">Live</span>
@@ -111,7 +111,7 @@ const LivestreamingPage: React.FC = () => {
             className="text-6xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight mb-6"
           >
             Live,{' '}
-            <span className="text-[#D72638]">Unfiltered</span>,<br />
+            <span className="text-[#D3232E]">Unfiltered</span>,<br />
             Unforgettable
           </motion.h1>
 
@@ -155,10 +155,10 @@ const LivestreamingPage: React.FC = () => {
                   key={type.title}
                   custom={i} variants={fadeUp} initial="hidden" animate={typesInView ? 'visible' : 'hidden'}
                   whileHover={{ y: -5 }}
-                  className="group p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0056A6]/20 transition-all duration-300 bg-white"
+                  className="group p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#25408F]/20 transition-all duration-300 bg-white"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#0056A6]/10 group-hover:bg-[#0056A6] flex items-center justify-center mb-5 transition-colors duration-300">
-                    <Icon size={24} className="text-[#0056A6] group-hover:text-white transition-colors duration-300" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#25408F]/10 group-hover:bg-[#25408F] flex items-center justify-center mb-5 transition-colors duration-300">
+                    <Icon size={24} className="text-[#25408F] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <h3 className="font-bold text-slate-900 text-xl mb-2">{type.title}</h3>
                   <p className="text-slate-500 leading-relaxed text-sm">{type.desc}</p>
@@ -178,7 +178,7 @@ const LivestreamingPage: React.FC = () => {
             >
               <motion.div variants={fadeUp}><SectionLabel label="Tech Specs" light /></motion.div>
               <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-white leading-tight">
-                Broadcast-Grade<br /><span className="text-[#D72638]">Technical Infrastructure</span>
+                Broadcast-Grade<br /><span className="text-[#D3232E]">Technical Infrastructure</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="mt-5 text-white/70 leading-relaxed">
                 We produce seamless virtual and hybrid experiences for conferences, corporate
@@ -216,7 +216,7 @@ const LivestreamingPage: React.FC = () => {
             >
               {TECH_SPECS.map(spec => (
                 <div key={spec.label} className="bg-white/5 rounded-xl p-5 border border-white/10">
-                  <p className="text-[#D72638] text-xs font-bold uppercase tracking-wider mb-1">{spec.label}</p>
+                  <p className="text-[#D3232E] text-xs font-bold uppercase tracking-wider mb-1">{spec.label}</p>
                   <p className="text-white font-bold text-lg">{spec.value}</p>
                 </div>
               ))}
@@ -260,7 +260,7 @@ const LivestreamingPage: React.FC = () => {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 bg-[#D72638]">
+      <section className="py-20 bg-[#D3232E]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div animate={{ opacity: [1, 0.6, 1] }} transition={{ repeat: Infinity, duration: 2 }}
             className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-6"

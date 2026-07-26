@@ -53,18 +53,18 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
     >
       {/* Icon */}
       {icon && (
-        <div className="mb-4 w-12 h-12 rounded-xl bg-[#0056A6]/10 flex items-center justify-center text-[#0056A6]">
+        <div className="mb-4 w-12 h-12 rounded-xl bg-[#25408F]/10 flex items-center justify-center text-[#25408F]">
           {icon}
         </div>
       )}
 
       {/* Number */}
       <div className="flex items-end gap-0.5 leading-none mb-2">
-        <span className="text-4xl sm:text-5xl font-black text-[#0056A6] tabular-nums">
+        <span className="text-4xl sm:text-5xl font-black text-[#25408F] tabular-nums">
           {currentValue.toLocaleString()}
         </span>
         {suffix && (
-          <span className="text-2xl sm:text-3xl font-black text-[#D72638] mb-0.5">
+          <span className="text-2xl sm:text-3xl font-black text-[#D3232E] mb-0.5">
             {suffix}
           </span>
         )}

@@ -30,9 +30,9 @@ export default function BackToTopButton() {
       aria-label="Back to top"
       className={[
         'fixed bottom-6 right-6 z-50 h-11 w-11 rounded-full',
-        'bg-[#0056A6] text-white shadow-lg shadow-black/20',
+        'bg-[#25408F] text-white shadow-lg shadow-black/20',
         'transition-all duration-300 hover:bg-[#004a8d] hover:-translate-y-0.5',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0056A6] focus-visible:ring-offset-2',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25408F] focus-visible:ring-offset-2',
         visible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
       ].join(' ')}
     >

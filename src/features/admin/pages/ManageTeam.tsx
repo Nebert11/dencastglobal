@@ -30,7 +30,7 @@ type TeamForm = z.infer<typeof schema>;
 function inputClass(error = false, textarea = false) {
   return cn(
     'w-full px-4 py-2.5 rounded-xl border text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors bg-gray-50',
-    'focus:bg-white focus:ring-2 focus:ring-[#0056A6]/30 focus:border-[#0056A6]',
+    'focus:bg-white focus:ring-2 focus:ring-[#25408F]/30 focus:border-[#25408F]',
     error ? 'border-red-400 bg-red-50' : 'border-gray-200',
     textarea && 'resize-vertical min-h-[80px]'
   );
@@ -159,11 +159,11 @@ function TeamModal({ open, onClose, editing, onSaved }: ModalProps) {
           </div>
           <div className="flex items-center gap-6">
             <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" {...register('is_leadership')} className="w-4 h-4 rounded accent-[#0056A6]" />
+              <input type="checkbox" {...register('is_leadership')} className="w-4 h-4 rounded accent-[#25408F]" />
               <span className="text-sm text-gray-700">Leadership team</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" {...register('is_active')} className="w-4 h-4 rounded accent-[#0056A6]" />
+              <input type="checkbox" {...register('is_active')} className="w-4 h-4 rounded accent-[#25408F]" />
               <span className="text-sm text-gray-700">Active</span>
             </label>
           </div>
@@ -171,7 +171,7 @@ function TeamModal({ open, onClose, editing, onSaved }: ModalProps) {
         <div className="flex justify-end gap-3 p-5 border-t border-gray-100">
           <button onClick={onClose} className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">Cancel</button>
           <button onClick={handleSubmit(onSubmit)} disabled={saving}
-            className="px-5 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors disabled:opacity-70">
+            className="px-5 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors disabled:opacity-70">
             {saving ? 'Saving…' : editing ? 'Update' : 'Add Member'}
           </button>
         </div>
@@ -189,7 +189,7 @@ function Toggle({ checked, onChange }: { checked: boolean; onChange: () => void 
       onClick={onChange}
       className={cn(
         'relative w-9 h-5 rounded-full transition-colors',
-        checked ? 'bg-[#0056A6]' : 'bg-gray-200'
+        checked ? 'bg-[#25408F]' : 'bg-gray-200'
       )}
     >
       <span className={cn(
@@ -243,7 +243,7 @@ export default function ManageTeam() {
           <p className="text-sm text-gray-500 mt-0.5">{members?.length ?? 0} members</p>
         </div>
         <button onClick={() => { setEditing(null); setModalOpen(true); }}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors">
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors">
           <Plus size={16} /> Add Member
         </button>
       </div>
@@ -274,7 +274,7 @@ export default function ManageTeam() {
                 {m.avatar_url ? (
                   <img src={m.avatar_url} alt={m.name} className="w-full h-full rounded-full object-cover" />
                 ) : (
-                  <div className="w-full h-full rounded-full bg-[#0056A6] flex items-center justify-center text-white text-lg font-bold">
+                  <div className="w-full h-full rounded-full bg-[#25408F] flex items-center justify-center text-white text-lg font-bold">
                     {initials(m.name)}
                   </div>
                 )}
@@ -297,11 +297,11 @@ export default function ManageTeam() {
               {/* Actions */}
               <div className="flex items-center justify-center gap-2 mt-3 pt-3 border-t border-gray-100">
                 <button onClick={() => { setEditing(m); setModalOpen(true); }}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-[#0056A6] hover:bg-blue-50 transition-colors">
+                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-[#25408F] hover:bg-blue-50 transition-colors">
                   <Pencil size={13} /> Edit
                 </button>
                 <button onClick={() => handleDelete(m)}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-[#D72638] hover:bg-red-50 transition-colors">
+                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-[#D3232E] hover:bg-red-50 transition-colors">
                   <Trash2 size={13} /> Remove
                 </button>
               </div>

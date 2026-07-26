@@ -124,13 +124,13 @@ function Sidebar({ collapsed, onClose, mobile, unreadCount, userName, userRole, 
         'flex items-center gap-3 px-5 py-5 border-b border-white/10 flex-shrink-0',
         collapsed && !mobile && 'px-4 justify-center'
       )}>
-        <div className="w-8 h-8 rounded-lg bg-[#0056A6] flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-[#25408F] flex items-center justify-center flex-shrink-0">
           <Shield size={18} className="text-white" />
         </div>
         {(!collapsed || mobile) && (
           <div className="min-w-0">
             <p className="text-sm font-bold tracking-wider text-white truncate">DENCAST GLOBAL</p>
-            <span className="inline-block mt-0.5 text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#D72638] text-white leading-tight">
+            <span className="inline-block mt-0.5 text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#D3232E] text-white leading-tight">
               ADMIN
             </span>
           </div>
@@ -162,7 +162,7 @@ function Sidebar({ collapsed, onClose, mobile, unreadCount, userName, userRole, 
                         'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all group relative',
                         collapsed && !mobile ? 'justify-center px-0' : '',
                         isActive
-                          ? 'bg-[#0056A6] text-white font-semibold'
+                          ? 'bg-[#25408F] text-white font-semibold'
                           : 'text-gray-400 hover:text-white hover:bg-white/8'
                       )
                     }
@@ -173,14 +173,14 @@ function Sidebar({ collapsed, onClose, mobile, unreadCount, userName, userRole, 
                       <>
                         <span className="truncate">{item.label}</span>
                         {item.badge !== undefined && item.badge > 0 && (
-                          <span className="ml-auto flex-shrink-0 text-[10px] font-bold bg-[#D72638] text-white rounded-full w-5 h-5 flex items-center justify-center">
+                          <span className="ml-auto flex-shrink-0 text-[10px] font-bold bg-[#D3232E] text-white rounded-full w-5 h-5 flex items-center justify-center">
                             {item.badge > 99 ? '99+' : item.badge}
                           </span>
                         )}
                       </>
                     )}
                     {collapsed && !mobile && item.badge !== undefined && item.badge > 0 && (
-                      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#D72638] rounded-full" />
+                      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#D3232E] rounded-full" />
                     )}
                   </NavLink>
                 </li>
@@ -205,7 +205,7 @@ function Sidebar({ collapsed, onClose, mobile, unreadCount, userName, userRole, 
           </button>
         ) : (
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#0056A6] flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">
+            <div className="w-9 h-9 rounded-full bg-[#25408F] flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">
               {userName.charAt(0).toUpperCase()}
             </div>
             <div className="min-w-0 flex-1">
@@ -321,7 +321,7 @@ export default function AdminLayout() {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-4 border-[#0056A6] border-t-transparent rounded-full animate-spin" />
+          <div className="w-10 h-10 border-4 border-[#25408F] border-t-transparent rounded-full animate-spin" />
           <p className="text-gray-500 text-sm">Loading admin panel…</p>
         </div>
       </div>
@@ -404,7 +404,7 @@ export default function AdminLayout() {
           <button className="relative w-9 h-9 flex items-center justify-center rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors">
             <Bell size={19} />
             {unreadCount > 0 && (
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#D72638] rounded-full" />
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#D3232E] rounded-full" />
             )}
           </button>
 
@@ -414,7 +414,7 @@ export default function AdminLayout() {
               onClick={() => setUserMenuOpen((o) => !o)}
               className="flex items-center gap-2 rounded-lg hover:bg-gray-100 p-1.5 transition-colors"
             >
-              <div className="w-8 h-8 rounded-full bg-[#0056A6] flex items-center justify-center text-white font-bold text-sm">
+              <div className="w-8 h-8 rounded-full bg-[#25408F] flex items-center justify-center text-white font-bold text-sm">
                 {userName.charAt(0).toUpperCase()}
               </div>
               <div className="hidden sm:block text-left">

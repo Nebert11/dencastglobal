@@ -45,6 +45,21 @@ const PORTFOLIO_VIDEO_LINKS = [
   { title: 'RHNK Pan-African Conference 2026 ', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
 ];
 
+const toYoutubeEmbedUrl = (url: string) => {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes('youtu.be')) {
+      const id = parsed.pathname.replace('/', '').trim();
+      return id ? `https://www.youtube.com/embed/${id}` : url;
+    }
+
+    const id = parsed.searchParams.get('v');
+    return id ? `https://www.youtube.com/embed/${id}` : url;
+  } catch {
+    return url;
+  }
+};
+
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
   { id: '1', slug: 'voices-of-the-nile', title: 'Sasini Annual Report', category: 'Corporate', image: sasiniConference, featured: true },
   { id: '2', slug: 'mtn-brand-relaunch', title: 'The Amakowe Wala Show', category: 'Streaming', image: amakowe },
@@ -87,7 +102,7 @@ const HeroBanner: React.FC = () => (
           style={{ backgroundImage: 'url(/dencast_images/portfolio.png)' }}
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-[#0056A6]/65" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[#25408F]/65" aria-hidden="true" />
 
     {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-28">
       <motion.nav
@@ -103,7 +118,7 @@ const HeroBanner: React.FC = () => (
         initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
         className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tight mb-6"
       >
-        Our <span className="text-[#D72638]">Portfolio</span>
+        Our <span className="text-[#D3232E]">Portfolio</span>
       </motion.h1>
 
       <motion.p
@@ -160,21 +175,26 @@ const PortfolioPage: React.FC = () => {
       <section className="py-12 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionLabel label="Featured Videos" />
-          <h2 className="mt-3 text-2xl sm:text-3xl font-black text-slate-900">Portfolio - Some of our best</h2>
+          <h2 className="mt-3 text-2xl sm:text-3xl font-black text-slate-900">Portfolio - Featured Videos</h2>
           <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PORTFOLIO_VIDEO_LINKS.map((video) => (
-              <a
+              <article
                 key={video.url}
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 hover:border-[#0056A6]/40 hover:bg-[#0056A6]/5 transition-all duration-300"
+                className="rounded-xl border border-slate-200 bg-slate-50 p-3 hover:border-[#25408F]/40 hover:bg-[#25408F]/5 transition-all duration-300"
               >
-                <span className="text-sm font-semibold text-slate-700 group-hover:text-[#0056A6] transition-colors">
-                  {video.title}
-                </span>
-                <ChevronRight size={16} className="text-[#D72638] flex-shrink-0" />
-              </a>
+                <div className="aspect-video overflow-hidden rounded-lg bg-black">
+                  <iframe
+                    src={toYoutubeEmbedUrl(video.url)}
+                    title={video.title}
+                    className="w-full h-full"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+                <p className="mt-3 text-sm font-semibold text-slate-700">{video.title}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -193,7 +213,7 @@ const PortfolioPage: React.FC = () => {
                   onClick={() => handleCategoryChange(cat)}
                   className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                     activeCategory === cat
-                      ? 'bg-[#0056A6] text-white shadow-md shadow-[#0056A6]/25'
+                      ? 'bg-[#25408F] text-white shadow-md shadow-[#25408F]/25'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
@@ -210,7 +230,7 @@ const PortfolioPage: React.FC = () => {
                 value={searchQuery}
                 onChange={e => { setSearchQuery(e.target.value); setPage(1); }}
                 placeholder="Search projects..."
-                className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#0056A6] focus:ring-1 focus:ring-[#0056A6] transition-colors"
+                className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#25408F] focus:ring-1 focus:ring-[#25408F] transition-colors"
               />
             </div>
           </div>
@@ -218,7 +238,7 @@ const PortfolioPage: React.FC = () => {
           {/* Results count */}
           <p className="mt-3 text-sm text-slate-500">
             Showing <span className="font-semibold text-slate-700">{filtered.length}</span> project{filtered.length !== 1 ? 's' : ''}
-            {activeCategory !== 'All' && <> in <span className="text-[#0056A6] font-semibold">{activeCategory}</span></>}
+            {activeCategory !== 'All' && <> in <span className="text-[#25408F] font-semibold">{activeCategory}</span></>}
           </p>
         </div>
       </section>
@@ -238,7 +258,7 @@ const PortfolioPage: React.FC = () => {
                 <p className="text-slate-500">Try adjusting your search or filter criteria.</p>
                 <button
                   onClick={() => { setActiveCategory('All'); setSearchQuery(''); }}
-                  className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-[#0056A6] text-white rounded-lg text-sm font-semibold hover:bg-[#004a8f] transition-colors"
+                  className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-[#25408F] text-white rounded-lg text-sm font-semibold hover:bg-[#1f3576] transition-colors"
                 >
                   Clear Filters
                 </button>
@@ -294,7 +314,7 @@ const PortfolioPage: React.FC = () => {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 bg-[#0056A6]">
+      <section className="py-20 bg-[#25408F]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionLabel label="Work With Us" light center />
           <h2 className="mt-4 text-4xl font-black text-white">

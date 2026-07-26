@@ -50,7 +50,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           <p className="text-white/70 text-sm leading-relaxed flex-1">{description}</p>
 
           {/* Arrow */}
-          <div className="flex items-center gap-1.5 text-[#D72638] text-sm font-semibold">
+          <div className="flex items-center gap-1.5 text-[#D3232E] text-sm font-semibold">
             Learn more
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
           </div>
@@ -67,7 +67,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         className={cn(
           'relative flex flex-col gap-4 p-6 rounded-2xl overflow-hidden border border-slate-100 shadow-sm',
           'bg-white',
-          'group-hover:bg-[#0056A6] group-hover:border-[#0056A6] group-hover:shadow-xl group-hover:shadow-[#0056A6]/20',
+          'group-hover:bg-[#25408F] group-hover:border-[#25408F] group-hover:shadow-xl group-hover:shadow-[#25408F]/20',
           'transition-all duration-300',
           className
         )}
@@ -76,7 +76,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <div
           className={cn(
             'w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300',
-            'bg-[#0056A6]/10 text-[#0056A6]',
+            'bg-[#25408F]/10 text-[#25408F]',
             'group-hover:bg-white/15 group-hover:text-white'
           )}
         >
@@ -109,8 +109,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <div
           className={cn(
             'flex items-center gap-1.5 text-sm font-semibold transition-colors duration-300',
-            'text-[#0056A6]',
-            'group-hover:text-[#D72638]'
+            'text-[#25408F]',
+            'group-hover:text-[#D3232E]'
           )}
         >
           Learn more
@@ -118,15 +118,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             size={14}
             className={cn(
               'transition-all duration-200',
-              'text-[#D72638]',
-              'group-hover:translate-x-1 group-hover:text-[#D72638]'
+              'text-[#D3232E]',
+              'group-hover:translate-x-1 group-hover:text-[#D3232E]'
             )}
           />
         </div>
 
         {/* Decorative corner accent */}
         <span
-          className="absolute top-0 right-0 w-16 h-16 rounded-bl-3xl rounded-tr-2xl bg-gradient-to-br from-[#D72638]/0 to-[#D72638]/0 group-hover:from-white/5 group-hover:to-white/10 transition-all duration-300 pointer-events-none"
+          className="absolute top-0 right-0 w-16 h-16 rounded-bl-3xl rounded-tr-2xl bg-gradient-to-br from-[#D3232E]/0 to-[#D3232E]/0 group-hover:from-white/5 group-hover:to-white/10 transition-all duration-300 pointer-events-none"
           aria-hidden
         />
       </motion.article>

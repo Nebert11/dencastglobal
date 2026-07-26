@@ -8,135 +8,7 @@ import Button from '@/components/ui/Button';
 import BlogCard from '@/components/ui/BlogCard';
 import { SITE_NAME } from '@/utils/constants';
 import { subscribeNewsletter } from '@/services/supabase.service';
-
-// ─── Static articles ──────────────────────────────────────────────────────────
-
-
-const CATEGORIES = ['All', 'Documentary', 'Branding', 'Technology', 'Events', 'Industry', 'Behind the Scenes'];
-
-const PEXELS_IDS = ['3379934', '/dencast_images/Dencast-Crew-11.jpg', '/dencast_images/Drone%20.jpg', '/dencast_images/9.png', '/dencast_images/DSC_5424-scaled.jpg', '/dencast_images/team.jpg', '/dencast_images/event1.jpg', '/dencast_images/amakowe.jpg', '/dencast_images/Virtual-livestreaming-scaled.jpg'];
-
-const getCoverImage = (imageId: string) => (
-  imageId.startsWith('/')
-    ? imageId
-    : `https://images.pexels.com/photos/${imageId}/pexels-photo-${imageId}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`
-);
-
-interface Article {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  author: string;
-  date: string;
-  readTime: string;
-  imageId: string;
-  featured?: boolean;
-}
-
-const ARTICLES: Article[] = [
-  {
-    id: '1',
-    slug: 'future-of-african-documentary-2024',
-    title: 'Capturing the Room and the Stream: Lessons from a High-Stakes Conference Panel in Nairobi',
-    excerpt: 'A packed panel at the African Development Bank Annual Meetings in Nairobi shows why modern event coverage is no longer just about recording a stage. It is about building a broadcast-ready experience that works for delegates in the room and viewers online.',
-    category: 'Events',
-    author: 'Dennis Machio',
-    date: '2024-05-15',
-    readTime: '8 min read',
-    imageId: PEXELS_IDS[3],
-    featured: true,
-  },
-  {
-    id: '2',
-    slug: 'brand-identity-guide-african-startups',
-    title: 'A Complete Brand Identity Guide for African Startups',
-    excerpt: 'Why your startup needs a cohesive brand identity from day one, and how to build one without breaking the bank. A practical guide from our brand strategy team.',
-    category: 'Branding',
-    author: 'Austin Lengala',
-    date: '2024-05-08',
-    readTime: '6 min read',
-    imageId: PEXELS_IDS[1],
-  },
-  {
-    id: '3',
-    slug: 'drone-cinematography-regulations-africa',
-    title: 'Drone Cinematography: Navigating Regulations Across Africa',
-    excerpt: 'From Ghana to Kenya, drone regulations vary dramatically. Our licensed aerial team breaks down what filmmakers and brands need to know before flying.',
-    category: 'Technology',
-    author: 'Joseph Kabogo',
-    date: '2024-04-30',
-    readTime: '5 min read',
-    imageId: PEXELS_IDS[2],
-  },
-  {
-    id: '4',
-    slug: 'hybrid-events-production-guide',
-    title: 'The Ultimate Guide to Hybrid Event Production in 2024',
-    excerpt: 'In-person meets digital: how to produce events that deliver an exceptional experience for both your room audience and your global online viewers simultaneously.',
-    category: 'Events',
-    author: 'Dennis Machio',
-    date: '2024-04-22',
-    readTime: '10 min read',
-    imageId: PEXELS_IDS[3],
-  },
-  {
-    id: '5',
-    slug: 'storytelling-commercial-video-roi',
-    title: 'How Storytelling Increases Commercial Video ROI by 300%',
-    excerpt: 'The data is clear: brands that lead with authentic narrative outperform product-first advertisers across every metric. Here\'s the science and strategy behind it.',
-    category: 'Industry',
-    author: 'Emilly Karanja',
-    date: '2024-04-15',
-    readTime: '7 min read',
-    imageId: PEXELS_IDS[4],
-  },
-  {
-    id: '6',
-    slug: 'behind-the-lens-voices-of-the-nile',
-    title: 'Behind the Lens: Making Voices of the Nile',
-    excerpt: 'Director Dennis Machio shares the six-month journey of embedding with Nile communities — the trust built, the challenges faced, and the moments that changed everything.',
-    category: 'Behind the Scenes',
-    author: 'Dennis Machio',
-    date: '2024-04-08',
-    readTime: '12 min read',
-    imageId: PEXELS_IDS[5],
-  },
-  {
-    id: '7',
-    slug: 'capturing-room-stream-nairobi',
-    title: 'Capturing the Room and the Stream: Lessons from a High-Stakes Conference Panel in Nairobi',
-    excerpt: 'A packed panel at the African Development Bank Annual Meetings in Nairobi shows why modern event coverage is no longer just about recording a stage. It is about building a broadcast-ready experience that works for delegates in the room and viewers online.',
-    category: 'Technology',
-    author: 'Joseph Kabogo',
-    date: '2024-03-28',
-    readTime: '6 min read',
-    imageId: PEXELS_IDS[6],
-  },
-  {
-    id: '8',
-    slug: 'building-pan-african-brand-voice',
-    title: 'Building a Pan-African Brand Voice That Resonates Everywhere',
-    excerpt: 'A brand voice that works in Lagos may fall flat in Nairobi. Our strategy team shares the framework for developing messaging that resonates across diverse African markets.',
-    category: 'Branding',
-    author: 'Austin Lengala',
-    date: '2024-03-20',
-    readTime: '9 min read',
-    imageId: PEXELS_IDS[7],
-  },
-  {
-    id: '9',
-    slug: 'social-media-video-trends-2024',
-    title: 'Social Media Video Trends to Watch in the Second Half of 2024',
-    excerpt: 'From vertical long-form to AI-enhanced B-roll — our digital content team identifies the formats and strategies that are driving the highest organic reach on every platform.',
-    category: 'Industry',
-    author: 'Emilly Karanja',
-    date: '2024-03-12',
-    readTime: '5 min read',
-    imageId: PEXELS_IDS[8],
-  },
-];
+import { BLOG_ARTICLES, BLOG_CATEGORIES } from './articlesData';
 
 const PAGE_SIZE = 6;
 
@@ -164,7 +36,7 @@ const NewsletterBlock: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0056A6] rounded-2xl p-8">
+    <div className="bg-[#25408F] rounded-2xl p-8">
       <div className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-xl mb-4">
         <Mail size={22} className="text-white" />
       </div>
@@ -198,7 +70,7 @@ const NewsletterBlock: React.FC = () => {
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[#D72638] hover:bg-[#b01e2e] text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-60"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[#D3232E] hover:bg-[#b71d27] text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-60"
           >
             <Send size={14} />
             {status === 'loading' ? 'Subscribing...' : 'Subscribe Now'}
@@ -221,8 +93,8 @@ const BlogPage: React.FC = () => {
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: '-60px' });
 
-  const featured = ARTICLES.find(a => a.featured);
-  const regular = ARTICLES.filter(a => !a.featured);
+  const featured = BLOG_ARTICLES.find(a => a.featured);
+  const regular = BLOG_ARTICLES.filter(a => !a.featured);
 
   const filtered = useMemo(() => {
     let items = regular;
@@ -256,13 +128,13 @@ const BlogPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0056A6] overflow-hidden">
+      <section className="relative min-h-[55vh] flex items-center justify-center bg-[#25408F] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/dencast_images/stories.png)' }}
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-[#0056A6]/65" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[#25408F]/65" aria-hidden="true" />
         {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.nav
             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -277,7 +149,7 @@ const BlogPage: React.FC = () => {
             className="text-5xl sm:text-6xl font-black text-white"
           >
             Stories &{' '}
-            <span className="text-[#D72638]">Insights</span>
+            <span className="text-[#D3232E]">Insights</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
@@ -304,21 +176,21 @@ const BlogPage: React.FC = () => {
             >
               <Link to={`/blog/${featured.slug}`} className="block relative aspect-[4/3] lg:aspect-auto overflow-hidden">
                 <img
-                  src={getCoverImage(featured.imageId)}
+                  src={featured.coverImage}
                   alt={featured.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
-                <span className="absolute top-4 left-4 px-3 py-1 bg-[#D72638] text-white text-xs font-bold uppercase tracking-widest rounded-md">
+                <span className="absolute top-4 left-4 px-3 py-1 bg-[#D3232E] text-white text-xs font-bold uppercase tracking-widest rounded-md">
                   Featured
                 </span>
               </Link>
               <div className="p-10 lg:p-14 flex flex-col justify-center">
-                <span className="inline-block px-3 py-1 bg-[#0056A6]/10 text-[#0056A6] text-xs font-bold uppercase tracking-wider rounded-full mb-4 w-fit">
+                <span className="inline-block px-3 py-1 bg-[#25408F]/10 text-[#25408F] text-xs font-bold uppercase tracking-wider rounded-full mb-4 w-fit">
                   {featured.category}
                 </span>
                 <Link to={`/blog/${featured.slug}`}>
-                  <h2 className="text-3xl sm:text-4xl font-black text-slate-900 leading-tight hover:text-[#0056A6] transition-colors mb-4">
+                  <h2 className="text-3xl sm:text-4xl font-black text-slate-900 leading-tight hover:text-[#25408F] transition-colors mb-4">
                     {featured.title}
                   </h2>
                 </Link>
@@ -345,13 +217,13 @@ const BlogPage: React.FC = () => {
       <section className="py-6 bg-slate-50 border-y border-slate-100 sticky top-16 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
           <div className="flex items-center gap-2 flex-wrap">
-            {CATEGORIES.map(cat => (
+            {BLOG_CATEGORIES.map(cat => (
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
                 className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                   activeCategory === cat
-                    ? 'bg-[#0056A6] text-white shadow-md'
+                    ? 'bg-[#25408F] text-white shadow-md'
                     : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
                 }`}
               >
@@ -366,7 +238,7 @@ const BlogPage: React.FC = () => {
               value={searchQuery}
               onChange={e => { setSearchQuery(e.target.value); setPage(1); }}
               placeholder="Search articles..."
-              className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#0056A6] focus:ring-1 focus:ring-[#0056A6] transition-colors"
+              className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#25408F] focus:ring-1 focus:ring-[#25408F] transition-colors"
             />
           </div>
         </div>
@@ -388,7 +260,7 @@ const BlogPage: React.FC = () => {
                   <p className="text-slate-500">Try adjusting your search or category filter.</p>
                   <button
                     onClick={() => { setActiveCategory('All'); setSearchQuery(''); }}
-                    className="mt-6 px-5 py-2.5 bg-[#0056A6] text-white rounded-lg text-sm font-semibold hover:bg-[#004a8f] transition-colors"
+                    className="mt-6 px-5 py-2.5 bg-[#25408F] text-white rounded-lg text-sm font-semibold hover:bg-[#1f3576] transition-colors"
                   >
                     Clear Filters
                   </button>
@@ -404,7 +276,7 @@ const BlogPage: React.FC = () => {
                         title={article.title}
                         excerpt={article.excerpt}
                         category={article.category}
-                        coverImage={getCoverImage(article.imageId)}
+                        coverImage={article.coverImage}
                         slug={article.slug}
                         author={article.author}
                         date={article.date}
@@ -449,7 +321,7 @@ const BlogPage: React.FC = () => {
               <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
                 <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-4">Browse Topics</h3>
                 <ul className="space-y-2">
-                  {CATEGORIES.filter(c => c !== 'All').map(cat => {
+                  {BLOG_CATEGORIES.filter(c => c !== 'All').map(cat => {
                     const count = regular.filter(a => a.category === cat).length;
                     return (
                       <li key={cat}>
@@ -457,7 +329,7 @@ const BlogPage: React.FC = () => {
                           onClick={() => handleCategoryChange(cat)}
                           className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
                             activeCategory === cat
-                              ? 'bg-[#0056A6] text-white font-semibold'
+                              ? 'bg-[#25408F] text-white font-semibold'
                               : 'text-slate-600 hover:bg-slate-200'
                           }`}
                         >
@@ -476,17 +348,17 @@ const BlogPage: React.FC = () => {
               <div className="bg-white rounded-2xl p-6 border border-slate-100">
                 <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-4">Popular Posts</h3>
                 <div className="space-y-4">
-                  {ARTICLES.slice(0, 4).map(a => (
+                  {BLOG_ARTICLES.slice(0, 4).map(a => (
                     <Link key={a.id} to={`/blog/${a.slug}`} className="flex items-start gap-3 group">
                       <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
                         <img
-                          src={getCoverImage(a.imageId)}
+                          src={a.coverImage}
                           alt={a.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-slate-800 text-sm font-semibold leading-snug line-clamp-2 group-hover:text-[#0056A6] transition-colors">{a.title}</p>
+                        <p className="text-slate-800 text-sm font-semibold leading-snug line-clamp-2 group-hover:text-[#25408F] transition-colors">{a.title}</p>
                         <p className="text-slate-400 text-xs mt-1">{a.readTime}</p>
                       </div>
                     </Link>

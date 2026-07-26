@@ -79,7 +79,7 @@ const DocumentaryPage: React.FC = () => {
 
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-            className="text-[#D72638] font-bold uppercase tracking-widest text-sm mb-4"
+            className="text-[#D3232E] font-bold uppercase tracking-widest text-sm mb-4"
           >
             Stories that move the world
           </motion.p>
@@ -89,7 +89,7 @@ const DocumentaryPage: React.FC = () => {
             className="text-6xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight mb-8"
           >
             Documentary<br />
-            <span className="text-[#D72638]">Production</span>
+            <span className="text-[#D3232E]">Production</span>
           </motion.h1>
 
           <motion.p
@@ -138,7 +138,7 @@ const DocumentaryPage: React.FC = () => {
             >
               <motion.div variants={fadeUp}><SectionLabel label="Our Philosophy" /></motion.div>
               <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
-                The Power of Documentary <span className="text-[#0056A6]">Storytelling</span>
+                The Power of Documentary <span className="text-[#25408F]">Storytelling</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="mt-5 text-slate-600 text-lg leading-relaxed">
                 A great documentary doesn't just document reality — it illuminates hidden truths, challenges assumptions, and moves audiences from passive witnesses to active participants in the stories that shape our world.
@@ -154,8 +154,8 @@ const DocumentaryPage: React.FC = () => {
                   { icon: Users, val: '50M+', lbl: 'Lives Touched' },
                 ].map(({ icon: Icon, val, lbl }) => (
                   <div key={lbl} className="text-center p-4 bg-slate-50 rounded-xl border border-slate-100">
-                    <Icon size={20} className="text-[#D72638] mx-auto mb-2" />
-                    <p className="text-2xl font-black text-[#0056A6]">{val}</p>
+                    <Icon size={20} className="text-[#D3232E] mx-auto mb-2" />
+                    <p className="text-2xl font-black text-[#25408F]">{val}</p>
                     <p className="text-xs text-slate-500 mt-0.5">{lbl}</p>
                   </div>
                 ))}
@@ -174,7 +174,7 @@ const DocumentaryPage: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-[#D72638] rounded-2xl p-6 text-white shadow-xl">
+              <div className="absolute -bottom-6 -left-6 bg-[#D3232E] rounded-2xl p-6 text-white shadow-xl">
                 <p className="text-3xl font-black">30+</p>
                 <p className="text-sm font-semibold mt-0.5 opacity-90">Documentaries<br />Produced</p>
               </div>
@@ -192,7 +192,7 @@ const DocumentaryPage: React.FC = () => {
           >
             <motion.div variants={fadeUp}><SectionLabel label="Production Process" light center /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-white">
-              Six Stages to a<br /><span className="text-[#D72638]">Masterpiece</span>
+              Six Stages to a<br /><span className="text-[#D3232E]">Masterpiece</span>
             </motion.h2>
           </motion.div>
 
@@ -204,12 +204,12 @@ const DocumentaryPage: React.FC = () => {
                   key={step.step}
                   custom={i} variants={fadeUp} initial="hidden" animate={processInView ? 'visible' : 'hidden'}
                   whileHover={{ y: -4 }}
-                  className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#D72638]/40 transition-colors duration-300"
+                  className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#D3232E]/40 transition-colors duration-300"
                 >
                   <div className="flex items-start gap-4 mb-5">
                     <span className="text-5xl font-black text-white/10 leading-none">{step.step}</span>
-                    <div className="w-12 h-12 rounded-xl bg-[#D72638]/20 flex items-center justify-center flex-shrink-0">
-                      <Icon size={20} className="text-[#D72638]" />
+                    <div className="w-12 h-12 rounded-xl bg-[#D3232E]/20 flex items-center justify-center flex-shrink-0">
+                      <Icon size={20} className="text-[#D3232E]" />
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-xl mb-3">{step.title}</h3>
@@ -251,8 +251,8 @@ const DocumentaryPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-[#0056A6] p-10 flex flex-col justify-center">
-              <span className="text-[#D72638] text-xs font-bold uppercase tracking-widest mb-3">Featured Documentary</span>
+            <div className="bg-[#25408F] p-10 flex flex-col justify-center">
+              <span className="text-[#D3232E] text-xs font-bold uppercase tracking-widest mb-3">Featured Documentary</span>
               <h3 className="text-3xl font-black text-white mb-4">Voices of the Nile</h3>
               <p className="text-white/80 leading-relaxed mb-6">
                 A cinematic journey through the lives of communities who depend on the Nile — from the Ethiopian highlands to the Egyptian delta. This feature documentary sparked two parliamentary debates and reached 2.3 million viewers in its first 90 days.
@@ -295,11 +295,11 @@ const DocumentaryPage: React.FC = () => {
                 custom={i} variants={fadeUp} initial="hidden" animate={equipInView ? 'visible' : 'hidden'}
                 className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm"
               >
-                <h3 className="font-bold text-[#0056A6] text-sm uppercase tracking-wider mb-4">{cat.category}</h3>
+                <h3 className="font-bold text-[#25408F] text-sm uppercase tracking-wider mb-4">{cat.category}</h3>
                 <ul className="space-y-2.5">
                   {cat.items.map(item => (
                     <li key={item} className="flex items-start gap-2 text-sm text-slate-600">
-                      <CheckCircle2 size={14} className="text-[#D72638] mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 size={14} className="text-[#D3232E] mt-0.5 flex-shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -311,7 +311,7 @@ const DocumentaryPage: React.FC = () => {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-[#001f3f] to-[#0056A6] relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-slate-900 via-[#001f3f] to-[#25408F] relative overflow-hidden">
         <div className="absolute inset-0 opacity-5"
           style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}
         />

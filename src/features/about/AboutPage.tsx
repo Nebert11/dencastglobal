@@ -26,7 +26,10 @@ import {
 import type { Client, SiteSettings } from '@/types';
 
 import backgroundImage from '/dencast_images/about_dencast.png';
-import teamImage from '/dencast_images/9-scaled.jpg';
+import storyImage from '/dencast_images/Dencast-Crew-27.jpg';
+import teamLeadImage from '/dencast_images/Machio-CEO.png';
+import teamMemberOneImage from '/dencast_images/Allan-Odera.jpg';
+import teamMemberTwoImage from '/dencast_images/Valentino-Macharia.jpg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -142,7 +145,7 @@ const DEFAULT_CONTENT: AboutContent = {
   missionTitle: 'Shaping Brands. Telling Stories. Inspiring Audiences.',
   missionBody:
     'Dencast Global Limited is a leading production and creative agency founded in 2015. We specialize in developing meticulously crafted media products and end-to-end production services across branding experiences, digital content, commercials, niche cinematography, corporate productions, social media campaigns, and docu-style marketing.\n\nOur Vision: To be global pacesetters in cinematographic works.\n\nOur Mission: To use technology, superior equipment, and innovation through creative efforts to provide inimitable communication, marketing, and digital solutions for all our clients.',
-  storyImageUrl: teamImage,
+  storyImageUrl: storyImage,
   storyTitle: 'About Dencast Global',
   storyBody:
     'At Dencast Global, every project is more than a deliverable. It is a story, a vision, and a brand brought vividly to life. By combining creativity, technology, and strategy, we provide communication and knowledge-management solutions that connect with audiences and deliver measurable impact.\n\nOur creative consultants, communication strategists, copywriters, photographers, videographers, event managers, and printers work in synergy to ensure your brand, your story, and your vision shine across every platform.\n\nFrom concept to execution, our people transform ideas into powerful experiences that help your story not just be told, but truly stand out.',
@@ -161,6 +164,30 @@ const DEFAULT_CONTENT: AboutContent = {
   ctaBody:
     "Whether you are building a brand, launching a campaign, or producing a signature event, Dencast Global is ready to bring your vision to life.",
 };
+
+const JOURNEY_IMAGES = [
+  '/dencast_images/13.jpg',
+  '/dencast_images/15.jpg',
+  '/dencast_images/16.jpg',
+];
+
+const TEAM_MEMBERS = [
+  {
+    name: 'Dennis Machio',
+    role: 'Producer & Lead Director',
+    image: teamLeadImage,
+  },
+  {
+    name: 'Allan Odera',
+    role: 'Creative Production',
+    image: teamMemberOneImage,
+  },
+  {
+    name: 'Valentino Macharia',
+    role: 'Visual Storytelling',
+    image: teamMemberTwoImage,
+  },
+];
 
 function parseJsonArray<T>(value: unknown, fallback: T[]): T[] {
   if (typeof value !== 'string' || !value.trim()) return fallback;
@@ -192,7 +219,7 @@ const HeroBanner: React.FC<{ content: AboutContent }> = ({ content }) => (
       style={{ backgroundImage: `url(${content.heroBackgroundImageUrl})` }}
       aria-hidden="true"
     />
-    <div className="absolute inset-0 bg-[#0056A6]/65" aria-hidden="true" />
+    <div className="absolute inset-0 bg-[#25408F]/65" aria-hidden="true" />
     <div
       className="absolute inset-0 opacity-10"
       style={{
@@ -201,7 +228,7 @@ const HeroBanner: React.FC<{ content: AboutContent }> = ({ content }) => (
         backgroundSize: '60px 60px',
       }}
     />
-    <div className="absolute bottom-0 right-0 w-1/3 h-full bg-[#D72638]/15 clip-diagonal pointer-events-none" />
+    <div className="absolute bottom-0 right-0 w-1/3 h-full bg-[#D3232E]/15 clip-diagonal pointer-events-none" />
 
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-28">
       {/* <motion.nav
@@ -307,7 +334,7 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/10" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#0056A6]/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#25408F]/30 to-transparent" />
             </div>
           </motion.div>
 
@@ -376,10 +403,10 @@ const CoreValuesSection: React.FC<{ content: AboutContent }> = ({ content }) => 
                 initial="hidden"
                 animate={inView ? 'visible' : 'hidden'}
                 whileHover={{ y: -6 }}
-                className="group p-8 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-xl hover:border-[#0056A6]/20 hover:bg-[#0056A6]/[0.02] transition-all duration-300"
+                className="group p-8 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-xl hover:border-[#25408F]/20 hover:bg-[#25408F]/[0.02] transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#0056A6]/10 group-hover:bg-[#0056A6] flex items-center justify-center mb-5 transition-colors duration-300">
-                  <Icon size={24} className="text-[#0056A6] group-hover:text-white transition-colors duration-300" />
+                <div className="w-14 h-14 rounded-2xl bg-[#25408F]/10 group-hover:bg-[#25408F] flex items-center justify-center mb-5 transition-colors duration-300">
+                  <Icon size={24} className="text-[#25408F] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{val.title}</h3>
                 <p className="text-slate-500 leading-relaxed text-sm">{val.description}</p>
@@ -397,7 +424,7 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="py-24 bg-[#0056A6] overflow-hidden">
+    <section ref={ref} className="py-24 bg-[#25408F] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={stagger}
@@ -427,19 +454,82 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
                 className={`lg:flex items-center gap-12 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
               >
                 <div className={`flex-1 ${i % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
+                  <div className="mb-5 rounded-2xl overflow-hidden border border-white/20">
+                    <img
+                      src={JOURNEY_IMAGES[i % JOURNEY_IMAGES.length]}
+                      alt={`${item.title} milestone`}
+                      className="w-full h-48 sm:h-56 object-cover"
+                      loading="lazy"
+                    />
+                  </div>
                   <div className={`inline-flex items-center gap-3 mb-3 ${i % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
-                    <span className="text-4xl font-black text-[#D72638]">{item.year}</span>
+                    <span className="text-4xl font-black text-[#D3232E]">{item.year}</span>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
                   <p className="text-white/70 leading-relaxed">{item.desc}</p>
                 </div>
 
-                <div className="hidden lg:flex flex-shrink-0 w-5 h-5 rounded-full bg-[#D72638] ring-4 ring-white/20 relative z-10" />
+                <div className="hidden lg:flex flex-shrink-0 w-5 h-5 rounded-full bg-[#D3232E] ring-4 ring-white/20 relative z-10" />
                 <div className="flex-1 hidden lg:block" />
               </motion.div>
             ))}
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section ref={ref} className="py-24 bg-slate-50 border-t border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="text-center mb-12"
+        >
+          <motion.div variants={fadeUp}>
+            <SectionLabel label={content.teamTitle || 'Our Team'} center />
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="mt-4 text-3xl sm:text-4xl font-black text-slate-900">
+            Meet the People Behind the Stories
+          </motion.h2>
+          <motion.p variants={fadeUp} className="mt-4 text-slate-600 max-w-2xl mx-auto">
+            {content.teamSubtitle}
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7"
+        >
+          {TEAM_MEMBERS.map((member, i) => (
+            <motion.article
+              key={member.name}
+              custom={i}
+              variants={fadeUp}
+              className="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm"
+            >
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-80 object-cover"
+                loading="lazy"
+              />
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
+                <p className="text-sm text-[#25408F] mt-1 font-semibold">{member.role}</p>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
@@ -484,13 +574,13 @@ const ClientsSection: React.FC<{ clientNames: string[]; content: AboutContent }>
                 custom={i}
                 variants={fadeUp}
                 whileHover={{ y: -4, scale: 1.03 }}
-                className="flex items-center justify-center h-24 bg-slate-50 hover:bg-[#0056A6]/5 rounded-xl border border-slate-100 hover:border-[#0056A6]/20 transition-all duration-300 px-4"
+                className="flex items-center justify-center h-32 bg-slate-50 hover:bg-[#25408F]/5 rounded-xl border border-slate-100 hover:border-[#25408F]/20 transition-all duration-300 px-5"
               >
                 {logoUrl ? (
                   <img
                     src={logoUrl}
                     alt={`${client} logo`}
-                    className="max-h-12 max-w-full object-contain"
+                    className="max-h-20 max-w-full object-contain"
                     loading="lazy"
                   />
                 ) : (
@@ -510,7 +600,7 @@ const CTASection: React.FC<{ content: AboutContent }> = ({ content }) => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-br from-slate-900 via-[#001f3f] to-[#0056A6]">
+    <section ref={ref} className="py-24 bg-gradient-to-br from-slate-900 via-[#001f3f] to-[#25408F]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div variants={stagger} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
           <motion.div variants={fadeUp}>
@@ -603,6 +693,7 @@ const AboutPage: React.FC = () => {
       <MissionSection content={content} />
       <StorySection content={content} />
       <CoreValuesSection content={content} />
+      <TeamSection content={content} />
       <TimelineSection content={content} />
       <ClientsSection clientNames={clientNames} content={content} />
       <CTASection content={content} />

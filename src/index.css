@@ -5,24 +5,24 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 215 28% 12%;
+    --foreground: 212 60% 17%;
     --card: 0 0% 100%;
     --card-foreground: 215 28% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 215 28% 12%;
-    --primary: 210 100% 33%;
+    --primary: 225 58% 35%;
     --primary-foreground: 0 0% 100%;
     --secondary: 210 20% 96%;
     --secondary-foreground: 215 28% 12%;
     --muted: 210 15% 94%;
     --muted-foreground: 215 16% 47%;
-    --accent: 210 100% 33%;
+    --accent: 225 58% 35%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 350 72% 51%;
+    --destructive: 356 72% 48%;
     --destructive-foreground: 0 0% 100%;
     --border: 210 20% 90%;
     --input: 210 20% 90%;
-    --ring: 210 100% 33%;
+    --ring: 225 58% 35%;
     --radius: 0.75rem;
   }
 
@@ -40,7 +40,7 @@
   }
 
   ::selection {
-    background-color: #0056A6;
+    background-color: #25408F;
     color: white;
   }
 
@@ -53,12 +53,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #0056A6;
+    background: #25408F;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #003d7a;
+    background: #1f3576;
   }
 }
 
@@ -217,7 +217,7 @@
 
 /* Swiper custom styles */
 .swiper-pagination-bullet {
-  background: #0056A6 !important;
+  background: #25408F !important;
   opacity: 0.4;
   width: 8px !important;
   height: 8px !important;

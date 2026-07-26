@@ -26,7 +26,7 @@ type ClientForm = z.infer<typeof schema>;
 function inputClass(error = false) {
   return cn(
     'w-full px-4 py-2.5 rounded-xl border text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors bg-gray-50',
-    'focus:bg-white focus:ring-2 focus:ring-[#0056A6]/30 focus:border-[#0056A6]',
+    'focus:bg-white focus:ring-2 focus:ring-[#25408F]/30 focus:border-[#25408F]',
     error ? 'border-red-400 bg-red-50' : 'border-gray-200'
   );
 }
@@ -136,7 +136,7 @@ function ClientModal({ open, onClose, editing, onSaved }: ModalProps) {
             </Field>
             <div className="flex items-end pb-0.5">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" {...register('is_featured')} className="w-4 h-4 rounded accent-[#0056A6]" />
+                <input type="checkbox" {...register('is_featured')} className="w-4 h-4 rounded accent-[#25408F]" />
                 <span className="text-sm text-gray-700">Featured</span>
               </label>
             </div>
@@ -145,7 +145,7 @@ function ClientModal({ open, onClose, editing, onSaved }: ModalProps) {
         <div className="flex justify-end gap-3 p-5 border-t border-gray-100">
           <button onClick={onClose} className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">Cancel</button>
           <button onClick={handleSubmit(onSubmit)} disabled={saving}
-            className="px-5 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors disabled:opacity-70">
+            className="px-5 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors disabled:opacity-70">
             {saving ? 'Saving…' : editing ? 'Update' : 'Add Client'}
           </button>
         </div>
@@ -186,7 +186,7 @@ export default function ManageClients() {
           <p className="text-sm text-gray-500 mt-0.5">{clients?.length ?? 0} clients</p>
         </div>
         <button onClick={() => { setEditing(null); setModalOpen(true); }}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors">
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors">
           <Plus size={16} /> Add Client
         </button>
       </div>
@@ -229,16 +229,16 @@ export default function ManageClients() {
               <div className="flex items-center justify-center gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 {c.website_url && (
                   <a href={c.website_url} target="_blank" rel="noopener noreferrer"
-                    className="p-1 text-gray-400 hover:text-[#0056A6]">
+                    className="p-1 text-gray-400 hover:text-[#25408F]">
                     <ExternalLink size={13} />
                   </a>
                 )}
                 <button onClick={() => { setEditing(c); setModalOpen(true); }}
-                  className="p-1 text-gray-400 hover:text-[#0056A6]">
+                  className="p-1 text-gray-400 hover:text-[#25408F]">
                   <Pencil size={13} />
                 </button>
                 <button onClick={() => handleDelete(c)}
-                  className="p-1 text-gray-400 hover:text-[#D72638]">
+                  className="p-1 text-gray-400 hover:text-[#D3232E]">
                   <Trash2 size={13} />
                 </button>
               </div>

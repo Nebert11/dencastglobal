@@ -24,7 +24,7 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => (
         size={14}
         className={cn(
           'transition-colors',
-          i < rating ? 'fill-[#D72638] text-[#D72638]' : 'fill-slate-200 text-slate-200'
+          i < rating ? 'fill-[#D3232E] text-[#D3232E]' : 'fill-slate-200 text-slate-200'
         )}
       />
     ))}
@@ -42,11 +42,11 @@ const Avatar: React.FC<{ src?: string; name: string }> = ({ src, name }) => {
     .toUpperCase();
 
   return (
-    <div className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-[#0056A6] flex items-center justify-center ring-2 ring-white ring-offset-1">
+    <div className="w-full h-56 md:h-full overflow-hidden flex-shrink-0 bg-[#25408F] flex items-center justify-center">
       {src ? (
         <img src={src} alt={name} className="w-full h-full object-cover" loading="lazy" />
       ) : (
-        <span className="text-white text-sm font-bold">{initials}</span>
+        <span className="text-white text-2xl font-bold">{initials}</span>
       )}
     </div>
   );
@@ -67,36 +67,36 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     whileHover={{ y: -5, boxShadow: '0 20px 40px -12px rgba(0,0,0,0.12)' }}
     transition={{ duration: 0.3, ease: 'easeOut' }}
     className={cn(
-      'relative bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col gap-4',
+      'relative overflow-hidden bg-white rounded-2xl border border-slate-100 shadow-sm',
       className
     )}
   >
     {/* Large decorative quote icon */}
     <Quote
       size={40}
-      className="absolute top-5 right-6 text-[#0056A6]/10 fill-[#0056A6]/10"
+      className="absolute top-5 right-6 text-[#25408F]/10 fill-[#25408F]/10"
       aria-hidden
     />
 
-    {/* Rating */}
-    <StarRating rating={rating} />
-
-    {/* Quote text */}
-    <blockquote className="text-slate-600 text-sm leading-relaxed flex-1 relative z-10">
-      &ldquo;{quote}&rdquo;
-    </blockquote>
-
-    {/* Author row */}
-    <footer className="flex items-center gap-3 pt-2 border-t border-slate-100">
-      <Avatar src={avatar} name={name} />
-      <div>
-        <p className="text-slate-800 text-sm font-bold leading-tight">{name}</p>
-        <p className="text-slate-500 text-xs mt-0.5">
-          {title}
-          {company && <>, <span className="text-[#0056A6] font-medium">{company}</span></>}
-        </p>
+    <div className="relative z-10 flex flex-col md:min-h-[320px] md:flex-row">
+      <div className="md:w-64 md:flex-shrink-0">
+        <Avatar src={avatar} name={name} />
       </div>
-    </footer>
+
+      <div className="flex-1 flex flex-col gap-4 p-6 md:p-8">
+        <StarRating rating={rating} />
+        <div>
+          <p className="text-slate-800 text-base font-bold leading-tight">{name}</p>
+          <p className="text-slate-500 text-sm mt-1 leading-snug">
+            {title}
+            {company && <>, <span className="text-[#25408F] font-medium">{company}</span></>}
+          </p>
+        </div>
+        <blockquote className="text-slate-600 text-sm leading-relaxed flex-1">
+          &ldquo;{quote}&rdquo;
+        </blockquote>
+      </div>
+    </div>
   </motion.article>
 );
 

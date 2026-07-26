@@ -34,7 +34,7 @@ const FilmStrip: React.FC = () => (
     >
       {/* Scan line */}
       <motion.div
-        className="absolute left-0 right-0 h-0.5 bg-[#0056A6]/60"
+        className="absolute left-0 right-0 h-0.5 bg-[#25408F]/60"
         initial={{ top: '0%' }}
         animate={{ top: ['0%', '100%', '0%'] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
@@ -86,7 +86,7 @@ const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => (
   <div className="w-64 sm:w-80 mt-8">
     <div className="h-[3px] rounded-full bg-white/10 overflow-hidden">
       <motion.div
-        className="h-full bg-gradient-to-r from-[#D72638] to-[#ff4d5e] rounded-full"
+        className="h-full bg-gradient-to-r from-[#D3232E] to-[#ff4d5e] rounded-full"
         initial={{ width: '0%' }}
         animate={{ width: `${progress}%` }}
         transition={{ duration: 0.4, ease: 'easeOut' }}

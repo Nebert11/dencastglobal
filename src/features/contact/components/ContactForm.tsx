@@ -78,13 +78,13 @@ const Field: React.FC<FieldProps> = ({ label, required, error, children }) => (
   <div className="flex flex-col gap-1.5">
     <label className="text-sm font-semibold text-slate-700">
       {label}
-      {required && <span className="text-[#D72638] ml-0.5">*</span>}
+      {required && <span className="text-[#D3232E] ml-0.5">*</span>}
     </label>
     {children}
     {error && (
       <motion.p
         initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}
-        className="text-[#D72638] text-xs flex items-center gap-1"
+        className="text-[#D3232E] text-xs flex items-center gap-1"
       >
         <AlertCircle size={11} />
         {error}
@@ -96,8 +96,8 @@ const Field: React.FC<FieldProps> = ({ label, required, error, children }) => (
 const inputClass = (hasError: boolean) =>
   `w-full px-4 py-3 bg-white border rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 transition-all duration-200 ${
     hasError
-      ? 'border-[#D72638] focus:ring-[#D72638]/25'
-      : 'border-slate-200 focus:border-[#0056A6] focus:ring-[#0056A6]/15'
+      ? 'border-[#D3232E] focus:ring-[#D3232E]/25'
+      : 'border-slate-200 focus:border-[#25408F] focus:ring-[#25408F]/15'
   }`;
 
 // ─── ContactForm ──────────────────────────────────────────────────────────────
@@ -185,7 +185,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
         </p>
         <button
           onClick={() => setSubmitStatus('idle')}
-          className="px-6 py-2.5 bg-[#0056A6] text-white rounded-xl text-sm font-semibold hover:bg-[#004a8f] transition-colors"
+          className="px-6 py-2.5 bg-[#25408F] text-white rounded-xl text-sm font-semibold hover:bg-[#1f3576] transition-colors"
         >
           Send Another Message
         </button>

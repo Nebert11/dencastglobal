@@ -91,9 +91,9 @@ const FeaturedPortfolio: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
           <div>
             <SectionLabel label="Our Work" />
-            <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight tracking-tight">
+            <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#25408F] leading-tight tracking-tight">
               Cinematic Stories,{' '}
-              <span className="text-[#D72638]">Real Results</span>
+              <span className="text-[#D3232E]">Real Results</span>
             </h2>
           </div>
           <Link to="/portfolio">
@@ -111,8 +111,8 @@ const FeaturedPortfolio: React.FC = () => {
               onClick={() => setActiveFilter(tab)}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                 activeFilter === tab
-                  ? 'bg-[#0056A6] text-white shadow-md shadow-[#0056A6]/30'
-                  : 'bg-white text-slate-600 hover:bg-[#0056A6]/10 hover:text-[#0056A6] border border-slate-200'
+                  ? 'bg-[#25408F] text-white shadow-md shadow-[#25408F]/30'
+                  : 'bg-white text-slate-600 hover:bg-[#25408F]/10 hover:text-[#25408F] border border-slate-200'
               }`}
             >
               {tab}
@@ -147,11 +147,11 @@ const FeaturedPortfolio: React.FC = () => {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      <span className="absolute top-4 left-4 px-3 py-1 bg-[#D72638] text-white text-xs font-bold uppercase tracking-widest rounded-md">
+                      <span className="absolute top-4 left-4 px-3 py-1 bg-[#D3232E] text-white text-xs font-bold uppercase tracking-widest rounded-md">
                         Featured
                       </span>
                       <div className="absolute bottom-6 left-6 right-6">
-                        <span className="text-[#D72638] text-xs font-bold uppercase tracking-widest">
+                        <span className="text-[#D3232E] text-xs font-bold uppercase tracking-widest">
                           {featuredItem.category}
                         </span>
                         <h3 className="text-white font-bold text-xl mt-1 leading-snug">

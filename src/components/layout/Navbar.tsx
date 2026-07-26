@@ -5,6 +5,7 @@ import {
   Film,
   Video,
   Camera,
+  Music,
   Zap,
   Lightbulb,
   Layers,
@@ -18,6 +19,7 @@ import {
   LogIn,
   ArrowRight,
   Star,
+  FileText,
 } from 'lucide-react';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { cn } from '@/utils/cn';
@@ -59,6 +61,8 @@ const FEATURED_SERVICES = [
 
 const OTHER_SERVICES = [
   { name: 'Videography',              slug: '/services/videography',              icon: Video    },
+  { name: 'Events Management',        slug: '/services/events-management',        icon: Briefcase },
+  { name: 'Audio Management & Soundtrack Development', slug: '/services/audio-management-soundtrack-development', icon: Music },
   { name: 'Brand Strategy',           slug: '/services/brand-strategy',           icon: Lightbulb },
   { name: 'Creative Media',           slug: '/services/creative-media',           icon: Layers   },
   { name: 'Drone Services',           slug: '/services/drone-services',           icon: Plane    },
@@ -83,7 +87,7 @@ const MOBILE_ALL_LINKS = [
   { label: 'Home',                      to: '/',             group: 'main'     },
   { label: 'About',                     to: '/about',        group: 'main'     },
   { label: 'Portfolio',                 to: '/portfolio',    group: 'main'     },
-  { label: 'News',                      to: '/news',         group: 'main'     },
+  { label: 'News',                      to: '/blog',         group: 'main'     },
   { label: 'Contact',                   to: '/contact',      group: 'main'     },
   { label: 'All Services',              to: '/services',     group: 'services' },
   { label: 'Documentary Production',    to: '/services/documentary-production',  group: 'services' },
@@ -91,6 +95,8 @@ const MOBILE_ALL_LINKS = [
   { label: 'Photography & Videography', to: '/services/photography',             group: 'services' },
   { label: 'Branding & Creative Media', to: '/services/brand-strategy',          group: 'services' },
   { label: 'Videography',               to: '/services/videography',              group: 'services' },
+  { label: 'Events Management',         to: '/services/events-management',        group: 'services' },
+  { label: 'Audio Management & Soundtrack Development', to: '/services/audio-management-soundtrack-development', group: 'services' },
   { label: 'Brand Strategy',            to: '/services/brand-strategy',           group: 'services' },
   { label: 'Creative Media',            to: '/services/creative-media',           group: 'services' },
   { label: 'Drone Services',            to: '/services/drone-services',           group: 'services' },
@@ -118,20 +124,9 @@ const drawerVariants = {
 const Logo: React.FC<{ scrolled: boolean }> = ({ scrolled }) => (
   <Link to="/" className="flex items-center gap-2.5 select-none flex-shrink-0">
     <img
-      src="/image.png"
+      src={scrolled ? '/dencast_new_logo/Dencast Logo_Full Blue.png' : '/dencast_new_logo/Dencast Logo_ Full White.png'}
       alt="Dencast Global"
-      className={cn(
-        'h-10 w-auto object-contain transition-all duration-300',
-        scrolled ? 'brightness-100 saturate-100' : 'brightness-100'
-      )}
-      style={
-        scrolled
-          ? {
-              filter:
-                'brightness(0) saturate(100%) invert(23%) sepia(88%) saturate(2204%) hue-rotate(194deg) brightness(95%) contrast(102%)',
-            }
-          : undefined
-      }
+      className="h-12 w-auto object-contain transition-all duration-300"
     />
   </Link>
 );
@@ -165,8 +160,8 @@ const ServicesMegaDropdown: React.FC = () => {
       <button
         className={cn(
           'flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors duration-200 py-1 relative group',
-          isScrolled ? 'text-slate-700 hover:text-[#0056A6]' : 'text-white/90 hover:text-white',
-          isActive && (isScrolled ? 'text-[#0056A6]' : 'text-white')
+          isScrolled ? 'text-slate-700 hover:text-[#25408F]' : 'text-white/90 hover:text-white',
+          isActive && (isScrolled ? 'text-[#25408F]' : 'text-white')
         )}
         aria-haspopup="true"
         aria-expanded={open}
@@ -177,7 +172,7 @@ const ServicesMegaDropdown: React.FC = () => {
         </motion.span>
         {/* Active indicator */}
         <span className={cn(
-          'absolute -bottom-1 left-0 h-0.5 bg-[#D72638] rounded-full transition-all duration-200',
+          'absolute -bottom-1 left-0 h-0.5 bg-[#D3232E] rounded-full transition-all duration-200',
           isActive ? 'w-full' : 'w-0 group-hover:w-full'
         )} />
       </button>
@@ -192,7 +187,7 @@ const ServicesMegaDropdown: React.FC = () => {
             className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[640px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden z-50"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#0056A6] to-[#003d7a] px-6 py-3 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-[#25408F] to-[#1f3576] px-6 py-3 flex items-center justify-between">
               <span className="text-white text-xs font-bold tracking-widest uppercase">Our Services</span>
               <Link
                 to="/services"
@@ -206,7 +201,7 @@ const ServicesMegaDropdown: React.FC = () => {
             {/* Featured service pages */}
             <div className="p-4 border-b border-slate-100">
               <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-400 px-2 mb-2 flex items-center gap-1.5">
-                <Star size={10} className="text-[#D72638]" /> Featured Pages
+                <Star size={10} className="text-[#D3232E]" /> Featured Pages
               </p>
               <div className="grid grid-cols-2 gap-1">
                 {FEATURED_SERVICES.map(svc => {
@@ -216,13 +211,13 @@ const ServicesMegaDropdown: React.FC = () => {
                       key={svc.slug}
                       to={svc.slug}
                       onClick={() => setOpen(false)}
-                      className="flex items-start gap-3 p-3 rounded-xl group hover:bg-[#0056A6]/5 transition-colors duration-150 border border-transparent hover:border-[#0056A6]/15"
+                      className="flex items-start gap-3 p-3 rounded-xl group hover:bg-[#25408F]/5 transition-colors duration-150 border border-transparent hover:border-[#25408F]/15"
                     >
-                      <span className="mt-0.5 flex-shrink-0 w-9 h-9 rounded-xl bg-[#0056A6]/10 group-hover:bg-[#0056A6] flex items-center justify-center transition-colors duration-200">
-                        <Icon size={16} className="text-[#0056A6] group-hover:text-white transition-colors duration-200" />
+                      <span className="mt-0.5 flex-shrink-0 w-9 h-9 rounded-xl bg-[#25408F]/10 group-hover:bg-[#25408F] flex items-center justify-center transition-colors duration-200">
+                        <Icon size={16} className="text-[#25408F] group-hover:text-white transition-colors duration-200" />
                       </span>
                       <span>
-                        <span className="block text-sm font-bold text-slate-800 group-hover:text-[#0056A6] transition-colors duration-200 leading-tight">{svc.name}</span>
+                        <span className="block text-sm font-bold text-slate-800 group-hover:text-[#25408F] transition-colors duration-200 leading-tight">{svc.name}</span>
                         <span className="block text-xs text-slate-500 mt-0.5">{svc.description}</span>
                       </span>
                     </Link>
@@ -246,7 +241,7 @@ const ServicesMegaDropdown: React.FC = () => {
                       onClick={() => setOpen(false)}
                       className="flex items-center gap-2.5 px-3 py-2 rounded-lg group hover:bg-slate-50 transition-colors duration-150"
                     >
-                      <Icon size={13} className="text-slate-400 group-hover:text-[#0056A6] flex-shrink-0 transition-colors" />
+                      <Icon size={13} className="text-slate-400 group-hover:text-[#25408F] flex-shrink-0 transition-colors" />
                       <span className="text-sm text-slate-600 group-hover:text-slate-900 transition-colors">{svc.name}</span>
                     </Link>
                   );
@@ -260,7 +255,7 @@ const ServicesMegaDropdown: React.FC = () => {
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D72638] hover:text-[#b01e2e] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D3232E] hover:text-[#b71d27] transition-colors"
               >
                 Get a free consultation <ArrowRight size={11} />
               </Link>
@@ -334,19 +329,29 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ open, onClose }) => {
                   className={cn(
                     'flex items-center px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors',
                     location.pathname === to
-                      ? 'bg-[#0056A6]/10 text-[#0056A6]'
-                      : 'text-slate-700 hover:bg-slate-50 hover:text-[#0056A6]'
+                      ? 'bg-[#25408F]/10 text-[#25408F]'
+                      : 'text-slate-700 hover:bg-slate-50 hover:text-[#25408F]'
                   )}
                 >
                   {label}
                 </Link>
               ))}
 
+              <a
+                href="/dencast_profile.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#25408F] transition-colors"
+              >
+                <FileText size={14} />
+                Profile
+              </a>
+
               {/* Services accordion */}
               <div className="pt-1">
                 <button
                   onClick={() => setServicesOpen(v => !v)}
-                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0056A6] transition-colors"
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#25408F] transition-colors"
                 >
                   <span>Services</span>
                   <motion.span animate={{ rotate: servicesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
@@ -366,7 +371,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ open, onClose }) => {
                     >
                       {/* Featured heading */}
                       <p className="text-[10px] font-bold tracking-widest uppercase text-slate-400 px-3 pt-2 pb-1 flex items-center gap-1.5">
-                        <Star size={9} className="text-[#D72638]" /> Featured
+                        <Star size={9} className="text-[#D3232E]" /> Featured
                       </p>
                       {serviceLinks.slice(0, 5).map(({ label, to }) => (
                         <Link
@@ -375,11 +380,11 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ open, onClose }) => {
                           className={cn(
                             'flex items-center gap-2 pl-6 pr-3 py-2 rounded-lg text-sm transition-colors',
                             location.pathname === to
-                              ? 'text-[#0056A6] font-semibold bg-[#0056A6]/5'
-                              : 'text-slate-600 hover:text-[#0056A6] hover:bg-slate-50 font-medium'
+                              ? 'text-[#25408F] font-semibold bg-[#25408F]/5'
+                              : 'text-slate-600 hover:text-[#25408F] hover:bg-slate-50 font-medium'
                           )}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#0056A6]/40 flex-shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#25408F]/40 flex-shrink-0" />
                           {label}
                         </Link>
                       ))}
@@ -395,8 +400,8 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ open, onClose }) => {
                           className={cn(
                             'flex items-center gap-2 pl-6 pr-3 py-2 rounded-lg text-sm transition-colors',
                             location.pathname === to
-                              ? 'text-[#0056A6] font-semibold bg-[#0056A6]/5'
-                              : 'text-slate-600 hover:text-[#0056A6] hover:bg-slate-50 font-medium'
+                              ? 'text-[#25408F] font-semibold bg-[#25408F]/5'
+                              : 'text-slate-600 hover:text-[#25408F] hover:bg-slate-50 font-medium'
                           )}
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-slate-300 flex-shrink-0" />
@@ -413,13 +418,13 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ open, onClose }) => {
             <div className="px-4 py-4 border-t border-slate-100 space-y-2.5 flex-shrink-0">
               <Link
                 to="/admin/login"
-                className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border-2 border-[#D72638] text-[#D72638] text-sm font-bold hover:bg-[#D72638] hover:text-white transition-all duration-200"
+                className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border-2 border-[#D3232E] text-[#D3232E] text-sm font-bold hover:bg-[#D3232E] hover:text-white transition-all duration-200"
               >
                 <LogIn size={14} /> Admin Login
               </Link>
               <Link
                 to="/contact"
-                className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-bold hover:bg-[#004a8f] transition-colors"
+                className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-bold hover:bg-[#1f3576] transition-colors"
               >
                 Get a Quote
               </Link>
@@ -462,14 +467,14 @@ const Navbar: React.FC = () => {
                   className={cn(
                     'text-sm font-semibold tracking-wide transition-colors duration-200 relative group py-1',
                     isScrolled
-                      ? 'text-slate-700 hover:text-[#0056A6]'
+                      ? 'text-slate-700 hover:text-[#25408F]'
                       : 'text-white/90 hover:text-white',
-                    active && (isScrolled ? 'text-[#0056A6]' : 'text-white')
+                    active && (isScrolled ? 'text-[#25408F]' : 'text-white')
                   )}
                 >
                   {label}
                   <span className={cn(
-                    'absolute -bottom-1 left-0 h-0.5 bg-[#D72638] rounded-full transition-all duration-200',
+                    'absolute -bottom-1 left-0 h-0.5 bg-[#D3232E] rounded-full transition-all duration-200',
                     active ? 'w-full' : 'w-0 group-hover:w-full'
                   )} />
                 </Link>
@@ -480,12 +485,25 @@ const Navbar: React.FC = () => {
 
           {/* Desktop CTA buttons */}
           <div className="hidden lg:flex items-center gap-2.5 flex-shrink-0">
+            <a
+              href="/dencast_profile.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                'flex items-center gap-1.5 px-3 py-2 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200',
+                isScrolled
+                  ? 'border-[#25408F] text-[#25408F] hover:bg-[#25408F] hover:text-white'
+                  : 'border-white/50 text-white hover:bg-white/10 hover:border-white'
+              )}
+            >
+              <FileText size={12} /> Profile
+            </a>
             {/* <Link
               to="/admin/login"
               className={cn(
                 'flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200',
                 isScrolled
-                  ? 'border-[#D72638] text-[#D72638] hover:bg-[#D72638] hover:text-white'
+                  ? 'border-[#D3232E] text-[#D3232E] hover:bg-[#D3232E] hover:text-white'
                   : 'border-white/50 text-white hover:bg-white/10 hover:border-white'
               )}
             >
@@ -493,7 +511,7 @@ const Navbar: React.FC = () => {
             </Link> */}
             <Link
               to="/contact"
-              className="px-5 py-2 rounded-lg bg-[#D72638] text-white text-sm font-bold hover:bg-[#b01e2e] transition-colors shadow-lg shadow-[#D72638]/25"
+              className="px-5 py-2 rounded-lg bg-[#D3232E] text-white text-sm font-bold hover:bg-[#b71d27] transition-colors shadow-lg shadow-[#D3232E]/25"
             >
               Contact Us
             </Link>

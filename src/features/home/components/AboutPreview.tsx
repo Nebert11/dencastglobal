@@ -46,7 +46,7 @@ const AboutPreview: React.FC = () => {
             className="relative"
           >
             {/* Main image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#0056A6]/20">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#25408F]/20">
               <img
                 src="https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="Dencast Global film production team at work"
@@ -58,7 +58,7 @@ const AboutPreview: React.FC = () => {
 
               {/* Storytelling badge */}
               <div className="absolute bottom-6 left-6 bg-white rounded-xl px-5 py-3 shadow-lg">
-                <p className="text-lg font-black text-[#0056A6] leading-none">Since 2015</p>
+                <p className="text-lg font-black text-[#25408F] leading-none">Since 2015</p>
                 <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mt-0.5">
                   Creative Media Agency
                 </p>
@@ -80,9 +80,9 @@ const AboutPreview: React.FC = () => {
             </motion.div>
 
             {/* Decorative red square */}
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#D72638] rounded-2xl -z-10 hidden lg:block" />
+            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#D3232E] rounded-2xl -z-10 hidden lg:block" />
             {/* Decorative blue square */}
-            <div className="absolute -top-6 -right-6 w-16 h-16 bg-[#0056A6]/20 rounded-2xl -z-10 hidden lg:block" />
+            <div className="absolute -top-6 -right-6 w-16 h-16 bg-[#25408F]/20 rounded-2xl -z-10 hidden lg:block" />
           </motion.div>
 
           {/* ── Right: Content ── */}
@@ -95,11 +95,11 @@ const AboutPreview: React.FC = () => {
           >
             <SectionLabel label="About Us" />
 
-            <h2 className="text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-black text-[#25408F] leading-tight tracking-tight">
               Where Your Story{' '}
               <span className="relative">
                 Becomes Our Mission
-                <span className="absolute -bottom-1 left-0 right-0 h-1 bg-[#D72638] rounded-full" />
+                <span className="absolute -bottom-1 left-0 right-0 h-1 bg-[#D3232E] rounded-full" />
               </span>{' '}
             </h2>
 
@@ -118,7 +118,7 @@ const AboutPreview: React.FC = () => {
             <div className="flex flex-col gap-4 mt-2">
               {highlights.map(({ icon: Icon, title, description }) => (
                 <div key={title} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#0056A6]/10 flex items-center justify-center text-[#0056A6]">
+                  <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#25408F]/10 flex items-center justify-center text-[#25408F]">
                     <Icon size={20} />
                   </div>
                   <div>

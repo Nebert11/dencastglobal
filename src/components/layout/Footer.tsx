@@ -22,6 +22,8 @@ const SERVICES_LINKS = [
   { label: 'Documentary Production',   to: '/services/documentary-production' },
   { label: 'Livestreaming & Events',   to: '/services/livestreaming-events' },
   { label: 'Photography',              to: '/services/photography' },
+  { label: 'Events Management',        to: '/services/events-management' },
+  { label: 'Audio Management',         to: '/services/audio-management-soundtrack-development' },
   { label: 'Videography',              to: '/services/videography' },
   { label: 'Brand Strategy',           to: '/services/brand-strategy' },
   { label: 'Creative Media',           to: '/services/creative-media' },
@@ -76,7 +78,7 @@ const FooterLinkItem: React.FC<{ to: string; label: string }> = ({ to, label }) 
     >
       <ChevronRight
         size={12}
-        className="text-[#D72638] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200"
+        className="text-[#D3232E] opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200"
       />
       {label}
     </Link>
@@ -85,7 +87,7 @@ const FooterLinkItem: React.FC<{ to: string; label: string }> = ({ to, label }) 
 
 const FooterHeading: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <h3 className="text-white text-sm font-bold uppercase tracking-widest mb-5 flex items-center gap-2">
-    <span className="inline-block w-5 h-0.5 bg-[#D72638] rounded-full" />
+    <span className="inline-block w-5 h-0.5 bg-[#D3232E] rounded-full" />
     {children}
   </h3>
 );
@@ -112,9 +114,9 @@ const Footer: React.FC = () => {
               {/* Logo */}
               <Link to="/" className="inline-flex items-center gap-2.5 mb-5 group">
                 <img
-                  src="/image.png"
+                  src="/dencast_new_logo/Dencast Logo_ Full White.png"
                   alt="Dencast Global"
-                  className="h-12 w-auto object-contain"
+                  className="h-14 w-auto object-contain"
                 />
               </Link>
 
@@ -124,7 +126,7 @@ const Footer: React.FC = () => {
 
               <Link
                 to="/admin/login"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200 border-white text-white hover:bg-[#D72638] hover:text-white hover:border-[#D72638]"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border text-xs font-bold tracking-wide transition-all duration-200 border-white text-white hover:bg-[#D3232E] hover:text-white hover:border-[#D3232E]"
               >
                 <LogIn size={10} /> Login
               </Link>
@@ -138,7 +140,7 @@ const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#0056A6] flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200 hover:scale-105"
+                    className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#25408F] flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200 hover:scale-105"
                   >
                     <Icon size={16} />
                   </a>
@@ -176,19 +178,19 @@ const Footer: React.FC = () => {
                 <ul className="space-y-3">
                   <li>
                     <a href="mailto:info@dencastglobal.co.ke" className="flex items-start gap-2.5 text-slate-400 hover:text-white text-sm transition-colors group">
-                      <Mail size={14} className="mt-0.5 flex-shrink-0 text-[#0056A6]" />
+                      <Mail size={14} className="mt-0.5 flex-shrink-0 text-[#25408F]" />
                       info@dencastglobal.co.ke
                     </a>
                   </li>
                   <li>
                     <a href="tel:+254721710397" className="flex items-start gap-2.5 text-slate-400 hover:text-white text-sm transition-colors group">
-                      <Phone size={14} className="mt-0.5 flex-shrink-0 text-[#0056A6]" />
+                      <Phone size={14} className="mt-0.5 flex-shrink-0 text-[#25408F]" />
                       +254 721 710 397
                     </a>
                   </li>
                   <li>
                     <span className="flex items-start gap-2.5 text-slate-400 text-sm">
-                      <MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#0056A6]" />
+                      <MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#25408F]" />
                       P.O Box 18895-00100, Nairobi | ParkView Suites, Room 101, Nyerere Road
                     </span>
                   </li>

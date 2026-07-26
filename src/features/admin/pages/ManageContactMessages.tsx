@@ -182,7 +182,7 @@ export default function ManageContactMessages() {
       <div className="mb-5">
         <h2 className="text-xl font-bold text-gray-900">Contact Messages</h2>
         {unreadCount !== undefined && unreadCount > 0 && (
-          <p className="text-sm text-[#D72638] mt-0.5 font-medium">{unreadCount} unread message{unreadCount !== 1 ? 's' : ''}</p>
+          <p className="text-sm text-[#D3232E] mt-0.5 font-medium">{unreadCount} unread message{unreadCount !== 1 ? 's' : ''}</p>
         )}
       </div>
 
@@ -198,7 +198,7 @@ export default function ManageContactMessages() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search messages…"
-                className="w-full pl-8 pr-3 py-2 rounded-lg border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-[#0056A6]/30 bg-gray-50"
+                className="w-full pl-8 pr-3 py-2 rounded-lg border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-[#25408F]/30 bg-gray-50"
               />
             </div>
             <div className="flex gap-1 overflow-x-auto pb-0.5">
@@ -209,7 +209,7 @@ export default function ManageContactMessages() {
                   className={cn(
                     'flex-shrink-0 px-3 py-1 rounded-lg text-xs font-semibold transition-colors',
                     statusFilter === tab.value
-                      ? 'bg-[#0056A6] text-white'
+                      ? 'bg-[#25408F] text-white'
                       : 'text-gray-500 hover:bg-gray-100'
                   )}
                 >
@@ -245,13 +245,13 @@ export default function ManageContactMessages() {
                   onClick={() => handleSelect(msg)}
                   className={cn(
                     'w-full text-left p-4 border-b border-gray-50 hover:bg-gray-50 transition-colors',
-                    selected?.id === msg.id && 'bg-blue-50 border-l-2 border-l-[#0056A6]'
+                    selected?.id === msg.id && 'bg-blue-50 border-l-2 border-l-[#25408F]'
                   )}
                 >
                   <div className="flex items-start gap-3">
                     <div className={cn(
                       'w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0',
-                      msg.status === 'new' ? 'bg-[#0056A6] text-white' : 'bg-gray-100 text-gray-500'
+                      msg.status === 'new' ? 'bg-[#25408F] text-white' : 'bg-gray-100 text-gray-500'
                     )}>
                       {msg.name.charAt(0).toUpperCase()}
                     </div>
@@ -293,7 +293,7 @@ export default function ManageContactMessages() {
                     <div className="flex items-center gap-3 mt-1">
                       <span className="text-sm text-gray-600">{selected.name}</span>
                       <span className="text-gray-300">·</span>
-                      <a href={`mailto:${selected.email}`} className="text-sm text-[#0056A6] hover:underline">{selected.email}</a>
+                      <a href={`mailto:${selected.email}`} className="text-sm text-[#25408F] hover:underline">{selected.email}</a>
                       {selected.phone && (
                         <>
                           <span className="text-gray-300">·</span>
@@ -316,7 +316,7 @@ export default function ManageContactMessages() {
               <div className="flex-1 overflow-y-auto p-5">
                 {selected.service_interest && (
                   <div className="mb-4 bg-blue-50 rounded-xl px-4 py-3">
-                    <p className="text-xs font-semibold text-[#0056A6] mb-0.5">Service Interest</p>
+                    <p className="text-xs font-semibold text-[#25408F] mb-0.5">Service Interest</p>
                     <p className="text-sm text-gray-700">{selected.service_interest}</p>
                   </div>
                 )}
@@ -360,21 +360,21 @@ export default function ManageContactMessages() {
                 {/* Reply form */}
                 <div className="mt-5 pt-5 border-t border-gray-100">
                   <p className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                    <Reply size={16} className="text-[#0056A6]" /> Reply Email
+                    <Reply size={16} className="text-[#25408F]" /> Reply Email
                   </p>
                   <textarea
                     value={replyText}
                     onChange={(e) => setReplyText(e.target.value)}
                     rows={4}
                     placeholder="Write the email reply that will be sent to this user..."
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#0056A6]/30 focus:border-[#0056A6] bg-gray-50 resize-vertical"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#25408F]/30 focus:border-[#25408F] bg-gray-50 resize-vertical"
                   />
                   <div className="flex items-center justify-between mt-3">
                     <p className="text-xs text-gray-400">This sends an actual email reply and marks message as replied.</p>
                     <button
                       onClick={handleReply}
                       disabled={!replyText.trim() || replying}
-                      className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] disabled:opacity-50 transition-colors"
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] disabled:opacity-50 transition-colors"
                     >
                       <Reply size={14} />
                       {replying ? 'Sending...' : 'Send Reply'}

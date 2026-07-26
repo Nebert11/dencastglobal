@@ -13,23 +13,23 @@ const buttonVariants = cva(
       variant: {
         /** Solid red – primary call-to-action */
         primary: [
-          'bg-[#D72638] text-white shadow-md shadow-[#D72638]/25',
-          'hover:bg-[#b01e2e] hover:shadow-lg hover:shadow-[#D72638]/30',
-          'focus-visible:ring-[#D72638]',
+          'bg-[#D3232E] text-white shadow-md shadow-[#D3232E]/25',
+          'hover:bg-[#b71d27] hover:shadow-lg hover:shadow-[#D3232E]/30',
+          'focus-visible:ring-[#D3232E]',
           'active:scale-[0.97]',
         ],
         /** Solid blue – secondary action */
         secondary: [
-          'bg-[#0056A6] text-white shadow-md shadow-[#0056A6]/20',
-          'hover:bg-[#004a8f] hover:shadow-lg hover:shadow-[#0056A6]/25',
-          'focus-visible:ring-[#0056A6]',
+          'bg-[#25408F] text-white shadow-md shadow-[#25408F]/20',
+          'hover:bg-[#1f3576] hover:shadow-lg hover:shadow-[#25408F]/25',
+          'focus-visible:ring-[#25408F]',
           'active:scale-[0.97]',
         ],
         /** Outlined – neutral / tertiary */
         outline: [
-          'border-2 border-[#0056A6] text-[#0056A6] bg-transparent',
-          'hover:bg-[#0056A6] hover:text-white',
-          'focus-visible:ring-[#0056A6]',
+          'border-2 border-[#25408F] text-[#25408F] bg-transparent',
+          'hover:bg-[#25408F] hover:text-white',
+          'focus-visible:ring-[#25408F]',
           'active:scale-[0.97]',
         ],
         /** Ghost white – for use on dark / image backgrounds */
@@ -42,8 +42,8 @@ const buttonVariants = cva(
         /** Icon-only round button */
         icon: [
           'rounded-full bg-white/10 border border-white/20 text-white',
-          'hover:bg-[#0056A6] hover:border-[#0056A6]',
-          'focus-visible:ring-[#0056A6]',
+          'hover:bg-[#25408F] hover:border-[#25408F]',
+          'focus-visible:ring-[#25408F]',
           'active:scale-[0.95]',
         ],
       },

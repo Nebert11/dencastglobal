@@ -60,7 +60,7 @@ const ReasonCard: React.FC<{
     className="group flex flex-col gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
   >
     {/* Icon in red circle */}
-    <div className="w-12 h-12 rounded-full bg-[#D72638] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#D72638]/30 group-hover:scale-110 transition-transform duration-300">
+    <div className="w-12 h-12 rounded-full bg-[#D3232E] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#D3232E]/30 group-hover:scale-110 transition-transform duration-300">
       <Icon size={22} className="text-white" />
     </div>
 
@@ -78,7 +78,7 @@ const WhyChoose: React.FC = () => {
   return (
     <section className="relative py-24 overflow-hidden bg-[#002d5c]">
       {/* ── Background gradient texture ── */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#001a3a] via-[#0056A6] to-[#002d5c] opacity-90" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#001a3a] via-[#25408F] to-[#002d5c] opacity-90" />
 
       {/* ── Subtle grid pattern ── */}
       <div
@@ -91,7 +91,7 @@ const WhyChoose: React.FC = () => {
       />
 
       {/* ── Decorative circles ── */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#D72638]/10 blur-3xl pointer-events-none" />
+      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#D3232E]/10 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
@@ -100,7 +100,7 @@ const WhyChoose: React.FC = () => {
           <SectionLabel label="Why Us" center light />
           <h2 className="mt-3 text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight">
             Where Creativity{' '}
-            <span className="text-[#D72638]">Meets Excellence</span>
+            <span className="text-[#D3232E]">Meets Excellence</span>
           </h2>
           <p className="mt-4 text-white/60 text-base leading-relaxed">
             The reasons why Africa's leading brands, global organisations, and visionary creators

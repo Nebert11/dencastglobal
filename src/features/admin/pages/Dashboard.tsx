@@ -54,7 +54,7 @@ function StatCard({ label, value, icon, color, badge, loading }: StatCardProps) 
       <div className="flex items-end gap-2">
         <p className="text-2xl font-bold text-gray-900">{value}</p>
         {badge !== undefined && badge > 0 && (
-          <span className="mb-0.5 text-xs font-bold px-2 py-0.5 bg-[#D72638] text-white rounded-full">
+          <span className="mb-0.5 text-xs font-bold px-2 py-0.5 bg-[#D3232E] text-white rounded-full">
             {badge} new
           </span>
         )}
@@ -211,7 +211,7 @@ export default function Dashboard() {
             {format(new Date(), 'EEEE, MMMM d, yyyy')}
           </p>
         </div>
-        <div className="flex items-center gap-2 bg-[#0056A6]/10 text-[#0056A6] px-4 py-2 rounded-xl">
+        <div className="flex items-center gap-2 bg-[#25408F]/10 text-[#25408F] px-4 py-2 rounded-xl">
           <TrendingUp size={16} />
           <span className="text-sm font-semibold">Dencast Global CMS</span>
         </div>
@@ -237,7 +237,7 @@ export default function Dashboard() {
           label="Contact Messages"
           value={messagesData?.total ?? 0}
           badge={messagesData?.unread}
-          icon={<MessageSquare size={20} className="text-[#D72638]" />}
+          icon={<MessageSquare size={20} className="text-[#D3232E]" />}
           color="bg-red-50"
           loading={statsLoading}
         />
@@ -258,7 +258,7 @@ export default function Dashboard() {
             label="New Project"
             icon={<FolderOpen size={22} />}
             href="/admin/projects"
-            color="text-[#0056A6] border-blue-200 hover:bg-blue-50 hover:border-blue-400"
+            color="text-[#25408F] border-blue-200 hover:bg-blue-50 hover:border-blue-400"
           />
           <QuickAction
             label="New Blog Post"
@@ -276,7 +276,7 @@ export default function Dashboard() {
             label="View Messages"
             icon={<MessageSquare size={22} />}
             href="/admin/messages"
-            color="text-[#D72638] border-red-200 hover:bg-red-50 hover:border-red-400"
+            color="text-[#D3232E] border-red-200 hover:bg-red-50 hover:border-red-400"
           />
         </div>
       </div>
@@ -288,7 +288,7 @@ export default function Dashboard() {
             <h3 className="font-semibold text-gray-900">Recent Messages</h3>
             <button
               onClick={() => navigate('/admin/messages')}
-              className="text-xs text-[#0056A6] font-medium flex items-center gap-1 hover:gap-2 transition-all"
+              className="text-xs text-[#25408F] font-medium flex items-center gap-1 hover:gap-2 transition-all"
             >
               View all <ArrowRight size={13} />
             </button>
@@ -302,7 +302,7 @@ export default function Dashboard() {
                   onClick={() => navigate('/admin/messages')}
                   className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors"
                 >
-                  <div className="w-9 h-9 rounded-full bg-[#0056A6]/10 flex items-center justify-center flex-shrink-0 text-[#0056A6] font-bold text-sm">
+                  <div className="w-9 h-9 rounded-full bg-[#25408F]/10 flex items-center justify-center flex-shrink-0 text-[#25408F] font-bold text-sm">
                     {msg.name.charAt(0).toUpperCase()}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -332,7 +332,7 @@ export default function Dashboard() {
             <h3 className="font-semibold text-gray-900">Recent Projects</h3>
             <button
               onClick={() => navigate('/admin/projects')}
-              className="text-xs text-[#0056A6] font-medium flex items-center gap-1 hover:gap-2 transition-all"
+              className="text-xs text-[#25408F] font-medium flex items-center gap-1 hover:gap-2 transition-all"
             >
               View all <ArrowRight size={13} />
             </button>
@@ -354,12 +354,12 @@ export default function Dashboard() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#0056A6]/10 to-[#0056A6]/30">
-                        <FolderOpen size={28} className="text-[#0056A6]/40" />
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#25408F]/10 to-[#25408F]/30">
+                        <FolderOpen size={28} className="text-[#25408F]/40" />
                       </div>
                     )}
                     {project.is_featured && (
-                      <span className="absolute top-2 right-2 text-[10px] font-bold bg-[#D72638] text-white px-1.5 py-0.5 rounded">
+                      <span className="absolute top-2 right-2 text-[10px] font-bold bg-[#D3232E] text-white px-1.5 py-0.5 rounded">
                         Featured
                       </span>
                     )}
@@ -379,7 +379,7 @@ export default function Dashboard() {
               <p className="text-sm text-gray-400">No projects yet</p>
               <button
                 onClick={() => navigate('/admin/projects')}
-                className="flex items-center gap-1.5 text-sm text-[#0056A6] font-semibold hover:underline"
+                className="flex items-center gap-1.5 text-sm text-[#25408F] font-semibold hover:underline"
               >
                 <Plus size={15} /> Add your first project
               </button>
@@ -393,9 +393,9 @@ export default function Dashboard() {
         <h3 className="font-semibold text-gray-900 mb-4">Content Overview</h3>
         <div className="space-y-3">
           {[
-            { label: 'Projects', value: projectCount ?? 0, max: 50, color: 'bg-[#0056A6]' },
+            { label: 'Projects', value: projectCount ?? 0, max: 50, color: 'bg-[#25408F]' },
             { label: 'Blog Posts', value: blogCount ?? 0, max: 100, color: 'bg-purple-500' },
-            { label: 'Messages', value: messagesData?.total ?? 0, max: 200, color: 'bg-[#D72638]' },
+            { label: 'Messages', value: messagesData?.total ?? 0, max: 200, color: 'bg-[#D3232E]' },
             { label: 'Media Files', value: mediaCount ?? 0, max: 500, color: 'bg-emerald-500' },
           ].map((item) => (
             <div key={item.label} className="flex items-center gap-4">

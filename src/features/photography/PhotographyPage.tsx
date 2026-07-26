@@ -115,7 +115,7 @@ const PhotographyPage: React.FC = () => {
             className="text-6xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight mb-4"
           >
             One Frame.{' '}
-            <span className="text-[#D72638]">Infinite</span>
+            <span className="text-[#D3232E]">Infinite</span>
             <br />Impact.
           </motion.h1>
 
@@ -150,7 +150,7 @@ const PhotographyPage: React.FC = () => {
           <motion.div variants={stagger} initial="hidden" animate={photoInView ? 'visible' : 'hidden'} className="mb-16">
             <motion.div variants={fadeUp}><SectionLabel label="Photography" /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-slate-900">
-              Still Images that <span className="text-[#0056A6]">Speak Volumes</span>
+              Still Images that <span className="text-[#25408F]">Speak Volumes</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="mt-4 text-slate-500 text-lg max-w-2xl">
               Every great brand, story, and moment deserves a photographer who can capture its true essence. Our team works across six photographic disciplines.
@@ -165,10 +165,10 @@ const PhotographyPage: React.FC = () => {
                   key={cat.title}
                   custom={i} variants={fadeUp} initial="hidden" animate={photoInView ? 'visible' : 'hidden'}
                   whileHover={{ y: -5 }}
-                  className="group p-8 rounded-2xl border border-slate-100 hover:border-[#0056A6]/20 hover:shadow-xl bg-white transition-all duration-300"
+                  className="group p-8 rounded-2xl border border-slate-100 hover:border-[#25408F]/20 hover:shadow-xl bg-white transition-all duration-300"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#0056A6]/10 group-hover:bg-[#0056A6] flex items-center justify-center mb-5 transition-colors duration-300">
-                    <Icon size={24} className="text-[#0056A6] group-hover:text-white transition-colors duration-300" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#25408F]/10 group-hover:bg-[#25408F] flex items-center justify-center mb-5 transition-colors duration-300">
+                    <Icon size={24} className="text-[#25408F] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <h3 className="font-bold text-slate-900 text-xl mb-2">{cat.title}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{cat.desc}</p>
@@ -185,7 +185,7 @@ const PhotographyPage: React.FC = () => {
           <motion.div variants={stagger} initial="hidden" animate={videoInView ? 'visible' : 'hidden'} className="mb-16">
             <motion.div variants={fadeUp}><SectionLabel label="Videography" light /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-white">
-              Motion that <span className="text-[#D72638]">Resonates</span>
+              Motion that <span className="text-[#D3232E]">Resonates</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="mt-4 text-white/60 text-lg max-w-2xl">
               Cinema-grade video production from intimate single-camera shoots to full multi-crew feature productions.
@@ -200,10 +200,10 @@ const PhotographyPage: React.FC = () => {
                   key={cat.title}
                   custom={i} variants={fadeUp} initial="hidden" animate={videoInView ? 'visible' : 'hidden'}
                   whileHover={{ y: -5 }}
-                  className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-[#D72638]/40 hover:bg-white/10 transition-all duration-300"
+                  className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-[#D3232E]/40 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#D72638]/20 flex items-center justify-center mb-5">
-                    <Icon size={22} className="text-[#D72638]" />
+                  <div className="w-12 h-12 rounded-xl bg-[#D3232E]/20 flex items-center justify-center mb-5">
+                    <Icon size={22} className="text-[#D3232E]" />
                   </div>
                   <h3 className="font-bold text-white text-lg mb-2">{cat.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{cat.desc}</p>
@@ -261,10 +261,10 @@ const PhotographyPage: React.FC = () => {
           >
             {CAMERAS.map(cam => (
               <div key={cam.name} className="bg-white rounded-xl p-4 border border-slate-100 shadow-sm flex items-start gap-3">
-                <CheckCircle2 size={16} className="text-[#0056A6] mt-0.5 flex-shrink-0" />
+                <CheckCircle2 size={16} className="text-[#25408F] mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-slate-800 text-sm">{cam.name}</p>
-                  <p className="text-xs text-[#D72638] font-medium mt-0.5">{cam.type}</p>
+                  <p className="text-xs text-[#D3232E] font-medium mt-0.5">{cam.type}</p>
                 </div>
               </div>
             ))}
@@ -273,7 +273,7 @@ const PhotographyPage: React.FC = () => {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 bg-gradient-to-br from-[#0056A6] to-[#001f3f]">
+      <section className="py-20 bg-gradient-to-br from-[#25408F] to-[#001f3f]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionLabel label="Book a Shoot" light center />
           <h2 className="mt-4 text-4xl font-black text-white">

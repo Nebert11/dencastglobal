@@ -100,13 +100,13 @@ const ContactPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[55vh] flex items-center justify-center bg-[#0056A6] overflow-hidden">
+      <section className="relative min-h-[55vh] flex items-center justify-center bg-[#25408F] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/dencast_images/lets_create.png)' }}
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-[#0056A6]/65" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[#25408F]/65" aria-hidden="true" />
         {/* Decorative pattern */}
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: 'radial-gradient(circle at 25% 25%, #ffffff 1px, transparent 1px), radial-gradient(circle at 75% 75%, #ffffff 1px, transparent 1px)', backgroundSize: '60px 60px' }}
@@ -131,7 +131,7 @@ const ContactPage: React.FC = () => {
             className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none mb-6"
           >
             Let's Create{' '}
-            <span className="text-[#D72638]">Together</span>
+            <span className="text-[#D3232E]">Together</span>
           </motion.h1>
 
           <motion.p
@@ -183,24 +183,24 @@ const ContactPage: React.FC = () => {
                 <h3 className="font-bold text-slate-900 text-lg mb-6">Get in Touch</h3>
                 <ul className="space-y-5">
                   <li className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#0056A6]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Phone size={18} className="text-[#0056A6]" />
+                    <div className="w-10 h-10 bg-[#25408F]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Phone size={18} className="text-[#25408F]" />
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Phone</p>
-                      <a href="tel:+254721710397" className="text-slate-800 font-semibold hover:text-[#0056A6] transition-colors">
+                      <a href="tel:+254721710397" className="text-slate-800 font-semibold hover:text-[#25408F] transition-colors">
                         +254-721-710-397
                       </a>
                     </div>
                   </li>
 
                   <li className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#0056A6]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Mail size={18} className="text-[#0056A6]" />
+                    <div className="w-10 h-10 bg-[#25408F]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Mail size={18} className="text-[#25408F]" />
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Email</p>
-                      <a href={`mailto:${CONTACT_EMAIL}`} className="text-slate-800 font-semibold hover:text-[#0056A6] transition-colors">
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="text-slate-800 font-semibold hover:text-[#25408F] transition-colors">
                         {CONTACT_EMAIL}
                       </a>
                     </div>
@@ -224,8 +224,8 @@ const ContactPage: React.FC = () => {
                   </li>
 
                   <li className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#0056A6]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <MapPin size={18} className="text-[#0056A6]" />
+                    <div className="w-10 h-10 bg-[#25408F]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <MapPin size={18} className="text-[#25408F]" />
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Office</p>
@@ -238,8 +238,8 @@ const ContactPage: React.FC = () => {
                   </li>
 
                   <li className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#0056A6]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Clock size={18} className="text-[#0056A6]" />
+                    <div className="w-10 h-10 bg-[#25408F]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Clock size={18} className="text-[#25408F]" />
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Business Hours</p>
@@ -299,7 +299,7 @@ const ContactPage: React.FC = () => {
             </motion.h2>
             <motion.p variants={fadeUp} className="mt-3 text-slate-500">
               Quick answers to common questions. Have more?{' '}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#0056A6] font-semibold hover:underline">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#25408F] font-semibold hover:underline">
                 Just ask us.
               </a>
             </motion.p>

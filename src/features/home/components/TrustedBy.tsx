@@ -32,7 +32,7 @@ const LogoPill: React.FC<{ name: string; variant?: 'light' | 'default' }> = ({ n
 
   return (
     <div
-      className={`flex-shrink-0 flex items-center justify-center px-6 py-3.5 rounded-xl shadow-sm border min-w-[160px] h-[72px] ${
+      className={`flex-shrink-0 flex items-center justify-center px-10 py-5 rounded-2xl shadow-sm border min-w-[260px] h-[132px] ${
         variant === 'light'
           ? 'bg-slate-100 border-slate-200'
           : 'bg-white border-slate-200'
@@ -42,7 +42,7 @@ const LogoPill: React.FC<{ name: string; variant?: 'light' | 'default' }> = ({ n
         <img
           src={logoUrl}
           alt={`${name} logo`}
-          className="max-h-10 max-w-[130px] object-contain"
+          className="max-h-20 max-w-[220px] object-contain"
           loading="lazy"
         />
       ) : (
@@ -68,10 +68,7 @@ const TrustedBy: React.FC<TrustedByProps> = ({ clients }) => {
   return (
     <section className="py-16 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 mb-10">
-        <SectionLabel label="Our Clients" subtitle="Trusted By Industry Leaders" center />
-        <p className="mt-3 text-slate-500 text-center text-sm max-w-xl mx-auto">
-          We've had the privilege of working with leading organisations across Africa and beyond.
-        </p>
+        <SectionLabel label="Our Clients" center />
       </div>
 
       {/* ── Scrolling strip ── */}
@@ -94,32 +91,6 @@ const TrustedBy: React.FC<TrustedByProps> = ({ clients }) => {
         >
           {doubled.map((client, i) => (
             <LogoPill key={`${client.id}-${i}`} name={client.name} />
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Second row — reverse direction */}
-      <div className="relative mt-4">
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none" />
-
-        <motion.div
-          className="flex gap-5 w-max"
-          animate={{ x: ['-50%', '0%'] }}
-          transition={{
-            x: {
-              duration: 32,
-              repeat: Infinity,
-              ease: 'linear',
-            },
-          }}
-        >
-          {doubled.map((client, i) => (
-            <LogoPill
-              key={`${client.id}-rev-${i}`}
-              name={client.name}
-              variant="light"
-            />
           ))}
         </motion.div>
       </div>

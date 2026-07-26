@@ -59,7 +59,7 @@ const MediaCard: React.FC<MediaCardProps> = ({
           )} />
 
           {/* Category badge */}
-          <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#0056A6]/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest rounded-md">
+          <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#25408F]/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest rounded-md">
             {category}
           </span>
 
@@ -80,18 +80,18 @@ const MediaCard: React.FC<MediaCardProps> = ({
 
         {/* ── Body ── */}
         <div className="p-4 bg-white">
-          <p className="text-xs text-[#D72638] font-semibold uppercase tracking-widest mb-1">{category}</p>
-          <h3 className="text-slate-800 font-bold text-base leading-snug line-clamp-2 group-hover:text-[#0056A6] transition-colors duration-200">
+          <p className="text-xs text-[#D3232E] font-semibold uppercase tracking-widest mb-1">{category}</p>
+          <h3 className="text-slate-800 font-bold text-base leading-snug line-clamp-2 group-hover:text-[#25408F] transition-colors duration-200">
             {title}
           </h3>
-          <div className="mt-3 flex items-center gap-1 text-[#0056A6] text-xs font-semibold">
+          <div className="mt-3 flex items-center gap-1 text-[#25408F] text-xs font-semibold">
             <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">{cta}</span>
             <motion.span
               className="ml-auto"
               animate={{ x: 0 }}
               whileHover={{ x: 3 }}
             >
-              <ArrowUpRight size={14} className="text-[#D72638]" />
+              <ArrowUpRight size={14} className="text-[#D3232E]" />
             </motion.span>
           </div>
         </div>

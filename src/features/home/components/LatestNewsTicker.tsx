@@ -79,14 +79,14 @@ const LatestNewsTicker: React.FC = () => {
     <section className="bg-white border-b border-slate-100" aria-label="Latest news">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-5 sm:py-6">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-          <h2 className="inline-flex h-12 sm:h-14 items-center px-4 sm:px-5 rounded-xl border border-[#0056A6]/20 bg-[#0056A6]/10 text-sm sm:text-base font-black tracking-wide uppercase text-[#0056A6] shrink-0">
+          <h2 className="inline-flex h-12 sm:h-14 items-center px-4 sm:px-5 rounded-xl border border-[#25408F]/20 bg-[#25408F]/10 text-sm sm:text-base font-black tracking-wide uppercase text-[#25408F] shrink-0">
             Latest News
           </h2>
 
           {count === 1 || !shouldAnimate ? (
             <Link
               to={current.url}
-              className="block flex-1 h-12 sm:h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 text-slate-800 font-semibold text-sm sm:text-base leading-tight truncate hover:bg-[#0056A6]/5 hover:border-[#0056A6]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0056A6]/35"
+              className="block flex-1 h-12 sm:h-14 rounded-xl border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3 text-slate-800 font-semibold text-sm sm:text-base leading-tight truncate hover:bg-[#25408F]/5 hover:border-[#25408F]/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25408F]/35"
             >
               {current.title}
             </Link>
@@ -107,13 +107,13 @@ const LatestNewsTicker: React.FC = () => {
               >
                 <Link
                   to={current.url}
-                  className="flex h-12 sm:h-14 items-center px-4 sm:px-5 text-slate-800 font-semibold text-sm sm:text-base leading-tight truncate hover:bg-[#0056A6]/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0056A6]/35"
+                  className="flex h-12 sm:h-14 items-center px-4 sm:px-5 text-slate-800 font-semibold text-sm sm:text-base leading-tight truncate hover:bg-[#25408F]/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25408F]/35"
                 >
                   {current.title}
                 </Link>
                 <Link
                   to={next.url}
-                  className="flex h-12 sm:h-14 items-center px-4 sm:px-5 text-slate-800 font-semibold text-sm sm:text-base leading-tight truncate hover:bg-[#0056A6]/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0056A6]/35"
+                  className="flex h-12 sm:h-14 items-center px-4 sm:px-5 text-slate-800 font-semibold text-sm sm:text-base leading-tight truncate hover:bg-[#25408F]/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25408F]/35"
                 >
                   {next.title}
                 </Link>

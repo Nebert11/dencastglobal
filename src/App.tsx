@@ -132,10 +132,10 @@ export default function App() {
               padding: '12px 16px',
             },
             success: {
-              iconTheme: { primary: '#0056A6', secondary: '#fff' },
+              iconTheme: { primary: '#25408F', secondary: '#fff' },
             },
             error: {
-              iconTheme: { primary: '#D72638', secondary: '#fff' },
+              iconTheme: { primary: '#D3232E', secondary: '#fff' },
             },
           }}
         />

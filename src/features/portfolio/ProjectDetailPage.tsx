@@ -132,7 +132,7 @@ const ProjectDetailPage: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
           >
-            <span className="inline-block px-3 py-1 bg-[#D72638] text-white text-xs font-bold uppercase tracking-widest rounded-md mb-4">
+            <span className="inline-block px-3 py-1 bg-[#D3232E] text-white text-xs font-bold uppercase tracking-widest rounded-md mb-4">
               {project.category}
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 max-w-3xl">
@@ -175,7 +175,7 @@ const ProjectDetailPage: React.FC = () => {
               <LinkIcon size={13} /> {copied ? 'Copied!' : 'Copy Link'}
             </button>
           </div>
-          <Link to="/portfolio" className="text-sm text-[#0056A6] font-semibold hover:underline">
+          <Link to="/portfolio" className="text-sm text-[#25408F] font-semibold hover:underline">
             ← Back to Portfolio
           </Link>
         </div>
@@ -194,7 +194,7 @@ const ProjectDetailPage: React.FC = () => {
                     onClick={() => setActiveTab(tab.id)}
                     className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
                       activeTab === tab.id
-                        ? 'bg-[#0056A6] text-white shadow-md'
+                        ? 'bg-[#25408F] text-white shadow-md'
                         : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
@@ -235,7 +235,7 @@ const ProjectDetailPage: React.FC = () => {
                   <dt className="text-sm font-semibold text-slate-500 mb-3">Services Used</dt>
                   <dd className="flex flex-wrap gap-2">
                     {project.services.map(svc => (
-                      <span key={svc} className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#0056A6]/10 text-[#0056A6] rounded-full text-xs font-semibold">
+                      <span key={svc} className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#25408F]/10 text-[#25408F] rounded-full text-xs font-semibold">
                         <CheckCircle2 size={11} />
                         {svc}
                       </span>

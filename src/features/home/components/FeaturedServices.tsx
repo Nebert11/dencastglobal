@@ -73,9 +73,8 @@ const FeaturedServices: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
           <div className="max-w-xl">
             <SectionLabel label="What We Do" />
-            <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight tracking-tight">
-              Premium{' '}
-              <span className="text-[#D72638]">Services</span>
+            <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#25408F] leading-tight tracking-tight">
+              Our <span className="text-[#D3232E]">Services</span>
             </h2>
             <p className="mt-4 text-slate-500 text-base leading-relaxed">
               From concept to delivery, we offer a comprehensive suite of creative media services
@@ -115,7 +114,7 @@ const FeaturedServices: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 p-8 rounded-2xl bg-[#0056A6]/5 border border-[#0056A6]/10"
+          className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 p-8 rounded-2xl bg-[#25408F]/5 border border-[#25408F]/10"
         >
           <p className="text-slate-600 text-sm text-center sm:text-left">
             Explore how we craft compelling stories and premium productions across industries.

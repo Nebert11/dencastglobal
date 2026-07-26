@@ -39,7 +39,7 @@ function slugify(s: string) {
 function inputClass(error = false, textarea = false) {
   return cn(
     'w-full px-4 py-2.5 rounded-xl border text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors bg-gray-50',
-    'focus:bg-white focus:ring-2 focus:ring-[#0056A6]/30 focus:border-[#0056A6]',
+    'focus:bg-white focus:ring-2 focus:ring-[#25408F]/30 focus:border-[#25408F]',
     error ? 'border-red-400 bg-red-50' : 'border-gray-200',
     textarea && 'resize-vertical'
   );
@@ -208,7 +208,7 @@ function BlogModal({ open, onClose, editing, categories, onSaved }: ModalProps) 
           </div>
           <div className="flex items-center gap-6">
             <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" {...register('is_featured')} className="w-4 h-4 rounded accent-[#0056A6]" />
+              <input type="checkbox" {...register('is_featured')} className="w-4 h-4 rounded accent-[#25408F]" />
               <span className="text-sm text-gray-700">Featured post</span>
             </label>
           </div>
@@ -216,7 +216,7 @@ function BlogModal({ open, onClose, editing, categories, onSaved }: ModalProps) 
         <div className="flex justify-end gap-3 p-5 border-t border-gray-100">
           <button onClick={onClose} className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">Cancel</button>
           <button onClick={handleSubmit(onSubmit)} disabled={saving}
-            className="px-5 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors disabled:opacity-70">
+            className="px-5 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors disabled:opacity-70">
             {saving ? 'Saving…' : editing ? 'Update Post' : 'Create Post'}
           </button>
         </div>
@@ -280,7 +280,7 @@ export default function ManageBlogPosts() {
           <p className="text-sm text-gray-500 mt-0.5">{total} total posts</p>
         </div>
         <button onClick={() => { setEditing(null); setModalOpen(true); }}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors">
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors">
           <Plus size={16} /> New Post
         </button>
       </div>
@@ -290,10 +290,10 @@ export default function ManageBlogPosts() {
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <input type="search" value={search} onChange={(e) => { setSearch(e.target.value); setPage(1); }}
             placeholder="Search posts…"
-            className="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-[#0056A6]/30 bg-gray-50" />
+            className="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-[#25408F]/30 bg-gray-50" />
         </div>
         <select value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-          className="px-4 py-2 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-[#0056A6]/30 bg-gray-50">
+          className="px-4 py-2 rounded-xl border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-[#25408F]/30 bg-gray-50">
           <option value="">All statuses</option>
           <option value="published">Published</option>
           <option value="draft">Draft</option>
@@ -356,11 +356,11 @@ export default function ManageBlogPosts() {
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <button onClick={() => { setEditing(p); setModalOpen(true); }}
-                          className="p-1.5 rounded-lg text-gray-400 hover:text-[#0056A6] hover:bg-blue-50 transition-colors">
+                          className="p-1.5 rounded-lg text-gray-400 hover:text-[#25408F] hover:bg-blue-50 transition-colors">
                           <Pencil size={15} />
                         </button>
                         <button onClick={() => handleDelete(p)}
-                          className="p-1.5 rounded-lg text-gray-400 hover:text-[#D72638] hover:bg-red-50 transition-colors">
+                          className="p-1.5 rounded-lg text-gray-400 hover:text-[#D3232E] hover:bg-red-50 transition-colors">
                           <Trash2 size={15} />
                         </button>
                       </div>

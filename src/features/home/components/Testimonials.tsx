@@ -85,7 +85,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
           className="text-center mb-14"
         >
           <SectionLabel label="Client Reviews" center />
-          <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#0056A6] leading-tight tracking-tight">
+          <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#25408F] leading-tight tracking-tight">
             What Our Clients Say
           </h2>
           <p className="mt-3 text-slate-500 text-base max-w-xl mx-auto">
@@ -98,13 +98,13 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
         <div className="relative">
           {/* Custom nav buttons */}
           <button
-            className="testimonials-prev absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-[#0056A6] hover:bg-[#0056A6] hover:text-white transition-all duration-200 disabled:opacity-40"
+            className="testimonials-prev absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-[#25408F] hover:bg-[#25408F] hover:text-white transition-all duration-200 disabled:opacity-40"
             aria-label="Previous testimonial"
           >
             <ChevronLeft size={18} />
           </button>
           <button
-            className="testimonials-next absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-[#0056A6] hover:bg-[#0056A6] hover:text-white transition-all duration-200 disabled:opacity-40"
+            className="testimonials-next absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-[#25408F] hover:bg-[#25408F] hover:text-white transition-all duration-200 disabled:opacity-40"
             aria-label="Next testimonial"
           >
             <ChevronRight size={18} />
@@ -123,16 +123,12 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
               bulletClass:
                 'swiper-pagination-bullet !w-2 !h-2 !bg-slate-300 !opacity-100',
               bulletActiveClass:
-                'swiper-pagination-bullet-active !bg-[#0056A6] !w-5 !rounded-full transition-all duration-300',
+                'swiper-pagination-bullet-active !bg-[#25408F] !w-5 !rounded-full transition-all duration-300',
             }}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
-            }}
-            breakpoints={{
-              768: { slidesPerView: 2, spaceBetween: 24 },
-              1280: { slidesPerView: 2, spaceBetween: 32 },
             }}
             className="!pb-12"
           >

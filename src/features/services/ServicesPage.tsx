@@ -25,25 +25,25 @@ const CATEGORIES = [
   {
     id: 'production',
     label: 'Production',
-    color: '#0056A6',
+    color: '#25408F',
     slugs: ['documentary-production', 'livestreaming-events', 'videography', 'commercial-productions', 'events-management'],
   },
   {
     id: 'photography',
     label: 'Photography & Visual',
-    color: '#D72638',
+    color: '#D3232E',
     slugs: ['photography', 'drone-services'],
   },
   {
     id: 'brand',
     label: 'Branding & Strategy',
-    color: '#0056A6',
+    color: '#25408F',
     slugs: ['brand-strategy', 'creative-media', 'corporate-communications'],
   },
   {
     id: 'digital',
     label: 'Digital',
-    color: '#D72638',
+    color: '#D3232E',
     slugs: ['digital-content-creation', 'audio-management-soundtrack-development'],
   },
 ];
@@ -69,8 +69,8 @@ const HeroBanner: React.FC = () => (
   <section className="relative min-h-[60vh] flex items-center justify-center bg-[#001f3f] overflow-hidden">
     {/* Background image */}
     <div
-      className="absolute inset-0 bg-cover bg-center opacity-20"
-      style={{ backgroundImage: 'url(https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2)' }}
+      className="absolute inset-0 bg-cover bg-center opacity-30"
+      style={{ backgroundImage: 'url(/dencast_images/CREW.jpg)' }}
     />
     <div className="absolute inset-0 bg-gradient-to-b from-[#001f3f]/80 via-[#001f3f]/60 to-[#001f3f]" />
 
@@ -86,7 +86,7 @@ const HeroBanner: React.FC = () => (
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }}
-        className="inline-flex items-center gap-2 bg-[#D72638]/20 border border-[#D72638]/30 text-[#D72638] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
+        className="inline-flex items-center gap-2 bg-[#D3232E]/20 border border-[#D3232E]/30 text-[#D3232E] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
       >
         <Sparkles size={12} />
         World-Class Services
@@ -96,7 +96,7 @@ const HeroBanner: React.FC = () => (
         initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
         className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tight mb-6"
       >
-        Our <span className="text-[#D72638]">Services</span>
+        Our <span className="text-[#D3232E]">Services</span>
       </motion.h1>
 
       <motion.p
@@ -124,7 +124,7 @@ const IntroSection: React.FC = () => {
           >
             <motion.div variants={fadeUp}><SectionLabel label="What We Do" /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900 leading-tight">
-              Our Service Scope for <span className="text-[#0056A6]">Brands, Events, and Campaigns</span>
+              Our Service Scope for <span className="text-[#25408F]">Brands, Events, and Campaigns</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="mt-5 text-slate-600 leading-relaxed">
               We offer expert, high-quality services tailored to both corporate and social events. From documentaries and digital content to event management, audio production, script writing, podcasts, and graphics, our team delivers practical solutions with creative precision.
@@ -133,7 +133,7 @@ const IntroSection: React.FC = () => {
               {['Documentaries', 'Digital Content', 'Virtual and Hybrid Events', 'Event Audio Management']
                 .map((label) => (
                   <div key={label} className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-                    <p className="text-sm font-bold text-[#0056A6] uppercase tracking-wide">{label}</p>
+                    <p className="text-sm font-bold text-[#25408F] uppercase tracking-wide">{label}</p>
                   </div>
                 ))}
             </motion.div>
@@ -145,7 +145,7 @@ const IntroSection: React.FC = () => {
             className="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl"
           >
             <img
-              src="https://images.pexels.com/photos/3379932/pexels-photo-3379932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              src="/dencast_images/Dencast-Crew-11.jpg"
               alt="Dencast Global production team"
               className="w-full h-full object-cover"
             />
@@ -214,7 +214,7 @@ const CTASection: React.FC = () => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="py-24 bg-[#0056A6]">
+    <section ref={ref} className="py-24 bg-[#25408F]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-10 lg:p-16 border border-white/20">
           <motion.div

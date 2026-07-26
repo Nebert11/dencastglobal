@@ -64,7 +64,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Category badge */}
-        <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#0056A6] text-white text-[10px] font-bold uppercase tracking-widest rounded-md shadow-md">
+        <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#25408F] text-white text-[10px] font-bold uppercase tracking-widest rounded-md shadow-md">
           {category}
         </span>
       </Link>
@@ -91,7 +91,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
         {/* Title */}
         <Link to={`/blog/${slug}`}>
-          <h3 className="text-slate-800 font-bold text-base leading-snug line-clamp-2 group-hover:text-[#0056A6] transition-colors duration-200">
+          <h3 className="text-slate-800 font-bold text-base leading-snug line-clamp-2 group-hover:text-[#25408F] transition-colors duration-200">
             {title}
           </h3>
         </Link>
@@ -102,12 +102,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
         {/* Read more */}
         <Link
           to={`/blog/${slug}`}
-          className="mt-1 inline-flex items-center gap-1.5 text-[#0056A6] text-sm font-semibold hover:gap-2.5 transition-all duration-200 group/link"
+          className="mt-1 inline-flex items-center gap-1.5 text-[#25408F] text-sm font-semibold hover:gap-2.5 transition-all duration-200 group/link"
         >
           Read More
           <ArrowRight
             size={15}
-            className="text-[#D72638] group-hover/link:translate-x-1 transition-transform duration-200"
+            className="text-[#D3232E] group-hover/link:translate-x-1 transition-transform duration-200"
           />
         </Link>
       </div>

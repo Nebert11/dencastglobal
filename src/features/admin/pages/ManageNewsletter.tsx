@@ -116,7 +116,7 @@ export default function ManageNewsletter() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
-        <StatsCard label="Total Subscribers" value={stats?.total ?? 0} icon={<Users size={20} className="text-[#0056A6]" />} color="bg-blue-50" />
+        <StatsCard label="Total Subscribers" value={stats?.total ?? 0} icon={<Users size={20} className="text-[#25408F]" />} color="bg-blue-50" />
         <StatsCard label="Active Subscribers" value={stats?.active ?? 0} icon={<UserCheck size={20} className="text-green-600" />} color="bg-green-50" />
         <StatsCard label="Unsubscribed" value={stats?.inactive ?? 0} icon={<UserX size={20} className="text-gray-500" />} color="bg-gray-100" />
         <StatsCard label="New This Month" value={stats?.thisMonth ?? 0} icon={<TrendingUp size={20} className="text-purple-600" />} color="bg-purple-50" />
@@ -134,7 +134,7 @@ export default function ManageNewsletter() {
             onClick={() => setStatusFilter(tab.value as 'all' | 'active' | 'inactive')}
             className={cn(
               'px-4 py-2 rounded-xl text-sm font-semibold transition-colors',
-              statusFilter === tab.value ? 'bg-[#0056A6] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+              statusFilter === tab.value ? 'bg-[#25408F] text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
             )}
           >
             {tab.label}
@@ -176,7 +176,7 @@ export default function ManageNewsletter() {
                   <tr key={sub.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-full bg-[#0056A6]/10 flex items-center justify-center text-[#0056A6] font-bold text-xs flex-shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-[#25408F]/10 flex items-center justify-center text-[#25408F] font-bold text-xs flex-shrink-0">
                           {sub.email.charAt(0).toUpperCase()}
                         </div>
                         <span className="font-medium text-gray-900 truncate">{sub.email}</span>
@@ -200,7 +200,7 @@ export default function ManageNewsletter() {
                         className={cn(
                           'text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors',
                           sub.is_active
-                            ? 'text-[#D72638] hover:bg-red-50'
+                            ? 'text-[#D3232E] hover:bg-red-50'
                             : 'text-green-700 hover:bg-green-50'
                         )}
                       >

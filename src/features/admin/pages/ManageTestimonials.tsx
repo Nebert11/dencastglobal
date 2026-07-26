@@ -28,7 +28,7 @@ type TestimonialForm = z.infer<typeof schema>;
 function inputClass(error = false, textarea = false) {
   return cn(
     'w-full px-4 py-2.5 rounded-xl border text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors bg-gray-50',
-    'focus:bg-white focus:ring-2 focus:ring-[#0056A6]/30 focus:border-[#0056A6]',
+    'focus:bg-white focus:ring-2 focus:ring-[#25408F]/30 focus:border-[#25408F]',
     error ? 'border-red-400 bg-red-50' : 'border-gray-200',
     textarea && 'resize-vertical min-h-[80px]'
   );
@@ -151,7 +151,7 @@ function TestimonialModal({ open, onClose, editing, onSaved }: ModalProps) {
           </Field>
           <Field label="Rating (1–5)" error={errors.rating?.message}>
             <div className="flex items-center gap-3">
-              <input type="range" min={1} max={5} step={1} {...register('rating')} className="flex-1 accent-[#0056A6]" />
+              <input type="range" min={1} max={5} step={1} {...register('rating')} className="flex-1 accent-[#25408F]" />
               <div className="flex items-center gap-1.5">
                 <span className="text-sm font-bold text-gray-900">{ratingValue}</span>
                 <div className="flex items-center gap-0.5">
@@ -168,7 +168,7 @@ function TestimonialModal({ open, onClose, editing, onSaved }: ModalProps) {
             </Field>
             <div className="flex items-end pb-0.5">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" {...register('is_featured')} className="w-4 h-4 rounded accent-[#0056A6]" />
+                <input type="checkbox" {...register('is_featured')} className="w-4 h-4 rounded accent-[#25408F]" />
                 <span className="text-sm text-gray-700">Featured</span>
               </label>
             </div>
@@ -177,7 +177,7 @@ function TestimonialModal({ open, onClose, editing, onSaved }: ModalProps) {
         <div className="flex justify-end gap-3 p-5 border-t border-gray-100">
           <button onClick={onClose} className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors">Cancel</button>
           <button onClick={handleSubmit(onSubmit)} disabled={saving}
-            className="px-5 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors disabled:opacity-70">
+            className="px-5 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors disabled:opacity-70">
             {saving ? 'Saving…' : editing ? 'Update' : 'Create'}
           </button>
         </div>
@@ -220,7 +220,7 @@ export default function ManageTestimonials() {
           <p className="text-sm text-gray-500 mt-0.5">{testimonials?.length ?? 0} testimonials</p>
         </div>
         <button onClick={() => { setEditing(null); setModalOpen(true); }}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0056A6] text-white text-sm font-semibold hover:bg-[#004a8f] transition-colors">
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#25408F] text-white text-sm font-semibold hover:bg-[#1f3576] transition-colors">
           <Plus size={16} /> Add Testimonial
         </button>
       </div>
@@ -254,7 +254,7 @@ export default function ManageTestimonials() {
                   {t.client_avatar_url ? (
                     <img src={t.client_avatar_url} alt={t.client_name} className="w-10 h-10 rounded-full object-cover" />
                   ) : (
-                    <div className="w-10 h-10 rounded-full bg-[#0056A6] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[#25408F] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
                       {initials(t.client_name)}
                     </div>
                   )}
@@ -276,13 +276,13 @@ export default function ManageTestimonials() {
               <div className="flex items-center gap-2 mt-4 pt-3 border-t border-gray-100">
                 <button
                   onClick={() => { setEditing(t); setModalOpen(true); }}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-[#0056A6] hover:bg-blue-50 transition-colors"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-[#25408F] hover:bg-blue-50 transition-colors"
                 >
                   <Pencil size={13} /> Edit
                 </button>
                 <button
                   onClick={() => handleDelete(t)}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-[#D72638] hover:bg-red-50 transition-colors"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold text-[#D3232E] hover:bg-red-50 transition-colors"
                 >
                   <Trash2 size={13} /> Delete
                 </button>
