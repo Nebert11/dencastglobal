@@ -166,9 +166,9 @@ const DEFAULT_CONTENT: AboutContent = {
 };
 
 const JOURNEY_IMAGES = [
-  '/dencast_images/13.jpg',
-  '/dencast_images/15.jpg',
-  '/dencast_images/16.jpg',
+  { src: '/dencast_images/journey1.jpg', objectPosition: 'center 38%' },
+  { src: '/dencast_images/journey2.jpg', objectPosition: 'center 15%' },
+  { src: '/dencast_images/journey3.jpg', objectPosition: 'center' },
 ];
 
 const TEAM_MEMBERS = [
@@ -444,7 +444,10 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/20 hidden lg:block" />
 
           <div className="space-y-12">
-            {content.timeline.map((item, i) => (
+            {content.timeline.map((item, i) => {
+              const journeyImage = JOURNEY_IMAGES[i % JOURNEY_IMAGES.length];
+
+              return (
               <motion.div
                 key={`${item.year}-${item.title}`}
                 custom={i}
@@ -456,9 +459,10 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
                 <div className={`flex-1 ${i % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
                   <div className="mb-5 rounded-2xl overflow-hidden border border-white/20">
                     <img
-                      src={JOURNEY_IMAGES[i % JOURNEY_IMAGES.length]}
+                      src={journeyImage.src}
                       alt={`${item.title} milestone`}
-                      className="w-full h-48 sm:h-56 object-cover"
+                      className="w-full h-56 sm:h-64 object-cover"
+                      style={{ objectPosition: journeyImage.objectPosition }}
                       loading="lazy"
                     />
                   </div>
@@ -472,7 +476,8 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
                 <div className="hidden lg:flex flex-shrink-0 w-5 h-5 rounded-full bg-[#D3232E] ring-4 ring-white/20 relative z-10" />
                 <div className="flex-1 hidden lg:block" />
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

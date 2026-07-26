@@ -124,7 +124,7 @@ const drawerVariants = {
 const Logo: React.FC<{ scrolled: boolean }> = ({ scrolled }) => (
   <Link to="/" className="flex items-center gap-2.5 select-none flex-shrink-0">
     <img
-      src={scrolled ? '/dencast_new_logo/Dencast Logo_Full Blue.png' : '/dencast_new_logo/Dencast Logo_ Full White.png'}
+      src={scrolled ? '/dencast_new_logo/Dencast Logo_Full.png' : '/dencast_new_logo/Dencast Logo_ Full White.png'}
       alt="Dencast Global"
       className="h-12 w-auto object-contain transition-all duration-300"
     />

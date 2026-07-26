@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
               {/* Logo */}
               <Link to="/" className="inline-flex items-center gap-2.5 mb-5 group">
                 <img
-                  src="/dencast_new_logo/Dencast Logo_ Full White.png"
+                  src="/dencast_new_logo/Dencast Logo_Full.png"
                   alt="Dencast Global"
                   className="h-14 w-auto object-contain"
                 />
