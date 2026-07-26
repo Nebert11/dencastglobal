@@ -107,17 +107,17 @@ const DEFAULT_TIMELINE: TimelineItem[] = [
   {
     year: 'Origins',
     title: 'A Journey Rooted in Excellence',
-    desc: 'Machio co-founded Michezo Afrika and later launched Bungoma Pictures, building a foundation in powerful visual storytelling.',
+    desc: 'Machio’s journey began at Michezo Afrika, Kenya’s leading sports news outlet, where he served as the lead producer and editor. As a co-founder of Michezo Afrika, he played a pivotal role in revolutionizing sports media, blending in-depth analysis with dynamic visuals that captivated audiences. Fueled by a desire to expand the boundaries of storytelling beyond sports, Machio launched Bungoma Pictures—a production company dedicated to documentary filmmaking and visual storytelling. Through Bungoma Pictures, he continued to explore powerful, immersive narratives, shining a light on untold stories and impactful moments.',
   },
   {
     year: 'Growth',
     title: 'The Evolution: Dencast Global',
-    desc: 'Bungoma Pictures evolved into Dencast Global, expanding into full-scale production and creative media services.',
+    desc: 'In 2021, Bungoma Pictures evolved into Dencast Global, a cutting-edge production and creative media agency. This transformation marked a new era—one defined by world-class productions that have garnered regional and global acclaim. Today, Dencast Global stands at the forefront of media innovation, partnering with leading brands across industries to deliver high-impact content that transcends boundaries.',
   },
   {
     year: 'Currently',
     title: 'A Legacy of Trust and Excellence',
-    desc: 'Dencast Global continues creating high-impact productions for brands across Africa and beyond.',
+    desc: 'Dencast Global’s success is built on trust, creativity, and an unwavering commitment to quality. Our rich portfolio features celebrated brands that have entrusted us to bring their vision to life, ensuring that every frame, every scene, and every moment tells a story that matters. From documentaries and commercials to corporate films and digital campaigns, Dencast Global continues to redefine storytelling—one production at a time.',
   },
 ];
 
@@ -176,16 +176,22 @@ const TEAM_MEMBERS = [
     name: 'Dennis Machio',
     role: 'Producer & Lead Director',
     image: teamLeadImage,
+    profile:
+      'Dennis leads Dencast Global as a director, producer, and editor with 15+ years in multimedia production, live events, and creative direction. He is known for turning ideas into cinematic stories that connect deeply with audiences and deliver lasting impact for brands.',
   },
   {
     name: 'Allan Odera',
     role: 'Creative Production',
     image: teamMemberOneImage,
+    profile:
+      'Allan is a versatile video and graphics editor who combines sharp technical execution with creative storytelling. His motion design, pacing, and detail-focused edits help transform concepts into polished, engaging visual experiences.',
   },
   {
     name: 'Valentino Macharia',
     role: 'Visual Storytelling',
     image: teamMemberTwoImage,
+    profile:
+      'Valentino brings deep experience in live broadcasting and television direction, with a strong record of delivering high-pressure productions with precision. His command of framing, timing, and live studio operations keeps every story clear, compelling, and broadcast-ready.',
   },
 ];
 
@@ -531,6 +537,7 @@ const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
               <div className="p-5">
                 <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
                 <p className="text-sm text-[#25408F] mt-1 font-semibold">{member.role}</p>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{member.profile}</p>
               </div>
             </motion.article>
           ))}

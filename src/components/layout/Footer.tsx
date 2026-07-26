@@ -35,7 +35,7 @@ const SERVICES_LINKS = [
 
 const COMPANY_LINKS = [
   { label: 'About Us',  to: '/about' },
-  { label: 'Our Team',  to: '/team' },
+  { label: 'Our Team',  to: '/about' },
   { label: 'Careers',   to: '/careers' },
   { label: 'News',      to: '/blog' },
 ];

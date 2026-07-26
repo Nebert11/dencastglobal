@@ -38,7 +38,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-01',
     readTime: '8 min read',
     views: '2,410',
-    coverImage: `${IMAGE_BASE}/WEBSITE-11.jpg`,
+    coverImage: `${IMAGE_BASE}/dennis_machio.jpg`,
     featured: true,
     tags: ['Kenya', 'Filmmaking', 'Locations', 'Documentary', 'Production'],
     tableOfContents: [
