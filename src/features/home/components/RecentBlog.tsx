@@ -71,7 +71,7 @@ const RecentBlog: React.FC = () => {
         {/* ── Header ── */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
           <div>
-            <SectionLabel label="Our Blog" />
+            <SectionLabel label="News" />
             <h2 className="mt-3 text-4xl sm:text-5xl font-black text-[#25408F] leading-tight tracking-tight">
               Insights &{' '}
               <span className="text-[#D3232E]">Stories</span>
