@@ -293,10 +293,10 @@ const ProjectDetailPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[50vh] sm:min-h-[70vh] flex items-end overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${project.heroImage})` }}
+          className="absolute inset-0"
+          style={{ backgroundImage: `url(${project.heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 

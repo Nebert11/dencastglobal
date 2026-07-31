@@ -76,9 +76,10 @@ const LivestreamingPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#001f3f]">
+      <section className="relative min-h-[60vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#001f3f]">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
+          className="absolute inset-0 opacity-30"
+          style={{ backgroundImage: 'url(https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
           style={{ backgroundImage: 'url(https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#001f3f]/80 via-transparent to-[#001f3f]" />

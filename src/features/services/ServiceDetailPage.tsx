@@ -293,10 +293,10 @@ const ServiceDetailPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section ref={heroRef} className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[50vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${content.heroImage})` }}
+          className="absolute inset-0"
+          style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 

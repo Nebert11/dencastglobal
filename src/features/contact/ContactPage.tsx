@@ -102,8 +102,8 @@ const ContactPage: React.FC = () => {
       {/* ── Hero ── */}
       <section className="relative min-h-[55vh] flex items-center justify-center bg-[#25408F] overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/dencast_images/lets_create.png)' }}
+          className="absolute inset-0"
+          style={{ backgroundImage: 'url(/dencast_images/lets_create.png)', backgroundSize: 'cover', backgroundPosition: 'left center', backgroundRepeat: 'no-repeat' }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-[#25408F]/65" aria-hidden="true" />

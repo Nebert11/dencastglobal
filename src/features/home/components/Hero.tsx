@@ -147,7 +147,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
 
   // Ensure hero copy appears first, then start background video after 5 seconds.
   useEffect(() => {
-    const timer = window.setTimeout(() => setVideoReady(true), 5000);
+    const timer = window.setTimeout(() => setVideoReady(true), 7000);
     return () => window.clearTimeout(timer);
   }, []);
 

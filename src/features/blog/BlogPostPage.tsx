@@ -46,7 +46,8 @@ const BlogPostPage: React.FC = () => {
       {/* ── Hero ── */}
       <section className="relative min-h-[65vh] flex items-end overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0"
+          style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
           style={{ backgroundImage: `url(${post.coverImage})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20" />

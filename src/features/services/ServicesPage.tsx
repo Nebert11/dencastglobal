@@ -69,8 +69,8 @@ const HeroBanner: React.FC = () => (
   <section className="relative min-h-[60vh] flex items-center justify-center bg-[#001f3f] overflow-hidden">
     {/* Background image */}
     <div
-      className="absolute inset-0 bg-cover bg-center opacity-30"
-      style={{ backgroundImage: 'url(/dencast_images/CREW.jpg)' }}
+      className="absolute inset-0 opacity-30"
+      style={{ backgroundImage: 'url(/dencast_images/SERVICES.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
     />
     <div className="absolute inset-0 bg-gradient-to-b from-[#001f3f]/80 via-[#001f3f]/60 to-[#001f3f]" />
 

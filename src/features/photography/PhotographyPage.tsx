@@ -91,10 +91,10 @@ const PhotographyPage: React.FC = () => {
       </Helmet>
 
       {/* ── Cinematic Hero ── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center scale-[1.02]"
-          style={{ backgroundImage: 'url(/articles_and_insights%20/WEBSITE_PHOTO.jpg)' }}
+          className="absolute inset-0"
+          style={{ backgroundImage: 'url(/dencast_images/WEBSITE-PHOTO.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/90" />
 

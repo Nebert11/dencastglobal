@@ -221,8 +221,8 @@ function getValue(map: Record<string, string>, key: string, fallback: string): s
 const HeroBanner: React.FC<{ content: AboutContent }> = ({ content }) => (
   <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
     <div
-      className="absolute inset-0 bg-cover bg-center"
-      style={{ backgroundImage: `url(${content.heroBackgroundImageUrl})` }}
+      className="absolute inset-0"
+      style={{ backgroundImage: `url(${content.heroBackgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
       aria-hidden="true"
     />
     <div className="absolute inset-0 bg-[#25408F]/65" aria-hidden="true" />
