@@ -181,7 +181,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     ],
   },
   'drone-services': {
-    heroImage: '/dencast_images/Drone .jpg',
+    heroImage: '/dencast_images/DRONE.jpg',
     overview: 'Licensed aerial cinematography and photography that unlocks perspectives impossible to achieve from the ground. Our drone pilots are CAA-certified and experienced in complex environments from urban cityscapes to remote wilderness.',
     features: ['4K & 6K aerial cinematography', 'CAA-certified pilots', 'Night aerial photography', 'Thermal imaging capability', 'Mapping & survey flights', 'Live aerial streaming', 'Permit handling included'],
     whyUs: [
@@ -208,7 +208,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     ],
   },
   'commercial-productions': {
-    heroImage: '/dencast_images/africatalyst.jpg',
+    heroImage: '/dencast_images/DIGITAL.png',
     overview: 'TV commercials, online ads, and product films engineered to convert. We combine compelling creative with strategic thinking to produce commercials that build brand equity and drive sales across all media platforms.',
     features: ['TVC production (15s, 30s, 60s)', 'Digital ad formats (pre-roll, stories)', 'Product filming & styling', 'Celebrity & talent management', 'Jingle & audio branding', 'A/B testing creative variants', 'Media buying consultation'],
     whyUs: [

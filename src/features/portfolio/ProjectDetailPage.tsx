@@ -245,6 +245,54 @@ const PROJECTS: Record<string, ProjectData> = {
     gallery: [],
     relatedSlugs: ['elf-africa', 'sasini-sustainability-report', 'amakove-wala-show'],
   },
+
+  'photography': {
+    slug: 'photography',
+    title: 'Photography',
+    category: 'Photography',
+    client: 'Various Clients',
+    date: '2015 – Present',
+    heroImage: '/dencast_images/WEBSITE-PHOTO.jpg',
+    excerpt: 'Professional photography across corporate, events, portrait, and commercial genres — every image crafted to tell a story.',
+    description:
+      'At Dencast Global, our photography work spans corporate events, portrait sessions, commercial shoots, and editorial assignments. Every frame is composed with intention — to capture the moment, tell the story, and elevate the brand.\n\nOur photography portfolio is currently being updated with our latest work. Check back soon for the full gallery.',
+    videos: [],
+    services: ['Event Photography', 'Corporate Photography', 'Portrait & Headshots', 'Aerial / Drone Photography'],
+    gallery: [],
+    relatedSlugs: ['rhnk-conference', 'europe-day-football', 'sasini-sustainability-report'],
+  },
+
+  'conference-coverage': {
+    slug: 'conference-coverage',
+    title: 'Conference Coverage',
+    category: 'Events',
+    client: 'Various Clients',
+    date: '2015 – Present',
+    heroImage: '/dencast_images/CONFERENCE.png',
+    excerpt: 'End-to-end conference coverage — videography, photography, and livestreaming for events of any scale.',
+    description:
+      'Dencast Global provides comprehensive conference coverage services, ensuring every keynote, panel, and breakout session is documented with professional precision.\n\nFrom multi-camera video production and photography to real-time livestreaming, we handle all aspects of event media so organisers can focus on the content.\n\nOur conference portfolio is currently being updated with our latest work.',
+    videos: [],
+    services: ['Event Videography', 'Photography', 'Livestreaming', 'Multi-Camera Production'],
+    gallery: [],
+    relatedSlugs: ['rhnk-conference', 'european-union-videos', 'live-streaming'],
+  },
+
+  'graphics-design': {
+    slug: 'graphics-design',
+    title: 'Graphics & Creative Design',
+    category: 'Graphics Design',
+    client: 'Various Clients',
+    date: '2015 – Present',
+    heroImage: '/dencast_images/image.png',
+    excerpt: 'Creative design solutions — from brand identity and motion graphics to social media visuals and print collateral.',
+    description:
+      'Our design team at Dencast Global brings visual ideas to life across digital and print mediums. From brand identity systems and social media templates to motion graphics and marketing collateral, we ensure every design communicates clearly and stands out.\n\nOur graphics and design portfolio is currently being updated with our latest work.',
+    videos: [],
+    services: ['Brand Identity', 'Motion Graphics', 'Social Media Design', 'Print & Collateral'],
+    gallery: [],
+    relatedSlugs: ['documentaries', 'live-streaming', 'elf-africa'],
+  },
 };
 
 // Fallback for unrecognised slugs

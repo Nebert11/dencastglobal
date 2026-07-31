@@ -22,7 +22,7 @@ import { SITE_NAME } from '@/utils/constants';
 import {
   getClients,
   getSiteSettings,
-} from '@/services/supabase.service';
+} from '@/services/data.service';
 import type { Client, SiteSettings } from '@/types';
 
 import backgroundImage from '/dencast_images/about_dencast.png';
@@ -222,19 +222,10 @@ const HeroBanner: React.FC<{ content: AboutContent }> = ({ content }) => (
   <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
     <div
       className="absolute inset-0"
-      style={{ backgroundImage: `url(${content.heroBackgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+      style={{ backgroundImage: `url(${content.heroBackgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }}
       aria-hidden="true"
     />
-    <div className="absolute inset-0 bg-[#25408F]/65" aria-hidden="true" />
-    <div
-      className="absolute inset-0 opacity-10"
-      style={{
-        backgroundImage:
-          'radial-gradient(circle at 20% 50%, #ffffff 1px, transparent 1px), radial-gradient(circle at 80% 20%, #ffffff 1px, transparent 1px)',
-        backgroundSize: '60px 60px',
-      }}
-    />
-    <div className="absolute bottom-0 right-0 w-1/3 h-full bg-[#D3232E]/15 clip-diagonal pointer-events-none" />
+    <div className="absolute inset-0 bg-[#25408F]/20" aria-hidden="true" />
 
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-28">
       {/* <motion.nav

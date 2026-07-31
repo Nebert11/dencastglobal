@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, CheckCircle, Loader2 } from 'lucide-react';
 import Button from '@/components/ui/Button';
-import { subscribeNewsletter } from '@/services/supabase.service';
+import { subscribeNewsletter } from '@/services/data.service';
 
 // ─── CallToAction ─────────────────────────────────────────────────────────────
 

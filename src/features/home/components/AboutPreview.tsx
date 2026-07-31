@@ -5,8 +5,6 @@ import {  Film, Globe } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 
-import smallPreviewImage from '/dencast_images/camera.jpg';
-
 // ─── Key highlights ───────────────────────────────────────────────────────────
 
 const highlights = [
@@ -48,7 +46,7 @@ const AboutPreview: React.FC = () => {
             {/* Main image */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#25408F]/20">
               <img
-                src="https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                src="/dencast_images/landona_1.jpg"
                 alt="Dencast Global film production team at work"
                 className="w-full aspect-[4/5] object-cover"
                 loading="lazy"
@@ -64,20 +62,6 @@ const AboutPreview: React.FC = () => {
                 </p>
               </div>
             </div>
-
-            {/* Accent image — small floating card */}
-            <motion.div
-              className="absolute -right-8 top-16 w-44 rounded-xl overflow-hidden shadow-xl border-4 border-white hidden lg:block"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <img
-                src={smallPreviewImage}
-                alt="Behind the scenes production"
-                className="w-full aspect-square object-cover"
-                loading="lazy"
-              />
-            </motion.div>
 
             {/* Decorative red square */}
             <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#D3232E] rounded-2xl -z-10 hidden lg:block" />

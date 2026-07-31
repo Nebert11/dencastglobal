@@ -47,9 +47,8 @@ const BlogPostPage: React.FC = () => {
       <section className="relative min-h-[65vh] flex items-end overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
-          style={{ backgroundImage: `url(${post.coverImage})` }}
-        />
+          style={{ backgroundImage: `url(${post.coverImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+        
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20" />
 
         <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-32">
@@ -150,8 +149,8 @@ const BlogPostPage: React.FC = () => {
               <div
                 className="prose prose-lg prose-slate max-w-none
                   prose-headings:font-black prose-headings:text-slate-900
-                  prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-                  prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-4
+                  prose-h2:text-2xl prose-h2:mt-4 prose-h2:mb-2
+                  prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-0
                   prose-strong:text-slate-800
                   prose-blockquote:border-[#D3232E] prose-blockquote:bg-[#D3232E]/5 prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:text-slate-700 prose-blockquote:font-semibold prose-blockquote:text-xl prose-blockquote:not-italic"
                 dangerouslySetInnerHTML={{ __html: post.content }}

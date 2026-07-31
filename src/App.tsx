@@ -22,26 +22,6 @@ import BlogPage from '@/features/blog/BlogPage';
 import BlogPostPage from '@/features/blog/BlogPostPage';
 import ContactPage from '@/features/contact/ContactPage';
 
-// ── Admin ──────────────────────────────────────────────────────────────────────
-import AdminLogin from '@/features/admin/AdminLogin';
-import AdminLayout from '@/features/admin/layout/AdminLayout';
-import Dashboard from '@/features/admin/pages/Dashboard';
-import ManageHero from '@/features/admin/pages/ManageHero';
-import ManageAbout from '@/features/admin/pages/ManageAbout';
-import ManageProjects from '@/features/admin/pages/ManageProjects';
-import ManageServices from '@/features/admin/pages/ManageServices';
-import ManageBlogPosts from '@/features/admin/pages/ManageBlogPosts';
-import ManageTestimonials from '@/features/admin/pages/ManageTestimonials';
-import ManageTeam from '@/features/admin/pages/ManageTeam';
-import ManageClients from '@/features/admin/pages/ManageClients';
-import ManageContactMessages from '@/features/admin/pages/ManageContactMessages';
-import ManageMedia from '@/features/admin/pages/ManageMedia';
-import ManageSiteSettings from '@/features/admin/pages/ManageSiteSettings';
-import ManageSEO from '@/features/admin/pages/ManageSEO';
-import ManageFAQs from '@/features/admin/pages/ManageFAQs';
-import ManageNewsletter from '@/features/admin/pages/ManageNewsletter';
-import ManageStatistics from '@/features/admin/pages/ManageStatistics';
-
 // ─── Query Client ─────────────────────────────────────────────────────────────
 
 const queryClient = new QueryClient({
@@ -89,31 +69,6 @@ export default function App() {
 
               {/* Contact */}
               <Route path="/contact" element={<ContactPage />} />
-            </Route>
-
-            {/* ── Admin auth ───────────────────────────────── */}
-            <Route path="/admin/login" element={<AdminLogin />} />
-
-            {/* ── Admin protected shell ────────────────────── */}
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<Navigate to="dashboard" replace />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="hero" element={<ManageHero />} />
-              <Route path="about" element={<ManageAbout />} />
-              <Route path="statistics" element={<ManageStatistics />} />
-              <Route path="services" element={<ManageServices />} />
-              <Route path="projects" element={<ManageProjects />} />
-              <Route path="blog" element={<ManageBlogPosts />} />
-              <Route path="team" element={<ManageTeam />} />
-              <Route path="clients" element={<ManageClients />} />
-              <Route path="testimonials" element={<ManageTestimonials />} />
-              <Route path="faqs" element={<ManageFAQs />} />
-              <Route path="media" element={<ManageMedia />} />
-              <Route path="settings" element={<ManageSiteSettings />} />
-              <Route path="seo" element={<ManageSEO />} />
-              <Route path="social" element={<ManageSiteSettings />} />
-              <Route path="messages" element={<ManageContactMessages />} />
-              <Route path="newsletter" element={<ManageNewsletter />} />
             </Route>
 
             {/* ── 404 → home ───────────────────────────────── */}

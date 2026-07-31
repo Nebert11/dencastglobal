@@ -7,7 +7,7 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import BlogCard from '@/components/ui/BlogCard';
 import { SITE_NAME } from '@/utils/constants';
-import { subscribeNewsletter } from '@/services/supabase.service';
+import { subscribeNewsletter } from '@/services/data.service';
 import { BLOG_ARTICLES, BLOG_CATEGORIES } from './articlesData';
 
 const PAGE_SIZE = 6;

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { getBlogPosts } from '@/services/supabase.service';
+import { getBlogPosts } from '@/services/data.service';
 
 const AUTOPLAY_DELAY_MS = 4000;
 const TRANSITION_MS = 600;

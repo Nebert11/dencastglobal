@@ -70,9 +70,9 @@ const HeroBanner: React.FC = () => (
     {/* Background image */}
     <div
       className="absolute inset-0 opacity-30"
-      style={{ backgroundImage: 'url(/dencast_images/SERVICES.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+      style={{ backgroundImage: 'url(/dencast_images/SERVICES.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
     />
-    <div className="absolute inset-0 bg-gradient-to-b from-[#001f3f]/80 via-[#001f3f]/60 to-[#001f3f]" />
+    {/* <div className="absolute inset-0 bg-gradient-to-b from-[#001f3f]/80 via-[#001f3f]/60 to-[#001f3f]" /> */}
 
     <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
       <motion.nav

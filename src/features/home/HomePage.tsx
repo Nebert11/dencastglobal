@@ -6,7 +6,7 @@ import TrustedBy from './components/TrustedBy';
 import AboutPreview from './components/AboutPreview';
 import FeaturedServices from './components/FeaturedServices';
 import { SITE_NAME, SITE_TAGLINE } from '@/utils/constants';
-import { getHeroContent } from '@/services/supabase.service';
+import { getHeroContent } from '@/services/data.service';
 import type { HeroContent } from '@/types';
 
 // ─── Lazy-loaded below-fold sections ─────────────────────────────────────────

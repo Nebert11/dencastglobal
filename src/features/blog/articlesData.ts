@@ -21,7 +21,7 @@ export interface BlogArticle {
 
 
 
-const IMAGE_BASE = '/articles_and_insights%20';
+const IMAGE_BASE = '/dencast_images';
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
@@ -57,6 +57,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 
 <h2 id="wildlife-power">Wildlife and Natural Scale</h2>
 <p>The Maasai Mara remains one of Kenya's strongest production assets. It forms part of the ecosystem that hosts the Great Wildebeest Migration and has supported major international wildlife productions.</p>
+<br />
 <p>For documentary crews, this means authentic animal behavior and high-impact natural action that is difficult to replicate in studio or controlled environments.</p>
 
 <h2 id="location-diversity">Location Diversity</h2>
@@ -93,7 +94,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-03',
     readTime: '7 min read',
     views: '1,982',
-    coverImage: `${IMAGE_BASE}/Drone%20.jpg`,
+    coverImage: `${IMAGE_BASE}/DRONE.jpg`,
     tags: ['Drone', 'Regulation', 'Aerial', 'Kenya', 'Permits'],
     tableOfContents: [
       { id: 'opportunity', label: 'Aerial Opportunity in Kenya' },
@@ -141,7 +142,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-05',
     readTime: '9 min read',
     views: '2,126',
-    coverImage: `${IMAGE_BASE}/WEBSITE-09.jpg`,
+    coverImage: `${IMAGE_BASE}/obtain.jpg`,
     tags: ['Licensing', 'Permits', 'International Production', 'Kenya', 'KFCB'],
     tableOfContents: [
       { id: 'authority', label: 'Who Issues Licences' },
@@ -189,7 +190,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-07',
     readTime: '4 min read',
     views: '1,344',
-    coverImage: `${IMAGE_BASE}/WEBSITE_PHOTOGRAPHY.jpg`,
+    coverImage: `${IMAGE_BASE}/WEBSITE-11.jpg`,
     tags: ['KFCB', 'Kenya Film Commission', 'Licensing', 'Regulation'],
     tableOfContents: [
       { id: 'responsibility', label: 'Primary Licensing Responsibility' },
