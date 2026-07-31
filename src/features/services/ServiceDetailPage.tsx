@@ -66,7 +66,7 @@ const toYoutubeEmbedUrl = (url: string) => {
 
 const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
   'documentary-production': {
-    heroImage: '/dencast_images/Dencast-Crew-27.jpg',
+    heroImage: '/dencast_images/DOCUMENTARY.png',
     overview: 'Our documentary production team brings decades of combined experience to every project. We handle everything from the initial concept and research phase through principal photography, post-production, and final distribution — ensuring your story reaches the audience it deserves.',
     features: ['4K & 8K Cinema Camera Packages', 'Multi-lingual production capability', 'Archival research & fact-checking', 'Original score composition', 'Festival submission strategy', 'International distribution network', 'Subtitling & localisation'],
     mediaSectionTitle: 'Documentaries',
@@ -106,7 +106,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     ],
   },
   'photography': {
-    heroImage: '/dencast_images/White-Beach-Palace.jpg',
+    heroImage: '/dencast_images/WEBSITE-PHOTO.jpg',
     overview: 'Our photography team produces images that transcend documentation — they tell stories. From editorial portraits and commercial product shots to large-scale event coverage and aerial photography, every image is crafted with intention.',
     features: ['Medium format & full-frame cameras', 'Studio & location lighting', 'Aerial / drone photography', 'Retouching & colour grading', 'Same-day delivery available', 'Print-ready high-resolution files', 'Commercial licensing packages'],
     sampleImages: PHOTOGRAPHY_SAMPLE_IMAGES,
@@ -127,7 +127,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     ],
   },
   'audio-management-soundtrack-development': {
-    heroImage: '/dencast_images/band.jpg',
+    heroImage: '/dencast_images/MUSIC.png',
     overview: 'Dencast Global provides professional audio management and original soundtrack development for events, films, documentaries, commercials, and digital productions. From clear conference sound to cinematic scoring, we ensure every word is heard and every moment is felt.',
     features: ['Live sound system setup and engineering', 'Microphone planning and live mixing', 'Audio recording and post-production cleanup', 'Voice-over recording and direction', 'Custom sound design and effects', 'Original music beds and theme development', 'Final mastering for broadcast and digital'],
     whyUs: [
@@ -216,9 +216,9 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
       { icon: Cpu, title: 'Creative & Strategy Combined', desc: 'We don\'t just produce great ads — we ensure they work in the media plan.' },
       { icon: Layers, title: 'Talent Network', desc: 'Access to Africa\'s leading on-screen talent, voice artists, and directors.' },
     ],
-  },
+  }, 
   'digital-content-creation': {
-    heroImage: '/dencast_images/21.png',
+    heroImage: '/dencast_images/DIGITAL.png',
     overview: 'Scroll-stopping digital-first content engineered for engagement. We create content series, social media campaigns, and digital experiences that build communities, drive traffic, and convert audiences into loyal customers.',
     features: ['Social media content calendars', 'Short-form video (Reels, TikTok)', 'Podcast production', 'Newsletter content', 'SEO content strategy', 'Influencer campaign management', 'Analytics & performance reporting'],
     mediaSectionTitle: 'Digital Content',
@@ -226,6 +226,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
       { title: 'Dencast Global: Malindi by Day', url: 'https://www.youtube.com/watch?v=pYOevHo8v7Q' },
       { title: 'EU KE Global Gateway - Green Energy', url: 'https://www.youtube.com/watch?v=JKVNraadnmw' },
       { title: 'Sasini plc sustainable development goals', url: 'https://www.youtube.com/watch?v=-NO6J79zJbg&t=5s' },
+      { title: 'Digital Content – Video 3', url: 'https://www.youtube.com/watch?v=jIVbFh117dA' },
     ],
     whyUs: [
       { icon: Eye, title: 'Platform-Native Expertise', desc: 'Our team lives and breathes Instagram, TikTok, YouTube, and LinkedIn algorithms.' },

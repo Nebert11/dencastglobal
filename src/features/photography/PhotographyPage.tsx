@@ -94,7 +94,7 @@ const PhotographyPage: React.FC = () => {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-[1.02]"
-          style={{ backgroundImage: 'url(/dencast_images/16.jpg)' }}
+          style={{ backgroundImage: 'url(/articles_and_insights%20/WEBSITE_PHOTO.jpg)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/90" />
 

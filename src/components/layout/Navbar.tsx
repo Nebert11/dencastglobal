@@ -71,11 +71,19 @@ const OTHER_SERVICES = [
   { name: 'Digital Content Creation', slug: '/services/digital-content-creation', icon: PenTool  },
 ];
 
+// ─── About dropdown items ─────────────────────────────────────────────────────
+
+const ABOUT_LINKS = [
+  { label: 'About Us',    to: '/about',          hash: ''         },
+  { label: 'Our Vision',  to: '/about',          hash: '#vision'  },
+  { label: 'Our Mission', to: '/about',          hash: '#mission' },
+  { label: 'Our Team',    to: '/about',          hash: '#team'    },
+];
+
 // ─── Top-level nav links ──────────────────────────────────────────────────────
 
 const NAV_LINKS = [
   { label: 'Home',      to: '/'          },
-  { label: 'About',     to: '/about'     },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'News',      to: '/blog'      },
   { label: 'Contact',   to: '/contact'   },
@@ -85,7 +93,6 @@ const NAV_LINKS = [
 
 const MOBILE_ALL_LINKS = [
   { label: 'Home',                      to: '/',             group: 'main'     },
-  { label: 'About',                     to: '/about',        group: 'main'     },
   { label: 'Portfolio',                 to: '/portfolio',    group: 'main'     },
   { label: 'News',                      to: '/blog',         group: 'main'     },
   { label: 'Contact',                   to: '/contact',      group: 'main'     },
@@ -267,6 +274,86 @@ const ServicesMegaDropdown: React.FC = () => {
   );
 };
 
+// ─── About Dropdown ───────────────────────────────────────────────────────────
+
+const AboutDropdown: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const { isScrolled } = useScrollPosition();
+  const location = useLocation();
+  const isActive = location.pathname === '/about';
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  useEffect(() => { setOpen(false); }, [location.pathname]);
+
+  const handleItemClick = (hash: string) => {
+    setOpen(false);
+    if (hash && location.pathname === '/about') {
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div
+      ref={ref}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        className={cn(
+          'flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors duration-200 py-1 relative group',
+          isScrolled ? 'text-slate-700 hover:text-[#25408F]' : 'text-white/90 hover:text-white',
+          isActive && (isScrolled ? 'text-[#25408F]' : 'text-white')
+        )}
+        aria-haspopup="true"
+        aria-expanded={open}
+      >
+        About
+        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
+          <ChevronDown size={14} />
+        </motion.span>
+        <span className={cn(
+          'absolute -bottom-1 left-0 h-0.5 bg-[#D3232E] rounded-full transition-all duration-200',
+          isActive ? 'w-full' : 'w-0 group-hover:w-full'
+        )} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            variants={dropdownVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-52 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden z-50"
+          >
+            {ABOUT_LINKS.map(({ label, to, hash }) => (
+              <Link
+                key={label}
+                to={`${to}${hash}`}
+                onClick={() => handleItemClick(hash)}
+                className="flex items-center gap-3 px-5 py-3 text-sm font-medium text-slate-700 hover:bg-[#25408F]/5 hover:text-[#25408F] transition-colors duration-150 border-b border-slate-50 last:border-0"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D3232E] flex-shrink-0" />
+                {label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 // ─── Mobile Drawer ────────────────────────────────────────────────────────────
 
 interface MobileDrawerProps {
@@ -276,7 +363,18 @@ interface MobileDrawerProps {
 
 const MobileDrawer: React.FC<MobileDrawerProps> = ({ open, onClose }) => {
   const location = useLocation();
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+
+  const handleAboutLink = (hash: string) => {
+    onClose();
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 350);
+    }
+  };
 
   // Close drawer on navigation
   useEffect(() => { onClose(); }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -346,6 +444,49 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({ open, onClose }) => {
                 <FileText size={14} />
                 Profile
               </a>
+
+              {/* About accordion */}
+              <div className="pt-1">
+                <button
+                  onClick={() => setAboutOpen(v => !v)}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#25408F] transition-colors"
+                >
+                  <span>About</span>
+                  <motion.span animate={{ rotate: aboutOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                    <ChevronDown size={14} />
+                  </motion.span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {aboutOpen && (
+                    <motion.div
+                      key="about-list"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: 'easeOut' }}
+                      className="overflow-hidden"
+                    >
+                      {ABOUT_LINKS.map(({ label, to, hash }) => (
+                        <Link
+                          key={label}
+                          to={`${to}${hash}`}
+                          onClick={() => handleAboutLink(hash)}
+                          className={cn(
+                            'flex items-center gap-2 pl-6 pr-3 py-2 rounded-lg text-sm transition-colors font-medium',
+                            location.pathname === '/about' && !hash
+                              ? 'text-[#25408F] font-semibold bg-[#25408F]/5'
+                              : 'text-slate-600 hover:text-[#25408F] hover:bg-slate-50'
+                          )}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#D3232E] flex-shrink-0" />
+                          {label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               {/* Services accordion */}
               <div className="pt-1">
@@ -480,6 +621,7 @@ const Navbar: React.FC = () => {
                 </Link>
               );
             })}
+            <AboutDropdown />
             <ServicesMegaDropdown />
           </nav>
 

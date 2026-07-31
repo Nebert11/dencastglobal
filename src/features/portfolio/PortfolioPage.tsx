@@ -2,7 +2,7 @@ import React, { useState, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Search, ChevronRight, ChevronDown, Filter } from 'lucide-react';
+import { Search, ChevronRight, ChevronDown, Filter, ArrowRight, Play } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import MediaCard from '@/components/ui/MediaCard';
@@ -19,13 +19,13 @@ import event1 from '/dencast_images/event1.jpg';
 import rhnk from '/dencast_images/rhnk.jpg';
 import liveStreaming from '/dencast_images/Virtual-livestreaming-scaled.jpg';
 import whiteBeach from '/dencast_images/White-Beach-Palace.jpg';
-import basketball from '/dencast_images/basketball.jpg';
 import conference from '/dencast_images/CONFERENCE.png';
 import graphics from '/dencast_images/image.png';
+import ladonaWithCamera from '/dencast_images/9.png';
 
 // ─── Static portfolio data ────────────────────────────────────────────────────
 
-const CATEGORIES = ['All', 'Corporate', 'Photography', 'Events', 'Streaming', 'Commercial', 'Graphics Design'];
+const CATEGORIES = ['All', 'Corporate', 'Events', 'Streaming', 'Documentary', 'Photography', 'Graphics Design'];
 
 interface PortfolioItem {
   id: string;
@@ -61,18 +61,18 @@ const toYoutubeEmbedUrl = (url: string) => {
 };
 
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
-  { id: '1', slug: 'voices-of-the-nile', title: 'Sasini Annual Report', category: 'Corporate', image: sasiniConference, featured: true },
-  { id: '2', slug: 'mtn-brand-relaunch', title: 'The Amakowe Wala Show', category: 'Streaming', image: amakowe },
-  { id: '3', slug: 'accra-fashion-week', title: "Amplifying Africa's Voice", category: 'Events', image: africatalyst },
-  { id: '4', slug: 'corporate-summit-2024', title: 'Europe Day Football Kenya', category: 'Corporate', image: europeday },
-  { id: '5', slug: 'kasapreko-commercial', title: 'Building Leaders Through Story', category: 'Commercial', image: elf },
-  { id: '6', slug: 'golden-stool-portrait-series', title: 'African Development Bank Forum', category: 'Photography', image: event1 },
-  { id: '7', slug: 'tech-innovators-doc', title: 'RHNK Conference 2024 ', category: 'Events', image: rhnk },
-  { id: '8', slug: 'harvest-time-film', title: 'Live Streaming', category: 'Streaming', image: liveStreaming },
-  { id: '9', slug: 'stanbic-investor-day', title: 'Hotel Photography', category: 'Commercial', image: whiteBeach },
-  { id: '10', slug: 'ghana-music-awards', title: 'Basketball Event', category: 'Events', image: basketball },
-  { id: '11', slug: 'nestle-product-launch', title: 'Conference Coverage', category: 'Events', image: conference },
-  { id: '12', slug: 'makola-market-story', title: 'Graphics Design', category: 'Graphics Design', image: graphics },
+  { id: '1',  slug: 'sasini-sustainability-report', title: 'Sasini Sustainability Report',       category: 'Corporate',   image: sasiniConference, featured: true },
+  { id: '2',  slug: 'elf-africa',                   title: 'ELF Africa',                         category: 'Corporate',   image: elf },
+  { id: '3',  slug: 'european-union-videos',         title: 'European Union – Media & Digital',   category: 'Corporate',   image: africatalyst },
+  { id: '4',  slug: 'europe-day-football',           title: 'Europe Day Football Tournament',      category: 'Corporate',   image: europeday },
+  { id: '5',  slug: 'european-investment-bank',      title: 'European Investment Bank',           category: 'Corporate',   image: event1 },
+  { id: '6',  slug: 'amakove-wala-show',             title: 'The Amakove Wala Show',              category: 'Streaming',   image: amakowe },
+  { id: '7',  slug: 'rhnk-conference',               title: 'RHNK Pan-African Conference',        category: 'Events',      image: rhnk },
+  { id: '8',  slug: 'live-streaming',                title: 'Livestreaming Services',             category: 'Streaming',   image: liveStreaming },
+  { id: '9',  slug: 'documentaries',                 title: 'Documentary Productions',            category: 'Documentary', image: ladonaWithCamera },
+  { id: '10', slug: 'photography',                   title: 'Photography',                        category: 'Photography', image: whiteBeach },
+  { id: '11', slug: 'conference-coverage',           title: 'Conference Coverage',                category: 'Events',      image: conference },
+  { id: '12', slug: 'graphics-design',               title: 'Graphics & Creative Design',         category: 'Graphics Design', image: graphics },
 ];
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
@@ -91,6 +91,107 @@ const cardVariants = {
   hidden: { opacity: 0, scale: 0.95, y: 20 },
   visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
   exit: { opacity: 0, scale: 0.95, y: -10, transition: { duration: 0.25 } },
+};
+
+// ─── Portfolio Intro ──────────────────────────────────────────────────────────
+
+const PortfolioIntro: React.FC = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section ref={ref} className="py-20 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          {/* ── Text side ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+          >
+            <SectionLabel label="Where Our Story Becomes Our Mission" />
+
+            <h2 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight tracking-tight">
+              Cinematic Stories,{' '}
+              <span className="text-[#D3232E]">Real Results</span>
+            </h2>
+
+            <p className="mt-6 text-slate-600 text-lg leading-relaxed">
+              Dencast Global is a leading production and creative agency founded in 2015,
+              specializing in crafting stories that connect brands with audiences across Africa
+              and beyond. From award-winning documentaries and live broadcast solutions to
+              brand campaigns and commercial productions — every frame we deliver is built
+              to inspire and drive impact.
+            </p>
+
+            <p className="mt-4 text-slate-500 leading-relaxed">
+              Explore our portfolio of work below. Click any project to dive into
+              the full story behind each production.
+            </p>
+
+            <div className="mt-8 flex items-center gap-4 flex-wrap">
+              <Link to="/contact">
+                <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
+                  Start a Project
+                </Button>
+              </Link>
+              <Link to="/services">
+                <Button variant="outline" size="lg" leftIcon={<Play size={16} />}>
+                  Our Services
+                </Button>
+              </Link>
+            </div>
+
+            {/* Stats row */}
+            {/* <div className="mt-10 grid grid-cols-3 gap-6 pt-8 border-t border-slate-100">
+              {[
+                { value: '10+', label: 'Years of Excellence' },
+                { value: '200+', label: 'Projects Delivered' },
+                { value: '50+', label: 'Clients Served' },
+              ].map(({ value, label }) => (
+                <div key={label}>
+                  <p className="text-3xl font-black text-[#25408F]">{value}</p>
+                  <p className="mt-1 text-xs text-slate-500 font-medium leading-tight">{label}</p>
+                </div>
+              ))}
+            </div> */}
+          </motion.div>
+
+          {/* ── Ladona photo side ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.75, ease: 'easeOut', delay: 0.15 }}
+            className="relative flex items-center justify-center lg:justify-end"
+          >
+            {/* Decorative background blob */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#25408F]/8 via-transparent to-[#D3232E]/8 rounded-3xl" />
+
+            <div className="relative z-10 bg-gradient-to-b from-slate-100 to-slate-50 rounded-3xl overflow-hidden shadow-2xl shadow-slate-200/60 w-full">
+              {/* Coloured top bar */}
+              <div className="h-2 bg-gradient-to-r from-[#25408F] to-[#D3232E]" />
+
+              <div className="px-6 pt-4 pb-0">
+                <img
+                  src={ladonaWithCamera}
+                  alt="Dencast Global camera operator in action"
+                  className="w-full object-contain drop-shadow-xl"
+                />
+              </div>
+
+              {/* Caption strip */}
+              <div className="bg-[#25408F] px-6 py-3 flex items-center justify-between">
+                <span className="text-white text-sm font-bold">Dencast Global</span>
+                <span className="text-white/70 text-xs">Production Crew</span>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
 };
 
 // ─── Page sections ────────────────────────────────────────────────────────────
@@ -170,6 +271,7 @@ const PortfolioPage: React.FC = () => {
       </Helmet>
 
       <HeroBanner />
+      <PortfolioIntro />
 
       {/* ── Portfolio Video Highlights ── */}
       <section className="py-12 bg-white border-b border-slate-100">

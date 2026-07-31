@@ -26,7 +26,7 @@ import {
 import type { Client, SiteSettings } from '@/types';
 
 import backgroundImage from '/dencast_images/about_dencast.png';
-import storyImage from '/dencast_images/Dencast-Crew-27.jpg';
+import storyImage from '/dencast_images/dennis_machio.jpg';
 import teamLeadImage from '/dencast_images/Machio-CEO.png';
 import teamMemberOneImage from '/dencast_images/Allan-Odera.jpg';
 import teamMemberTwoImage from '/dencast_images/Valentino-Macharia.jpg';
@@ -277,7 +277,7 @@ const MissionSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="py-24 bg-white overflow-hidden">
+    <section id="mission" ref={ref} className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={stagger}
@@ -324,7 +324,7 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
     .filter(Boolean);
 
   return (
-    <section ref={ref} className="py-24 bg-slate-50 overflow-hidden">
+    <section id="vision" ref={ref} className="py-24 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -496,7 +496,7 @@ const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="py-24 bg-slate-50 border-t border-slate-100">
+    <section id="team" ref={ref} className="py-24 bg-slate-50 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={stagger}
