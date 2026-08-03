@@ -19,6 +19,7 @@ import {
 import { useQuery } from '@tanstack/react-query';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
+import PhotoCarousel from '@/components/ui/PhotoCarousel';
 import { getClientLogoUrl } from '@/utils/clientLogos';
 import { SITE_NAME } from '@/utils/constants';
 import {
@@ -285,6 +286,14 @@ const TEAM_MEMBERS = [
     profile:
       'Valentino brings deep experience in live broadcasting and television direction, with a strong record of delivering high-pressure productions with precision. His command of framing, timing, and live studio operations keeps every story clear, compelling, and broadcast-ready.',
   },
+];
+
+const TEAM_CAROUSEL_IMAGES = [
+  { src: '/dencast_images/crew1.jpg', alt: 'Dencast team at work 1' },
+  { src: '/dencast_images/crew2.jpg', alt: 'Dencast team at work 2' },
+  { src: '/dencast_images/crew3.jpg', alt: 'Dencast team at work 3' },
+  { src: '/dencast_images/crew4.jpg', alt: 'Dencast team at work 4' },
+  { src: '/dencast_images/crew6.jpg', alt: 'Dencast team at work 5' },
 ];
 
 function parseJsonArray<T>(value: unknown, fallback: T[]): T[] {
@@ -781,6 +790,48 @@ const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   );
 };
 
+const TeamCarouselSection: React.FC = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section ref={ref} className="py-24 bg-white border-t border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="text-center mb-12"
+        >
+          <motion.div variants={fadeUp}>
+            <SectionLabel label="Our Crew" center />
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="mt-4 text-3xl sm:text-4xl font-black text-slate-900">
+            Behind the Scenes
+          </motion.h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <PhotoCarousel
+            title="Dencast Crew"
+            items={TEAM_CAROUSEL_IMAGES}
+            variant="showcase"
+            showMeta={false}
+            imageClickable={false}
+            showCardBorder={false}
+            aspectClassName="aspect-[4/3]"
+            className="rounded-[2rem]"
+          />
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const ClientsSection: React.FC<{ clientNames: string[]; content: AboutContent }> = ({
   clientNames,
   content,
@@ -941,6 +992,7 @@ const AboutPage: React.FC = () => {
       <CsrSection />
       <CoreValuesSection content={content} />
       <TeamSection content={content} />
+      <TeamCarouselSection />
       <TimelineSection content={content} />
       <ClientsSection clientNames={clientNames} content={content} />
       <CTASection content={content} />
