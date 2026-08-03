@@ -1,56 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import BlogCard from '@/components/ui/BlogCard';
 import Button from '@/components/ui/Button';
-
-//Images
-import brand from '/dencast_images/Dencast-Crew-27.jpg';
-import documentary from '/dencast_images/TEAM.jpg';
-import film from '/dencast_images/9-scaled.jpg';
-
-// ─── Static fallback blog posts ───────────────────────────────────────────────
-
-const BLOG_POSTS = [
-  {
-    id: '1',
-    title: 'The Art of Visual Storytelling: How to Move Audiences in the First Moments',
-    excerpt:
-      'In a world of dwindling attention spans, the opening moments of any film or video are everything. We break down the techniques master cinematographers use to hook viewers instantly.',
-    category: 'Film Production',
-    coverImage: film,
-    slug: 'art-of-visual-storytelling',
-    author: 'Dencast Machio',
-    date: 'recent',
-    readTime: 'Quick read',
-  },
-  {
-    id: '2',
-    title: "Documentary Filmmaking in Africa: Capturing Authentic Narratives Without Exploitation",
-    excerpt:
-      "Africa is one of the world's richest storytelling landscapes — but too often, global productions reduce complex communities to tired tropes. Here's how we do it differently.",
-    category: 'Documentary',
-    coverImage: documentary,
-    slug: 'documentary-filmmaking-africa',
-    author: 'Dennis Machio',
-    date: 'recent',
-    readTime: 'In-depth read',
-  },
-  {
-    id: '3',
-    title: 'Brand Films vs. Commercials: Which Format Drives Long-Term Brand Equity?',
-    excerpt:
-      'Traditional TV spots still have their place, but brand films are reshaping how companies build lasting emotional connections with their audiences. We compare the two formats.',
-    category: 'Brand Strategy',
-    coverImage: brand,
-    slug: 'brand-films-vs-commercials',
-    author: 'Dennis Machio',
-    date: 'recent',
-    readTime: 'Featured read',
-  },
-];
+import { BLOG_ARTICLES } from '@/features/blog/articlesData';
 
 const containerVariants = {
   hidden: {},
@@ -65,6 +20,14 @@ const itemVariants = {
 // ─── RecentBlog ───────────────────────────────────────────────────────────────
 
 const RecentBlog: React.FC = () => {
+  const latestPosts = useMemo(
+    () =>
+      [...BLOG_ARTICLES]
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .slice(0, 3),
+    []
+  );
+
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
@@ -96,7 +59,7 @@ const RecentBlog: React.FC = () => {
           viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {BLOG_POSTS.map((post) => (
+          {latestPosts.map((post) => (
             <motion.div key={post.id} variants={itemVariants}>
               <BlogCard
                 title={post.title}
@@ -145,3 +108,5 @@ const RecentBlog: React.FC = () => {
 };
 
 export default RecentBlog;
+
+

@@ -11,6 +11,7 @@ import {
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import ServiceCard from '@/components/ui/ServiceCard';
+import PhotoCarousel from '@/components/ui/PhotoCarousel';
 import { SERVICES, SITE_NAME } from '@/utils/constants';
 
 // ─── Icon map ─────────────────────────────────────────────────────────────────
@@ -38,6 +39,17 @@ const PHOTOGRAPHY_SAMPLE_IMAGES = [
   '/dencast_images/sasini_conference.jpg',
   '/dencast_images/amakowe.jpg',
   '/dencast_images/rhnks2024.jpg',
+  '/dencast_images/photography1.jpg',
+  '/dencast_images/photography2.jpg',
+  '/dencast_images/photography3.jpg',
+  '/dencast_images/photography4.jpg',
+  '/dencast_images/photography6.jpg',
+  '/dencast_images/photography7.jpg',
+  '/dencast_images/photography8.jpg',
+  '/dencast_images/photography9.jpg',
+  '/dencast_images/photography10.jpg',
+  '/dencast_images/photography11.jpg',
+  '/dencast_images/photography12.jpg',
 ];
 
 const isYoutubeUrl = (url: string) => {
@@ -277,6 +289,7 @@ const ServiceDetailPage: React.FC = () => {
   const content = SERVICE_CONTENT[slug ?? ''] ?? SERVICE_CONTENT['documentary-production'];
   const Icon = ICON_MAP[service.icon] ?? Film;
   const sampleImages = content.sampleImages ?? [];
+  const isPhotographyService = slug === 'photography';
   const mediaVideos = (content.mediaLinks ?? []).filter((item) => isYoutubeUrl(item.url));
   const mediaResources = (content.mediaLinks ?? []).filter((item) => !isYoutubeUrl(item.url));
 
@@ -420,11 +433,30 @@ const ServiceDetailPage: React.FC = () => {
             <div className="text-center mb-12">
               <SectionLabel label="Work Samples" center />
               <h2 className="mt-4 text-4xl font-black text-slate-900">
-                {content.mediaSectionTitle ?? 'Videos & Resources'}
+                {content.mediaSectionTitle ?? 'Photos & Resources'}
               </h2>
             </div>
 
-            {sampleImages.length > 0 && (
+            {sampleImages.length > 0 && isPhotographyService && (
+              <div className="mb-8">
+                <PhotoCarousel
+                  title={`${service.name} portfolio`}
+                  items={sampleImages.map((image, index) => ({
+                    src: image,
+                    alt: `${service.name} sample ${index + 1}`,
+                    caption: `${service.name} sample ${index + 1}`,
+                  }))}
+                  variant="showcase"
+                  showMeta={false}
+                  imageClickable={false}
+                  showCardBorder={false}
+                  aspectClassName="aspect-[4/3]"
+                  className="rounded-[2rem]"
+                />
+              </div>
+            )}
+
+            {sampleImages.length > 0 && !isPhotographyService && (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                 {sampleImages.map((image, index) => (
                   <article

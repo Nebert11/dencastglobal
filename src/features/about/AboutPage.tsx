@@ -1,4 +1,5 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
@@ -12,6 +13,7 @@ import {
  
   ArrowRight,
   Play,
+  X,
 } from 'lucide-react';
 // ChevronRight,
 import { useQuery } from '@tanstack/react-query';
@@ -56,6 +58,18 @@ type TimelineItem = {
   year: string;
   title: string;
   desc: string;
+};
+
+type CsrVideo = {
+  title: string;
+  url: string;
+  duration: string;
+};
+
+type CsrProgram = {
+  title: string;
+  description: string[];
+  videos: CsrVideo[];
 };
 
 type AboutContent = {
@@ -171,6 +185,84 @@ const JOURNEY_IMAGES = [
   { src: '/dencast_images/journey3.jpg', objectPosition: 'center' },
 ];
 
+const ABOUT_VIDEO_URL = 'https://www.youtube.com/watch?v=C4XULlXngGM';
+
+function getYoutubeEmbedUrl(url: string): string {
+  try {
+    const parsed = new URL(url);
+
+    if (parsed.hostname.includes('youtu.be')) {
+      const id = parsed.pathname.replace('/', '').trim();
+      return id ? `https://www.youtube.com/embed/${id}` : url;
+    }
+
+    if (parsed.hostname.includes('youtube.com')) {
+      const id = parsed.searchParams.get('v');
+      return id ? `https://www.youtube.com/embed/${id}` : url;
+    }
+
+    return url;
+  } catch {
+    return url;
+  }
+}
+
+const ABOUT_VIDEO_EMBED_URL = `${getYoutubeEmbedUrl(ABOUT_VIDEO_URL)}?rel=0&modestbranding=1&playsinline=1`;
+
+const getYoutubeVideoId = (url: string): string => {
+  try {
+    const parsed = new URL(url);
+
+    if (parsed.hostname.includes('youtu.be')) {
+      return parsed.pathname.replace('/', '').trim();
+    }
+
+    return parsed.searchParams.get('v') ?? '';
+  } catch {
+    return '';
+  }
+};
+
+const CSR_PROGRAMS: CsrProgram[] = [
+  {
+    title: 'Magharibi Michezo Awards',
+    description: [
+      'The Magharibi Michezo Awards is an annual sports recognition event established in 2015. It celebrates the achievements and contributions of sportsmen, sportswomen, coaches, teams and stakeholders from Western Kenya.',
+      'The awards honour excellence while encouraging greater investment, participation and development in regional sports. Through this initiative, we continue to recognise sporting heroes, inspire young talent and highlight the important role of sport in community development.',
+    ],
+    videos: [
+      { title: 'Magharibi Michezo Awards 1', url: 'https://www.youtube.com/watch?v=SwCPD7KRX0M', duration: '4:15' },
+      { title: 'Magharibi Michezo Awards 2', url: 'https://www.youtube.com/watch?v=Gx5VT0ysbCw', duration: '1:45' },
+    ],
+  },
+  {
+    title: 'Magharibi Festival',
+    description: [
+      'The Magharibi Festival is a vibrant celebration of the music, sports, culture and creative talent of Western Kenya. The festival provides a platform for artists, athletes and cultural practitioners from Bungoma, Busia, Kakamega, Vihiga and Trans Nzoia, while also creating connections with neighbouring communities in Uganda and the Nyanza region.',
+      'Through the festival, Dencast Global seeks to preserve regional identity, promote emerging talent and create opportunities for collaboration, visibility and growth within the creative and sporting industries.',
+    ],
+    videos: [
+      { title: 'Magharibi Festival', url: 'https://www.youtube.com/watch?v=-vNPv6jrRx4', duration: '4:00' },
+    ],
+  },
+  {
+    title: 'Music Development and Artist Support',
+    description: [
+      'Since 2012, we have worked closely with stakeholders in the entertainment and sports sectors to identify industry gaps, strengthen capacity and create meaningful opportunities for artists, athletes and other industry players.',
+      'Our support includes talent identification, music production, creative direction, content development, promotion and mentorship. We have contributed to the development and production of culturally inspired songs that blend tradition with modern sounds.',
+      'One of these productions, “Mbe Omukhasi” by Steve, has attracted more than 2.4 million views on YouTube, demonstrating the power of authentic regional stories and music to reach wider audiences.',
+    ],
+    videos: [
+      {
+        title: 'Music Development and Artist Support 1',
+        url: 'https://www.youtube.com/watch?v=PJ4HC7318h4&list=RDPJ4HC7318h4&start_radio=1',
+        duration: '6:36',
+      },
+      { title: 'Music Development and Artist Support 2', url: 'https://www.youtube.com/watch?v=LOL6DHHFLmE', duration: '3:55' },
+    ],
+  },
+];
+
 const TEAM_MEMBERS = [
   {
     name: 'Dennis Machio',
@@ -266,6 +358,10 @@ const HeroBanner: React.FC<{ content: AboutContent }> = ({ content }) => (
 const MissionSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const missionParagraphs = content.missionBody
+    .split(/\n\s*\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
 
   return (
     <section id="mission" ref={ref} className="py-24 bg-white overflow-hidden">
@@ -285,9 +381,11 @@ const MissionSection: React.FC<{ content: AboutContent }> = ({ content }) => {
           >
             {content.missionTitle}
           </motion.h2>
-          <motion.p variants={fadeUp} className="mt-8 text-slate-600 text-lg leading-relaxed">
-            {content.missionBody}
-          </motion.p>
+          <motion.div variants={fadeUp} className="mt-8 space-y-5 text-slate-600 text-lg leading-relaxed">
+            {missionParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </motion.div>
           <motion.div variants={fadeUp} className="mt-10 flex items-center justify-center gap-4">
             <Link to="/contact">
               <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
@@ -352,15 +450,160 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
               </motion.p>
             ))}
             <motion.div variants={fadeUp} className="mt-8">
+              <div className="rounded-[2rem] bg-slate-900 p-2 sm:p-3 shadow-2xl shadow-slate-300/40 border border-slate-200">
+                <div className="overflow-hidden rounded-[1.5rem] bg-black aspect-video">
+                  <iframe
+                    src={ABOUT_VIDEO_EMBED_URL}
+                    title="About Dencast Global featured video"
+                    className="w-full h-full"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </motion.div>
+            {/* <motion.div variants={fadeUp} className="mt-8">
               <Link to="/contact">
                 <Button variant="secondary" size="lg" rightIcon={<ArrowRight size={16} />}>
                   Let's Work Together
                 </Button>
               </Link>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>
+    </section>
+  );
+};
+
+const CsrSection: React.FC = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [activeVideo, setActiveVideo] = useState<CsrVideo | null>(null);
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
+
+  return (
+    <section id="csr" ref={ref} className="py-24 bg-white overflow-hidden border-t border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="text-center mb-16"
+        >
+          <motion.div variants={fadeUp}>
+            <SectionLabel label="Corporate Social Responsibility" center />
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-slate-900">
+            CSR
+          </motion.h2>
+          <motion.p variants={fadeUp} className="mt-4 text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
+            Our CSR work supports sport, culture and creative development across Western Kenya, with projects that create visibility, opportunities and community pride.
+          </motion.p>
+        </motion.div>
+
+        <div className="space-y-10">
+          {CSR_PROGRAMS.map((program, index) => (
+            <motion.article
+              key={program.title}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              custom={index}
+              className="rounded-[2rem] border border-slate-100 bg-slate-50/70 shadow-sm overflow-hidden"
+            >
+              <div className="p-7 sm:p-10 lg:p-12">
+                <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#25408F]/10 text-[#25408F] text-xs font-bold uppercase tracking-widest">
+                  CSR Initiative
+                </span>
+                <h3 className="mt-4 text-2xl sm:text-3xl font-black text-slate-900 leading-tight">
+                  {program.title}
+                </h3>
+                <div className="mt-5 space-y-4 text-slate-600 leading-relaxed">
+                  {program.description.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="px-7 pb-7 sm:px-10 sm:pb-10 lg:px-12 lg:pb-12">
+                <div className={`grid gap-4 ${program.videos.length > 1 ? 'sm:grid-cols-2' : 'grid-cols-1'}`}>
+                  {program.videos.map((video) => (
+                    <button
+                      key={video.url}
+                      type="button"
+                      onClick={() => setActiveVideo(video)}
+                      className="group rounded-2xl overflow-hidden bg-black border border-slate-200 shadow-md text-left"
+                    >
+                      <div className="relative aspect-video bg-black">
+                        <img
+                          src={getYoutubeVideoId(video.url)
+                            ? `https://img.youtube.com/vi/${getYoutubeVideoId(video.url)}/hqdefault.jpg`
+                            : '/dencast_images/WEBSITE-PHOTO.jpg'}
+                          alt={video.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <Play size={20} className="text-white fill-white ml-1" />
+                          </div>
+                        </div>
+                        <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-semibold tracking-wide shadow-md">
+                          {video.duration}
+                        </div>
+                      </div>
+                      <div className="px-4 py-3 bg-white">
+                        <p className="text-sm font-semibold text-slate-700 leading-snug">{video.title}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+
+      {modalRoot && activeVideo && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">CSR Video</p>
+                <p className="text-sm sm:text-base font-semibold">{activeVideo.title}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveVideo(null)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <iframe
+              src={`${getYoutubeEmbedUrl(activeVideo.url)}?rel=0&modestbranding=1&playsinline=1&autoplay=1`}
+              title={activeVideo.title}
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>,
+        modalRoot,
+      )}
     </section>
   );
 };
@@ -695,6 +938,7 @@ const AboutPage: React.FC = () => {
       <HeroBanner content={content} />
       <MissionSection content={content} />
       <StorySection content={content} />
+      <CsrSection />
       <CoreValuesSection content={content} />
       <TeamSection content={content} />
       <TimelineSection content={content} />

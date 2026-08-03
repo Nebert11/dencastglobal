@@ -3,6 +3,7 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Hero from './components/Hero';
 import LatestNewsTicker from './components/LatestNewsTicker';
 import TrustedBy from './components/TrustedBy';
+import FeaturedVideo from './components/FeaturedVideo';
 import AboutPreview from './components/AboutPreview';
 import FeaturedServices from './components/FeaturedServices';
 import { SITE_NAME, SITE_TAGLINE } from '@/utils/constants';
@@ -127,28 +128,31 @@ const HomePage: React.FC = () => {
         {/* ── 6. Trusted By ── */}
         <TrustedBy />
 
+        {/* ── 7. Featured Video ── */}
+        <FeaturedVideo />
+
         <Suspense fallback={<SectionSkeleton height="h-[480px]" />}>
-          {/* ── 7. Why Choose ── */}
+          {/* ── 8. Why Choose ── */}
           <WhyChoose />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton height="h-[500px]" />}>
-          {/* ── 8. Testimonials ── */}
+          {/* ── 9. Testimonials ── */}
           <Testimonials />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton height="h-[480px]" />}>
-          {/* ── 9. Recent Blog ── */}
+          {/* ── 10. Recent Blog ── */}
           <RecentBlog />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton height="h-80" />}>
-          {/* ── 10. Call To Action ── */}
+          {/* ── 11. Call To Action ── */}
           <CallToAction />
         </Suspense>
 
         <Suspense fallback={<SectionSkeleton height="h-36" />}>
-          {/* ── 11. Contact Preview ── */}
+          {/* ── 12. Contact Preview ── */}
           <ContactPreview />
         </Suspense>
       </main>

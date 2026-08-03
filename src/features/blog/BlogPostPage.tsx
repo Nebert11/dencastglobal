@@ -9,8 +9,112 @@ import {
 import SectionLabel from '@/components/ui/SectionLabel';
 import BlogCard from '@/components/ui/BlogCard';
 import { SITE_NAME } from '@/utils/constants';
-import { BLOG_ARTICLES, BLOG_ARTICLES_LOOKUP } from './articlesData';
+import { BLOG_ARTICLES, BLOG_ARTICLES_LOOKUP, type BlogInlineImage, type BlogVideo } from './articlesData';
 const DEFAULT_POST = BLOG_ARTICLES[0];
+
+const YOUTUBE_EMBED_PARAMS = 'rel=0&modestbranding=1&playsinline=1';
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function buildInlineImageHtml(image: BlogInlineImage): string {
+  const safeSrc = escapeHtml(image.src);
+  const safeAlt = escapeHtml(image.alt);
+  const safeCaption = image.caption ? escapeHtml(image.caption) : '';
+
+  return safeCaption
+    ? `<figure><img src="${safeSrc}" alt="${safeAlt}" loading="lazy" /><figcaption>${safeCaption}</figcaption></figure>`
+    : `<figure><img src="${safeSrc}" alt="${safeAlt}" loading="lazy" /></figure>`;
+}
+
+function insertInlineImages(content: string, inlineImages: BlogInlineImage[] = []): string {
+  if (!inlineImages.length) return content;
+
+  const images = [...inlineImages].sort((a, b) => a.afterParagraph - b.afterParagraph);
+  let imageIndex = 0;
+  let paragraphCount = 0;
+  let output = '';
+  let cursor = 0;
+
+  while (imageIndex < images.length && images[imageIndex].afterParagraph <= 0) {
+    output += buildInlineImageHtml(images[imageIndex]);
+    imageIndex += 1;
+  }
+
+  const paragraphCloseRegex = /<\/p>/gi;
+  let match = paragraphCloseRegex.exec(content);
+
+  while (match) {
+    const endIndex = match.index + match[0].length;
+    output += content.slice(cursor, endIndex);
+    cursor = endIndex;
+    paragraphCount += 1;
+
+    while (imageIndex < images.length && images[imageIndex].afterParagraph === paragraphCount) {
+      output += buildInlineImageHtml(images[imageIndex]);
+      imageIndex += 1;
+    }
+
+    match = paragraphCloseRegex.exec(content);
+  }
+
+  output += content.slice(cursor);
+
+  while (imageIndex < images.length) {
+    output += buildInlineImageHtml(images[imageIndex]);
+    imageIndex += 1;
+  }
+
+  return output;
+}
+
+function extractYouTubeId(value: string): string | null {
+  try {
+    const parsed = new URL(value);
+    const host = parsed.hostname.toLowerCase();
+
+    if (host.includes('youtu.be')) {
+      return parsed.pathname.replace('/', '').trim() || null;
+    }
+
+    if (host.includes('youtube.com')) {
+      const fromQuery = parsed.searchParams.get('v')?.trim();
+      if (fromQuery) return fromQuery;
+
+      const embedMatch = parsed.pathname.match(/\/embed\/([^/?]+)/i);
+      if (embedMatch?.[1]) return embedMatch[1];
+
+      const shortsMatch = parsed.pathname.match(/\/shorts\/([^/?]+)/i);
+      if (shortsMatch?.[1]) return shortsMatch[1];
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function getBottomVideoEmbedSrc(video?: BlogVideo): string | null {
+  if (!video) return null;
+
+  const srcFromEmbed = video.embedCode?.match(/src=["']([^"']+)["']/i)?.[1] ?? null;
+  const candidates = [video.youtubeUrl, srcFromEmbed].filter((item): item is string => Boolean(item));
+
+  for (const candidate of candidates) {
+    const id = extractYouTubeId(candidate);
+    if (id) {
+      return `https://www.youtube.com/embed/${id}?${YOUTUBE_EMBED_PARAMS}`;
+    }
+  }
+
+  return null;
+}
 
 // ─── BlogPostPage ─────────────────────────────────────────────────────────────
 
@@ -30,6 +134,9 @@ const BlogPostPage: React.FC = () => {
   const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
     month: 'long', day: 'numeric', year: 'numeric',
   });
+  const articleHtml = insertInlineImages(post.content, post.inlineImages ?? []);
+  const bottomVideoEmbedSrc = getBottomVideoEmbedSrc(post.bottomVideo);
+  const bottomVideoTitle = post.bottomVideo?.title ?? `${post.title} video`;
 
   return (
     <>
@@ -151,10 +258,31 @@ const BlogPostPage: React.FC = () => {
                   prose-headings:font-black prose-headings:text-slate-900
                   prose-h2:text-2xl prose-h2:mt-4 prose-h2:mb-2
                   prose-p:text-slate-600 prose-p:leading-relaxed prose-p:mb-0
+                  prose-img:w-full prose-img:h-auto prose-img:rounded-xl prose-img:my-6
+                  prose-figure:my-8 prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-slate-500
                   prose-strong:text-slate-800
                   prose-blockquote:border-[#D3232E] prose-blockquote:bg-[#D3232E]/5 prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:text-slate-700 prose-blockquote:font-semibold prose-blockquote:text-xl prose-blockquote:not-italic"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: articleHtml }}
               />
+
+              {bottomVideoEmbedSrc && (
+                <div className="mt-10">
+                  <h3 className="text-2xl font-black text-slate-900 mb-4">Featured Video</h3>
+                  <div className="rounded-2xl border border-slate-200 bg-slate-100 overflow-hidden">
+                    <div className="aspect-video">
+                      <iframe
+                        src={bottomVideoEmbedSrc}
+                        title={bottomVideoTitle}
+                        className="w-full h-full"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Tags */}
               <div className="mt-12 pt-8 border-t border-slate-100">

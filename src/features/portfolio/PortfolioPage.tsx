@@ -1,8 +1,9 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Search, ChevronRight, ChevronDown, Filter, ArrowRight, Play } from 'lucide-react';
+import { Search, ChevronRight, ChevronDown, Filter, Play, X } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import MediaCard from '@/components/ui/MediaCard';
@@ -58,6 +59,62 @@ const toYoutubeEmbedUrl = (url: string) => {
   } catch {
     return url;
   }
+};
+
+const getYoutubeId = (url: string) => {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes('youtu.be')) {
+      return parsed.pathname.replace('/', '').trim();
+    }
+
+    return parsed.searchParams.get('v') ?? '';
+  } catch {
+    return '';
+  }
+};
+
+const YOUTUBE_VIDEO_DURATIONS: Record<string, string> = {
+  '2HF4pXkmntk': '19:00',
+  '632y28-SHt8': '3:15',
+  '82Ex2fbk96o': '4:11:53',
+  'D1QvoiMpK-Q': '1:00:00',
+  'EgTs8_Bm_RQ': '5:29',
+  'F0sANQiiRxE': '3:29',
+  'IybO1Rr95ek': '15:08',
+  'JDr9mvraBjM': '7:38',
+  'JKVNraadnmw': '0:38',
+  'Mx4MYVYGcnE': '4:31:05',
+  'NgUnE8g_z6I': '3:06',
+  'PxF-Oz5O2xg': '5:37',
+  'Q7H3QgmaKp8': '2:16:33',
+  'QPwGbAjNSpc': '1:46',
+  'QnnVSv48PIM': '1:41:19',
+  'WDHIUaR6i-c': '21:15',
+  'WIWK8EugC1c': '2:19',
+  'XAZXVI6bvOo': '1:20',
+  'YGQ0MSiaEXs': '2:45',
+  'ZBoB9kyjIw4': '17:45',
+  '_0hFwZtRoqU': '1:31',
+  '_3NKliaLP-c': '16:10',
+  'aMxamcefU8Y': '3:19:30',
+  'dyRlpkwKuY0': '6:43',
+  'eVXun6P1x98': '3:35:44',
+  'jIVbFh117dA': '2:04',
+  'kIpukvtuV48': '1:46',
+  'mblSEtbtGD8': '4:27',
+  'nQcN6uXbDss': '1:21',
+  'nhfmECVhyRg': '0:38',
+  'oG_IAvExIqM': '4:08',
+  'p2ydGxuTK5U': '2:19',
+  'q-I1iYGhLPk': '2:30',
+  'ueiIbj_OiV8': '7:00:27',
+  'zeLCnl_wASw': '1:18',
+};
+
+const getVideoDurationByUrl = (url: string): string => {
+  const id = getYoutubeId(url);
+  return id ? YOUTUBE_VIDEO_DURATIONS[id] ?? '' : '';
 };
 
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
@@ -131,11 +188,6 @@ const PortfolioIntro: React.FC = () => {
             </p>
 
             <div className="mt-8 flex items-center gap-4 flex-wrap">
-              <Link to="/contact">
-                <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
-                  Start a Project
-                </Button>
-              </Link>
               <Link to="/services">
                 <Button variant="outline" size="lg" leftIcon={<Play size={16} />}>
                   Our Services
@@ -240,8 +292,10 @@ const PortfolioPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
+  const [activeFeaturedVideoIndex, setActiveFeaturedVideoIndex] = useState<number | null>(null);
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: '-60px' });
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
 
   const filtered = useMemo(() => {
     let items = PORTFOLIO_ITEMS;
@@ -263,6 +317,10 @@ const PortfolioPage: React.FC = () => {
     setPage(1);
   };
 
+  useEffect(() => {
+    setActiveFeaturedVideoIndex(null);
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -279,28 +337,83 @@ const PortfolioPage: React.FC = () => {
           <SectionLabel label="Featured Videos" />
           <h2 className="mt-3 text-2xl sm:text-3xl font-black text-slate-900">Portfolio - Featured Videos</h2>
           <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PORTFOLIO_VIDEO_LINKS.map((video) => (
-              <article
+            {PORTFOLIO_VIDEO_LINKS.map((video, index) => {
+              const videoId = getYoutubeId(video.url);
+              const thumbnailSrc = videoId
+                ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+                : '/dencast_images/WEBSITE-PHOTO.jpg';
+              const duration = getVideoDurationByUrl(video.url);
+
+              return (
+              <button
                 key={video.url}
-                className="rounded-xl border border-slate-200 bg-slate-50 p-3 hover:border-[#25408F]/40 hover:bg-[#25408F]/5 transition-all duration-300"
+                type="button"
+                onClick={() => setActiveFeaturedVideoIndex(index)}
+                className="rounded-xl border border-slate-200 bg-slate-50 p-3 hover:border-[#25408F]/40 hover:bg-[#25408F]/5 transition-all duration-300 text-left group"
               >
-                <div className="aspect-video overflow-hidden rounded-lg bg-black">
-                  <iframe
-                    src={toYoutubeEmbedUrl(video.url)}
-                    title={video.title}
-                    className="w-full h-full"
+                <div className="relative aspect-video overflow-hidden rounded-lg bg-black">
+                  <img
+                    src={thumbnailSrc}
+                    alt={video.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
                   />
+                  <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                      <Play size={20} className="text-white fill-white ml-1" />
+                    </div>
+                  </div>
+                  {duration && (
+                    <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-semibold tracking-wide shadow-md">
+                      {duration}
+                    </div>
+                  )}
                 </div>
                 <p className="mt-3 text-sm font-semibold text-slate-700">{video.title}</p>
-              </article>
-            ))}
+              </button>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {modalRoot && activeFeaturedVideoIndex !== null && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setActiveFeaturedVideoIndex(null)}
+        >
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">Featured Video</p>
+                <p className="text-sm sm:text-base font-semibold">{PORTFOLIO_VIDEO_LINKS[activeFeaturedVideoIndex].title}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveFeaturedVideoIndex(null)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <iframe
+              src={`${toYoutubeEmbedUrl(PORTFOLIO_VIDEO_LINKS[activeFeaturedVideoIndex].url)}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+              title={PORTFOLIO_VIDEO_LINKS[activeFeaturedVideoIndex].title}
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>,
+        modalRoot,
+      )}
 
       {/* ── Filter & Search ── */}
       <section className="py-12 bg-white border-b border-slate-100 sticky top-16 z-20 shadow-sm">

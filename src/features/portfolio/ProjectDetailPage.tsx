@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import {
   ChevronRight, Calendar, Tag, User, Share2,
   Twitter, Linkedin, Link as LinkIcon, ArrowRight,
-  CheckCircle2, PlayCircle,
+  CheckCircle2, PlayCircle, X, Play,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import MediaCard from '@/components/ui/MediaCard';
+import PhotoCarousel from '@/components/ui/PhotoCarousel';
 import { SITE_NAME } from '@/utils/constants';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -17,6 +19,11 @@ import { SITE_NAME } from '@/utils/constants';
 interface VideoLink {
   title: string;
   url: string;
+}
+
+interface GalleryImage {
+  src: string;
+  caption?: string;
 }
 
 interface ProjectData {
@@ -30,8 +37,9 @@ interface ProjectData {
   description: string;    // full narrative — use \n\n to separate paragraphs
   videos: VideoLink[];    // YouTube links
   services: string[];
-  gallery: string[];      // local image paths (empty = photos coming soon)
+  gallery: GalleryImage[];
   relatedSlugs: string[];
+  featuredVideoUrl?: string;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -50,6 +58,61 @@ const toEmbedUrl = (url: string): string => {
   } catch {
     return url;
   }
+};
+
+const getYoutubeId = (url: string): string => {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes('youtu.be')) {
+      return parsed.pathname.replace('/', '').trim();
+    }
+    return parsed.searchParams.get('v') ?? '';
+  } catch {
+    return '';
+  }
+};
+
+const YOUTUBE_VIDEO_DURATIONS: Record<string, string> = {
+  '2HF4pXkmntk': '19:00',
+  '632y28-SHt8': '3:15',
+  '82Ex2fbk96o': '4:11:53',
+  'D1QvoiMpK-Q': '1:00:00',
+  'EgTs8_Bm_RQ': '5:29',
+  'F0sANQiiRxE': '3:29',
+  'IybO1Rr95ek': '15:08',
+  'JDr9mvraBjM': '7:38',
+  'JKVNraadnmw': '0:38',
+  'Mx4MYVYGcnE': '4:31:05',
+  'NgUnE8g_z6I': '3:06',
+  'PxF-Oz5O2xg': '5:37',
+  'Q7H3QgmaKp8': '2:16:33',
+  'QPwGbAjNSpc': '1:46',
+  'QnnVSv48PIM': '1:41:19',
+  'WDHIUaR6i-c': '21:15',
+  'WIWK8EugC1c': '2:19',
+  'XAZXVI6bvOo': '1:20',
+  'YGQ0MSiaEXs': '2:45',
+  'ZBoB9kyjIw4': '17:45',
+  '_0hFwZtRoqU': '1:31',
+  '_3NKliaLP-c': '16:10',
+  'aMxamcefU8Y': '3:19:30',
+  'dyRlpkwKuY0': '6:43',
+  'eVXun6P1x98': '3:35:44',
+  'jIVbFh117dA': '2:04',
+  'kIpukvtuV48': '1:46',
+  'mblSEtbtGD8': '4:27',
+  'nQcN6uXbDss': '1:21',
+  'nhfmECVhyRg': '0:38',
+  'oG_IAvExIqM': '4:08',
+  'p2ydGxuTK5U': '2:19',
+  'q-I1iYGhLPk': '2:30',
+  'ueiIbj_OiV8': '7:00:27',
+  'zeLCnl_wASw': '1:18',
+};
+
+const getVideoDurationByUrl = (url: string): string => {
+  const id = getYoutubeId(url);
+  return id ? YOUTUBE_VIDEO_DURATIONS[id] ?? '' : '';
 };
 
 // ─── Project Data ─────────────────────────────────────────────────────────────
@@ -73,7 +136,17 @@ const PROJECTS: Record<string, ProjectData> = {
       { title: 'Sasini Sustainability Report – Video 4', url: 'https://www.youtube.com/watch?v=2HF4pXkmntk' },
     ],
     services: ['Documentary Production', 'Cinematography', 'Post-Production', 'Corporate Storytelling'],
-    gallery: [],
+    gallery: [
+      { src: '/dencast_images/sasini_conference.jpg', caption: 'Sasini PLC sustainability storytelling across plantation and corporate settings.' },
+      { src: '/dencast_images/sasini2.jpg' },
+      { src: '/dencast_images/sasini3.jpg' },
+      { src: '/dencast_images/sasini4.jpg' },
+      { src: '/dencast_images/sasini5.jpg' },
+      { src: '/dencast_images/sasini6.jpg' },
+      { src: '/dencast_images/sasini7.jpg' },
+      { src: '/dencast_images/sasini8.jpg' },
+      { src: '/dencast_images/sasini9.jpg' },
+    ],
     relatedSlugs: ['elf-africa', 'rhnk-conference', 'documentaries'],
   },
 
@@ -94,7 +167,18 @@ const PROJECTS: Record<string, ProjectData> = {
       { title: 'ELF Africa – Video 4', url: 'https://www.youtube.com/watch?v=ZBoB9kyjIw4' },
     ],
     services: ['Documentary Production', 'Social Media Content', 'Livestreaming', 'Post-Production'],
-    gallery: [],
+    gallery: [
+      { src: '/dencast_images/elf.png', caption: 'ELF Africa brand storytelling and leadership-focused communication.' },
+      { src: '/dencast_images/elf1.jpg', caption: 'Behind the scenes of an ELF production session.' },
+      { src: '/dencast_images/elf2.jpg' },
+      { src: '/dencast_images/elf3.jpg' },
+      { src: '/dencast_images/elf4.jpg' },
+      { src: '/dencast_images/elf5.jpg' },
+      { src: '/dencast_images/elf6.jpg' },
+      { src: '/dencast_images/elf7.jpg' },
+      { src: '/dencast_images/elf8.jpg' },
+      { src: '/dencast_images/elf9.jpg' },
+    ],
     relatedSlugs: ['sasini-sustainability-report', 'documentaries', 'rhnk-conference'],
   },
 
@@ -116,6 +200,7 @@ const PROJECTS: Record<string, ProjectData> = {
     ],
     services: ['Event Coverage', 'Videography', 'Digital Content', 'Post-Production'],
     gallery: [],
+    featuredVideoUrl: 'https://www.youtube.com/watch?v=dyRlpkwKuY0',
     relatedSlugs: ['europe-day-football', 'european-investment-bank', 'rhnk-conference'],
   },
 
@@ -194,7 +279,16 @@ const PROJECTS: Record<string, ProjectData> = {
       { title: 'RHNK Conference – Video 4', url: 'https://www.youtube.com/watch?v=kIpukvtuV48' },
     ],
     services: ['Event Videography', 'Photography', 'Livestreaming', 'Breakout Room Recording'],
-    gallery: [],
+    gallery: [
+      { src: '/dencast_images/rhnk.jpg', caption: 'RHNK pan-African conference coverage across plenaries and parallel sessions.' },
+      { src: '/dencast_images/rhnks2024.jpg', caption: 'Delegate engagement and keynote coverage from the RHNK conference series.' },
+      { src: '/dencast_images/rhnk1.jpg' },
+      { src: '/dencast_images/rhnk3.jpg' },
+      { src: '/dencast_images/rhnk4.jpg' },
+      { src: '/dencast_images/rhnk5.jpg' },
+      { src: '/dencast_images/rhnk6.jpg' },
+      { src: '/dencast_images/rhnk7.jpg' },
+    ],
     relatedSlugs: ['sasini-sustainability-report', 'elf-africa', 'live-streaming'],
   },
 
@@ -316,7 +410,8 @@ const RELATED_LOOKUP: Record<string, { title: string; category: string; image: s
 const ProjectDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [copied, setCopied] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [videoLightboxIndex, setVideoLightboxIndex] = useState<number | null>(null);
 
   const project = (slug && PROJECTS[slug]) ? PROJECTS[slug] : DEFAULT_PROJECT;
 
@@ -330,6 +425,21 @@ const ProjectDetailPage: React.FC = () => {
     .split(/\n\n/)
     .map(p => p.trim())
     .filter(Boolean);
+  const galleryImages = project.gallery;
+  const featuredVideoEmbedUrl = project.featuredVideoUrl ? `${toEmbedUrl(project.featuredVideoUrl)}?rel=0&modestbranding=1` : null;
+  const activeProjectVideo = project.videos[activeVideoIndex] ?? project.videos[0] ?? null;
+  const activeProjectVideoEmbedUrl = activeProjectVideo ? `${toEmbedUrl(activeProjectVideo.url)}?rel=0&modestbranding=1&controls=1` : null;
+  const activeProjectVideoDuration = activeProjectVideo ? getVideoDurationByUrl(activeProjectVideo.url) : '';
+  const activeLightboxVideo = videoLightboxIndex !== null ? project.videos[videoLightboxIndex] : null;
+  const activeLightboxVideoEmbedUrl = activeLightboxVideo
+    ? `${toEmbedUrl(activeLightboxVideo.url)}?rel=0&modestbranding=1&controls=1&autoplay=1`
+    : null;
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
+
+  useEffect(() => {
+    setActiveVideoIndex(0);
+    setVideoLightboxIndex(null);
+  }, [slug]);
 
   return (
     <>
@@ -372,6 +482,34 @@ const ProjectDetailPage: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* ── Featured Video ── */}
+      {featuredVideoEmbedUrl && (
+        <section className="py-10 sm:py-14 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-6">
+              <SectionLabel label="Featured Video" />
+              <h2 className="mt-4 text-3xl sm:text-4xl font-black text-slate-900">
+                Featured EU Project Video
+              </h2>
+            </div>
+
+            <div className="rounded-[2rem] bg-slate-900 p-2 sm:p-3 shadow-2xl shadow-slate-300/30 border border-slate-200">
+              <div className="overflow-hidden rounded-[1.5rem] bg-black aspect-video">
+                <iframe
+                  src={featuredVideoEmbedUrl}
+                  title="European Union project featured video"
+                  className="w-full h-full"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Share / Back Bar ── */}
       <div className="bg-white border-b border-slate-100 py-4">
@@ -471,89 +609,175 @@ const ProjectDetailPage: React.FC = () => {
               <PlayCircle size={30} className="text-[#D3232E]" />
               Watch the Work
             </h2>
-            <div className={`grid gap-6 ${
-              project.videos.length === 1
-                ? 'max-w-3xl mx-auto'
-                : project.videos.length === 2
-                ? 'sm:grid-cols-2'
-                : 'sm:grid-cols-2 lg:grid-cols-3'
-            }`}>
-              {project.videos.map((video, i) => (
-                <motion.article
-                  key={video.url}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.07 }}
-                  className="rounded-xl border border-slate-200 bg-white p-3 hover:border-[#25408F]/40 hover:shadow-lg transition-all duration-300"
+            <div className="grid lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,1fr)] gap-6 items-start">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="rounded-[2rem] bg-white p-3 sm:p-4 border border-slate-200 shadow-lg"
+              >
+                <button
+                  type="button"
+                  onClick={() => setVideoLightboxIndex(activeVideoIndex)}
+                  aria-label={`Open video player for ${activeProjectVideo?.title ?? project.title}`}
+                  className="group relative block w-full text-left"
                 >
-                  <div className="aspect-video overflow-hidden rounded-lg bg-black">
-                    <iframe
-                      src={toEmbedUrl(video.url)}
-                      title={video.title}
-                      className="w-full h-full"
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                    />
+                  <div className="aspect-video overflow-hidden rounded-[1.25rem] bg-black">
+                    {activeProjectVideoEmbedUrl && (
+                      <iframe
+                        src={activeProjectVideoEmbedUrl}
+                        title={activeProjectVideo?.title ?? project.title}
+                        className="w-full h-full pointer-events-none"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    )}
                   </div>
-                  <p className="mt-3 px-1 text-sm font-semibold text-slate-700">{video.title}</p>
-                </motion.article>
-              ))}
+                  {activeProjectVideoDuration && (
+                    <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px] font-semibold tracking-wide shadow-md">
+                      {activeProjectVideoDuration}
+                    </div>
+                  )}
+                  <div className="absolute inset-0 flex items-center justify-center rounded-[1.25rem] bg-black/0 group-hover:bg-black/10 transition-colors duration-300">
+                    <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                      <Play size={20} className="text-white fill-white ml-1" />
+                    </div>
+                  </div>
+                </button>
+                <div className="mt-4 px-1">
+                  <p className="text-xs uppercase tracking-widest text-[#D3232E] font-bold mb-1">Featured Video</p>
+                  <h3 className="text-2xl font-black text-slate-900 leading-tight">
+                    {activeProjectVideo?.title ?? project.title}
+                  </h3>
+                </div>
+              </motion.div>
+
+              <div className="space-y-3">
+                {project.videos.map((video, i) => {
+                  const isActive = i === activeVideoIndex;
+                  const videoDuration = getVideoDurationByUrl(video.url);
+                  return (
+                    <motion.button
+                      key={video.url}
+                      type="button"
+                      onClick={() => {
+                        setActiveVideoIndex(i);
+                        setVideoLightboxIndex(i);
+                      }}
+                      initial={{ opacity: 0, x: 16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: i * 0.05 }}
+                      className={`w-full text-left rounded-2xl border p-3 sm:p-4 transition-all duration-300 ${
+                        isActive
+                          ? 'border-[#25408F] bg-[#25408F]/5 shadow-md'
+                          : 'border-slate-200 bg-white hover:border-[#25408F]/30 hover:shadow-sm'
+                      }`}
+                    >
+                      <div className="flex gap-4 items-center">
+                        <div className="relative flex-shrink-0 w-32 sm:w-36 aspect-video overflow-hidden rounded-xl bg-black">
+                          <img
+                            src={`https://img.youtube.com/vi/${new URL(toEmbedUrl(video.url)).pathname.split('/').pop() ?? ''}/hqdefault.jpg`}
+                            alt={video.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                            onError={(event) => {
+                              const target = event.currentTarget;
+                              target.src = '/dencast_images/WEBSITE-PHOTO.jpg';
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-black/20" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg">
+                              <Play size={18} className="text-white fill-white ml-0.5" />
+                            </div>
+                          </div>
+                          {videoDuration && (
+                            <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 text-white text-[10px] font-semibold tracking-wide shadow-md">
+                              {videoDuration}
+                            </div>
+                          )}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-bold text-slate-900 leading-snug line-clamp-2">{video.title}</p>
+                          <p className="mt-1 text-xs text-slate-500">Watch directly within the website</p>
+                        </div>
+                      </div>
+                    </motion.button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
       )}
 
       {/* ── Photo Gallery ── */}
-      {project.gallery.length > 0 && (
+      {galleryImages.length > 0 && (
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionLabel label="Photography" />
             <h2 className="mt-4 text-3xl font-black text-slate-900 mb-10">Project Gallery</h2>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-              {project.gallery.map((src, i) => (
-                <motion.button
-                  key={src}
-                  onClick={() => setLightboxIndex(i)}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.06 }}
-                  className={`relative overflow-hidden rounded-xl group text-left ${i === 0 ? 'col-span-2 aspect-video' : 'aspect-square'}`}
-                >
-                  <img
-                    src={src}
-                    alt={`${project.title} – photo ${i + 1}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                </motion.button>
-              ))}
-            </div>
+            <PhotoCarousel
+              title={`${project.title} gallery`}
+              items={galleryImages.map((image, i) => ({
+                src: image.src,
+                alt: `${project.title} – photo ${i + 1}`,
+                caption: image.caption,
+              }))}
+              variant="showcase"
+              showMeta={false}
+              imageClickable={false}
+              showCardBorder={false}
+              aspectClassName="aspect-[4/3]"
+              className="rounded-[2rem]"
+            />
           </div>
         </section>
       )}
 
-      {/* Lightbox */}
-      {lightboxIndex !== null && project.gallery.length > 0 && (
+      {/* Video Lightbox */}
+      {modalRoot && videoLightboxIndex !== null && activeLightboxVideo && activeLightboxVideoEmbedUrl && createPortal(
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={() => setLightboxIndex(null)}
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setVideoLightboxIndex(null)}
         >
-          <img
-            src={project.gallery[lightboxIndex]}
-            alt={`${project.title} – photo ${lightboxIndex + 1}`}
-            className="max-w-full max-h-[90vh] object-contain rounded-xl"
-          />
-          <button
-            onClick={() => setLightboxIndex(null)}
-            className="absolute top-4 right-4 text-white/80 hover:text-white text-3xl font-bold"
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
           >
-            ✕
-          </button>
-        </div>
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">Video Viewer</p>
+                <p className="text-sm sm:text-base font-semibold">{activeLightboxVideo.title}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setVideoLightboxIndex(null)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="absolute inset-0 bg-black">
+              <iframe
+                src={activeLightboxVideoEmbedUrl}
+                title={activeLightboxVideo.title}
+                className="w-full h-full"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>,
+        modalRoot,
       )}
 
       {/* ── Related Projects ── */}

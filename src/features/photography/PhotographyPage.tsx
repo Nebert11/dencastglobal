@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
+import PhotoCarousel from '@/components/ui/PhotoCarousel';
 import { SITE_NAME } from '@/utils/constants';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -44,23 +45,61 @@ const CAMERAS = [
 ];
 
 const GALLERY_IMAGES = [
-  '3379934',
-  '2873486',
-  '1884577',
-  '/dencast_images/event1.jpg',
-  '7034014',
-  '7247399',
-  '/dencast_images/White-Beach-Palace.jpg',
-  '/dencast_images/sasini_conference.jpg',
-  '3379932',
-  '2379004',
+  {
+    src: '/dencast_images/White-Beach-Palace.jpg',
+    alt: 'Resort lifestyle photography at White Beach Palace',
+    caption: 'White Beach Palace',
+    description: 'Hospitality lifestyle visuals crafted to highlight atmosphere, architecture, and guest experience.',
+  },
+  {
+    src: '/dencast_images/sasini_conference.jpg',
+    alt: 'Corporate conference visual coverage by Dencast Global',
+    caption: 'Corporate Conference Coverage',
+    description: 'Executive-level event storytelling with clean composition and brand-focused detail.',
+  },
+  {
+    src: '/dencast_images/event1.jpg',
+    alt: 'Event photography capturing keynote moments',
+    caption: 'Keynote Moments',
+    description: 'High-impact conference imagery that captures speakers, delegates, and audience energy.',
+  },
+  {
+    src: '/dencast_images/1U9A9541-scaled.jpg',
+    alt: 'High-energy crowd and stage event coverage',
+    caption: 'Live Stage Energy',
+    description: 'Dynamic crowd and performance shots designed for campaigns, press, and social media.',
+  },
+  {
+    src: '/dencast_images/DSC_3903-scaled.jpg',
+    alt: 'Editorial outdoor portrait session in natural light',
+    caption: 'Editorial Portrait Session',
+    description: 'Natural-light portraiture with a cinematic editorial approach and polished finishing.',
+  },
+  {
+    src: '/dencast_images/IMG-20170922-WA0020.jpg',
+    alt: 'Lifestyle and storytelling photography composition',
+    caption: 'Lifestyle Storytelling',
+    description: 'Human-centered lifestyle frames that blend narrative context with strong visual identity.',
+  },
+  {
+    src: '/dencast_images/DSC_5424-scaled.jpg',
+    alt: 'Commercial brand photography scene setup',
+    caption: 'Commercial Brand Visuals',
+    description: 'Product and brand-directed imagery planned for consistency across digital campaigns.',
+  },
+  {
+    src: '/dencast_images/1U9A0278-scaled.jpg',
+    alt: 'Cinematic still image with dramatic composition',
+    caption: 'Cinematic Composition',
+    description: 'Dramatic framing and tonal depth built for premium storytelling and visual impact.',
+  },
+  {
+    src: '/photography/photography1.jpg',
+    alt: 'Cinematic still image with dramatic composition',
+    caption: 'Cinematic Composition',
+    description: 'Dramatic framing and tonal depth built for premium storytelling and visual impact.',
+  },
 ];
-
-const getGalleryImageSrc = (image: string) => (
-  image.startsWith('/')
-    ? image
-    : `https://images.pexels.com/photos/${image}/pexels-photo-${image}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`
-);
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
@@ -214,33 +253,38 @@ const PhotographyPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Masonry Gallery ── */}
+      {/* ── Responsive Carousel Gallery ── */}
       <section ref={galleryRef} className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={stagger} initial="hidden" animate={galleryInView ? 'visible' : 'hidden'} className="text-center mb-12">
             <motion.div variants={fadeUp}><SectionLabel label="Portfolio" center /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">Visual Portfolio</motion.h2>
+            <motion.p variants={fadeUp} className="mt-4 text-slate-500 text-lg max-w-2xl mx-auto">
+              Browse our latest photography highlights. Use the arrows to move through the gallery.
+            </motion.p>
           </motion.div>
 
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-            {GALLERY_IMAGES.map((image, i) => (
-              <motion.div
-                key={`${image}-${i}`}
-                initial={{ opacity: 0, scale: 0.95 }} animate={galleryInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="break-inside-avoid"
-              >
-                <div className="relative overflow-hidden rounded-xl group">
-                  <img
-                    src={getGalleryImageSrc(image)}
-                    alt={`Portfolio item ${i + 1}`}
-                    className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={galleryInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <PhotoCarousel
+              title="Photography Portfolio"
+              items={GALLERY_IMAGES.map((image) => ({
+                src: image.src,
+                alt: image.alt,
+                caption: image.caption,
+                description: image.description,
+              }))}
+              variant="showcase"
+              showMeta={false}
+              imageClickable={false}
+              showCardBorder={false}
+              aspectClassName="aspect-[4/3]"
+              className="rounded-[2rem]"
+            />
+          </motion.div>
         </div>
       </section>
 
