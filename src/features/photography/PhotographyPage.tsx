@@ -1,11 +1,10 @@
-import React, { useState, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, useInView, useScroll, useTransform, type MotionValue } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import {
   Camera, Monitor, Users, Package, Edit3,
-  Navigation, Aperture, Video, Film, ChevronRight, ArrowRight, CheckCircle2, Play, X,
+  Navigation, ChevronRight, ArrowRight, CheckCircle2,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -23,25 +22,15 @@ const PHOTO_CATEGORIES = [
   { icon: Edit3, title: 'Editorial Photography', desc: 'Magazine-quality imagery for publications, campaigns, and brand storytelling.' },
 ];
 
-const VIDEO_CATEGORIES = [
-  { icon: Film, title: 'Corporate Video', desc: 'Company films, executive interviews, and internal communications content.' },
-  { icon: Aperture, title: 'Documentary', desc: 'Long-form narrative films that explore subjects with depth and authenticity.' },
-  { icon: Monitor, title: 'Commercial / TVC', desc: 'High-impact advertisements designed for broadcast and digital platforms.' },
-  { icon: Video, title: 'Social Media', desc: 'Short-form, platform-native content optimised for Reels, TikTok, and YouTube.' },
-];
-
 const CAMERAS = [
   { name: 'Sony A7R V', type: 'Photography' },
   { name: 'Phase One XF', type: 'Photography' },
   { name: 'Canon EOS R5', type: 'Photography' },
   { name: 'Hasselblad X2D', type: 'Photography' },
-  { name: 'RED V-RAPTOR 8K', type: 'Cinema' },
-  { name: 'ARRI Alexa Mini LF', type: 'Cinema' },
-  { name: 'Sony Venice 2', type: 'Cinema' },
   { name: 'DJI Inspire 3', type: 'Drone' },
-  { name: 'Zeiss Supreme Primes', type: 'Lenses' },
-  { name: 'Cooke S7/i Set', type: 'Lenses' },
-  { name: 'ARRI Orion Anamorphics', type: 'Lenses' },
+  { name: 'Sony FE 24-70mm GM II', type: 'Lenses' },
+  { name: 'Sony FE 70-200mm GM OSS II', type: 'Lenses' },
+  { name: 'Sigma Art Prime Set', type: 'Lenses' },
   { name: 'Profoto B10X Plus', type: 'Lighting' },
 ];
 
@@ -64,11 +53,6 @@ const GALLERY_IMAGES = [
   { src: '/dencast_images/photography/photo16.jpg', alt: 'Photography portfolio image 16', caption: 'Premium Imagery',          description: '', objectPosition: 'center top' },
 ];
 
-const PROPERTY_VIDEOS = [
-  { title: 'Coffee Garden Hotel Bungoma', url: 'https://www.youtube.com/watch?v=wTgeV-koD7k' },
-  { title: 'White Beach Palace', url: 'https://www.youtube.com/watch?v=Gp1GfcrdY_w' },
-];
-
 const PROPERTY_GALLERY = [
   { src: '/dencast_images/photography/products_photography/prod.jpg',  alt: 'Product photography — featured item' },
   { src: '/dencast_images/photography/products_photography/prod1.jpg', alt: 'Property photography showcase' },
@@ -80,18 +64,25 @@ const PROPERTY_GALLERY = [
   { src: '/dencast_images/photography/products_photography/prod7.jpg', alt: 'Property and space photography' },
 ];
 
-function getPropertyYoutubeId(url: string): string {
+const PROPERTY_VIDEOS = [
+  { title: 'Coffee Garden Hotel Bungoma', url: 'https://www.youtube.com/watch?v=wTgeV-koD7k' },
+  { title: 'White Beach Palace', url: 'https://www.youtube.com/watch?v=Gp1GfcrdY_w' },
+];
+
+const toYoutubeEmbedUrl = (url: string) => {
   try {
     const parsed = new URL(url);
-    if (parsed.hostname.includes('youtu.be')) return parsed.pathname.replace('/', '').trim();
-    return parsed.searchParams.get('v') ?? '';
-  } catch { return ''; }
-}
+    if (parsed.hostname.includes('youtu.be')) {
+      const id = parsed.pathname.replace('/', '').trim();
+      return id ? `https://www.youtube.com/embed/${id}` : url;
+    }
 
-function getPropertyEmbedUrl(url: string): string {
-  const id = getPropertyYoutubeId(url);
-  return id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&autoplay=1` : url;
-}
+    const id = parsed.searchParams.get('v');
+    return id ? `https://www.youtube.com/embed/${id}` : url;
+  } catch {
+    return url;
+  }
+};
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
@@ -101,104 +92,15 @@ const fadeUp = {
 };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
 
-// ─── Scroll-driven cover carousel ─────────────────────────────────────────────
-// Each image occupies the full width. As the user scrolls, the next image slides
-// up from the bottom, covering the previous one. After the last image, normal
-// page scrolling resumes to reveal the next section.
-
-interface CarouselImage { src: string; alt: string; caption?: string; }
-
-// Per-image layer — separate component so each useTransform call follows hook rules
-const ScrollLayer: React.FC<{
-  image: CarouselImage;
-  index: number;
-  total: number;
-  scrollYProgress: MotionValue<number>;
-}> = ({ image, index, total, scrollYProgress }) => {
-  // Image 0 is the static base layer (no transform needed).
-  // Image i (i > 0) slides from translateY(100%) → translateY(0%) as scrollYProgress
-  // moves from (i-1)/total → i/total.
-  const start = (index - 1) / total;
-  const end   = index       / total;
-  const y = useTransform(scrollYProgress, [start, end], ['100%', '0%']);
-
-  const content = (
-    <>
-      <img
-        src={image.src}
-        alt={image.alt}
-        className="absolute inset-0 w-full h-full object-coverentreopit"
-        loading={index === 0 ? 'eager' : 'lazy'}
-        draggable={false}
-      />
-      {image.caption && (
-        <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-10 py-5 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
-          <p className="text-white text-sm sm:text-base font-semibold tracking-wide">{image.caption}</p>
-          <p className="text-white/50 text-xs mt-0.5">{index + 1} / {total}</p>
-        </div>
-      )}
-    </>
-  );
-
-  if (index === 0) {
-    return <div className="absolute inset-0" style={{ zIndex: 0 }}>{content}</div>;
-  }
-
-  return (
-    <motion.div className="absolute inset-0" style={{ y, zIndex: index }}>
-      {content}
-    </motion.div>
-  );
-};
-
-const ScrollCoverCarousel: React.FC<{ images: CarouselImage[]; label?: string }> = ({ images, label }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
-  const n = images.length;
-
-  return (
-    // Outer: n × 100vh tall — this provides the scroll travel distance.
-    <div ref={containerRef} style={{ height: `${n * 100}vh` }}>
-      {/* Sticky inner — sits fixed in the viewport while the outer scrolls */}
-      <div className="sticky top-0 h-screen overflow-hidden bg-black">
-        {label && (
-          <div className="absolute top-4 left-6 sm:left-10 z-[50] pointer-events-none">
-            <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs font-bold uppercase tracking-widest">
-              {label}
-            </span>
-          </div>
-        )}
-        {images.map((image, i) => (
-          <ScrollLayer
-            key={image.src}
-            image={image}
-            index={i}
-            total={n}
-            scrollYProgress={scrollYProgress}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
 // ─── PhotographyPage ──────────────────────────────────────────────────────────
 
 const PhotographyPage: React.FC = () => {
   const photoRef = useRef(null);
-  const videoRef = useRef(null);
   const galleryRef = useRef(null);
   const equipRef = useRef(null);
   const propertyRef = useRef(null);
-  const [activePropertyVideo, setActivePropertyVideo] = useState<{ title: string; url: string } | null>(null);
-  const modalRoot = typeof document !== 'undefined' ? document.body : null;
 
   const photoInView = useInView(photoRef, { once: true, margin: '-80px' });
-  const videoInView = useInView(videoRef, { once: true, margin: '-80px' });
   const galleryInView = useInView(galleryRef, { once: true, margin: '-80px' });
   const equipInView = useInView(equipRef, { once: true, margin: '-80px' });
   const propertyInView = useInView(propertyRef, { once: true, margin: '-80px' });
@@ -206,8 +108,8 @@ const PhotographyPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Photography & Videography | {SITE_NAME}</title>
-        <meta name="description" content="Professional photography and videography services — portrait, commercial, event, aerial, and cinematic video production across Africa." />
+        <title>Photography | {SITE_NAME}</title>
+        <meta name="description" content="Professional photography services — portrait, commercial, event, aerial, and product photography across Africa." />
       </Helmet>
 
       {/* ── Cinematic Hero ── */}
@@ -227,7 +129,7 @@ const PhotographyPage: React.FC = () => {
             <ChevronRight size={14} />
             <Link to="/services" className="hover:text-white">Services</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Photography & Videography</span>
+            <span className="text-white">Photography</span>
           </motion.nav>
 
           <motion.h1
@@ -243,7 +145,7 @@ const PhotographyPage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.65 }}
             className="text-white/70 text-xl max-w-2xl mx-auto mb-10"
           >
-            Professional photography and videography that tells your story across every format — from medium-format portraits to cinema-grade films.
+            Professional photography that tells your story across every format, from medium-format portraits to commercial visual campaigns.
           </motion.p>
 
           <motion.div
@@ -299,41 +201,6 @@ const PhotographyPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Videography Categories ── */}
-      <section ref={videoRef} className="py-24 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={stagger} initial="hidden" animate={videoInView ? 'visible' : 'hidden'} className="mb-16">
-            <motion.div variants={fadeUp}><SectionLabel label="Videography" light /></motion.div>
-            <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-white">
-              Motion that <span className="text-[#D3232E]">Resonates</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="mt-4 text-white/60 text-lg max-w-2xl">
-              Cinema-grade video production from intimate single-camera shoots to full multi-crew feature productions.
-            </motion.p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VIDEO_CATEGORIES.map((cat, i) => {
-              const Icon = cat.icon;
-              return (
-                <motion.div
-                  key={cat.title}
-                  custom={i} variants={fadeUp} initial="hidden" animate={videoInView ? 'visible' : 'hidden'}
-                  whileHover={{ y: -5 }}
-                  className="bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-[#D3232E]/40 hover:bg-white/10 transition-all duration-300"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-[#D3232E]/20 flex items-center justify-center mb-5">
-                    <Icon size={22} className="text-[#D3232E]" />
-                  </div>
-                  <h3 className="font-bold text-white text-lg mb-2">{cat.title}</h3>
-                  <p className="text-white/60 text-sm leading-relaxed">{cat.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* ── Property and Product Photography ── */}
       <section ref={propertyRef} className="bg-slate-50 border-t border-slate-100">
         {/* Header */}
@@ -352,81 +219,49 @@ const PhotographyPage: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Scroll-driven full-width carousel */}
-        <ScrollCoverCarousel
-          images={PROPERTY_GALLERY}
-          label="Property & Product"
-        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <PhotoCarousel
+            title="Property and Product Photography"
+            items={PROPERTY_GALLERY.map((image) => ({
+              src: image.src,
+              alt: image.alt,
+            }))}
+            variant="showcase"
+            showMeta={false}
+            showCardBorder={false}
+            aspectClassName="aspect-[4/3]"
+            className="rounded-[2rem]"
+          />
+        </div>
 
-        {/* Videos */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <motion.div variants={stagger} initial="hidden" animate={propertyInView ? 'visible' : 'hidden'}>
             <motion.p variants={fadeUp} className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-5">Featured Videos</motion.p>
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className="grid sm:grid-cols-2 gap-4">
               {PROPERTY_VIDEOS.map((video, i) => (
-                <motion.button
+                <motion.article
                   key={video.url}
-                  custom={i} variants={fadeUp}
-                  type="button"
-                  onClick={() => setActivePropertyVideo(video)}
-                  className="group rounded-2xl overflow-hidden bg-black border border-slate-200 shadow-md text-left"
+                  custom={i}
+                  variants={fadeUp}
+                  className="rounded-xl border border-slate-200 bg-white p-3 hover:border-[#25408F]/40 hover:bg-[#25408F]/5 transition-all duration-300"
                 >
-                  <div className="relative aspect-video">
-                    <img
-                      src={`https://img.youtube.com/vi/${getPropertyYoutubeId(video.url)}/hqdefault.jpg`}
-                      alt={video.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  <div className="aspect-video overflow-hidden rounded-lg bg-black">
+                    <iframe
+                      src={toYoutubeEmbedUrl(video.url)}
+                      title={video.title}
+                      className="w-full h-full"
                       loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
                     />
-                    <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-                        <Play size={20} className="text-white fill-white ml-1" />
-                      </div>
-                    </div>
                   </div>
-                  <div className="px-4 py-3 bg-white">
-                    <p className="text-sm font-semibold text-slate-700">{video.title}</p>
-                  </div>
-                </motion.button>
+                  <p className="mt-3 text-sm font-semibold text-slate-700">{video.title}</p>
+                </motion.article>
               ))}
             </div>
           </motion.div>
         </div>
-
-        {/* Video modal */}
-        {modalRoot && activePropertyVideo && createPortal(
-          <div
-            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
-            onClick={() => setActivePropertyVideo(null)}
-          >
-            <div
-              className="relative w-full sm:w-[80vw] h-auto max-w-[1200px] rounded-3xl overflow-hidden bg-black shadow-2xl border border-white/10"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="absolute top-3 right-3 z-10">
-                <button
-                  type="button"
-                  onClick={() => setActivePropertyVideo(null)}
-                  className="w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors"
-                  aria-label="Close"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-              <div className="aspect-video">
-                <iframe
-                  src={getPropertyEmbedUrl(activePropertyVideo.url)}
-                  title={activePropertyVideo.title}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          </div>,
-          modalRoot,
-        )}
       </section>
 
       {/* ── Sample Photos: standard carousel ── */}
@@ -456,7 +291,7 @@ const PhotographyPage: React.FC = () => {
               }))}
               variant="showcase"
               showMeta={false}
-              imageClickable={false}
+              imageClickable
               showCardBorder={false}
               aspectClassName="aspect-[3/4]"
               className="rounded-[2rem]"
@@ -471,7 +306,7 @@ const PhotographyPage: React.FC = () => {
           <motion.div variants={stagger} initial="hidden" animate={equipInView ? 'visible' : 'hidden'} className="text-center mb-12">
             <motion.div variants={fadeUp}><SectionLabel label="Equipment" center /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">
-              Cinema-Grade Arsenal
+              Photography Gear
             </motion.h2>
           </motion.div>
 
@@ -501,7 +336,7 @@ const PhotographyPage: React.FC = () => {
             Ready for Stunning Visuals?
           </h2>
           <p className="mt-4 text-white/70 text-lg mb-10">
-            Let's create imagery and footage that elevates your brand and tells your story.
+            Let's create imagery that elevates your brand and tells your story.
           </p>
           <Link to="/contact">
             <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>

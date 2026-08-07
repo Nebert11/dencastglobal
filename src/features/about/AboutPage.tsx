@@ -391,29 +391,29 @@ const MissionSection: React.FC<{ content: AboutContent }> = ({ content }) => {
     .filter(Boolean);
 
   return (
-    <section id="mission" ref={ref} className="py-24 bg-white overflow-hidden">
+    <section id="mission" ref={ref} className="py-28 lg:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={stagger}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-5xl mx-auto text-center"
         >
           <motion.div variants={fadeUp}>
             <SectionLabel label="Our Mission" center />
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight"
+            className="mt-6 text-5xl sm:text-6xl lg:text-7xl font-black text-slate-900 leading-tight"
           >
             {content.missionTitle}
           </motion.h2>
-          <motion.div variants={fadeUp} className="mt-8 space-y-5 text-slate-600 text-lg leading-relaxed">
+          <motion.div variants={fadeUp} className="mt-10 space-y-6 text-slate-600 text-xl leading-relaxed max-w-4xl mx-auto">
             {missionParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </motion.div>
-          <motion.div variants={fadeUp} className="mt-10 flex items-center justify-center gap-4">
+          <motion.div variants={fadeUp} className="mt-12 flex items-center justify-center gap-4">
             <Link to="/contact">
               <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
                 Partner With Us
@@ -440,16 +440,16 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
     .filter(Boolean);
 
   return (
-    <section id="vision" ref={ref} className="py-24 bg-slate-50 overflow-hidden">
+    <section id="vision" ref={ref} className="py-28 lg:py-32 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden aspect-[16/11] shadow-[0_40px_100px_-35px_rgba(15,23,42,0.55)]">
               <img
                 src={content.storyImageUrl}
                 alt="Dencast Global team at work"
@@ -460,18 +460,18 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
             </div>
           </motion.div>
 
-          <motion.div variants={stagger} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="lg:pl-4">
+          <motion.div variants={stagger} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="lg:pl-4 max-w-2xl">
             <motion.div variants={fadeUp}>
-              <SectionLabel label="Our Story" />
+              <SectionLabel label="Our Vision" />
             </motion.div>
-            <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900 leading-tight">
+            <motion.h2 variants={fadeUp} className="mt-4 text-5xl sm:text-6xl font-black text-slate-900 leading-tight">
               {content.storyTitle}
             </motion.h2>
             {paragraphs.map((paragraph, index) => (
               <motion.p
                 key={`${paragraph.slice(0, 16)}-${index}`}
                 variants={fadeUp}
-                className={`text-slate-600 leading-relaxed ${index === 0 ? 'mt-5' : 'mt-4'}`}
+                className={`text-slate-600 text-lg sm:text-xl leading-relaxed ${index === 0 ? 'mt-6' : 'mt-5'}`}
               >
                 {paragraph}
               </motion.p>

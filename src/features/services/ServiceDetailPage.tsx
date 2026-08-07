@@ -162,6 +162,11 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: '/dencast_images/9-scaled.jpg',
     overview: 'High-production-value video content that elevates your brand and drives results. Our videography teams are equipped for everything from intimate interview setups to large multi-camera corporate productions.',
     features: ['Cinema-grade camera packages', 'Professional lighting & grip', 'Colour grading & VFX', 'Motion graphics & animation', 'Multi-format delivery', 'Scripting & storyboarding', '360° video capability'],
+    mediaSectionTitle: 'Videography Highlights',
+    mediaLinks: [
+      { title: 'Coffee Garden Hotel Bungoma', url: 'https://www.youtube.com/watch?v=wTgeV-koD7k' },
+      { title: 'White Beach Palace', url: 'https://www.youtube.com/watch?v=Gp1GfcrdY_w' },
+    ],
     whyUs: [
       { icon: Eye, title: 'Cinematic Quality', desc: 'Every video is crafted with the attention to detail of a feature film production.' },
       { icon: Cpu, title: 'Full Post-Production', desc: 'In-house colour grading, VFX, and audio mixing for end-to-end quality control.' },
