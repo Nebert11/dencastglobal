@@ -13,6 +13,7 @@ import type { HeroContent } from '@/types';
 // ─── Lazy-loaded below-fold sections ─────────────────────────────────────────
 const FeaturedPortfolio = lazy(() => import('./components/FeaturedPortfolio'));
 const WhyChoose = lazy(() => import('./components/WhyChoose'));
+const SoundtracksSection = lazy(() => import('./components/SoundtracksSection'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
 const RecentBlog = lazy(() => import('./components/RecentBlog'));
 const CallToAction = lazy(() => import('./components/CallToAction'));
@@ -136,8 +137,13 @@ const HomePage: React.FC = () => {
           <WhyChoose />
         </Suspense>
 
+        {/* ── 9. Soundtracks & Audio ── */}
+        <Suspense fallback={<SectionSkeleton height="h-[70vh]" />}>
+          <SoundtracksSection />
+        </Suspense>
+
         <Suspense fallback={<SectionSkeleton height="h-[500px]" />}>
-          {/* ── 9. Testimonials ── */}
+          {/* ── 10. Testimonials ── */}
           <Testimonials />
         </Suspense>
 

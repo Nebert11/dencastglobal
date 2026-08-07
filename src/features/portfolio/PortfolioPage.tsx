@@ -38,12 +38,12 @@ interface PortfolioItem {
 }
 
 const PORTFOLIO_VIDEO_LINKS = [
-  { title: 'Sasini Report Launch', url: 'https://www.youtube.com/watch?v=QnnVSv48PIM&t=1787s' },
-  { title: 'EU Ambassador', url: 'https://www.youtube.com/watch?v=WIWK8EugC1c' },
-  { title: 'RHNK Pan-African Conference 2025 Highlights ', url: 'https://www.youtube.com/watch?v=_0hFwZtRoqU' },
-  { title: 'ELF-Africa Annual Report ', url: 'https://www.youtube.com/watch?v=EgTs8_Bm_RQ&t=20s' },
-  { title: 'THE AMAKOVE WALA SHOW 1 - Divorce and Separation ', url: 'https://www.youtube.com/watch?v=D1QvoiMpK-Q&t=23s' },
-  { title: 'RHNK Pan-African Conference 2026 ', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
+  { title: 'Sasini Sustainability Report Launch — Full Event', url: 'https://www.youtube.com/watch?v=QnnVSv48PIM&t=1787s' },
+  { title: 'EU Ambassador — EU Business Forum Kenya', url: 'https://www.youtube.com/watch?v=WIWK8EugC1c' },
+  { title: 'RHNK Pan-African Conference 2025 Highlights', url: 'https://www.youtube.com/watch?v=_0hFwZtRoqU' },
+  { title: 'ELF Africa Annual Report Film', url: 'https://www.youtube.com/watch?v=EgTs8_Bm_RQ&t=20s' },
+  { title: 'The Amakove Wala Show — Divorce and Separation', url: 'https://www.youtube.com/watch?v=D1QvoiMpK-Q&t=23s' },
+  { title: 'RHNK Pan-African Conference 2026', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
 ];
 
 const toYoutubeEmbedUrl = (url: string) => {
@@ -118,9 +118,9 @@ const getVideoDurationByUrl = (url: string): string => {
 };
 
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
-  { id: '1',  slug: 'sasini-sustainability-report', title: 'Sasini Sustainability Report',       category: 'Corporate',   image: sasiniConference, featured: true },
+  { id: '1',  slug: 'sasini-sustainability-report', title: 'Sasini Sustainability Report Launch', category: 'Corporate',   image: sasiniConference, featured: true },
+  { id: '3',  slug: 'european-union-videos',         title: 'European Union Ambassador — EU Business Forum', category: 'Corporate',   image: africatalyst, featured: true },
   { id: '2',  slug: 'elf-africa',                   title: 'ELF Africa',                         category: 'Corporate',   image: elf },
-  { id: '3',  slug: 'european-union-videos',         title: 'European Union – Media & Digital',   category: 'Corporate',   image: africatalyst },
   { id: '4',  slug: 'europe-day-football',           title: 'Europe Day Football Tournament',      category: 'Corporate',   image: europeday },
   { id: '5',  slug: 'european-investment-bank',      title: 'European Investment Bank',           category: 'Corporate',   image: event1 },
   { id: '6',  slug: 'amakove-wala-show',             title: 'The Amakove Wala Show',              category: 'Streaming',   image: amakowe },

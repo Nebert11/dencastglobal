@@ -49,7 +49,7 @@ const FALLBACK_TESTIMONIALS: Omit<Testimonial, 'id' | 'created_at' | 'updated_at
     sort_order: 3,
   },
   {
-    client_name: 'Caroline Waangamati',
+    client_name: 'Caroline Wangamati',
     client_title: 'Leadership and Strategy Expert',
     client_company: '',
     client_avatar_url: '/dencast_images/caroline_wangamati.jpg',

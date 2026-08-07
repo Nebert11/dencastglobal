@@ -130,10 +130,10 @@ const PROJECTS: Record<string, ProjectData> = {
     description:
       'For the past four years, we have collaborated closely with Sasini PLC, showcasing their sustainability journey across expansive tea, coffee, macadamia, and avocado plantations. Our team has traversed their farms and processing plants, crafting visually stunning narratives that highlight their commitment to responsible and sustainable agricultural practices.\n\nAs one of Kenya\'s leading agribusinesses, Sasini is at the forefront of sustainability, and we are honoured to help tell their story.\n\nAt Dencast Global, we believe in the power of visual storytelling to inspire change, engage audiences, and elevate brands. Partner with us, and let\'s bring your vision to life.',
     videos: [
-      { title: 'Sasini Sustainability Report – Video 1', url: 'https://www.youtube.com/watch?v=QnnVSv48PIM' },
-      { title: 'Sasini Sustainability Report – Video 2', url: 'https://www.youtube.com/watch?v=WDHIUaR6i-c' },
-      { title: 'Sasini Sustainability Report – Video 3', url: 'https://www.youtube.com/watch?v=zeLCnl_wASw' },
-      { title: 'Sasini Sustainability Report – Video 4', url: 'https://www.youtube.com/watch?v=2HF4pXkmntk' },
+      { title: 'Sasini Sustainability Report Launch – Full Event', url: 'https://www.youtube.com/watch?v=QnnVSv48PIM' },
+      { title: 'Sasini Tea, Coffee & Sustainability Documentary', url: 'https://www.youtube.com/watch?v=WDHIUaR6i-c' },
+      { title: 'Sasini Sustainability Story', url: 'https://www.youtube.com/watch?v=zeLCnl_wASw' },
+      { title: 'Sasini Farms & Plantations Feature', url: 'https://www.youtube.com/watch?v=2HF4pXkmntk' },
     ],
     services: ['Documentary Production', 'Cinematography', 'Post-Production', 'Corporate Storytelling'],
     gallery: [
@@ -161,10 +161,10 @@ const PROJECTS: Record<string, ProjectData> = {
     description:
       'For over 12 years, Dencast Global has walked the development journey with the Emerging Leaders Foundation (ELF), helping to showcase their mission of building the next generation of value-driven African leaders.\n\nFrom impactful documentaries to engaging social media content and livestream productions, we have been their trusted media partner in bringing their incredible work to life.\n\nAt Dencast Global, we believe in the power of visual storytelling to inspire change, engage audiences, and elevate brands. Partner with us, and let\'s bring your vision to life.\n\nHere are some of the inspiring stories we have worked on together. For more, visit ELF\'s official YouTube page.',
     videos: [
-      { title: 'ELF Africa – Annual Report', url: 'https://www.youtube.com/watch?v=EgTs8_Bm_RQ' },
-      { title: 'ELF Africa – Video 2', url: 'https://www.youtube.com/watch?v=JDr9mvraBjM' },
-      { title: 'ELF Africa – Video 3', url: 'https://www.youtube.com/watch?v=oG_IAvExIqM' },
-      { title: 'ELF Africa – Video 4', url: 'https://www.youtube.com/watch?v=ZBoB9kyjIw4' },
+      { title: 'ELF Africa Annual Report Film', url: 'https://www.youtube.com/watch?v=EgTs8_Bm_RQ' },
+      { title: 'ELF Africa Leadership Stories', url: 'https://www.youtube.com/watch?v=JDr9mvraBjM' },
+      { title: "ELF Africa \u2014 Building Africa's Next Generation", url: 'https://www.youtube.com/watch?v=oG_IAvExIqM' },
+      { title: 'ELF Africa Documentary Feature', url: 'https://www.youtube.com/watch?v=ZBoB9kyjIw4' },
     ],
     services: ['Documentary Production', 'Social Media Content', 'Livestreaming', 'Post-Production'],
     gallery: [
@@ -193,10 +193,10 @@ const PROJECTS: Record<string, ProjectData> = {
     description:
       'Dencast Global has partnered with the European Union Delegation in Kenya to produce a wide range of media content — from event coverage and promotional videos to digital storytelling that communicates the EU\'s development programmes and partnerships across the country.\n\nOur productions span conferences, ceremonies, ambassador events, and key milestones in the EU–Kenya relationship, captured with cinematic precision and delivered to global standards.\n\nAt Dencast Global, we believe in the power of visual storytelling to inspire change, engage audiences, and elevate brands. Partner with us, and let\'s bring your vision to life.',
     videos: [
-      { title: 'European Union – Video 1', url: 'https://www.youtube.com/watch?v=jIVbFh117dA' },
-      { title: 'European Union – Video 2', url: 'https://www.youtube.com/watch?v=JKVNraadnmw' },
-      { title: 'European Union – Video 3', url: 'https://www.youtube.com/watch?v=nhfmECVhyRg' },
-      { title: 'European Union – Video 4', url: 'https://www.youtube.com/watch?v=p2ydGxuTK5U' },
+      { title: 'EU Ambassador — Business Forum Kenya', url: 'https://www.youtube.com/watch?v=jIVbFh117dA' },
+      { title: 'European Union Kenya Event Highlights', url: 'https://www.youtube.com/watch?v=JKVNraadnmw' },
+      { title: 'EU Kenya Digital Campaign', url: 'https://www.youtube.com/watch?v=nhfmECVhyRg' },
+      { title: 'EU–Kenya Partnership Feature', url: 'https://www.youtube.com/watch?v=p2ydGxuTK5U' },
     ],
     services: ['Event Coverage', 'Videography', 'Digital Content', 'Post-Production'],
     gallery: [],
@@ -235,9 +235,9 @@ const PROJECTS: Record<string, ProjectData> = {
     description:
       'Dencast Global has had the honour of partnering with the European Investment Bank (EIB) to produce compelling video content that documents their investment initiatives, programmes, and partnerships across Africa.\n\nOur productions capture key meetings, project highlights, and the tangible impact of EIB investments on communities and economies — delivered with the highest production standards.\n\nAt Dencast Global, we believe in the power of visual storytelling to inspire change, engage audiences, and elevate brands. Partner with us, and let\'s bring your vision to life.',
     videos: [
-      { title: 'European Investment Bank – Video 1', url: 'https://www.youtube.com/watch?v=632y28-SHt8' },
-      { title: 'European Investment Bank – Video 2', url: 'https://www.youtube.com/watch?v=PxF-Oz5O2xg' },
-      { title: 'European Investment Bank – Video 3', url: 'https://www.youtube.com/watch?v=mblSEtbtGD8' },
+      { title: 'European Investment Bank in Kenya — Impact Story', url: 'https://www.youtube.com/watch?v=632y28-SHt8' },
+      { title: 'EIB Kenya Programmes & Investments', url: 'https://www.youtube.com/watch?v=PxF-Oz5O2xg' },
+      { title: 'EIB Africa Development Feature', url: 'https://www.youtube.com/watch?v=mblSEtbtGD8' },
     ],
     services: ['Corporate Videography', 'Event Coverage', 'Post-Production'],
     gallery: [],
@@ -274,9 +274,9 @@ const PROJECTS: Record<string, ProjectData> = {
       'Managing conference coverage that tells a 360-degree story of an event is no small task, but that\'s exactly what we achieved with Reproductive Health Network Kenya (RHNK).\n\nAt the 2024, 2025 and 2026 RHNK Conference held at White Sands Beach Resort & Spa in Mombasa, our team delivered:\n✔ Comprehensive videography and photography covering the entire event\n✔ Livestreaming of key sessions for global audiences\n✔ Breakout room recordings capturing abstract presentations and panel discussions\n\nWith over 800 delegates in attendance, we ensured that every angle of the conference was beautifully captured.\n\nAt Dencast Global, we\'ve got your event coverage covered — so you can focus on the content while we handle the communication.',
     videos: [
       { title: 'RHNK Pan-African Conference 2026', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk' },
-      { title: 'RHNK Conference – Video 2', url: 'https://www.youtube.com/watch?v=QPwGbAjNSpc' },
+      { title: 'RHNK Youth Caravan', url: 'https://www.youtube.com/watch?v=QPwGbAjNSpc' },
       { title: 'RHNK Pan-African Conference 2025 Highlights', url: 'https://www.youtube.com/watch?v=_0hFwZtRoqU' },
-      { title: 'RHNK Conference – Video 4', url: 'https://www.youtube.com/watch?v=kIpukvtuV48' },
+      { title: 'RHNK Corporate Video', url: 'https://www.youtube.com/watch?v=kIpukvtuV48' },
     ],
     services: ['Event Videography', 'Photography', 'Livestreaming', 'Breakout Room Recording'],
     gallery: [

@@ -124,7 +124,7 @@ const BlogPage: React.FC = () => {
     <>
       <Helmet>
         <title>Stories & Insights | {SITE_NAME}</title>
-        <meta name="description" content="Articles, insights, and behind-the-scenes stories from Africa's leading creative media production company." />
+        <meta name="description" content="Ideas, perspectives and conversations from across industries, communities and everyday life — exploring the issues, innovations, people and stories shaping our world." />
       </Helmet>
 
       {/* ── Hero ── */}
@@ -144,20 +144,23 @@ const BlogPage: React.FC = () => {
             <ChevronRight size={14} />
             <span className="text-white font-medium">Blog</span>
           </motion.nav>
+        </div> */}
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl sm:text-6xl font-black text-white"
           >
-            Stories &{' '}
-            <span className="text-[#D3232E]">Insights</span>
+            Insights &{' '}
+            <span className="text-[#D3232E]">Stories</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-4 text-white/70 text-xl max-w-2xl mx-auto"
+            className="mt-4 text-white/70 text-xl max-w-3xl mx-auto leading-relaxed"
           >
-            Industry insights, creative process stories, and the thinking behind Africa's most powerful media.
+            Ideas, perspectives and conversations from across industries, communities and everyday life — exploring the issues, innovations, people and stories shaping our world.
           </motion.p>
-        </div> */}
+        </div>
         
 
       </section>

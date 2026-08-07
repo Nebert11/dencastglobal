@@ -1,6 +1,6 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
@@ -147,6 +147,10 @@ const DEFAULT_CLIENTS = [
   'Afreximbank',
   'Africatalyst',
   'European Union',
+  'European Investment Bank',
+  'Eleon Inn',
+  'CAPA France',
+  'IPPF',
 ];
 
 
@@ -458,30 +462,55 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
                 {paragraph}
               </motion.p>
             ))}
-            <motion.div variants={fadeUp} className="mt-8">
-              <div className="rounded-[2rem] bg-slate-900 p-2 sm:p-3 shadow-2xl shadow-slate-300/40 border border-slate-200">
-                <div className="overflow-hidden rounded-[1.5rem] bg-black aspect-video">
-                  <iframe
-                    src={ABOUT_VIDEO_EMBED_URL}
-                    title="About Dencast Global featured video"
-                    className="w-full h-full"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
-            </motion.div>
-            {/* <motion.div variants={fadeUp} className="mt-8">
-              <Link to="/contact">
-                <Button variant="secondary" size="lg" rightIcon={<ArrowRight size={16} />}>
-                  Let's Work Together
-                </Button>
-              </Link>
-            </motion.div> */}
           </motion.div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+const AboutVideoSection: React.FC = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section ref={ref} className="py-20 bg-slate-50 border-t border-slate-100 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="text-center mb-10"
+        >
+          <motion.div variants={fadeUp}>
+            <SectionLabel label="Dencast Global" center />
+          </motion.div>
+          <motion.h2 variants={fadeUp} className="mt-4 text-3xl sm:text-4xl font-black text-slate-900">
+            About Us
+          </motion.h2>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <div className="relative rounded-[2rem] bg-[#0f172a] p-2 sm:p-3 shadow-[0_30px_80px_-24px_rgba(15,23,42,0.55)] border border-slate-700/40">
+            <div className="relative rounded-[1.5rem] overflow-hidden bg-black">
+              <div className="aspect-video">
+                <iframe
+                  src={ABOUT_VIDEO_EMBED_URL}
+                  title="About Dencast Global"
+                  className="w-full h-full"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+            <div className="absolute left-1/2 -bottom-3 h-3 w-36 -translate-x-1/2 rounded-b-2xl bg-slate-800/90 sm:w-48" />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -734,9 +763,26 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   );
 };
 
+const DENNIS_FULL_BIO = `Dennis Machio is the founder and lead director of Dencast Global Limited. With over 15 years of experience in multimedia production, live events, and creative direction, he has built a reputation as one of Kenya's most versatile and dedicated media professionals.
+
+Dennis began his career at Michezo Afrika, Kenya's leading sports news outlet, where he served as lead producer and editor. As a co-founder of Michezo Afrika, he played a pivotal role in revolutionising sports media — blending in-depth analysis with dynamic visuals that captivated audiences across the region.
+
+Driven by a deeper passion for storytelling, Dennis launched Bungoma Pictures, a production company dedicated to documentary filmmaking and visual storytelling. Through Bungoma Pictures, he explored powerful, immersive narratives and shone a light on untold stories with lasting impact.
+
+In 2021, Bungoma Pictures evolved into Dencast Global Limited — a cutting-edge production and creative media agency. This transformation marked a new era, defined by world-class productions that have garnered regional and global acclaim.
+
+Today, Dennis leads Dencast Global as director, producer, and editor — partnering with leading brands, international organisations, and development institutions across Africa and beyond. His cinematic eye, editorial precision, and strategic understanding of communication make him a trusted partner for every project Dencast Global undertakes.`;
+
+const DENNIS_PRODUCTION_IMAGES = [
+  { src: '/dencast_images/dennis_machio.jpg', alt: 'Dennis Machio with his first camera' },
+  { src: '/dencast_images/Machio-CEO.png', alt: 'Dennis Machio, CEO of Dencast Global' },
+];
+
 const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [dennisModalOpen, setDennisModalOpen] = useState(false);
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
 
   return (
     <section id="team" ref={ref} className="py-24 bg-slate-50 border-t border-slate-100">
@@ -769,7 +815,7 @@ const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
               key={member.name}
               custom={i}
               variants={fadeUp}
-              className="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm"
+              className="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm flex flex-col"
             >
               <img
                 src={member.image}
@@ -777,15 +823,100 @@ const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
                 className="w-full h-80 object-cover"
                 loading="lazy"
               />
-              <div className="p-5">
+              <div className="p-5 flex flex-col flex-1">
                 <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
                 <p className="text-sm text-[#25408F] mt-1 font-semibold">{member.role}</p>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed">{member.profile}</p>
+                <p className="mt-3 text-sm text-slate-600 leading-relaxed flex-1">{member.profile}</p>
+                {member.name === 'Dennis Machio' && (
+                  <button
+                    type="button"
+                    onClick={() => setDennisModalOpen(true)}
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#25408F] hover:text-[#D3232E] transition-colors duration-200 self-start"
+                  >
+                    Read More <ArrowRight size={14} />
+                  </button>
+                )}
               </div>
             </motion.article>
           ))}
         </motion.div>
       </div>
+
+      {/* ── Dennis Machio Full Bio Modal ── */}
+      {modalRoot && dennisModalOpen && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+          onClick={() => setDennisModalOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl my-6 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              type="button"
+              onClick={() => setDennisModalOpen(false)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
+              aria-label="Close"
+            >
+              <X size={18} />
+            </button>
+
+            {/* Hero photo */}
+            <div className="relative h-72 sm:h-96 overflow-hidden">
+              <img
+                src={teamLeadImage}
+                alt="Dennis Machio – CEO & Lead Director, Dencast Global"
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-1">Founder & Lead Director</p>
+                <h2 className="text-2xl sm:text-3xl font-black">Dennis Machio</h2>
+              </div>
+            </div>
+
+            {/* Bio content */}
+            <div className="p-6 sm:p-8">
+              <div className="space-y-4 text-slate-600 leading-relaxed text-sm sm:text-base">
+                {DENNIS_FULL_BIO.split('\n\n').map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
+              </div>
+
+              {/* Production photos */}
+              <div className="mt-8">
+                <p className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-4">Behind the Lens</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {DENNIS_PRODUCTION_IMAGES.map((img) => (
+                    <div key={img.src} className="rounded-xl overflow-hidden aspect-[4/3]">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Link to dennismachio.com */}
+              <div className="mt-8 pt-6 border-t border-slate-100">
+                <a
+                  href="https://www.dennismachio.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#25408F] hover:bg-[#1f3576] text-white font-bold rounded-xl transition-colors duration-200"
+                >
+                  Visit dennismachio.com <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>,
+        modalRoot,
+      )}
     </section>
   );
 };
@@ -928,6 +1059,7 @@ const CTASection: React.FC<{ content: AboutContent }> = ({ content }) => {
 };
 
 const AboutPage: React.FC = () => {
+  const location = useLocation();
   const { data: settingsResponse } = useQuery({
     queryKey: ['siteSettingsPublic'],
     queryFn: getSiteSettings,
@@ -974,6 +1106,21 @@ const AboutPage: React.FC = () => {
     return fromBackend.length > 0 ? fromBackend : DEFAULT_CLIENTS;
   }, [clientsResponse?.data]);
 
+  // Scroll to hash section after page renders
+  useEffect(() => {
+    if (!location.hash) return;
+    const id = location.hash.slice(1);
+    const attempt = (retries: number) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (retries > 0) {
+        setTimeout(() => attempt(retries - 1), 200);
+      }
+    };
+    setTimeout(() => attempt(5), 300);
+  }, [location.hash]);
+
   return (
     <>
       <Helmet>
@@ -989,10 +1136,11 @@ const AboutPage: React.FC = () => {
       <HeroBanner content={content} />
       <MissionSection content={content} />
       <StorySection content={content} />
-      <CsrSection />
-      <CoreValuesSection content={content} />
+      <AboutVideoSection />
       <TeamSection content={content} />
       <TeamCarouselSection />
+      <CsrSection />
+      <CoreValuesSection content={content} />
       <TimelineSection content={content} />
       <ClientsSection clientNames={clientNames} content={content} />
       <CTASection content={content} />

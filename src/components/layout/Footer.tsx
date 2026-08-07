@@ -220,7 +220,7 @@ const Footer: React.FC = () => {
           className="border-t border-white/10 py-5"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-            <p>© {currentYear} Dencast Global. All rights reserved.</p>
+            <p>© 2026 Dencast Global Limited. All rights reserved.</p>
             <div className="flex items-center gap-5">
               <Link to="/privacy-policy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
               <Link to="/terms"          className="hover:text-slate-300 transition-colors">Terms of Service</Link>

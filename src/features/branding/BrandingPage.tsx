@@ -311,6 +311,57 @@ const BrandingPage: React.FC = () => {
         </div>
       </section>
 
+      {/* ── Booth Management and Design ── */}
+      <section className="py-24 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.75, ease: 'easeOut' }}
+            >
+              <SectionLabel label="Booth Management & Design" />
+              <h2 className="mt-4 text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
+                Booth Management and Design
+              </h2>
+              <p className="mt-5 text-slate-600 text-lg leading-relaxed">
+                We design and manage exhibition booths and branded activations that command attention and create lasting impressions. From concept and spatial design to fabrication, installation and event-day management, we ensure your brand stands out on any exhibition floor.
+              </p>
+              <p className="mt-4 text-slate-500 leading-relaxed">
+                Our booth design service covers trade shows, conferences, corporate events and product launches — giving your brand a physical presence as strong as your digital identity.
+              </p>
+              <div className="mt-8">
+                <Link to="/contact">
+                  <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
+                    Plan Your Booth
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.75, ease: 'easeOut', delay: 0.1 }}
+            >
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/dencast_images/giz_booth.jpg"
+                  alt="GIZ Booth — Dencast Global Booth Management and Design"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/dencast_images/SERVICES.png';
+                  }}
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="py-20 bg-gradient-to-br from-slate-900 to-[#001f3f]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
   Camera, Monitor, Users, Package, Edit3,
-  Navigation, Aperture, Video, Film, ChevronRight, ArrowRight, CheckCircle2,
+  Navigation, Aperture, Video, Film, ChevronRight, ArrowRight, CheckCircle2, Play, X,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -101,6 +102,29 @@ const GALLERY_IMAGES = [
   },
 ];
 
+const PROPERTY_VIDEOS = [
+  { title: 'Coffee Garden Hotel Bungoma', url: 'https://www.youtube.com/watch?v=wTgeV-koD7k' },
+  { title: 'White Beach Palace', url: 'https://www.youtube.com/watch?v=Gp1GfcrdY_w' },
+];
+
+const PROPERTY_GALLERY = [
+  { src: '/dencast_images/White-Beach-Palace.jpg', alt: 'White Beach Palace property photography' },
+  { src: '/dencast_images/event1.jpg', alt: 'Property and product visual' },
+];
+
+function getPropertyYoutubeId(url: string): string {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes('youtu.be')) return parsed.pathname.replace('/', '').trim();
+    return parsed.searchParams.get('v') ?? '';
+  } catch { return ''; }
+}
+
+function getPropertyEmbedUrl(url: string): string {
+  const id = getPropertyYoutubeId(url);
+  return id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&autoplay=1` : url;
+}
+
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
 const fadeUp = {
@@ -116,11 +140,15 @@ const PhotographyPage: React.FC = () => {
   const videoRef = useRef(null);
   const galleryRef = useRef(null);
   const equipRef = useRef(null);
+  const propertyRef = useRef(null);
+  const [activePropertyVideo, setActivePropertyVideo] = useState<{ title: string; url: string } | null>(null);
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
 
   const photoInView = useInView(photoRef, { once: true, margin: '-80px' });
   const videoInView = useInView(videoRef, { once: true, margin: '-80px' });
   const galleryInView = useInView(galleryRef, { once: true, margin: '-80px' });
   const equipInView = useInView(equipRef, { once: true, margin: '-80px' });
+  const propertyInView = useInView(propertyRef, { once: true, margin: '-80px' });
 
   return (
     <>
@@ -251,6 +279,104 @@ const PhotographyPage: React.FC = () => {
             })}
           </div>
         </div>
+      </section>
+
+      {/* ── Property and Product Photography ── */}
+      <section ref={propertyRef} className="py-24 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div variants={stagger} initial="hidden" animate={propertyInView ? 'visible' : 'hidden'} className="mb-12">
+            <motion.div variants={fadeUp}><SectionLabel label="Property & Product" /></motion.div>
+            <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-slate-900">
+              Property and Product Photography
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-5 text-slate-600 text-lg leading-relaxed max-w-3xl">
+              We create high-quality property and product images that highlight detail, quality and visual appeal. From residential and commercial spaces to retail products, food, equipment and branded merchandise, every photograph is carefully composed, professionally lit and edited to present your offering at its best.
+            </motion.p>
+            <motion.p variants={fadeUp} className="mt-4 text-slate-500 leading-relaxed max-w-3xl">
+              Our photography is ideal for websites, property listings, catalogues, advertising campaigns, social media and corporate profiles, helping your brand attract attention, build credibility and inspire customers to take action.
+            </motion.p>
+          </motion.div>
+
+          {/* Gallery */}
+          <motion.div
+            variants={stagger} initial="hidden" animate={propertyInView ? 'visible' : 'hidden'}
+            className="grid sm:grid-cols-2 gap-6 mb-10"
+          >
+            {PROPERTY_GALLERY.map((img, i) => (
+              <motion.div key={img.src} custom={i} variants={fadeUp} className="rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Videos */}
+          <motion.div variants={stagger} initial="hidden" animate={propertyInView ? 'visible' : 'hidden'}>
+            <motion.p variants={fadeUp} className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-5">Featured Videos</motion.p>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {PROPERTY_VIDEOS.map((video, i) => (
+                <motion.button
+                  key={video.url}
+                  custom={i} variants={fadeUp}
+                  type="button"
+                  onClick={() => setActivePropertyVideo(video)}
+                  className="group rounded-2xl overflow-hidden bg-black border border-slate-200 shadow-md text-left"
+                >
+                  <div className="relative aspect-video">
+                    <img
+                      src={`https://img.youtube.com/vi/${getPropertyYoutubeId(video.url)}/hqdefault.jpg`}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                        <Play size={20} className="text-white fill-white ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-4 py-3 bg-white">
+                    <p className="text-sm font-semibold text-slate-700">{video.title}</p>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Video modal */}
+        {modalRoot && activePropertyVideo && createPortal(
+          <div
+            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+            onClick={() => setActivePropertyVideo(null)}
+          >
+            <div
+              className="relative w-full sm:w-[80vw] h-auto max-w-[1200px] rounded-3xl overflow-hidden bg-black shadow-2xl border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="absolute top-3 right-3 z-10">
+                <button
+                  type="button"
+                  onClick={() => setActivePropertyVideo(null)}
+                  className="w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors"
+                  aria-label="Close"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="aspect-video">
+                <iframe
+                  src={getPropertyEmbedUrl(activePropertyVideo.url)}
+                  title={activePropertyVideo.title}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>,
+          modalRoot,
+        )}
       </section>
 
       {/* ── Responsive Carousel Gallery ── */}

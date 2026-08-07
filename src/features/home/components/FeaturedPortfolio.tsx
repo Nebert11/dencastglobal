@@ -12,7 +12,7 @@ import work2 from '/dencast_images/rhnk.jpg';
 import work3 from '/dencast_images/africatalyst.jpg';
 import work4 from '/dencast_images/elf.png';
 import work5 from '/dencast_images/amakowe.jpg';
-// import work6 from '/dencast_images/rhnk.jpg';
+import work6 from '/dencast_images/image.png';
 // ─── Static portfolio data ────────────────────────────────────────────────────
 
 interface PortfolioItem {
@@ -67,9 +67,17 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     image: work5,
     slug: 'amakove-wala-show',
   },
+  {
+    id: '6',
+    title: 'Graphics & Creative Design',
+    category: 'Graphics Design',
+    categorySlug: 'graphics-design',
+    image: work6,
+    slug: 'graphics-design',
+  },
 ];
 
-const FILTER_TABS = ['All', 'Health', 'Conversations', 'Leadership', 'Climate & Sustainability', 'Corporate'];
+const FILTER_TABS = ['All', 'Health', 'Conversations', 'Leadership', 'Climate & Sustainability', 'Corporate', 'Graphics Design'];
 
 // ─── FeaturedPortfolio ────────────────────────────────────────────────────────
 

@@ -59,16 +59,16 @@ export const SERVICES: ServiceEntry[] = [
   },
   {
     id: 'brand-strategy',
-    name: 'Brand Strategy',
+    name: 'Brand & Visual Identity',
     slug: 'brand-strategy',
     icon: 'Target',
-    tagline: 'Define. Position. Lead.',
+    tagline: 'We help brands retain their integrity in a world demanding disruption.',
     description:
       'Strategic brand development that aligns your visual identity, messaging, and positioning to carve a distinct space in the minds of your audience.',
   },
   {
     id: 'creative-media',
-    name: 'Creative Media',
+    name: 'Motion Graphics and Creative Design',
     slug: 'creative-media',
     icon: 'Palette',
     tagline: 'Imagination made tangible',
