@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
-  Camera, Monitor, Users, Package, Edit3, Navigation, ArrowRight,
+  Camera, Monitor, Users, Package, Edit3, Navigation, ArrowRight, Play, X,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -83,6 +84,18 @@ const toYoutubeEmbedUrl = (url: string) => {
   }
 };
 
+const getYoutubeId = (url: string) => {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes('youtu.be')) {
+      return parsed.pathname.replace('/', '').trim();
+    }
+    return parsed.searchParams.get('v') ?? '';
+  } catch {
+    return '';
+  }
+};
+
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
 const fadeUp = {
@@ -98,11 +111,13 @@ const PhotographyPage: React.FC = () => {
   const galleryRef = useRef(null);
   // const equipRef = useRef(null);
   const propertyRef = useRef(null);
+  const [activeVideo, setActiveVideo] = useState<{ title: string; url: string } | null>(null);
 
   const photoInView = useInView(photoRef, { once: true, margin: '-80px' });
   const galleryInView = useInView(galleryRef, { once: true, margin: '-80px' });
   // const equipInView = useInView(equipRef, { once: true, margin: '-80px' });
   const propertyInView = useInView(propertyRef, { once: true, margin: '-80px' });
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
 
   return (
     <>
@@ -238,30 +253,72 @@ const PhotographyPage: React.FC = () => {
             <motion.p variants={fadeUp} className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-5">Featured Videos</motion.p>
             <div className="grid sm:grid-cols-2 gap-4">
               {PROPERTY_VIDEOS.map((video, i) => (
-                <motion.article
+                <motion.button
                   key={video.url}
+                  type="button"
+                  onClick={() => setActiveVideo(video)}
                   custom={i}
                   variants={fadeUp}
-                  className="rounded-xl border border-slate-200 bg-white p-3 hover:border-[#25408F]/40 hover:bg-[#25408F]/5 transition-all duration-300"
+                  className="rounded-xl border border-slate-200 bg-white p-3 hover:border-[#25408F]/40 hover:bg-[#25408F]/5 transition-all duration-300 text-left"
                 >
-                  <div className="aspect-video overflow-hidden rounded-lg bg-black">
-                    <iframe
-                      src={toYoutubeEmbedUrl(video.url)}
-                      title={video.title}
-                      className="w-full h-full"
+                  <div className="relative aspect-video overflow-hidden rounded-lg bg-black">
+                    <img
+                      src={getYoutubeId(video.url) ? `https://img.youtube.com/vi/${getYoutubeId(video.url)}/hqdefault.jpg` : '/dencast_images/WEBSITE-PHOTO.jpg'}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
                       loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
                     />
+                    <div className="absolute inset-0 bg-black/20" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg">
+                        <Play size={20} className="text-white fill-white ml-1" />
+                      </div>
+                    </div>
                   </div>
                   <p className="mt-3 text-sm font-semibold text-slate-700">{video.title}</p>
-                </motion.article>
+                </motion.button>
               ))}
             </div>
           </motion.div>
         </div>
       </section>
+
+      {modalRoot && activeVideo && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">Featured Video</p>
+                <p className="text-sm sm:text-base font-semibold">{activeVideo.title}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveVideo(null)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <iframe
+              src={`${toYoutubeEmbedUrl(activeVideo.url)}?rel=0&modestbranding=1&playsinline=1&autoplay=1`}
+              title={activeVideo.title}
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>,
+        modalRoot,
+      )}
 
       {/* ── Sample Photos: standard carousel ── */}
       <section ref={galleryRef} className="py-24 bg-white">

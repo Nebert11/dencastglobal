@@ -3,19 +3,18 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Button from '@/components/ui/Button';
-
 // ─── SoundtracksSection ───────────────────────────────────────────────────────
 
 const SoundtracksSection: React.FC = () => {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black">
       {/* Background photo */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage: 'url(/dencast_images/DIGITAL.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
+          backgroundSize: 'contain',
+          backgroundPosition: 'right center',
           backgroundRepeat: 'no-repeat',
         }}
         aria-hidden="true"

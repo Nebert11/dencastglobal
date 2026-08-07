@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import {
   ChevronRight, Calendar, Clock, Eye, User, Tag,
   Twitter, Linkedin, Link as LinkIcon, ArrowLeft,
+  Play, X,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import BlogCard from '@/components/ui/BlogCard';
@@ -122,6 +124,7 @@ const BlogPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [copied, setCopied] = useState(false);
   const [activeToc, setActiveToc] = useState('');
+  const [videoOpen, setVideoOpen] = useState(false);
 
   const post = (slug && BLOG_ARTICLES_LOOKUP[slug]) ? BLOG_ARTICLES_LOOKUP[slug] : DEFAULT_POST;
 
@@ -137,6 +140,8 @@ const BlogPostPage: React.FC = () => {
   const articleHtml = insertInlineImages(post.content, post.inlineImages ?? []);
   const bottomVideoEmbedSrc = getBottomVideoEmbedSrc(post.bottomVideo);
   const bottomVideoTitle = post.bottomVideo?.title ?? `${post.title} video`;
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
+  const bottomVideoId = post.bottomVideo?.youtubeUrl ? extractYouTubeId(post.bottomVideo.youtubeUrl) : null;
 
   return (
     <>
@@ -268,19 +273,26 @@ const BlogPostPage: React.FC = () => {
               {bottomVideoEmbedSrc && (
                 <div className="mt-10">
                   <h3 className="text-2xl font-black text-slate-900 mb-4">Featured Video</h3>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-100 overflow-hidden">
-                    <div className="aspect-video">
-                      <iframe
-                        src={bottomVideoEmbedSrc}
-                        title={bottomVideoTitle}
-                        className="w-full h-full"
+                  <button
+                    type="button"
+                    onClick={() => setVideoOpen(true)}
+                    className="rounded-2xl border border-slate-200 bg-slate-100 overflow-hidden w-full text-left group"
+                  >
+                    <div className="relative aspect-video bg-black">
+                      <img
+                        src={bottomVideoId ? `https://img.youtube.com/vi/${bottomVideoId}/hqdefault.jpg` : '/dencast_images/WEBSITE-PHOTO.jpg'}
+                        alt={bottomVideoTitle}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
                       />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                          <Play size={20} className="text-white fill-white ml-1" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </button>
                 </div>
               )}
 
@@ -344,6 +356,44 @@ const BlogPostPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {modalRoot && videoOpen && bottomVideoEmbedSrc && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setVideoOpen(false)}
+        >
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">Featured Video</p>
+                <p className="text-sm sm:text-base font-semibold">{bottomVideoTitle}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setVideoOpen(false)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <iframe
+              src={bottomVideoEmbedSrc}
+              title={bottomVideoTitle}
+              className="absolute inset-0 w-full h-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>,
+        modalRoot,
+      )}
 
       {/* ── Related Posts ── */}
       <section className="py-16 bg-slate-50 border-t border-slate-100">

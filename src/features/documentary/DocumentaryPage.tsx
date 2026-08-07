@@ -1,11 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
   Search, FileText, Film, Camera, Monitor, Globe,
   ChevronRight, ArrowRight, Users, Tv,
-  CheckCircle2, Play,
+  CheckCircle2, Play, X,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -44,11 +45,13 @@ const DocumentaryPage: React.FC = () => {
   const processRef = useRef(null);
   const caseRef = useRef(null);
   const equipRef = useRef(null);
+  const [activeCaseStudyVideo, setActiveCaseStudyVideo] = useState<{ title: string; url: string } | null>(null);
 
   const powerInView = useInView(powerRef, { once: true, margin: '-80px' });
   const processInView = useInView(processRef, { once: true, margin: '-80px' });
   const caseInView = useInView(caseRef, { once: true, margin: '-80px' });
   const equipInView = useInView(equipRef, { once: true, margin: '-80px' });
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
 
   return (
     <>
@@ -239,19 +242,29 @@ const DocumentaryPage: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl"
           >
-            <div className="relative aspect-[4/3] lg:aspect-auto">
+            <button
+              type="button"
+              onClick={() => setActiveCaseStudyVideo({
+                title: 'Sasini PLC Sustainability Documentary 2023',
+                url: 'https://www.youtube.com/watch?v=WDHIUaR6i-c',
+              })}
+              className="relative aspect-[4/3] lg:aspect-auto w-full text-left group"
+            >
               <div className="w-full h-full bg-black">
-                <iframe
-                  src="https://www.youtube.com/embed/WDHIUaR6i-c?rel=0&modestbranding=1&playsinline=1"
-                  title="Sasini PLC Sustainability Documentary 2023"
-                  className="w-full h-full"
+                <img
+                  src="https://img.youtube.com/vi/WDHIUaR6i-c/hqdefault.jpg"
+                  alt="Sasini PLC Sustainability Documentary 2023"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
                 />
+                <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <Play size={20} className="text-white fill-white ml-1" />
+                  </div>
+                </div>
               </div>
-            </div>
+            </button>
             <div className="bg-[#25408F] p-10 flex flex-col justify-center">
               <span className="text-[#D3232E] text-xs font-bold uppercase tracking-widest mb-3">Featured Documentary</span>
               <h3 className="text-3xl font-black text-white mb-4">Sasini PLC Sustainability Documentary 2023</h3>
@@ -275,6 +288,44 @@ const DocumentaryPage: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {modalRoot && activeCaseStudyVideo && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setActiveCaseStudyVideo(null)}
+        >
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">Case Study Video</p>
+                <p className="text-sm sm:text-base font-semibold">{activeCaseStudyVideo.title}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveCaseStudyVideo(null)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <iframe
+              src="https://www.youtube.com/embed/WDHIUaR6i-c?rel=0&modestbranding=1&playsinline=1&autoplay=1"
+              title={activeCaseStudyVideo.title}
+              className="absolute inset-0 w-full h-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>,
+        modalRoot,
+      )}
 
       {/* ── Equipment ── */}
       <section ref={equipRef} className="py-24 bg-slate-50">

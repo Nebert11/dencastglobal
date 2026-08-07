@@ -442,6 +442,7 @@ const ProjectDetailPage: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [videoLightboxIndex, setVideoLightboxIndex] = useState<number | null>(null);
+  const [featuredVideoOpen, setFeaturedVideoOpen] = useState(false);
 
   const project = (slug && PROJECTS[slug]) ? PROJECTS[slug] : DEFAULT_PROJECT;
 
@@ -457,6 +458,7 @@ const ProjectDetailPage: React.FC = () => {
     .filter(Boolean);
   const galleryImages = project.gallery;
   const featuredVideoEmbedUrl = project.featuredVideoUrl ? `${toEmbedUrl(project.featuredVideoUrl)}?rel=0&modestbranding=1` : null;
+  const featuredVideoId = project.featuredVideoUrl ? getYoutubeId(project.featuredVideoUrl) : '';
   const activeProjectVideo = project.videos[activeVideoIndex] ?? project.videos[0] ?? null;
   const activeProjectVideoEmbedUrl = activeProjectVideo ? `${toEmbedUrl(activeProjectVideo.url)}?rel=0&modestbranding=1&controls=1` : null;
   const activeProjectVideoDuration = activeProjectVideo ? getVideoDurationByUrl(activeProjectVideo.url) : '';
@@ -525,17 +527,24 @@ const ProjectDetailPage: React.FC = () => {
             </div>
 
             <div className="rounded-[2rem] bg-slate-900 p-2 sm:p-3 shadow-2xl shadow-slate-300/30 border border-slate-200">
-              <div className="overflow-hidden rounded-[1.5rem] bg-black aspect-video">
-                <iframe
-                  src={featuredVideoEmbedUrl}
-                  title="European Union project featured video"
-                  className="w-full h-full"
+              <button
+                type="button"
+                onClick={() => setFeaturedVideoOpen(true)}
+                className="group overflow-hidden rounded-[1.5rem] bg-black aspect-video w-full text-left relative"
+              >
+                <img
+                  src={featuredVideoId ? `https://img.youtube.com/vi/${featuredVideoId}/hqdefault.jpg` : '/dencast_images/WEBSITE-PHOTO.jpg'}
+                  alt="European Union project featured video"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
                 />
-              </div>
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <Play size={20} className="text-white fill-white ml-1" />
+                  </div>
+                </div>
+              </button>
             </div>
           </div>
         </section>
@@ -805,6 +814,44 @@ const ProjectDetailPage: React.FC = () => {
                 allowFullScreen
               />
             </div>
+          </div>
+        </div>,
+        modalRoot,
+      )}
+
+      {modalRoot && featuredVideoOpen && featuredVideoEmbedUrl && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setFeaturedVideoOpen(false)}
+        >
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">Featured Video</p>
+                <p className="text-sm sm:text-base font-semibold">Featured EU Project Video</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setFeaturedVideoOpen(false)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <iframe
+              src={featuredVideoEmbedUrl}
+              title="European Union project featured video"
+              className="absolute inset-0 w-full h-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </div>
         </div>,
         modalRoot,

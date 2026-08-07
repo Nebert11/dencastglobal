@@ -486,47 +486,95 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
 const AboutVideoSection: React.FC = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [open, setOpen] = useState(false);
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
+  const aboutVideoId = getYoutubeVideoId(ABOUT_VIDEO_URL);
 
   return (
-    <section ref={ref} className="py-20 bg-slate-50 border-t border-slate-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          className="text-center mb-10"
-        >
-          <motion.div variants={fadeUp}>
-            <SectionLabel label="Dencast Global" center />
+    <>
+      <section ref={ref} className="py-20 bg-slate-50 border-t border-slate-100 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate={inView ? 'visible' : 'hidden'}
+            className="text-center mb-10"
+          >
+            <motion.div variants={fadeUp}>
+              <SectionLabel label="Dencast Global" center />
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="mt-4 text-3xl sm:text-4xl font-black text-slate-900">
+              About Us
+            </motion.h2>
           </motion.div>
-          <motion.h2 variants={fadeUp} className="mt-4 text-3xl sm:text-4xl font-black text-slate-900">
-            About Us
-          </motion.h2>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-        >
-          <div className="relative rounded-[2rem] bg-[#0f172a] p-2 sm:p-3 shadow-[0_30px_80px_-24px_rgba(15,23,42,0.55)] border border-slate-700/40">
-            <div className="relative rounded-[1.5rem] overflow-hidden bg-black">
-              <div className="aspect-video">
-                <iframe
-                  src={ABOUT_VIDEO_EMBED_URL}
-                  title="About Dencast Global"
-                  className="w-full h-full"
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="relative rounded-[2rem] bg-[#0f172a] p-2 sm:p-3 shadow-[0_30px_80px_-24px_rgba(15,23,42,0.55)] border border-slate-700/40 w-full text-left group"
+            >
+              <div className="relative rounded-[1.5rem] overflow-hidden bg-black aspect-video">
+                <img
+                  src={aboutVideoId ? `https://img.youtube.com/vi/${aboutVideoId}/hqdefault.jpg` : '/dencast_images/WEBSITE-PHOTO.jpg'}
+                  alt="About Dencast Global"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
                 />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <Play size={20} className="text-white fill-white ml-1" />
+                  </div>
+                </div>
               </div>
+              <div className="absolute left-1/2 -bottom-3 h-3 w-36 -translate-x-1/2 rounded-b-2xl bg-slate-800/90 sm:w-48" />
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {modalRoot && open && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setOpen(false)}
+        >
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">Dencast Global</p>
+                <p className="text-sm sm:text-base font-semibold">About Us</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
             </div>
-            <div className="absolute left-1/2 -bottom-3 h-3 w-36 -translate-x-1/2 rounded-b-2xl bg-slate-800/90 sm:w-48" />
+
+            <iframe
+              src={ABOUT_VIDEO_EMBED_URL}
+              title="About Dencast Global"
+              className="absolute inset-0 w-full h-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </div>
-        </motion.div>
-      </div>
-    </section>
+        </div>,
+        modalRoot,
+      )}
+    </>
   );
 };
 

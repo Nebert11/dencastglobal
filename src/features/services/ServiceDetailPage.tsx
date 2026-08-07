@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
@@ -6,7 +7,7 @@ import {
   Film, Radio, Camera, Video, Target, Palette, Music,
   Navigation, Briefcase, TrendingUp, LayoutDashboard,
   ChevronRight, ArrowRight, CheckCircle2, Search,
-  Layers, Eye, Cpu,
+  Layers, Eye, Cpu, Play, X,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -28,6 +29,7 @@ interface ServiceRichContent {
   overview: string;
   features: string[];
   sampleImages?: string[];
+  audioTracks?: { title: string; url: string }[];
   mediaSectionTitle?: string;
   mediaLinks?: { title: string; url: string }[];
   whyUs: { icon: React.ElementType; title: string; desc: string }[];
@@ -61,6 +63,25 @@ const SOUND_SAMPLE_IMAGES = [
   '/dencast_images/sound_images/sound6.jpg',
 ];
 
+const SOUNDTRACK_MP3S = [
+  {
+    title: 'Bungoma',
+    url: '/soundtracks%20/bungoma.mp3',
+  },
+  {
+    title: 'EU Wajir',
+    url: '/soundtracks%20/eu-wajir.wav',
+  },
+  {
+    title: 'Michezo Afrika',
+    url: '/soundtracks%20/michezo-afrika.mp3',
+  },
+  {
+    title: 'Sasini',
+    url: '/soundtracks%20/sasini.wav',
+  },
+];
+
 const isYoutubeUrl = (url: string) => {
   try {
     const parsed = new URL(url);
@@ -82,6 +103,18 @@ const toYoutubeEmbedUrl = (url: string) => {
     return id ? `https://www.youtube.com/embed/${id}` : url;
   } catch {
     return url;
+  }
+};
+
+const getYoutubeId = (url: string) => {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes('youtu.be')) {
+      return parsed.pathname.replace('/', '').trim();
+    }
+    return parsed.searchParams.get('v') ?? '';
+  } catch {
+    return '';
   }
 };
 
@@ -152,6 +185,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     overview: 'Dencast Global provides professional audio management and original soundtrack development for events, films, documentaries, commercials, and digital productions. From clear conference sound to cinematic scoring, we ensure every word is heard and every moment is felt.',
     features: ['Live sound system setup and engineering', 'Microphone planning and live mixing', 'Audio recording and post-production cleanup', 'Voice-over recording and direction', 'Custom sound design and effects', 'Original music beds and theme development', 'Final mastering for broadcast and digital'],
     sampleImages: SOUND_SAMPLE_IMAGES,
+    audioTracks: SOUNDTRACK_MP3S,
     whyUs: [
       { icon: Eye, title: 'Clarity and Presence', desc: 'We optimize every environment so speech, music, and ambience are consistently clear.' },
       { icon: Cpu, title: 'Production-Ready Audio', desc: 'Our team covers live, studio, and post workflows with professional-grade tools.' },
@@ -292,6 +326,7 @@ const ServiceDetailPage: React.FC = () => {
   const processRef = useRef(null);
   const whyRef = useRef(null);
   const relatedRef = useRef(null);
+  const [activeVideo, setActiveVideo] = useState<{ title: string; url: string } | null>(null);
 
   const processInView = useInView(processRef, { once: true, margin: '-80px' });
   const whyInView = useInView(whyRef, { once: true, margin: '-80px' });
@@ -304,9 +339,11 @@ const ServiceDetailPage: React.FC = () => {
   const content = SERVICE_CONTENT[slug ?? ''] ?? SERVICE_CONTENT['documentary-production'];
   const Icon = ICON_MAP[service.icon] ?? Film;
   const sampleImages = content.sampleImages ?? [];
+  const audioTracks = content.audioTracks ?? [];
   const isPhotographyService = slug === 'photography';
   const mediaVideos = (content.mediaLinks ?? []).filter((item) => isYoutubeUrl(item.url));
   const mediaResources = (content.mediaLinks ?? []).filter((item) => !isYoutubeUrl(item.url));
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
 
   // Related services (3 different ones)
   const relatedServices = SERVICES.filter(s => s.slug !== slug).slice(0, 3);
@@ -489,26 +526,51 @@ const ServiceDetailPage: React.FC = () => {
               </div>
             )}
 
+            {audioTracks.length > 0 && (
+              <div className={sampleImages.length > 0 ? 'mt-8' : ''}>
+                <h3 className="text-lg font-bold text-slate-900 mb-4 text-center">Audio Tracks</h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {audioTracks.map((track) => (
+                    <article
+                      key={track.url}
+                      className="rounded-xl border border-slate-200 bg-white p-4 hover:border-[#25408F]/40 hover:bg-[#25408F]/5 transition-all duration-300"
+                    >
+                      <p className="text-sm font-semibold text-slate-700 mb-3">{track.title}</p>
+                      <audio controls preload="none" className="w-full">
+                        <source src={track.url} type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                      </audio>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {mediaVideos.length > 0 && (
               <div className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-4 ${sampleImages.length > 0 ? 'mt-8' : ''}`}>
                 {mediaVideos.map((video) => (
-                  <article
+                  <button
                     key={video.url}
+                    type="button"
+                    onClick={() => setActiveVideo(video)}
                     className="rounded-xl border border-slate-200 bg-white p-3 hover:border-[#25408F]/40 hover:bg-[#25408F]/5 transition-all duration-300"
                   >
-                    <div className="aspect-video overflow-hidden rounded-lg bg-black">
-                      <iframe
-                        src={toYoutubeEmbedUrl(video.url)}
-                        title={video.title}
-                        className="w-full h-full"
+                    <div className="relative aspect-video overflow-hidden rounded-lg bg-black">
+                      <img
+                        src={getYoutubeId(video.url) ? `https://img.youtube.com/vi/${getYoutubeId(video.url)}/hqdefault.jpg` : '/dencast_images/WEBSITE-PHOTO.jpg'}
+                        alt={video.title}
+                        className="w-full h-full object-cover"
                         loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
                       />
+                      <div className="absolute inset-0 bg-black/20" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-11 rounded-xl bg-[#FF0000] flex items-center justify-center shadow-lg">
+                          <Play size={20} className="text-white fill-white ml-1" />
+                        </div>
+                      </div>
                     </div>
                     <p className="mt-3 text-sm font-semibold text-slate-700">{video.title}</p>
-                  </article>
+                  </button>
                 ))}
               </div>
             )}
@@ -536,6 +598,45 @@ const ServiceDetailPage: React.FC = () => {
             )}
           </div>
         </section>
+      )}
+
+      {/* ── Why Choose Us ── */}
+
+      {modalRoot && activeVideo && createPortal(
+        <div
+          className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            className="relative w-full h-full sm:w-[80vw] sm:h-[80vh] max-w-[1400px] max-h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">Video Viewer</p>
+                <p className="text-sm sm:text-base font-semibold">{activeVideo.title}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveVideo(null)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close video viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <iframe
+              src={`${toYoutubeEmbedUrl(activeVideo.url)}?rel=0&modestbranding=1&playsinline=1&autoplay=1`}
+              title={activeVideo.title}
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>,
+        modalRoot,
       )}
 
       {/* ── Why Choose Us ── */}
