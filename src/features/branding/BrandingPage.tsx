@@ -40,15 +40,15 @@ const CASE_STUDIES = [
     after: '2873486',
     color: '#25408F',
   },
-  {
-    brand: 'Nkosuo Farms',
-    category: 'AgriTech',
-    challenge: 'Reposition an agricultural company as a technology-led precision farming platform.',
-    result: 'Secured $2.5M seed funding within 6 months of rebrand. Media coverage in 8 countries.',
-    before: '1884577',
-    after: '3756132',
-    color: '#2e7d32',
-  },
+  // {
+  //   brand: 'Nkosuo Farms',
+  //   category: 'AgriTech',
+  //   challenge: 'Reposition an agricultural company as a technology-led precision farming platform.',
+  //   result: 'Secured $2.5M seed funding within 6 months of rebrand. Media coverage in 8 countries.',
+  //   before: '1884577',
+  //   after: '3756132',
+  //   color: '#2e7d32',
+  // },
   {
     brand: 'Accra Fashion House',
     category: 'Luxury Retail',
@@ -276,7 +276,7 @@ const BrandingPage: React.FC = () => {
       </section>
 
       {/* ── Design Portfolio Grid ── */}
-      <section ref={portfolioRef} className="py-24 bg-white">
+      {/* <section ref={portfolioRef} className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={stagger} initial="hidden" animate={portfolioInView ? 'visible' : 'hidden'} className="text-center mb-12">
             <motion.div variants={fadeUp}><SectionLabel label="Design Portfolio" center /></motion.div>
@@ -309,7 +309,7 @@ const BrandingPage: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Booth Management and Design ── */}
       <section className="py-24 bg-slate-50 border-t border-slate-100">
