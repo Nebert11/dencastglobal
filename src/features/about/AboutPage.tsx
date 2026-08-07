@@ -862,7 +862,7 @@ const TeamMemberCard: React.FC<{
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-500 hover:text-[#25408F] transition-colors duration-200 border-l border-slate-200 pl-4"
             >
-              More on Dennis <ArrowRight size={13} />
+              Dennis Profile <ArrowRight size={13} />
             </a>
           )}
         </div>
