@@ -51,6 +51,10 @@ export default function App() {
 
               {/* Services */}
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/photography" element={<PhotographyPage />} />
+              <Route path="/services/brand-strategy" element={<BrandingPage />} />
+              <Route path="/services/documentary-production" element={<DocumentaryPage />} />
+              <Route path="/services/livestreaming-events" element={<LivestreamingPage />} />
               <Route path="/services/:slug" element={<ServiceDetailPage />} />
 
               {/* Dedicated service landing pages */}

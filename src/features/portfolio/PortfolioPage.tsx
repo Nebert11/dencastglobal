@@ -256,31 +256,6 @@ const HeroBanner: React.FC = () => (
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-[#25408F]/65" aria-hidden="true" />
-
-    {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-28">
-      <motion.nav
-        initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-        className="flex items-center justify-center gap-2 text-white/50 text-sm mb-6"
-      >
-        <Link to="/" className="hover:text-white transition-colors">Home</Link>
-        <ChevronRight size={14} />
-        <span className="text-white font-medium">Portfolio</span>
-      </motion.nav>
-
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tight mb-6"
-      >
-        Our <span className="text-[#D3232E]">Portfolio</span>
-      </motion.h1>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-white/70 text-xl max-w-2xl mx-auto leading-relaxed"
-      >
-        A showcase of our most impactful work — from cinematic documentaries to global brand campaigns.
-      </motion.p>
-    </div> */}
   </section>
 );
 

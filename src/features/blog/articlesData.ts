@@ -98,9 +98,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   {
     id: '2',
     slug: 'drone-photography-kenya-regulations',
-    title: 'Drone Photography in Kenya: Regulations, Licensing, and Permits',
+    title: 'Drone Photography in Kenya: Navigating the Regulations and Licensing',
     excerpt:
-      'Kenya offers incredible aerial storytelling opportunities, but filmmakers must plan approvals carefully to avoid delays and compliance issues.',
+      'Kenya offers incredible aerial storytelling opportunities, but filmmakers must understand KCAA rules, filming licences, and import requirements before a single drone takes flight.',
     category: 'Technology',
     author: 'Carolyne Wangare',
     authorRole: 'Film Writer & Production Communications',
@@ -109,37 +109,52 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     authorAvatar:
       'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
     date: '2026-07-03',
-    readTime: '7 min read',
+    readTime: '9 min read',
     views: '1,982',
     coverImage: `${IMAGE_BASE}/DRONE.jpg`,
-    tags: ['Drone', 'Regulation', 'Aerial', 'Kenya', 'Permits'],
+    tags: ['Drone', 'Regulation', 'Aerial', 'Kenya', 'Permits', 'KCAA', 'KFCB'],
     tableOfContents: [
-      { id: 'opportunity', label: 'Aerial Opportunity in Kenya' },
-      { id: 'regulations', label: 'Why Regulation Matters' },
-      { id: 'permits', label: 'Approvals and Import Rules' },
-      { id: 'mistakes', label: 'Common Mistakes to Avoid' },
-      { id: 'local-support', label: 'Role of Local Film Agents' },
+      { id: 'who-regulates', label: 'Who Regulates Drone Photography?' },
+      { id: 'do-you-need-licence', label: 'Do You Need a Licence?' },
+      { id: 'importing', label: 'Importing a Drone into Kenya' },
+      { id: 'mistakes', label: 'Common Mistakes Foreign Filmmakers Make' },
+      { id: 'local-agents', label: 'Why Local Film Agents Matter' },
+      { id: 'conclusion', label: 'Conclusion' },
     ],
     content: `
-<h2 id="opportunity">Aerial Opportunity in Kenya</h2>
-<p>Kenya's terrain is ideal for drone storytelling, from wildlife reserves and coastlines to corporate and destination marketing productions.</p>
-<p>With the right preparation, aerial units can add major production value while keeping schedules efficient.</p>
+<p>Kenya is one of Africa's most spectacular destinations for aerial photography and cinematography. From the coastal sandy beaches, the busy cities, the dramatic landscape of Lake Turkana and the Rift Valley, drones have transformed how filmmakers, photographers and content creators capture the country's beauty.</p>
+<p>However, before flying a drone anywhere in Kenya, it is important to first understand the rules that apply. Drone operations are not as simple as just showing up and taking off, especially if the footage is for commercial use. Different government agencies handle different parts of the process, from aviation safety and filming permits to approvals for certain locations. Missing even one of these requirements can slow down your production, cost you money through fines, or in some cases lead to your drone being confiscated.</p>
 
-<h2 id="regulations">Why Regulation Matters</h2>
-<p>Drone operations in Kenya are regulated and should be treated as a dedicated compliance track, not as an add-on to general filming logistics.</p>
-<p>Teams should confirm requirements early to prevent blocked equipment, denied access, or interrupted shooting days.</p>
+<h2 id="who-regulates">Who Regulates Drone Photography in Kenya, and Why?</h2>
+<p>Drone operations in Kenya are primarily regulated by the Kenya Civil Aviation Authority (KCAA), the government agency responsible for maintaining the safety, security and efficiency of the country's airspace. Under the Civil Aviation for Unmanned Aircraft Systems Regulations, KCAA oversees drone registration, importation, operator approvals and operational safety.</p>
+<p>The purpose of these regulations extends beyond administrative compliance. Drones share airspace with commercial aircraft, helicopters and emergency services, making aviation safety a top priority. Regulations also help protect sensitive government installations, safeguard public privacy, preserve wildlife habitats and minimise security risks associated with unauthorised aerial operations.</p>
+<p>A drone filming wildlife in the Maasai Mara isn't operating in the same environment as one flying over a construction site in Nairobi or surveying farmland in Uasin Gishu. Owning a drone alone does not guarantee you the right to film in Kenya. You also need a filming licence, which is different from a drone licence. For film productions, it is also important to understand the role of the Kenya Film Classification Board (KFCB), which handles filming licences for both local and international productions.</p>
 
-<h2 id="permits">Approvals and Import Rules</h2>
-<p>Depending on project type and location, approvals may include filming permissions, drone-specific operational clearance, and import-related documentation for foreign equipment.</p>
-<p>Productions should also validate whether location-based restrictions apply near protected zones or controlled airspace.</p>
+<h2 id="do-you-need-licence">Do You Need a Licence to Fly a Drone in Kenya?</h2>
+<p>In most professional cases, the answer is yes. If you're using a drone for commercial photography, filmmaking, surveying, inspections, or any other type of professional work, you are generally expected to meet the KCAA's requirements before flying.</p>
+<p>If the drone is being used as part of a film production, you'll also need to comply with the filming requirements set by the KFCB before shooting begins. The exact approvals you'll need can vary depending on the type of project, where you plan to film, and how the drone will be used. It is always worth confirming the requirements before the production starts.</p>
 
-<h2 id="mistakes">Common Mistakes to Avoid</h2>
-<p>Recurring problems include traveling with drone equipment before confirming import requirements, assuming one permit covers all drone activity, and starting approval processes too late.</p>
-<p>Early planning is the most reliable way to avoid expensive idle time on production days.</p>
+<h2 id="importing">Importing a Drone into Kenya</h2>
+<p>Bringing a drone into Kenya is not quite as straightforward as travelling with a camera or a phone. If you're planning to use it for a professional or commercial production, it's a good idea to check the import requirements before you travel.</p>
+<p>Depending on the project, the authorities may ask for documents about the drone, what it will be used for, and any approvals that support the production. This is one of the reasons many international productions work with a local production partner — they can help organise the paperwork early and reduce the chances of delays at the airport or other entry points.</p>
 
-<h2 id="local-support">Role of Local Film Agents</h2>
-<p>For international crews, accredited local agents help connect production teams with relevant authorities and ensure application flows are submitted correctly.</p>
-<p>This support reduces operational risk and allows creative teams to stay focused on delivery instead of navigating administrative uncertainty mid-shoot.</p>
+<h2 id="mistakes">Common Mistakes Foreign Filmmakers Make</h2>
+<p>Some of the most common mistakes include:</p>
+<ul>
+<li>Travelling with a drone before confirming import requirements.</li>
+<li>Assuming a filming licence automatically covers drone operations.</li>
+<li>Planning aerial shots near restricted areas like airports or wildlife conservancies without specific approval.</li>
+<li>Waiting until arrival in Kenya before beginning the permit process.</li>
+</ul>
+
+<h2 id="local-agents">Why Accredited Local Film Agents Like Dencast Global Matter</h2>
+<p>For many foreign productions, filming in Kenya involves much more than simply arriving with cameras and a shooting schedule. Depending on the project, you may need to organise filming licences, immigration paperwork, drone approvals, location permissions, and other local logistics — all while trying to keep the production on schedule.</p>
+<p>That is why the Kenya Film Classification Board (KFCB) requires foreign filmmakers to apply for filming licences through an accredited local film agent. The agent acts as the link between the production team and the relevant government authorities, helping make sure the required applications and approvals are handled correctly.</p>
+<p>As an accredited local film agent and full-service production company, Dencast Global works with productions from the planning stage right through to the final day of filming, helping the process run as smoothly as possible.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Drone photography in Kenya has completely changed the way stories are told — from wildlife documentaries and tourism campaigns to commercial productions and corporate films, the country's landscapes offer remarkable creative opportunities.</p>
+<p>Making the most of those opportunities starts with good preparation. Understanding the applicable regulations, securing the right approvals and planning ahead helps productions avoid unnecessary interruptions and keeps filming focused on what matters most. For international filmmakers, having an experienced local production partner also brings a level of confidence that is difficult to achieve when managing everything alone.</p>
 `,
     relatedSlugs: ['obtain-film-licences-kenya', 'who-issues-filming-licences-kenya', 'ready-to-film-in-kenya-guide'],
   },
@@ -470,6 +485,482 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <p>After 26 years, the Lewa Safari Marathon has become much more than an annual sporting event. It stands as one of Kenya's strongest examples of how partnerships, purpose and community participation can create change that lasts.</p>
 `,
     relatedSlugs: ['ready-to-film-in-kenya-guide', 'obtain-film-licences-kenya', 'docu-style-marketing-builds-brand-trust'],
+  },
+
+  // ─── Kenya Life: practical guides ────────────────────────────────────────────
+
+  {
+    id: '9',
+    slug: 'how-to-apply-for-passport-kenya',
+    title: 'How to Apply for a Passport in Kenya',
+    excerpt:
+      'A step-by-step guide to applying for a Kenyan ePassport through eCitizen — from creating your account and paying fees to booking your biometrics appointment and collecting your passport.',
+    category: 'Kenya Life',
+    author: 'Dencast Global Editorial',
+    authorRole: 'Editorial Team',
+    authorBio: 'The Dencast Global Editorial team covers practical guides, industry stories and everyday topics relevant to life and business in Kenya and across Africa.',
+    authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
+    date: '2026-07-20',
+    readTime: '7 min read',
+    views: '1,240',
+    coverImage: `${IMAGE_BASE}/WEBSITE-PHOTO.jpg`,
+    tags: ['Passport', 'eCitizen', 'Kenya', 'Immigration', 'Travel'],
+    tableOfContents: [
+      { id: 'documents', label: 'Documents Required' },
+      { id: 'apply-online', label: 'Log in and Apply Online' },
+      { id: 'payment', label: 'Pay and Book an Appointment' },
+      { id: 'biometrics', label: 'Attend Biometrics Capture' },
+      { id: 'collect', label: 'Track and Collect Your Passport' },
+      { id: 'renewal', label: 'Renewal and Replacement' },
+      { id: 'faq', label: 'Frequently Asked Questions' },
+    ],
+    content: `
+<p>A Kenyan passport allows citizens to travel outside the country and serves as an important international identification document. Kenya issues electronic passports, commonly called ePassports, which are valid for 10 years. The application begins online through eCitizen, but applicants must attend an immigration centre for document submission and biometric capture.</p>
+
+<h2 id="documents">Documents Required</h2>
+<p>For a first-time adult application, prepare the following:</p>
+<ul>
+<li>An eCitizen account</li>
+<li>Passport-sized photographs</li>
+<li>Original birth certificate and a copy</li>
+<li>Original national ID and a copy</li>
+<li>Copies of your parents' national IDs</li>
+<li>Original and copies of your parents' birth certificates</li>
+<li>Any additional document requested by Immigration</li>
+</ul>
+<p>Minors require a completed consent form, birth certificate and copies of their parents' identification documents. Citizens registered as Kenyan citizens must provide their Certificate of Registration.</p>
+
+<h2 id="apply-online">Log in and Complete the Online Application</h2>
+<p>Create or sign in to your eCitizen account and open the State Department for Immigration and Citizen Services. Select the passport service and choose the correct application type: first-time passport, renewal, replacement, lost passport, damaged passport, or change of personal details.</p>
+<p>Enter your personal information exactly as it appears on your national ID and birth certificate. Select the passport size you need:</p>
+<ul>
+<li>34 pages: KSh 7,550</li>
+<li>50 pages: KSh 9,550</li>
+<li>66 pages: KSh 12,050</li>
+</ul>
+<p>Check your names, ID number, date of birth and parents' details carefully before submitting. Correcting errors later may delay the application.</p>
+
+<h2 id="payment">Pay and Book an Appointment</h2>
+<p>Pay the amount displayed on eCitizen using one of the available payment methods. After payment, download and print the completed application form and sign it. Print two payment invoices, upload or attach the required documents and book an appointment through eCitizen.</p>
+<p>Applicants can select from available passport processing centres, including Nairobi, Mombasa, Kisumu, Eldoret, Nakuru, Embu, Kisii, Kericho and Bungoma.</p>
+
+<h2 id="biometrics">Attend Biometrics Capture</h2>
+<p>Visit the selected immigration centre on your appointment date. Carry the printed application, invoices and all original supporting documents. Immigration officers will verify your documents and capture your photograph, fingerprints and other biometric details. Applicants must appear in person — someone else cannot complete the biometric process on your behalf.</p>
+
+<h2 id="collect">Track and Collect Your Passport</h2>
+<p>Check your eCitizen account for updates. You should also receive a notification when the passport has been printed and is ready. To collect it, visit the application centre with your payment invoice, original national ID, and original birth certificate if collecting for a minor or previous passport for a renewal.</p>
+<p>Collect your passport as soon as you receive the ready notification.</p>
+
+<h2 id="renewal">Passport Renewal and Replacement</h2>
+<p>To renew or replace an expired or full passport, apply through eCitizen and carry your previous passport, national ID, Form 19 and payment invoices. For a lost passport, you also need a police abstract, sworn affidavit, written explanation and a copy of the lost passport's biodata page where available. A damaged passport requires the old passport, a written explanation and a sworn affidavit.</p>
+<p>The current fee for either a lost or damaged passport is KSh 20,050.</p>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+<p><strong>Can I apply entirely online?</strong> No. While the application starts online through eCitizen, applicants must attend an in-person biometrics appointment before the passport can be processed.</p>
+<p><strong>Can I check my application status?</strong> Yes. Log in to your eCitizen account to track your application status and receive updates.</p>
+<p><strong>Does a minor need a passport when travelling with an adult?</strong> Yes. For international travel, a minor generally needs their own passport, even when travelling with a parent or another adult.</p>
+`,
+    relatedSlugs: ['how-to-apply-certificate-good-conduct-kenya', 'how-to-register-business-kenya', 'how-to-renew-driving-licence-kenya'],
+  },
+
+  {
+    id: '10',
+    slug: 'how-to-file-kra-returns-kenya',
+    title: 'How to File KRA Returns in Kenya Through iTax',
+    excerpt:
+      'A complete guide for employed people, business owners and freelancers on filing annual income tax returns — including nil returns — through the KRA iTax portal.',
+    category: 'Kenya Life',
+    author: 'Dencast Global Editorial',
+    authorRole: 'Editorial Team',
+    authorBio: 'The Dencast Global Editorial team covers practical guides, industry stories and everyday topics relevant to life and business in Kenya and across Africa.',
+    authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
+    date: '2026-07-22',
+    readTime: '8 min read',
+    views: '3,015',
+    coverImage: `${IMAGE_BASE}/DIGITAL.png`,
+    tags: ['KRA', 'Tax Returns', 'iTax', 'Kenya', 'Finance', 'Business'],
+    tableOfContents: [
+      { id: 'who-must-file', label: 'Who Must File KRA Returns?' },
+      { id: 'what-you-need', label: 'What You Need Before Filing' },
+      { id: 'login', label: 'How to Log in to iTax' },
+      { id: 'employed', label: 'Filing Returns as an Employee' },
+      { id: 'nil-returns', label: 'How to File Nil Returns' },
+      { id: 'business', label: 'Filing Returns as a Business Owner' },
+    ],
+    content: `
+<p>Anyone whose KRA PIN has an active Income Tax obligation must file an annual return. This applies to employed people, business owners, freelancers and people who earned no income during the year. KRA returns are filed online through the iTax Kenya portal. The return you choose depends on whether you earned employment income, business income, other taxable income or no income at all.</p>
+
+<h2 id="who-must-file">Who Must File KRA Returns?</h2>
+<p>The following individuals and entities are required to file annual returns:</p>
+<ul>
+<li>Employed people (even if PAYE was fully deducted)</li>
+<li>Business owners and self-employed individuals</li>
+<li>Freelancers and consultants</li>
+<li>People who earned no income during the year (nil return)</li>
+<li>Registered companies and partnerships (using their own KRA PIN)</li>
+</ul>
+
+<h2 id="what-you-need">What You Need Before Filing</h2>
+<p>Prepare the following before you begin:</p>
+<ul>
+<li>Your KRA PIN</li>
+<li>Your iTax password</li>
+<li>Access to your registered email address</li>
+<li>A P9 form if you are employed (provided by your employer)</li>
+<li>Business income and expense records</li>
+<li>Withholding tax certificates where applicable</li>
+<li>Instalment tax payment details</li>
+<li>Supporting documents for insurance, mortgage or other reliefs</li>
+</ul>
+
+<h2 id="login">How to Log in to iTax Kenya</h2>
+<p>Open the official iTax portal. Enter your KRA PIN, click continue, enter your password, complete the security check and click login. After logging in, confirm that your name, email address and tax obligations are correct.</p>
+
+<h2 id="employed">How Employed People File Returns</h2>
+<p>Employees should use the P9 form provided by their employer. It shows total salary earned, PAYE deducted, personal relief and other statutory deductions.</p>
+<p>To file, open the returns menu, select File Return, choose Income Tax – Resident Individual and select the correct return period. Use the employment-income or simplified return option. Compare the displayed information with your P9 form, add any allowable reliefs or deductions, confirm the declaration and submit.</p>
+<p>If you worked for more than one employer, include income from all employers in one return. PAYE deducted by an employer does not remove the requirement to file an annual return.</p>
+
+<h2 id="nil-returns">How to File KRA Nil Returns</h2>
+<p>A nil return is only for a person who earned no taxable income during the whole year. To file, log in to iTax, open Returns, select File Nil Return, choose Income Tax – Resident Individual, select the correct period, confirm that you earned no income, submit the return and download the acknowledgement receipt.</p>
+<p>Do not file a nil return if you earned income from employment, business, freelance work, consultancy, farming, rent, online work or any other taxable source. Being unemployed for only part of the year does not qualify you for a nil return.</p>
+
+<h2 id="business">How Business Owners File Returns</h2>
+<p>A sole proprietor normally declares business income through the owner's individual return. A registered company or partnership files separately using its own KRA PIN.</p>
+<p>Business owners should prepare total sales or income, allowable business expenses, profit-and-loss records, instalment tax payments, withholding tax certificates, invoices and supporting documents.</p>
+<p>Where an Excel return is required, download the latest template from iTax, complete the income and expense sections, validate the file, correct any errors, upload the validated return, submit and download the receipt.</p>
+`,
+    relatedSlugs: ['how-to-register-business-kenya', 'how-to-apply-for-passport-kenya', 'how-to-register-sha-afya-yangu'],
+  },
+
+  {
+    id: '11',
+    slug: 'how-to-apply-certificate-good-conduct-kenya',
+    title: 'How to Apply for a Certificate of Good Conduct in Kenya',
+    excerpt:
+      'A practical step-by-step guide to obtaining a Police Clearance Certificate in Kenya through the DCI eCitizen portal — from fingerprinting to downloading your certificate.',
+    category: 'Kenya Life',
+    author: 'Dencast Global Editorial',
+    authorRole: 'Editorial Team',
+    authorBio: 'The Dencast Global Editorial team covers practical guides, industry stories and everyday topics relevant to life and business in Kenya and across Africa.',
+    authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
+    date: '2026-07-25',
+    readTime: '6 min read',
+    views: '2,190',
+    coverImage: `${IMAGE_BASE}/WEBSITE-PHOTO.jpg`,
+    tags: ['Certificate of Good Conduct', 'Police Clearance', 'DCI', 'eCitizen', 'Kenya'],
+    tableOfContents: [
+      { id: 'what-you-need', label: 'What You Need Before Applying' },
+      { id: 'apply', label: 'Apply on eCitizen' },
+      { id: 'payment', label: 'Pay and Print Documents' },
+      { id: 'fingerprints', label: 'Have Your Fingerprints Taken' },
+      { id: 'track', label: 'Track and Download the Certificate' },
+      { id: 'minors', label: 'Applications for Minors' },
+    ],
+    content: `
+<p>A Certificate of Good Conduct is officially known as a Police Clearance Certificate. It shows whether a person has a criminal record in Kenya as of the date the certificate is issued. The certificate is commonly requested when applying for employment, travelling, joining certain institutions or completing official applications. Kenyans can apply online through the Directorate of Criminal Investigations (DCI) service on eCitizen.</p>
+
+<h2 id="what-you-need">What You Need Before Applying</h2>
+<ul>
+<li>An active eCitizen account</li>
+<li>Your original Kenyan national ID</li>
+<li>A working phone number</li>
+<li>Access to a printer</li>
+<li>Money to pay the application fee</li>
+<li>Access to a fingerprinting centre</li>
+</ul>
+
+<h2 id="apply">Apply on eCitizen</h2>
+<p>Sign in to your eCitizen account and from the dashboard, open the Directorate of Criminal Investigations services. Select Police Clearance Certificate and choose the application option for a Kenyan adult. Read the instructions before continuing.</p>
+<p>Enter the requested personal information carefully — your details should match those shown on your national ID. You will also be asked to select where you want your fingerprints recorded. Choose a centre that you can visit easily because the selected location will appear on your C24 form.</p>
+
+<h2 id="payment">Pay and Print Documents</h2>
+<p>Select one of the payment methods provided on eCitizen and pay the amount shown on the invoice. After payment, download and print the payment invoice (two copies) and the C24 fingerprint form. The C24 form must be printed on both sides of one A4 sheet.</p>
+<p>Use the official payment instructions generated by eCitizen. Do not send money to individuals claiming that they can speed up the application.</p>
+
+<h2 id="fingerprints">Have Your Fingerprints Taken</h2>
+<p>Visit the fingerprinting centre selected during your eCitizen application. Carry your original national ID, two printed invoice copies and the printed C24 form. An authorised officer will record your fingerprints on the C24 form and forward them for processing.</p>
+<p>Fingerprints must be taken again each time you make a new application. Old fingerprint records cannot be reused.</p>
+
+<h2 id="track">Track and Download the Certificate</h2>
+<p>After fingerprinting, log in to your eCitizen account regularly and open the DCI application section to check the status. The DCI states that where there are no delays or other issues, processing takes at least two weeks from the date your fingerprints are recorded. Your application may take longer if your fingerprints are unclear, your personal details do not match, further verification is required or there is a system or processing delay.</p>
+<p>Once the certificate is ready, the DCI sends an SMS notification. After approval, log in to eCitizen, open the DCI services section, find your application and select the option to download the certificate. The certificate is issued electronically — you do not need to return to the fingerprinting centre to collect it.</p>
+
+<h2 id="minors">Applications for Minors</h2>
+<p>Only Kenyan minors aged 16 or 17 can apply. The application must be made through a parent's or guardian's eCitizen account. The minor must present the C24 form, invoices and original birth certificate at the selected fingerprinting centre.</p>
+`,
+    relatedSlugs: ['how-to-apply-for-passport-kenya', 'how-to-register-business-kenya', 'how-to-renew-driving-licence-kenya'],
+  },
+
+  {
+    id: '12',
+    slug: 'how-to-apply-helb-university-funding-kenya',
+    title: 'How to Apply for HELB and University Funding in Kenya',
+    excerpt:
+      'Everything you need to know about applying for HELB loans, scholarships and bursaries under Kenya\'s Student-Centred Funding Model — from registration to disbursement.',
+    category: 'Kenya Life',
+    author: 'Dencast Global Editorial',
+    authorRole: 'Editorial Team',
+    authorBio: 'The Dencast Global Editorial team covers practical guides, industry stories and everyday topics relevant to life and business in Kenya and across Africa.',
+    authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
+    date: '2026-07-28',
+    readTime: '7 min read',
+    views: '4,320',
+    coverImage: `${IMAGE_BASE}/WEBSITE-PHOTO.jpg`,
+    tags: ['HELB', 'University Funding', 'Kenya', 'Students', 'Education', 'HEF'],
+    tableOfContents: [
+      { id: 'what-is-helb', label: 'What is HELB?' },
+      { id: 'who-can-apply', label: 'Who Can Apply?' },
+      { id: 'documents', label: 'Documents Required' },
+      { id: 'create-account', label: 'Create an Account' },
+      { id: 'how-to-apply', label: 'How to Apply' },
+      { id: 'disbursement', label: 'How Funds are Disbursed' },
+      { id: 'repayment', label: 'HELB Loan Repayment' },
+    ],
+    content: `
+<p>Paying for university or college can be difficult. The Kenyan government supports eligible students through the Higher Education Loans Board (HELB) and the Higher Education Funding (HEF) programme. The funding may cover tuition, accommodation, books and upkeep. Apply as soon as the application window opens.</p>
+
+<h2 id="what-is-helb">What is HELB?</h2>
+<p>HELB supports students pursuing higher education. Under the Student-Centred Funding Model, eligible learners may receive scholarships, student loans and bursaries where available. The amount awarded depends on the student's assessed financial need and household circumstances.</p>
+
+<h2 id="who-can-apply">Who Can Apply?</h2>
+<p>You may qualify if you:</p>
+<ul>
+<li>Are a Kenyan citizen</li>
+<li>Have been placed in an eligible public university or approved TVET institution</li>
+<li>Are joining as a first-time undergraduate or TVET student</li>
+<li>Have an official admission letter</li>
+<li>Meet the HEF assessment requirements</li>
+</ul>
+<p>Some students in approved private institutions may also qualify under government guidelines.</p>
+
+<h2 id="documents">Documents Required</h2>
+<ul>
+<li>National ID or KCSE Index Number if you are a minor</li>
+<li>Email address and mobile phone number</li>
+<li>Passport photo and birth certificate</li>
+<li>Admission letter</li>
+<li>KCPE and KCSE index numbers</li>
+<li>Parents' or guardians' IDs and contacts</li>
+<li>Death certificate if a parent is deceased</li>
+<li>Bank or mobile payment details</li>
+</ul>
+<p>Ensure all scanned documents are clear before uploading.</p>
+
+<h2 id="create-account">Create an Account</h2>
+<p>First-time applicants must register through the HEF student portal. Open the portal and select Register. Enter your National ID or KCSE Index Number, add your email address and create a password. Verify your email and phone number, complete your profile and accept the consent terms. Use active contacts because updates may be sent by email or SMS.</p>
+
+<h2 id="how-to-apply">How to Apply for HELB</h2>
+<p>After registration, log in and complete the following steps:</p>
+<ol>
+<li><strong>Complete your profile</strong> — Enter your names, date of birth, ID details, contacts and home address. Ensure they match your documents.</li>
+<li><strong>Add education details</strong> — Provide your institution, course, admission number, academic year and admission letter details.</li>
+<li><strong>Enter parent or guardian information</strong> — Add their names, ID numbers, contacts, employment details and income information. Incorrect details may affect the decision.</li>
+<li><strong>Add guarantor details</strong> — Loan applicants may be asked to provide guarantors. A parent or guardian may sometimes act as one.</li>
+<li><strong>Upload documents</strong> — Upload every requested document in the correct format. Avoid blurred or incomplete copies.</li>
+<li><strong>Review and submit</strong> — Check names, ID numbers, contacts and uploads. Read and accept the loan terms, then submit. You should receive a confirmation message and application serial number.</li>
+</ol>
+
+<h2 id="disbursement">How Funds are Disbursed</h2>
+<p>Once approved, tuition funds are usually sent directly to the institution. Upkeep money is sent through the selected payment option. Apply early to reduce delays, as processing depends on document verification, institutional confirmation, application numbers and government funding schedules.</p>
+
+<h2 id="repayment">HELB Loan Repayment</h2>
+<p>A HELB loan must be repaid after completing your studies and becoming eligible. Employed graduates may repay through salary deductions. Self-employed borrowers can use approved payment channels. Timely repayment helps avoid penalties, protects your credit record and supports future students. Eligible borrowers may also apply for a HELB compliance certificate.</p>
+`,
+    relatedSlugs: ['how-to-register-sha-afya-yangu', 'how-to-apply-for-passport-kenya', 'how-to-file-kra-returns-kenya'],
+  },
+
+  {
+    id: '13',
+    slug: 'how-to-register-sha-afya-yangu',
+    title: 'How to Register for SHA and Use Afya Yangu',
+    excerpt:
+      'A complete guide to registering for the Social Health Authority (SHA) through the Afya Yangu portal — including adding dependants, checking contributions, and accessing healthcare services.',
+    category: 'Kenya Life',
+    author: 'Dencast Global Editorial',
+    authorRole: 'Editorial Team',
+    authorBio: 'The Dencast Global Editorial team covers practical guides, industry stories and everyday topics relevant to life and business in Kenya and across Africa.',
+    authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
+    date: '2026-07-30',
+    readTime: '6 min read',
+    views: '5,840',
+    coverImage: `${IMAGE_BASE}/Bungoma-County-ICU.jpg`,
+    tags: ['SHA', 'NHIF', 'Afya Yangu', 'Health Insurance', 'Kenya', 'Healthcare'],
+    tableOfContents: [
+      { id: 'what-you-need', label: 'What You Need Before Registering' },
+      { id: 'how-to-register', label: 'How to Register for SHA' },
+      { id: 'dependants', label: 'How to Add Dependants' },
+      { id: 'contributions', label: 'How to Check Contributions' },
+      { id: 'afya-yangu', label: 'Using Afya Yangu for Healthcare' },
+      { id: 'faq', label: 'Frequently Asked Questions' },
+    ],
+    content: `
+<p>The Social Health Authority (SHA) replaced the National Health Insurance Fund (NHIF) as Kenya's national public health insurance provider. To access healthcare under SHA, every eligible resident must register through the Afya Yangu platform or other approved registration channels.</p>
+<p>Afya Yangu serves as the official self-service portal where members can register, manage their accounts, add dependants, check contributions, access healthcare information and update personal details.</p>
+
+<h2 id="what-you-need">What You Need Before Registering</h2>
+<ul>
+<li>Kenyan National ID or other accepted identification</li>
+<li>Registered mobile phone number</li>
+<li>Email address</li>
+<li>Passport-size photograph</li>
+<li>Your residential information</li>
+<li>Employment details</li>
+<li>Information for any dependants you intend to add</li>
+</ul>
+<p>Foreign residents and refugees can also register using the identification documents accepted by SHA.</p>
+
+<h2 id="how-to-register">How to Register for SHA</h2>
+<p>There are three main ways to register:</p>
+<p><strong>1. Register Online</strong> — Visit the official SHA registration portal. Enter your National ID, provide the mobile number registered in your name and verify your account using the OTP sent by SMS. Create your account PIN, complete your personal profile including your residence and preferred healthcare facility, then submit your details.</p>
+<p><strong>2. Register using USSD</strong> — If you do not have internet access, dial *147# and follow the prompts to complete your registration. You may still need to log in later through the portal to finish your profile or manage dependants.</p>
+<p><strong>3. Assisted registration</strong> — You can receive help at selected SHA registration centres, Huduma Centres and participating healthcare facilities if you need assistance with registration or updating your information.</p>
+
+<h2 id="dependants">How to Add Dependants</h2>
+<p>Once registered, log into Afya Yangu, open your profile and select Dependants. Choose Add Dependant, enter the dependant's required details and submit the request. Depending on the relationship and age of the dependant, you may be required to provide supporting documentation during verification.</p>
+
+<h2 id="contributions">How to Check SHA Contributions</h2>
+<p>You can monitor your contributions through Afya Yangu by logging in and opening the contributions or insurance section to view payment history, current contribution status, active cover and outstanding payments.</p>
+<p>You can also dial *147# and follow the prompts to check your account information through USSD.</p>
+
+<h2 id="afya-yangu">Using Afya Yangu for Healthcare Services</h2>
+<p>After your registration is complete, the Afya Yangu portal allows you to view insurance details, check approved healthcare facilities, view appointment information, access healthcare visit records, track claims and pre-authorisation status, manage dependants and control consent for sharing health information.</p>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+<p><strong>Is SHA registration free?</strong> Registration itself is generally free. However, eligible members are required to make contributions based on the applicable rules after registration.</p>
+<p><strong>Can I register without a smartphone?</strong> Yes. Registration is available online, through the USSD code (*147#), and via assisted registration points.</p>
+<p><strong>How do I know if my cover is active?</strong> Log into Afya Yangu or use *147# to check your account and contribution status.</p>
+<p><strong>What if I fill in incorrect personal information?</strong> Visit an authorised SHA support centre if your identity details cannot be corrected online.</p>
+`,
+    relatedSlugs: ['how-to-apply-helb-university-funding-kenya', 'how-to-file-kra-returns-kenya', 'how-to-apply-for-passport-kenya'],
+  },
+
+  {
+    id: '14',
+    slug: 'how-to-renew-driving-licence-kenya',
+    title: 'How to Renew a Driving Licence in Kenya',
+    excerpt:
+      'Renewing your Kenyan driving licence is done fully online through the NTSA portal on eCitizen. Here\'s everything you need to know — from logging in to downloading your confirmation.',
+    category: 'Kenya Life',
+    author: 'Dencast Global Editorial',
+    authorRole: 'Editorial Team',
+    authorBio: 'The Dencast Global Editorial team covers practical guides, industry stories and everyday topics relevant to life and business in Kenya and across Africa.',
+    authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
+    date: '2026-08-01',
+    readTime: '5 min read',
+    views: '2,780',
+    coverImage: `${IMAGE_BASE}/WEBSITE-PHOTO.jpg`,
+    tags: ['Driving Licence', 'NTSA', 'eCitizen', 'Kenya', 'Transport'],
+    tableOfContents: [
+      { id: 'what-you-need', label: 'What You Need' },
+      { id: 'login', label: 'Step 1: Log in to eCitizen' },
+      { id: 'choose-renewal', label: 'Step 2: Choose Driving Licence Renewal' },
+      { id: 'payment', label: 'Step 3: Make Payment' },
+      { id: 'confirmation', label: 'Step 4: Download Confirmation' },
+      { id: 'common-problems', label: 'Common Problems' },
+    ],
+    content: `
+<p>Renewing a driving licence in Kenya is done online through the NTSA Service Portal on eCitizen. You can apply, pay and download confirmation without visiting an office for most standard renewals.</p>
+
+<h2 id="what-you-need">What You Need</h2>
+<ul>
+<li>Your national ID number</li>
+<li>An active eCitizen account</li>
+<li>Your phone number and email</li>
+<li>M-Pesa or another accepted payment method</li>
+<li>Your current driving licence details</li>
+</ul>
+<p>Your names and ID details should match eCitizen and NTSA records before you start.</p>
+
+<h2 id="login">Step 1: Log in to eCitizen</h2>
+<p>Visit the official eCitizen website and sign in using your ID number, phone number or email. Enter your password and complete verification. After logging in, open Agencies or Services, select National Transport and Safety Authority – NTSA and open the NTSA Service Portal. Enter any code sent to your phone or email.</p>
+
+<h2 id="choose-renewal">Step 2: Choose Driving Licence Renewal</h2>
+<p>On the NTSA dashboard, open driver services and select Driving Licence Renewal. The system should show your name, licence number, driving classes, expiry date and renewal option. Check the details before continuing.</p>
+<p>Choose the renewal option shown on the portal. A smart driving licence is normally renewed for three years. Fees may change, so follow the amount shown on the portal. Click Renew and confirm the details.</p>
+
+<h2 id="payment">Step 3: Make Payment</h2>
+<p>The system will create an invoice. Choose M-Pesa or another payment option shown on eCitizen. For M-Pesa, select M-Pesa, enter the phone number, confirm the payment request and enter your M-Pesa PIN. Return to the portal and check the payment status.</p>
+<p>Do not pay twice if the portal delays. First check your M-Pesa message and application history.</p>
+
+<h2 id="confirmation">Step 4: Download Confirmation</h2>
+<p>After payment, open My Applications or Application History. Download the payment receipt, renewal confirmation and application slip. Save them on your phone. Keep the receipt and reference number until the renewal is complete.</p>
+<p>After renewal, NTSA may send an SMS. You may be asked to visit an NTSA office for biometric capture or licence collection. To check driving licence status, use the official NTSA service status portal and enter your ID number to see whether the licence is ready or still being processed.</p>
+
+<h2 id="common-problems">Common Problems</h2>
+<p>Common problems include wrong contact details, failed verification, missing licence records, pending payments, name differences and choosing replacement instead of renewal. Use only the official eCitizen and NTSA portals. Keep your payment message, receipt and application reference. After applying, log in again and confirm that the status shows paid, submitted, processing or completed.</p>
+<p>For wrong names, ID details or licence classes, visit an NTSA office or Huduma Centre with your ID, licence and supporting documents.</p>
+`,
+    relatedSlugs: ['how-to-apply-for-passport-kenya', 'how-to-apply-certificate-good-conduct-kenya', 'how-to-register-business-kenya'],
+  },
+
+  {
+    id: '15',
+    slug: 'how-to-register-business-kenya',
+    title: 'How to Register a Business in Kenya',
+    excerpt:
+      'A complete guide to registering a business name, private limited company or LLP in Kenya through the eCitizen Business Registration Service — including KRA registration and business permits.',
+    category: 'Kenya Life',
+    author: 'Dencast Global Editorial',
+    authorRole: 'Editorial Team',
+    authorBio: 'The Dencast Global Editorial team covers practical guides, industry stories and everyday topics relevant to life and business in Kenya and across Africa.',
+    authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
+    date: '2026-08-04',
+    readTime: '8 min read',
+    views: '3,650',
+    coverImage: `${IMAGE_BASE}/DIGITAL.png`,
+    tags: ['Business Registration', 'eCitizen', 'BRS', 'Kenya', 'Entrepreneurship', 'Company'],
+    tableOfContents: [
+      { id: 'structure', label: 'Choose a Business Structure' },
+      { id: 'prepare', label: 'Prepare Required Information' },
+      { id: 'apply', label: 'Apply Through eCitizen' },
+      { id: 'payment', label: 'Pay the Registration Fee' },
+      { id: 'certificate', label: 'Download the Certificate' },
+      { id: 'kra', label: 'Complete KRA Registration' },
+      { id: 'permits', label: 'Get the Required Business Permits' },
+    ],
+    content: `
+<p>Registering a business in Kenya is done online through the eCitizen platform under the Business Registration Service (BRS). The process depends on the type of business you want to start.</p>
+
+<h2 id="structure">1. Choose a Business Structure</h2>
+<p><strong>Business name</strong> — Suitable for a sole proprietor or a simple partnership. It is cheaper to register, but the owner remains personally responsible for business debts.</p>
+<p><strong>Private limited company</strong> — Legally separate from its owners. Suitable for a business that wants to grow, attract investors or protect the owners' personal property. The company name must end with Limited or Ltd.</p>
+<p><strong>Limited Liability Partnership (LLP)</strong> — Suitable for professional firms or businesses with several partners. It is also treated as a separate legal entity.</p>
+
+<h2 id="prepare">2. Prepare the Required Information</h2>
+<ul>
+<li>Three preferred business names</li>
+<li>National ID or passport</li>
+<li>KRA PIN</li>
+<li>Recent passport photograph</li>
+<li>Phone number and email address</li>
+<li>Postal and physical business address</li>
+<li>Description of the business activity</li>
+<li>Details of owners, partners, directors or shareholders</li>
+<li>Shareholding and beneficial ownership details for a company</li>
+</ul>
+<p>Make sure the names, ID numbers and KRA PIN details match your official records.</p>
+
+<h2 id="apply">3. Apply Through eCitizen</h2>
+<p>Log in to your eCitizen account. From the dashboard, open the Business Registration Service, select Make Application, choose the type of business, enter the required information, review the details and submit.</p>
+<p>Business name approval is completed together with the registration application. Enter three preferred names in order of priority — names should be unique and not too similar to an existing business or registered trademark. Offensive, misleading or restricted names may be rejected.</p>
+
+<h2 id="payment">4. Pay the Registration Fee</h2>
+<p>The listed BRS registration fees are displayed during the application. Always pay the amount displayed on eCitizen because government fees may change.</p>
+<p>A business name may take about one day to process. A private limited company may take three to five days. Applications with mistakes or missing information may take longer.</p>
+
+<h2 id="certificate">5. Download the Certificate</h2>
+<p>After approval, log in to eCitizen and download your registration documents. A business name receives a Certificate of Registration, while a limited company receives a Certificate of Incorporation. Keep both digital and printed copies — you may need the certificate when opening a bank account, applying for permits or registering for taxes.</p>
+
+<h2 id="kra">6. Complete KRA Registration</h2>
+<p>A sole proprietor normally uses their personal KRA PIN because a business name is not a separate legal person. A registered company normally receives its own KRA PIN during or after registration. Where a separate application is required, register through iTax as a non-individual and select the correct tax obligations.</p>
+
+<h2 id="permits">7. Get the Required Business Permits</h2>
+<p>Business registration alone does not allow every business to start operating. Most businesses need a county Single Business Permit — the cost depends on the county, location, business activity and size.</p>
+<p>Depending on your business, you may also need health certificates, fire approval, advertising approval, an alcohol licence, construction permits, environmental approval or professional licences. Businesses with employees should also complete the required NSSF and Social Health Authority employer registrations.</p>
+<p>Before opening, confirm that you have your registration certificate, KRA PIN, county permit and any licence required for your specific business activity.</p>
+`,
+    relatedSlugs: ['how-to-file-kra-returns-kenya', 'how-to-register-sha-afya-yangu', 'how-to-apply-certificate-good-conduct-kenya'],
   },
 ];
 

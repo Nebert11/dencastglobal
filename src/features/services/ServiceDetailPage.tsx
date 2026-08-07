@@ -34,22 +34,31 @@ interface ServiceRichContent {
 }
 
 const PHOTOGRAPHY_SAMPLE_IMAGES = [
-  '/dencast_images/White-Beach-Palace.jpg',
-  '/dencast_images/event1.jpg',
-  '/dencast_images/sasini_conference.jpg',
-  '/dencast_images/amakowe.jpg',
-  '/dencast_images/rhnks2024.jpg',
-  '/dencast_images/photography1.jpg',
-  '/dencast_images/photography2.jpg',
-  '/dencast_images/photography3.jpg',
-  '/dencast_images/photography4.jpg',
-  '/dencast_images/photography6.jpg',
-  '/dencast_images/photography7.jpg',
-  '/dencast_images/photography8.jpg',
-  '/dencast_images/photography9.jpg',
-  '/dencast_images/photography10.jpg',
-  '/dencast_images/photography11.jpg',
-  '/dencast_images/photography12.jpg',
+  '/dencast_images/photography/photo1.jpg',
+  '/dencast_images/photography/photo2.jpg',
+  '/dencast_images/photography/photo3.jpg',
+  '/dencast_images/photography/photo4.jpg',
+  '/dencast_images/photography/photo5.jpg',
+  '/dencast_images/photography/photo6.jpg',
+  '/dencast_images/photography/photo7.jpg',
+  '/dencast_images/photography/photo8.jpg',
+  '/dencast_images/photography/photo9.jpg',
+  '/dencast_images/photography/photo10.jpg',
+  '/dencast_images/photography/photo11.jpg',
+  '/dencast_images/photography/photo12.jpg',
+  '/dencast_images/photography/photo13.jpg',
+  '/dencast_images/photography/photo14.jpg',
+  '/dencast_images/photography/photo15.jpg',
+  '/dencast_images/photography/photo16.jpg',
+];
+
+const SOUND_SAMPLE_IMAGES = [
+  '/dencast_images/sound_images/sound1.jpg',
+  '/dencast_images/sound_images/sound2.jpg',
+  '/dencast_images/sound_images/sound3.jpg',
+  '/dencast_images/sound_images/sound4.jpg',
+  '/dencast_images/sound_images/sound5.jpg',
+  '/dencast_images/sound_images/sound6.jpg',
 ];
 
 const isYoutubeUrl = (url: string) => {
@@ -142,6 +151,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     heroImage: '/dencast_images/MUSIC.png',
     overview: 'Dencast Global provides professional audio management and original soundtrack development for events, films, documentaries, commercials, and digital productions. From clear conference sound to cinematic scoring, we ensure every word is heard and every moment is felt.',
     features: ['Live sound system setup and engineering', 'Microphone planning and live mixing', 'Audio recording and post-production cleanup', 'Voice-over recording and direction', 'Custom sound design and effects', 'Original music beds and theme development', 'Final mastering for broadcast and digital'],
+    sampleImages: SOUND_SAMPLE_IMAGES,
     whyUs: [
       { icon: Eye, title: 'Clarity and Presence', desc: 'We optimize every environment so speech, music, and ambience are consistently clear.' },
       { icon: Cpu, title: 'Production-Ready Audio', desc: 'Our team covers live, studio, and post workflows with professional-grade tools.' },

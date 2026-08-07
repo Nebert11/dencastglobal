@@ -273,22 +273,36 @@ const TEAM_MEMBERS = [
     name: 'Dennis Machio',
     role: 'Producer & Lead Director',
     image: teamLeadImage,
-    profile:
-      'Dennis leads Dencast Global as a director, producer, and editor with 15+ years in multimedia production, live events, and creative direction. He is known for turning ideas into cinematic stories that connect deeply with audiences and deliver lasting impact for brands.',
+    subtitle: 'Film Producer. Creative Director. Media Strategist. Storyteller.',
+    paragraphs: [
+      'Dennis Machio is a Nairobi-based Film Producer, Creative Director, Media Strategist, and Founder of Dencast Global Limited. For more than a decade, he has worked with organizations across Africa to create documentaries, corporate films, live productions, digital campaigns, and strategic visual content that communicates clearly and connects deeply.',
+      'His work sits at the intersection of storytelling, strategy, production, and impact.',
+      'Every organization has a story. Our role is to help shape that story into content that people can understand, believe in, and act on.',
+      'From international conferences and boardroom communications to wildlife conservancies, community projects, sports platforms, and development programs, we lead productions that turn complex messages into meaningful visual experiences.',
+    ],
   },
   {
     name: 'Allan Odera',
     role: 'Creative Production',
     image: teamMemberOneImage,
-    profile:
-      'Allan is a versatile video and graphics editor who combines sharp technical execution with creative storytelling. His motion design, pacing, and detail-focused edits help transform concepts into polished, engaging visual experiences.',
+    subtitle: 'The Creative Force Behind the Screen',
+    paragraphs: [
+      'A master of visual storytelling, Allan Odera is a versatile Video and Graphics Editor whose work brings ideas to life with precision, creativity, and flair. An alumnus of Multimedia University Kenya, Allan has honed his craft in graphics and motion design, blending artistic innovation with technical expertise.',
+      'With extensive industry experience, he is more than just an editor — he is a visual architect, crafting compelling motion graphics and seamless edits that elevate every project. His keen eye for detail and collaborative spirit make him an invaluable part of the Dencast Global team, ensuring that every production is not just polished, but powerfully engaging.',
+      'With Allan at the controls, every frame tells a story, every transition has purpose, and every project becomes a masterpiece.',
+    ],
   },
   {
     name: 'Valentino Macharia',
     role: 'Visual Storytelling',
     image: teamMemberTwoImage,
-    profile:
-      'Valentino brings deep experience in live broadcasting and television direction, with a strong record of delivering high-pressure productions with precision. His command of framing, timing, and live studio operations keeps every story clear, compelling, and broadcast-ready.',
+    subtitle: 'The Visionary Behind The Live Broadcasts',
+    paragraphs: [
+      'With decades of experience in live broadcasting and television production, Valentino Macharia is a name synonymous with excellence, precision, and innovation. As a seasoned Television Director and studio operator, he has played a pivotal role in shaping the landscape of broadcast media.',
+      "Macharia's career has seen him work with world-renowned media giants, including Kenya Television Network (KTN), China Global Television Network (CGTN), and the British Broadcasting Corporation (BBC). His keen eye for detail and mastery of live directing have positioned him among the best in the industry.",
+      'At Dencast Global, Macharia brings more than just experience — he brings a relentless pursuit of perfection. A firm believer that every frame should tell a compelling story, he ensures that our productions capture, engage, and inspire.',
+      "With Valentino Macharia at the Director's console, your live story isn't just told — it's brought to life with unmatched visual brilliance.",
+    ],
   },
 ];
 
@@ -763,26 +777,103 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   );
 };
 
-const DENNIS_FULL_BIO = `Dennis Machio is the founder and lead director of Dencast Global Limited. With over 15 years of experience in multimedia production, live events, and creative direction, he has built a reputation as one of Kenya's most versatile and dedicated media professionals.
+// ─── Individual team card with expand/collapse ────────────────────────────────
 
-Dennis began his career at Michezo Afrika, Kenya's leading sports news outlet, where he served as lead producer and editor. As a co-founder of Michezo Afrika, he played a pivotal role in revolutionising sports media — blending in-depth analysis with dynamic visuals that captivated audiences across the region.
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  subtitle: string;
+  paragraphs: string[];
+}
 
-Driven by a deeper passion for storytelling, Dennis launched Bungoma Pictures, a production company dedicated to documentary filmmaking and visual storytelling. Through Bungoma Pictures, he explored powerful, immersive narratives and shone a light on untold stories with lasting impact.
+const TeamMemberCard: React.FC<{
+  member: TeamMember;
+  index: number;
+  inView: boolean;
+}> = ({ member, index, inView }) => {
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = member.paragraphs.length > 1;
 
-In 2021, Bungoma Pictures evolved into Dencast Global Limited — a cutting-edge production and creative media agency. This transformation marked a new era, defined by world-class productions that have garnered regional and global acclaim.
+  return (
+    <motion.article
+      custom={index}
+      variants={fadeUp}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      className="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm flex flex-col"
+    >
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-80 object-cover"
+        loading="lazy"
+      />
+      <div className="p-5 flex flex-col flex-1">
+        <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
+        <p className="text-sm text-[#25408F] mt-1 font-semibold">{member.role}</p>
+        <p className="mt-2 text-xs font-semibold text-[#D3232E] italic leading-snug">{member.subtitle}</p>
 
-Today, Dennis leads Dencast Global as director, producer, and editor — partnering with leading brands, international organisations, and development institutions across Africa and beyond. His cinematic eye, editorial precision, and strategic understanding of communication make him a trusted partner for every project Dencast Global undertakes.`;
+        {/* First paragraph always visible */}
+        <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+          {member.paragraphs[0]}
+        </p>
 
-const DENNIS_PRODUCTION_IMAGES = [
-  { src: '/dencast_images/dennis_machio.jpg', alt: 'Dennis Machio with his first camera' },
-  { src: '/dencast_images/Machio-CEO.png', alt: 'Dennis Machio, CEO of Dencast Global' },
-];
+        {/* Expandable remaining paragraphs */}
+        {hasMore && (
+          <div
+            className={`overflow-hidden transition-all duration-500 ease-in-out ${
+              expanded ? 'max-h-[1000px] opacity-100 mt-3' : 'max-h-0 opacity-0'
+            }`}
+            aria-hidden={!expanded}
+          >
+            <div className="space-y-3">
+              {member.paragraphs.slice(1).map((para, i) => (
+                <p key={i} className="text-sm text-slate-600 leading-relaxed">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Read More / See Less toggle */}
+        <div className="mt-4 flex items-center gap-4 flex-wrap">
+          {hasMore && (
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#25408F] hover:text-[#D3232E] transition-colors duration-200"
+              aria-expanded={expanded}
+            >
+              {expanded ? (
+                <>See Less <span className="text-base leading-none">↑</span></>
+              ) : (
+                <>Read More <span className="text-base leading-none">↓</span></>
+              )}
+            </button>
+          )}
+
+          {/* Dennis: link to personal website */}
+          {member.name === 'Dennis Machio' && (
+            <a
+              href="https://dennismachio.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-500 hover:text-[#25408F] transition-colors duration-200 border-l border-slate-200 pl-4"
+            >
+              More on Dennis <ArrowRight size={13} />
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  );
+};
 
 const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
-  const [dennisModalOpen, setDennisModalOpen] = useState(false);
-  const modalRoot = typeof document !== 'undefined' ? document.body : null;
 
   return (
     <section id="team" ref={ref} className="py-24 bg-slate-50 border-t border-slate-100">
@@ -804,119 +895,17 @@ const TeamSection: React.FC<{ content: AboutContent }> = ({ content }) => {
           </motion.p>
         </motion.div>
 
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7"
-        >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {TEAM_MEMBERS.map((member, i) => (
-            <motion.article
+            <TeamMemberCard
               key={member.name}
-              custom={i}
-              variants={fadeUp}
-              className="rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm flex flex-col"
-            >
-              <img
-                src={member.image}
-                alt={member.name}
-                className="w-full h-80 object-cover"
-                loading="lazy"
-              />
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
-                <p className="text-sm text-[#25408F] mt-1 font-semibold">{member.role}</p>
-                <p className="mt-3 text-sm text-slate-600 leading-relaxed flex-1">{member.profile}</p>
-                {member.name === 'Dennis Machio' && (
-                  <button
-                    type="button"
-                    onClick={() => setDennisModalOpen(true)}
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#25408F] hover:text-[#D3232E] transition-colors duration-200 self-start"
-                  >
-                    Read More <ArrowRight size={14} />
-                  </button>
-                )}
-              </div>
-            </motion.article>
+              member={member}
+              index={i}
+              inView={inView}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
-
-      {/* ── Dennis Machio Full Bio Modal ── */}
-      {modalRoot && dennisModalOpen && createPortal(
-        <div
-          className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
-          onClick={() => setDennisModalOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl my-6 overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close button */}
-            <button
-              type="button"
-              onClick={() => setDennisModalOpen(false)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
-              aria-label="Close"
-            >
-              <X size={18} />
-            </button>
-
-            {/* Hero photo */}
-            <div className="relative h-72 sm:h-96 overflow-hidden">
-              <img
-                src={teamLeadImage}
-                alt="Dennis Machio – CEO & Lead Director, Dencast Global"
-                className="w-full h-full object-cover object-top"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-              <div className="absolute bottom-6 left-6 text-white">
-                <p className="text-xs font-bold tracking-widest uppercase text-white/70 mb-1">Founder & Lead Director</p>
-                <h2 className="text-2xl sm:text-3xl font-black">Dennis Machio</h2>
-              </div>
-            </div>
-
-            {/* Bio content */}
-            <div className="p-6 sm:p-8">
-              <div className="space-y-4 text-slate-600 leading-relaxed text-sm sm:text-base">
-                {DENNIS_FULL_BIO.split('\n\n').map((paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
-                ))}
-              </div>
-
-              {/* Production photos */}
-              <div className="mt-8">
-                <p className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-4">Behind the Lens</p>
-                <div className="grid grid-cols-2 gap-3">
-                  {DENNIS_PRODUCTION_IMAGES.map((img) => (
-                    <div key={img.src} className="rounded-xl overflow-hidden aspect-[4/3]">
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Link to dennismachio.com */}
-              <div className="mt-8 pt-6 border-t border-slate-100">
-                <a
-                  href="https://www.dennismachio.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#25408F] hover:bg-[#1f3576] text-white font-bold rounded-xl transition-colors duration-200"
-                >
-                  Visit dennismachio.com <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>,
-        modalRoot,
-      )}
     </section>
   );
 };

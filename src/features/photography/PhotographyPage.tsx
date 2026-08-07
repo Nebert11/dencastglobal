@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import {
   Camera, Monitor, Users, Package, Edit3,
   Navigation, Aperture, Video, Film, ChevronRight, ArrowRight, CheckCircle2, Play, X,
@@ -46,60 +46,22 @@ const CAMERAS = [
 ];
 
 const GALLERY_IMAGES = [
-  {
-    src: '/dencast_images/White-Beach-Palace.jpg',
-    alt: 'Resort lifestyle photography at White Beach Palace',
-    caption: 'White Beach Palace',
-    description: 'Hospitality lifestyle visuals crafted to highlight atmosphere, architecture, and guest experience.',
-  },
-  {
-    src: '/dencast_images/sasini_conference.jpg',
-    alt: 'Corporate conference visual coverage by Dencast Global',
-    caption: 'Corporate Conference Coverage',
-    description: 'Executive-level event storytelling with clean composition and brand-focused detail.',
-  },
-  {
-    src: '/dencast_images/event1.jpg',
-    alt: 'Event photography capturing keynote moments',
-    caption: 'Keynote Moments',
-    description: 'High-impact conference imagery that captures speakers, delegates, and audience energy.',
-  },
-  {
-    src: '/dencast_images/1U9A9541-scaled.jpg',
-    alt: 'High-energy crowd and stage event coverage',
-    caption: 'Live Stage Energy',
-    description: 'Dynamic crowd and performance shots designed for campaigns, press, and social media.',
-  },
-  {
-    src: '/dencast_images/DSC_3903-scaled.jpg',
-    alt: 'Editorial outdoor portrait session in natural light',
-    caption: 'Editorial Portrait Session',
-    description: 'Natural-light portraiture with a cinematic editorial approach and polished finishing.',
-  },
-  {
-    src: '/dencast_images/IMG-20170922-WA0020.jpg',
-    alt: 'Lifestyle and storytelling photography composition',
-    caption: 'Lifestyle Storytelling',
-    description: 'Human-centered lifestyle frames that blend narrative context with strong visual identity.',
-  },
-  {
-    src: '/dencast_images/DSC_5424-scaled.jpg',
-    alt: 'Commercial brand photography scene setup',
-    caption: 'Commercial Brand Visuals',
-    description: 'Product and brand-directed imagery planned for consistency across digital campaigns.',
-  },
-  {
-    src: '/dencast_images/1U9A0278-scaled.jpg',
-    alt: 'Cinematic still image with dramatic composition',
-    caption: 'Cinematic Composition',
-    description: 'Dramatic framing and tonal depth built for premium storytelling and visual impact.',
-  },
-  {
-    src: '/photography/photography1.jpg',
-    alt: 'Cinematic still image with dramatic composition',
-    caption: 'Cinematic Composition',
-    description: 'Dramatic framing and tonal depth built for premium storytelling and visual impact.',
-  },
+  { src: '/dencast_images/photography/photo1.jpg',  alt: 'Photography portfolio image 1',  caption: 'Professional Photography', description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo2.jpg',  alt: 'Photography portfolio image 2',  caption: 'Event Coverage',           description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo3.jpg',  alt: 'Photography portfolio image 3',  caption: 'Portrait Session',         description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo4.jpg',  alt: 'Photography portfolio image 4',  caption: 'Corporate Photography',    description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo5.jpg',  alt: 'Photography portfolio image 5',  caption: 'On Location',              description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo6.jpg',  alt: 'Photography portfolio image 6',  caption: 'Editorial Frame',          description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo7.jpg',  alt: 'Photography portfolio image 7',  caption: 'Visual Storytelling',      description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo8.jpg',  alt: 'Photography portfolio image 8',  caption: 'Conference Coverage',      description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo9.jpg',  alt: 'Photography portfolio image 9',  caption: 'Live Event Capture',       description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo10.jpg', alt: 'Photography portfolio image 10', caption: 'Brand Visuals',            description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo11.jpg', alt: 'Photography portfolio image 11', caption: 'Documentary Still',        description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo12.jpg', alt: 'Photography portfolio image 12', caption: 'Behind the Lens',          description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo13.jpg', alt: 'Photography portfolio image 13', caption: 'Candid Moments',           description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo14.jpg', alt: 'Photography portfolio image 14', caption: 'Stage & Performance',      description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo15.jpg', alt: 'Photography portfolio image 15', caption: 'Creative Composition',     description: '', objectPosition: 'center top' },
+  { src: '/dencast_images/photography/photo16.jpg', alt: 'Photography portfolio image 16', caption: 'Premium Imagery',          description: '', objectPosition: 'center top' },
 ];
 
 const PROPERTY_VIDEOS = [
@@ -108,8 +70,14 @@ const PROPERTY_VIDEOS = [
 ];
 
 const PROPERTY_GALLERY = [
-  { src: '/dencast_images/White-Beach-Palace.jpg', alt: 'White Beach Palace property photography' },
-  { src: '/dencast_images/event1.jpg', alt: 'Property and product visual' },
+  { src: '/dencast_images/photography/products_photography/prod.jpg',  alt: 'Product photography — featured item' },
+  { src: '/dencast_images/photography/products_photography/prod1.jpg', alt: 'Property photography showcase' },
+  { src: '/dencast_images/photography/products_photography/prod2.jpg', alt: 'Product detail and quality photography' },
+  { src: '/dencast_images/photography/products_photography/prod3.jpg', alt: 'Commercial product photography' },
+  { src: '/dencast_images/photography/products_photography/prod4.jpg', alt: 'Retail and branded merchandise photography' },
+  { src: '/dencast_images/photography/products_photography/prod5.jpg', alt: 'Food and lifestyle product photography' },
+  { src: '/dencast_images/photography/products_photography/prod6.jpg', alt: 'Equipment and corporate product photography' },
+  { src: '/dencast_images/photography/products_photography/prod7.jpg', alt: 'Property and space photography' },
 ];
 
 function getPropertyYoutubeId(url: string): string {
@@ -132,6 +100,91 @@ const fadeUp = {
   visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut', delay: i * 0.1 } }),
 };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
+
+// ─── Scroll-driven cover carousel ─────────────────────────────────────────────
+// Each image occupies the full width. As the user scrolls, the next image slides
+// up from the bottom, covering the previous one. After the last image, normal
+// page scrolling resumes to reveal the next section.
+
+interface CarouselImage { src: string; alt: string; caption?: string; }
+
+// Per-image layer — separate component so each useTransform call follows hook rules
+const ScrollLayer: React.FC<{
+  image: CarouselImage;
+  index: number;
+  total: number;
+  scrollYProgress: MotionValue<number>;
+}> = ({ image, index, total, scrollYProgress }) => {
+  // Image 0 is the static base layer (no transform needed).
+  // Image i (i > 0) slides from translateY(100%) → translateY(0%) as scrollYProgress
+  // moves from (i-1)/total → i/total.
+  const start = (index - 1) / total;
+  const end   = index       / total;
+  const y = useTransform(scrollYProgress, [start, end], ['100%', '0%']);
+
+  const content = (
+    <>
+      <img
+        src={image.src}
+        alt={image.alt}
+        className="absolute inset-0 w-full h-full object-coverentreopit"
+        loading={index === 0 ? 'eager' : 'lazy'}
+        draggable={false}
+      />
+      {image.caption && (
+        <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-10 py-5 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
+          <p className="text-white text-sm sm:text-base font-semibold tracking-wide">{image.caption}</p>
+          <p className="text-white/50 text-xs mt-0.5">{index + 1} / {total}</p>
+        </div>
+      )}
+    </>
+  );
+
+  if (index === 0) {
+    return <div className="absolute inset-0" style={{ zIndex: 0 }}>{content}</div>;
+  }
+
+  return (
+    <motion.div className="absolute inset-0" style={{ y, zIndex: index }}>
+      {content}
+    </motion.div>
+  );
+};
+
+const ScrollCoverCarousel: React.FC<{ images: CarouselImage[]; label?: string }> = ({ images, label }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  const n = images.length;
+
+  return (
+    // Outer: n × 100vh tall — this provides the scroll travel distance.
+    <div ref={containerRef} style={{ height: `${n * 100}vh` }}>
+      {/* Sticky inner — sits fixed in the viewport while the outer scrolls */}
+      <div className="sticky top-0 h-screen overflow-hidden bg-black">
+        {label && (
+          <div className="absolute top-4 left-6 sm:left-10 z-[50] pointer-events-none">
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs font-bold uppercase tracking-widest">
+              {label}
+            </span>
+          </div>
+        )}
+        {images.map((image, i) => (
+          <ScrollLayer
+            key={image.src}
+            image={image}
+            index={i}
+            total={n}
+            scrollYProgress={scrollYProgress}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 // ─── PhotographyPage ──────────────────────────────────────────────────────────
 
@@ -282,9 +335,10 @@ const PhotographyPage: React.FC = () => {
       </section>
 
       {/* ── Property and Product Photography ── */}
-      <section ref={propertyRef} className="py-24 bg-slate-50 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={stagger} initial="hidden" animate={propertyInView ? 'visible' : 'hidden'} className="mb-12">
+      <section ref={propertyRef} className="bg-slate-50 border-t border-slate-100">
+        {/* Header */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+          <motion.div variants={stagger} initial="hidden" animate={propertyInView ? 'visible' : 'hidden'}>
             <motion.div variants={fadeUp}><SectionLabel label="Property & Product" /></motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-4xl sm:text-5xl font-black text-slate-900">
               Property and Product Photography
@@ -296,20 +350,16 @@ const PhotographyPage: React.FC = () => {
               Our photography is ideal for websites, property listings, catalogues, advertising campaigns, social media and corporate profiles, helping your brand attract attention, build credibility and inspire customers to take action.
             </motion.p>
           </motion.div>
+        </div>
 
-          {/* Gallery */}
-          <motion.div
-            variants={stagger} initial="hidden" animate={propertyInView ? 'visible' : 'hidden'}
-            className="grid sm:grid-cols-2 gap-6 mb-10"
-          >
-            {PROPERTY_GALLERY.map((img, i) => (
-              <motion.div key={img.src} custom={i} variants={fadeUp} className="rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
-              </motion.div>
-            ))}
-          </motion.div>
+        {/* Scroll-driven full-width carousel */}
+        <ScrollCoverCarousel
+          images={PROPERTY_GALLERY}
+          label="Property & Product"
+        />
 
-          {/* Videos */}
+        {/* Videos */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <motion.div variants={stagger} initial="hidden" animate={propertyInView ? 'visible' : 'hidden'}>
             <motion.p variants={fadeUp} className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-5">Featured Videos</motion.p>
             <div className="grid sm:grid-cols-2 gap-6">
@@ -379,12 +429,12 @@ const PhotographyPage: React.FC = () => {
         )}
       </section>
 
-      {/* ── Responsive Carousel Gallery ── */}
+      {/* ── Sample Photos: standard carousel ── */}
       <section ref={galleryRef} className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={stagger} initial="hidden" animate={galleryInView ? 'visible' : 'hidden'} className="text-center mb-12">
             <motion.div variants={fadeUp}><SectionLabel label="Portfolio" center /></motion.div>
-            <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">Visual Portfolio</motion.h2>
+            <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">Sample Photos</motion.h2>
             <motion.p variants={fadeUp} className="mt-4 text-slate-500 text-lg max-w-2xl mx-auto">
               Browse our latest photography highlights. Use the arrows to move through the gallery.
             </motion.p>
@@ -402,12 +452,13 @@ const PhotographyPage: React.FC = () => {
                 alt: image.alt,
                 caption: image.caption,
                 description: image.description,
+                objectPosition: image.objectPosition,
               }))}
               variant="showcase"
               showMeta={false}
               imageClickable={false}
               showCardBorder={false}
-              aspectClassName="aspect-[4/3]"
+              aspectClassName="aspect-[3/4]"
               className="rounded-[2rem]"
             />
           </motion.div>
