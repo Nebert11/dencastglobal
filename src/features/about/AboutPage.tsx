@@ -185,7 +185,7 @@ const DEFAULT_CONTENT: AboutContent = {
 };
 
 const JOURNEY_IMAGES = [
-  { src: '/dencast_images/journey1.jpg', objectPosition: 'center 38%' },
+  { src: '/dencast_images/journey1.jpg', objectPosition: 'center 110%' },
   { src: '/dencast_images/journey2.jpg', objectPosition: 'center 15%' },
   { src: '/dencast_images/journey3.jpg', objectPosition: 'center' },
 ];
@@ -462,7 +462,7 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
 
           <motion.div variants={stagger} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="lg:pl-4 max-w-2xl">
             <motion.div variants={fadeUp}>
-              <SectionLabel label="Our Vision" />
+              <SectionLabel label="Our Story" />
             </motion.div>
             <motion.h2 variants={fadeUp} className="mt-4 text-5xl sm:text-6xl font-black text-slate-900 leading-tight">
               {content.storyTitle}

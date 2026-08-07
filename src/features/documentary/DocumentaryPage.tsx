@@ -61,7 +61,7 @@ const DocumentaryPage: React.FC = () => {
       <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+          style={{ backgroundImage: 'url(/dencast_images/doc_hero.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/90" />
 
@@ -169,7 +169,7 @@ const DocumentaryPage: React.FC = () => {
             >
               <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <img
-                  src="https://images.pexels.com/photos/3756132/pexels-photo-3756132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  src="/dencast_images/doc3.jpg"
                   alt="Documentary filming"
                   className="w-full h-full object-cover"
                 />
@@ -240,36 +240,37 @@ const DocumentaryPage: React.FC = () => {
             className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl"
           >
             <div className="relative aspect-[4/3] lg:aspect-auto">
-              <img
-                src="https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Voices of the Nile"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                  <Play size={24} className="text-white ml-1" fill="white" />
-                </div>
+              <div className="w-full h-full bg-black">
+                <iframe
+                  src="https://www.youtube.com/embed/WDHIUaR6i-c?rel=0&modestbranding=1&playsinline=1"
+                  title="Sasini PLC Sustainability Documentary 2023"
+                  className="w-full h-full"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
               </div>
             </div>
             <div className="bg-[#25408F] p-10 flex flex-col justify-center">
               <span className="text-[#D3232E] text-xs font-bold uppercase tracking-widest mb-3">Featured Documentary</span>
-              <h3 className="text-3xl font-black text-white mb-4">Voices of the Nile</h3>
+              <h3 className="text-3xl font-black text-white mb-4">Sasini PLC Sustainability Documentary 2023</h3>
               <p className="text-white/80 leading-relaxed mb-6">
-                A cinematic journey through the lives of communities who depend on the Nile — from the Ethiopian highlands to the Egyptian delta. This feature documentary sparked two parliamentary debates and reached 2.3 million viewers in its first 90 days.
+                This documentary highlights Sasini PLC's sustainability journey across responsible farming, environmental stewardship, and community impact. The film was crafted to communicate long-term value, transparency, and measurable progress to stakeholders.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
-                {[['Best Documentary', 'FESPACO 2024'], ['Al Jazeera', 'International Broadcast'], ['22', 'Countries Screened'], ['2.3M', 'Digital Views']].map(([val, lbl]) => (
+                {[['Client', 'Sasini PLC'], ['Format', 'Sustainability Documentary'], ['Platform', 'YouTube Release'], ['Focus', 'ESG & Community Impact']].map(([val, lbl]) => (
                   <div key={lbl} className="bg-white/10 rounded-xl p-4">
                     <p className="text-white font-black text-xl">{val}</p>
                     <p className="text-white/60 text-xs mt-0.5">{lbl}</p>
                   </div>
                 ))}
               </div>
-              <Link to="/portfolio/voices-of-the-nile">
+              <a href="https://www.youtube.com/watch?v=WDHIUaR6i-c" target="_blank" rel="noopener noreferrer">
                 <Button variant="primary" size="md" rightIcon={<ArrowRight size={15} />}>
-                  View Full Case Study
+                  Watch Documentary
                 </Button>
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>

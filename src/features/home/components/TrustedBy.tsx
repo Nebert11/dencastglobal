@@ -15,10 +15,14 @@ const FALLBACK_CLIENTS: Array<{ id: string; name: string }> = [
   { id: '6', name: 'Knowledge Empowering Youth' },
   { id: '7', name: 'RHNK' },
   { id: '8', name: 'Michezo Africa' },
-  { id: '9', name: 'ELF Africa' },
+  { id: '9', name: 'ELF' },
   { id: '10', name: 'Ibac' },
   { id: '11', name: 'Bible Society of Kenya' },
   { id: '12', name: 'Image Registrars' },
+  { id: '13', name: 'European Investment Bank' },
+  { id: '14', name: 'CAPA France' },
+  { id: '15', name: 'IPPF' },
+  { id: '16', name: 'Eleon Inn' },
 ];
 
 interface TrustedByProps {

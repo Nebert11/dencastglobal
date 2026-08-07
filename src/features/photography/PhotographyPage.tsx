@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
-  Camera, Monitor, Users, Package, Edit3,
-  Navigation, ChevronRight, ArrowRight, CheckCircle2,
+  Camera, Monitor, Users, Package, Edit3, Navigation, ArrowRight,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -22,17 +21,17 @@ const PHOTO_CATEGORIES = [
   { icon: Edit3, title: 'Editorial Photography', desc: 'Magazine-quality imagery for publications, campaigns, and brand storytelling.' },
 ];
 
-const CAMERAS = [
-  { name: 'Sony A7R V', type: 'Photography' },
-  { name: 'Phase One XF', type: 'Photography' },
-  { name: 'Canon EOS R5', type: 'Photography' },
-  { name: 'Hasselblad X2D', type: 'Photography' },
-  { name: 'DJI Inspire 3', type: 'Drone' },
-  { name: 'Sony FE 24-70mm GM II', type: 'Lenses' },
-  { name: 'Sony FE 70-200mm GM OSS II', type: 'Lenses' },
-  { name: 'Sigma Art Prime Set', type: 'Lenses' },
-  { name: 'Profoto B10X Plus', type: 'Lighting' },
-];
+// const CAMERAS = [
+//   { name: 'Sony A7R V', type: 'Photography' },
+//   { name: 'Phase One XF', type: 'Photography' },
+//   { name: 'Canon EOS R5', type: 'Photography' },
+//   { name: 'Hasselblad X2D', type: 'Photography' },
+//   { name: 'DJI Inspire 3', type: 'Drone' },
+//   { name: 'Sony FE 24-70mm GM II', type: 'Lenses' },
+//   { name: 'Sony FE 70-200mm GM OSS II', type: 'Lenses' },
+//   { name: 'Sigma Art Prime Set', type: 'Lenses' },
+//   { name: 'Profoto B10X Plus', type: 'Lighting' },
+// ];
 
 const GALLERY_IMAGES = [
   { src: '/dencast_images/photography/photo1.jpg',  alt: 'Photography portfolio image 1',  caption: 'Professional Photography', description: '', objectPosition: 'center top' },
@@ -97,12 +96,12 @@ const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } 
 const PhotographyPage: React.FC = () => {
   const photoRef = useRef(null);
   const galleryRef = useRef(null);
-  const equipRef = useRef(null);
+  // const equipRef = useRef(null);
   const propertyRef = useRef(null);
 
   const photoInView = useInView(photoRef, { once: true, margin: '-80px' });
   const galleryInView = useInView(galleryRef, { once: true, margin: '-80px' });
-  const equipInView = useInView(equipRef, { once: true, margin: '-80px' });
+  // const equipInView = useInView(equipRef, { once: true, margin: '-80px' });
   const propertyInView = useInView(propertyRef, { once: true, margin: '-80px' });
 
   return (
@@ -126,9 +125,9 @@ const PhotographyPage: React.FC = () => {
             className="flex items-center justify-center gap-2 text-white/50 text-sm mb-8"
           >
             <Link to="/" className="hover:text-white">Home</Link>
-            <ChevronRight size={14} />
+            {/* <ChevronRight size={14} /> */}
             <Link to="/services" className="hover:text-white">Services</Link>
-            <ChevronRight size={14} />
+            {/* <ChevronRight size={14} /> */}
             <span className="text-white">Photography</span>
           </motion.nav>
 
@@ -301,7 +300,7 @@ const PhotographyPage: React.FC = () => {
       </section>
 
       {/* ── Equipment ── */}
-      <section ref={equipRef} className="py-24 bg-slate-50">
+      {/* <section ref={equipRef} className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={stagger} initial="hidden" animate={equipInView ? 'visible' : 'hidden'} className="text-center mb-12">
             <motion.div variants={fadeUp}><SectionLabel label="Equipment" center /></motion.div>
@@ -326,7 +325,7 @@ const PhotographyPage: React.FC = () => {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── CTA ── */}
       <section className="py-20 bg-gradient-to-br from-[#25408F] to-[#001f3f]">

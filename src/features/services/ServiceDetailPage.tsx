@@ -87,7 +87,7 @@ const toYoutubeEmbedUrl = (url: string) => {
 
 const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
   'documentary-production': {
-    heroImage: '/dencast_images/DOCUMENTARY.png',
+    heroImage: '/dencast_images/doc_hero.jpg',
     overview: 'Our documentary production team brings decades of combined experience to every project. We handle everything from the initial concept and research phase through principal photography, post-production, and final distribution — ensuring your story reaches the audience it deserves.',
     features: ['4K & 8K Cinema Camera Packages', 'Multi-lingual production capability', 'Archival research & fact-checking', 'Original score composition', 'Festival submission strategy', 'International distribution network', 'Subtitling & localisation'],
     mediaSectionTitle: 'Documentaries',
@@ -224,9 +224,9 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     mediaSectionTitle: 'Corporate Productions',
     mediaLinks: [
       { title: 'Sasini Impact Corporate Film', url: 'https://www.youtube.com/watch?v=F0sANQiiRxE&t=33s' },
-      { title: 'Corporate Production 2', url: 'https://www.youtube.com/watch?v=kIpukvtuV48' },
+      { title: 'RHNK Youth Caravan', url: 'https://www.youtube.com/watch?v=kIpukvtuV48' },
       { title: 'RHNK How to Register, Submit Abstract and Become a Conference Sponsor ', url: 'https://www.youtube.com/watch?v=TZSWsi-XMn8&t=19s' },
-      { title: 'Corporate Production 4', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
+      { title: 'RHNK Pan AFrican Conference 2026', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
     ],
     whyUs: [
       { icon: Eye, title: 'Board-Level Experience', desc: 'We understand corporate governance and produce content that satisfies all stakeholders.' },

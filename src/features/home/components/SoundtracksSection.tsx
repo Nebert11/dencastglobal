@@ -13,7 +13,7 @@ const SoundtracksSection: React.FC = () => {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'url(/dencast_images/MUSIC.png)',
+          backgroundImage: 'url(/dencast_images/DIGITAL.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
