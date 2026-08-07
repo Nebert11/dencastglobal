@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import {
   Hexagon, PenTool, BookOpen, Target,
   Share2, FileText, ChevronRight, ArrowRight,
-  CheckCircle2, Sparkles, TrendingUp, Users,
+  CheckCircle2, Sparkles, TrendingUp,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -60,7 +60,7 @@ const CASE_STUDIES = [
   },
 ];
 
-const DESIGN_PORTFOLIO = ['3756132', '3866149', '3379932', '2379004', '1181686', '1516680'];
+// const DESIGN_PORTFOLIO = ['3756132', '3866149', '3379932', '2379004', '1181686', '1516680'];
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
@@ -76,12 +76,12 @@ const BrandingPage: React.FC = () => {
   const servicesRef = useRef(null);
   const processRef = useRef(null);
   const caseRef = useRef(null);
-  const portfolioRef = useRef(null);
+  // const portfolioRef = useRef(null);
 
   const servicesInView = useInView(servicesRef, { once: true, margin: '-80px' });
   const processInView = useInView(processRef, { once: true, margin: '-80px' });
   const caseInView = useInView(caseRef, { once: true, margin: '-80px' });
-  const portfolioInView = useInView(portfolioRef, { once: true, margin: '-80px' });
+  // const portfolioInView = useInView(portfolioRef, { once: true, margin: '-80px' });
 
   return (
     <>
