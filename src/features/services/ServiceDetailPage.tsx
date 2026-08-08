@@ -66,19 +66,19 @@ const SOUND_SAMPLE_IMAGES = [
 const SOUNDTRACK_MP3S = [
   {
     title: 'Bungoma',
-    url: '/soundtracks%20/bungoma.mp3',
+    url: '/soundtracks/bungoma.mp3',
   },
   {
     title: 'EU Wajir',
-    url: '/soundtracks%20/eu-wajir.wav',
+    url: '/soundtracks/eu-wajir.wav',
   },
   {
     title: 'Michezo Afrika',
-    url: '/soundtracks%20/michezo-afrika.mp3',
+    url: '/soundtracks/michezo-afrika.mp3',
   },
   {
     title: 'Sasini',
-    url: '/soundtracks%20/sasini.wav',
+    url: '/soundtracks/sasini.wav',
   },
 ];
 
