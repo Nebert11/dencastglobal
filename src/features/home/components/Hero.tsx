@@ -186,15 +186,6 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         }}
       />
 
-      {/* ── Decorative diagonal stripe ── */}
-      <div
-        className="absolute -right-32 top-0 w-[500px] h-full z-10 opacity-10 pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(135deg, transparent 45%, #D3232E 45%, #D3232E 55%, transparent 55%)',
-        }}
-      />
-
       {/* ── Floating shapes ── */}
       <FloatingShape size={400} top="-10%" right="-5%" delay={0} color="#25408F" opacity={0.12} />
       <FloatingShape size={250} top="60%" left="-5%" delay={2} color="#D3232E" opacity={0.08} />
