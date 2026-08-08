@@ -146,7 +146,7 @@ const BlogPage: React.FC = () => {
           </motion.nav>
         </div> */}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
+        {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl sm:text-6xl font-black text-white"
@@ -160,7 +160,7 @@ const BlogPage: React.FC = () => {
           >
             Ideas, perspectives and conversations from across industries, communities and everyday life — exploring the issues, innovations, people and stories shaping our world.
           </motion.p>
-        </div>
+        </div> */}
         
 
       </section>

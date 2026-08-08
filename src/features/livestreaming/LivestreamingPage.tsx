@@ -43,10 +43,10 @@ const PLATFORMS = [
 ];
 
 const PAST_EVENTS = [
-  { title: 'Pan-African Economic Forum', image: '2873486', summary: 'Large-scale conference livestream and production support.' },
-  { title: 'Afropop World Festival', image: '1884577', summary: 'Live concert coverage with dynamic multi-camera direction.' },
-  { title: 'Ghana Tech Summit', image: '3756132', summary: 'Hybrid summit stream with branded graphics and reliable delivery.' },
-  { title: 'Africa CEO Forum', image: '7034014', summary: 'Executive event livestreaming and audience engagement production.' },
+  { title: 'Pan-African Economic Forum', image: '/dencast_images/conference.jpg', summary: 'Large-scale conference livestream and production support.' },
+  { title: 'Afropop World Festival', image: '/dencast_images/entertainment.jpg', summary: 'Live concert coverage with dynamic multi-camera direction.' },
+  { title: 'Ghana Tech Summit', image: '/dencast_images/events.jpg', summary: 'Hybrid summit stream with branded graphics and reliable delivery.' },
+  { title: 'Africa CEO Forum', image: '/dencast_images/MICE.jpg', summary: 'Executive event livestreaming and audience engagement production.' },
 ];
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
@@ -79,7 +79,7 @@ const LivestreamingPage: React.FC = () => {
       <section className="relative min-h-[60vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#001f3f]">
         <div
           className="absolute inset-0 opacity-30"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+          style={{ backgroundImage: 'url(/dencast_images/liveevent.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
         
         <div className="absolute inset-0 bg-gradient-to-b from-[#001f3f]/80 via-transparent to-[#001f3f]" />
 
@@ -243,7 +243,7 @@ const LivestreamingPage: React.FC = () => {
               >
                 <div className="relative aspect-video overflow-hidden">
                   <img
-                    src={`https://images.pexels.com/photos/${event.image}/pexels-photo-${event.image}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
+                    src={event.image}
                     alt={event.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />

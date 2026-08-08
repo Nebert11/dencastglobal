@@ -26,7 +26,13 @@ const CATEGORIES = [
     id: 'production',
     label: 'Production',
     color: '#25408F',
-    slugs: ['documentary-production', 'livestreaming-events', 'videography', 'commercial-productions', 'events-management'],
+    slugs: [
+      'documentary-production',
+      'livestreaming-events',
+      'videography',
+      // 'commercial-productions',
+      'events-management',
+    ],
   },
   {
     id: 'photography',

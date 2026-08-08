@@ -51,7 +51,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: 'Dennis Machio',
     authorRole: 'Film Writer & Production Communications',
     authorBio:
-      'Carolyne writes about production realities in Kenya, helping international crews understand locations, regulation, and practical execution.',
+      'Dennis writes about production realities in Kenya, helping international crews understand locations, regulation, and practical execution.',
     authorAvatar:
       `${IMAGE_BASE}/dennis_machio.jpg`,
     date: '2026-07-01',
@@ -102,12 +102,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     excerpt:
       'Kenya offers incredible aerial storytelling opportunities, but filmmakers must understand KCAA rules, filming licences, and import requirements before a single drone takes flight.',
     category: 'Technology',
-    author: 'Carolyne Wangare',
+    author: 'Dennis Machio',
     authorRole: 'Film Writer & Production Communications',
     authorBio:
-      'Carolyne covers production operations in Kenya with a focus on compliance, permitting, and location readiness for international crews.',
+      'Dennis covers production operations in Kenya with a focus on compliance, permitting, and location readiness for international crews.',
     authorAvatar:
-      'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+      `${IMAGE_BASE}/crew2.jpg`,
     date: '2026-07-03',
     readTime: '9 min read',
     views: '1,982',
@@ -170,7 +170,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     authorBio:
       'The Dencast Global team supports international productions across permitting, location operations, logistics, and end-to-end in-country execution.',
     authorAvatar:
-      'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+      `${IMAGE_BASE}/TEAM.jpg`,
     date: '2026-07-05',
     readTime: '9 min read',
     views: '2,126',
@@ -218,7 +218,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     authorBio:
       'The Dencast Global team supports international productions across permitting, location operations, logistics, and end-to-end in-country execution.',
     authorAvatar:
-      'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+      `${IMAGE_BASE}/TEAM.jpg`,
     date: '2026-07-07',
     readTime: '4 min read',
     views: '1,344',
@@ -256,11 +256,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     authorBio:
       'The Dencast Global team supports international productions across permitting, location operations, logistics, and end-to-end in-country execution.',
     authorAvatar:
-      'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2',
+      `${IMAGE_BASE}/TEAM.jpg`,
     date: '2026-07-09',
     readTime: '3 min read',
     views: '1,102',
-    coverImage: `${IMAGE_BASE}/WEBSITE_PHOTOGRAPHY.jpg`,
+    coverImage: `${IMAGE_BASE}/photography1.jpg`,
     tags: ['Production Guide', 'Kenya', 'International Crews', 'Logistics'],
     tableOfContents: [
       { id: 'plan-early', label: 'Plan Early, Film Smoothly' },
@@ -293,7 +293,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     authorRole: 'Creative Strategy Desk',
     authorBio:
       'The Dencast strategy desk publishes practical guidance on storytelling formats, content performance, and modern media production decisions for growth-focused brands.',
-    authorAvatar: `${IMAGE_BASE}/caroline_wangamati.jpg`,
+    authorAvatar: `${IMAGE_BASE}/19.jpg`,
     date: '2026-08-01',
     readTime: '6 min read',
     views: '914',
@@ -503,7 +503,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-20',
     readTime: '7 min read',
     views: '1,240',
-    coverImage: `${IMAGE_BASE}/WEBSITE-PHOTO.jpg`,
+    coverImage: '/articles_and_insights /apply-for-passport.jpg',
     tags: ['Passport', 'eCitizen', 'Kenya', 'Immigration', 'Travel'],
     tableOfContents: [
       { id: 'documents', label: 'Documents Required' },
@@ -577,7 +577,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-22',
     readTime: '8 min read',
     views: '3,015',
-    coverImage: `${IMAGE_BASE}/DIGITAL.png`,
+    coverImage: '/articles_and_insights /file-tax.jpg',
     tags: ['KRA', 'Tax Returns', 'iTax', 'Kenya', 'Finance', 'Business'],
     tableOfContents: [
       { id: 'who-must-file', label: 'Who Must File KRA Returns?' },
@@ -647,7 +647,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-25',
     readTime: '6 min read',
     views: '2,190',
-    coverImage: `${IMAGE_BASE}/WEBSITE-PHOTO.jpg`,
+    coverImage: `${IMAGE_BASE}/DIGITAL.png`,
     tags: ['Certificate of Good Conduct', 'Police Clearance', 'DCI', 'eCitizen', 'Kenya'],
     tableOfContents: [
       { id: 'what-you-need', label: 'What You Need Before Applying' },
@@ -706,7 +706,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-28',
     readTime: '7 min read',
     views: '4,320',
-    coverImage: `${IMAGE_BASE}/WEBSITE-PHOTO.jpg`,
+    coverImage: '/articles_and_insights /good-conduct.jpg',
     tags: ['HELB', 'University Funding', 'Kenya', 'Students', 'Education', 'HEF'],
     tableOfContents: [
       { id: 'what-is-helb', label: 'What is HELB?' },
@@ -849,7 +849,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-08-01',
     readTime: '5 min read',
     views: '2,780',
-    coverImage: `${IMAGE_BASE}/WEBSITE-PHOTO.jpg`,
+    coverImage: '/articles_and_insights /driving-license.jpg',
     tags: ['Driving Licence', 'NTSA', 'eCitizen', 'Kenya', 'Transport'],
     tableOfContents: [
       { id: 'what-you-need', label: 'What You Need' },
@@ -908,7 +908,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-08-04',
     readTime: '8 min read',
     views: '3,650',
-    coverImage: `${IMAGE_BASE}/DIGITAL.png`,
+    coverImage: '/articles_and_insights /apply-for-business.jpg',
     tags: ['Business Registration', 'eCitizen', 'BRS', 'Kenya', 'Entrepreneurship', 'Company'],
     tableOfContents: [
       { id: 'structure', label: 'Choose a Business Structure' },

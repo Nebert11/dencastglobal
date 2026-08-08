@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation as SwiperNavigation, Autoplay } from 'swiper/modules';
@@ -24,6 +24,7 @@ interface PhotoCarouselProps {
   variant?: 'default' | 'showcase';
   showMeta?: boolean;
   imageClickable?: boolean;
+  viewerMode?: 'standard' | 'immersive';
 }
 
 const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
@@ -37,10 +38,27 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   variant = 'default',
   showMeta = true,
   imageClickable = true,
+  viewerMode = 'standard',
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+
+  useEffect(() => {
+    if (activeIndex === null) return;
+
+    const { body, documentElement } = document;
+    const previousBodyOverflow = body.style.overflow;
+    const previousHtmlOverflow = documentElement.style.overflow;
+
+    body.style.overflow = 'hidden';
+    documentElement.style.overflow = 'hidden';
+
+    return () => {
+      body.style.overflow = previousBodyOverflow;
+      documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [activeIndex]);
 
   if (!items.length) return null;
 
@@ -160,14 +178,21 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
 
       {activeItem && activeIndex !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-50 bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
           onClick={() => setActiveIndex(null)}
           role="dialog"
           aria-modal="true"
           aria-label={title ?? activeItem.alt}
         >
-          <div className="relative w-full max-w-6xl" onClick={(event) => event.stopPropagation()}>
-            <div className="absolute -top-14 left-0 right-0 flex items-center justify-between gap-4 text-white/85">
+          <div
+            className={viewerMode === 'immersive'
+              ? 'relative  w-full max-w-[1400px] h-[72vh] sm:w-[80vw] sm:h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10'
+              : 'relative w-full max-w-6xl'}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className={viewerMode === 'immersive'
+              ? 'absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80'
+              : 'absolute -top-14 left-0 right-0 flex items-center justify-between gap-4 text-white/85'}>
               <div>
                 {title && <p className="text-xs uppercase tracking-widest text-white/50 mb-1">{title}</p>}
                 <p className="text-sm sm:text-base font-semibold">{activeItem.caption ?? activeItem.alt}</p>
@@ -182,11 +207,15 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
               </button>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl">
+            <div className={viewerMode === 'immersive'
+              ? 'relative w-full h-full bg-black'
+              : 'relative rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl'}>
               <img
                 src={activeItem.src}
                 alt={activeItem.alt}
-                className="w-full max-h-[82vh] object-contain bg-black"
+                className={viewerMode === 'immersive'
+                  ? 'w-full h-full object-contain bg-black'
+                  : 'w-full max-h-[82vh] object-contain bg-black'}
               />
             </div>
 

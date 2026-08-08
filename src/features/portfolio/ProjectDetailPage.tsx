@@ -188,7 +188,7 @@ const PROJECTS: Record<string, ProjectData> = {
     category: 'Corporate',
     client: 'European Union Delegation in Kenya',
     date: '2022 – Present',
-    heroImage: '/dencast_images/africatalyst.jpg',
+    heroImage: '/dencast_images/eu1.jpg',
     excerpt: 'Supporting the EU Delegation in Kenya with high-quality video productions that amplify their programmes and digital communication strategy.',
     description:
       'Dencast Global has partnered with the European Union Delegation in Kenya to produce a wide range of media content — from event coverage and promotional videos to digital storytelling that communicates the EU\'s development programmes and partnerships across the country.\n\nOur productions span conferences, ceremonies, ambassador events, and key milestones in the EU–Kenya relationship, captured with cinematic precision and delivered to global standards.\n\nAt Dencast Global, we believe in the power of visual storytelling to inspire change, engage audiences, and elevate brands. Partner with us, and let\'s bring your vision to life.',

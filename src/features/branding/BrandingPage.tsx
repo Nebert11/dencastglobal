@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import {
   Hexagon, PenTool, BookOpen, Target,
   Share2, FileText, ChevronRight, ArrowRight,
-  CheckCircle2, Sparkles, TrendingUp,
+  CheckCircle2, Sparkles,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -30,16 +30,16 @@ const BRAND_PROCESS = [
   { step: '05', title: 'Handover & Support', desc: 'Complete brand guidelines, asset library delivery, and ongoing brand stewardship.' },
 ];
 
-const CASE_STUDIES = [
-  {
-    brand: 'Kasei Finance',
-    category: 'FinTech',
-    challenge: 'Launch a new fintech brand that builds trust among skeptical African consumers.',
-    result: 'Brand reached 500K impressions in 90 days. 40% increase in sign-up conversion.',
-    before: '3379934',
-    after: '2873486',
-    color: '#25408F',
-  },
+// const CASE_STUDIES = [
+//   {
+//     brand: 'Kasei Finance',
+//     category: 'FinTech',
+//     challenge: 'Launch a new fintech brand that builds trust among skeptical African consumers.',
+//     result: 'Brand reached 500K impressions in 90 days. 40% increase in sign-up conversion.',
+//     before: '3379934',
+//     after: '2873486',
+//     color: '#25408F',
+//   },
   // {
   //   brand: 'Nkosuo Farms',
   //   category: 'AgriTech',
@@ -49,16 +49,16 @@ const CASE_STUDIES = [
   //   after: '3756132',
   //   color: '#2e7d32',
   // },
-  {
-    brand: 'Accra Fashion House',
-    category: 'Luxury Retail',
-    challenge: 'Create a premium brand identity for Africa\'s first fashion conglomerate.',
-    result: '3 international stockists signed. Brand featured in Vogue Africa & Forbes.',
-    before: '7034014',
-    after: '7247399',
-    color: '#D3232E',
-  },
-];
+  // {
+  //   brand: 'Accra Fashion House',
+  //   category: 'Luxury Retail',
+  //   challenge: 'Create a premium brand identity for Africa\'s first fashion conglomerate.',
+  //   result: '3 international stockists signed. Brand featured in Vogue Africa & Forbes.',
+  //   before: '7034014',
+  //   after: '7247399',
+  //   color: '#D3232E',
+  // },
+// ];
 
 // const DESIGN_PORTFOLIO = ['3756132', '3866149', '3379932', '2379004', '1181686', '1516680'];
 
@@ -75,12 +75,12 @@ const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } 
 const BrandingPage: React.FC = () => {
   const servicesRef = useRef(null);
   const processRef = useRef(null);
-  const caseRef = useRef(null);
+  // const caseRef = useRef(null);
   // const portfolioRef = useRef(null);
 
   const servicesInView = useInView(servicesRef, { once: true, margin: '-80px' });
   const processInView = useInView(processRef, { once: true, margin: '-80px' });
-  const caseInView = useInView(caseRef, { once: true, margin: '-80px' });
+  // const caseInView = useInView(caseRef, { once: true, margin: '-80px' });
   // const portfolioInView = useInView(portfolioRef, { once: true, margin: '-80px' });
 
   return (
@@ -94,7 +94,7 @@ const BrandingPage: React.FC = () => {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: 'url(https://images.pexels.com/photos/7034014/pexels-photo-7034014.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2)' }}
+          style={{ backgroundImage: 'url(/dencast_images/graphics/RHNKgraphics.jpg)' }}
         />
         {/* Animated gradient */}
         <motion.div
@@ -216,7 +216,7 @@ const BrandingPage: React.FC = () => {
       </section>
 
       {/* ── Case Studies ── */}
-      <section ref={caseRef} className="py-24 bg-slate-50">
+      {/* <section ref={caseRef} className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={stagger} initial="hidden" animate={caseInView ? 'visible' : 'hidden'} className="mb-12">
             <motion.div variants={fadeUp}><SectionLabel label="Case Studies" /></motion.div>
@@ -235,7 +235,7 @@ const BrandingPage: React.FC = () => {
                 <div className={`relative ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
                   <div className="aspect-[4/3]">
                     <img
-                      src={`https://images.pexels.com/photos/${study.after}/pexels-photo-${study.after}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
+                      src="/dencast_images/WEBSITE-PHOTO.jpg"
                       alt={study.brand}
                       className="w-full h-full object-cover"
                     />
@@ -273,7 +273,7 @@ const BrandingPage: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Design Portfolio Grid ── */}
       {/* <section ref={portfolioRef} className="py-24 bg-white">
@@ -295,7 +295,7 @@ const BrandingPage: React.FC = () => {
                 className="relative overflow-hidden rounded-2xl aspect-square group"
               >
                 <img
-                  src={`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
+                  src="/dencast_images/WEBSITE_PHOTOGRAPHY.jpg"
                   alt={`Branding portfolio ${i + 1}`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

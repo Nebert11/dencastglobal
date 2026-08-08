@@ -29,10 +29,10 @@ const MediaCard: React.FC<MediaCardProps> = ({
   const href = type === 'service' ? `/services/${slug}` : `/portfolio/${slug}`;
   const cta  = type === 'service' ? 'View Service' : 'View Project';
 
-  // Handle both local images and Pexels IDs
+  // Handle both local image paths and fallback safely to a Dencast asset.
   const imageUrl = image.includes('/') || image.includes('.')
     ? image
-    : `https://images.pexels.com/photos/${image}/pexels-photo-${image}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`;
+    : '/dencast_images/WEBSITE-PHOTO.jpg';
 
   return (
     <Link to={href} className={cn('block group outline-none', className)}>

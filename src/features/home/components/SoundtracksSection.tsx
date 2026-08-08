@@ -13,8 +13,8 @@ const SoundtracksSection: React.FC = () => {
         className="absolute inset-0"
         style={{
           backgroundImage: 'url(/dencast_images/DIGITAL.png)',
-          backgroundSize: 'contain',
-          backgroundPosition: 'right center',
+          backgroundSize: 'cover',
+          backgroundPosition: 'right 34%',
           backgroundRepeat: 'no-repeat',
         }}
         aria-hidden="true"
@@ -24,7 +24,7 @@ const SoundtracksSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" aria-hidden="true" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-24">
+      <div className="relative z-10 w-[70%] px-4 sm:px-6 lg:px-10 py-24">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

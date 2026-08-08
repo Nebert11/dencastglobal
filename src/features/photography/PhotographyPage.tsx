@@ -242,6 +242,8 @@ const PhotographyPage: React.FC = () => {
             }))}
             variant="showcase"
             showMeta={false}
+            imageClickable
+            viewerMode="immersive"
             showCardBorder={false}
             aspectClassName="aspect-[4/3]"
             className="rounded-[2rem]"
@@ -320,17 +322,16 @@ const PhotographyPage: React.FC = () => {
         modalRoot,
       )}
 
-      {/* ── Sample Photos: standard carousel ── */}
+      {/* ── Photography Portfolio ── */}
       <section ref={galleryRef} className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={stagger} initial="hidden" animate={galleryInView ? 'visible' : 'hidden'} className="text-center mb-12">
             <motion.div variants={fadeUp}><SectionLabel label="Portfolio" center /></motion.div>
-            <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">Sample Photos</motion.h2>
+            <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">Photography Portfolio</motion.h2>
             <motion.p variants={fadeUp} className="mt-4 text-slate-500 text-lg max-w-2xl mx-auto">
-              Browse our latest photography highlights. Use the arrows to move through the gallery.
+              Browse our latest photography highlights. Click any image to open it in a larger view.
             </motion.p>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={galleryInView ? { opacity: 1, y: 0 } : {}}
@@ -348,6 +349,7 @@ const PhotographyPage: React.FC = () => {
               variant="showcase"
               showMeta={false}
               imageClickable
+              viewerMode="immersive"
               showCardBorder={false}
               aspectClassName="aspect-[3/4]"
               className="rounded-[2rem]"

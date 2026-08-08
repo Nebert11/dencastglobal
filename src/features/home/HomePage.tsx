@@ -96,7 +96,7 @@ const HomePage: React.FC = () => {
           content="Premium creative media, film production, and brand storytelling from the heart of Africa to the world."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://images.pexels.com/photos/3379934/pexels-photo-3379934.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <meta property="og:image" content="https://www.dencastglobal.com/dencast_images/BANNER.png" />
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${SITE_NAME} — ${SITE_TAGLINE}`} />

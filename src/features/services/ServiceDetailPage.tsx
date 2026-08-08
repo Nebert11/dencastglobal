@@ -118,6 +118,8 @@ const getYoutubeId = (url: string) => {
   }
 };
 
+const isVideoAsset = (path: string) => /\.(mp4|webm|ogg)$/i.test(path);
+
 const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
   'documentary-production': {
     heroImage: '/dencast_images/doc_hero.jpg',
@@ -193,7 +195,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     ],
   },
   'videography': {
-    heroImage: '/dencast_images/9-scaled.jpg',
+    heroImage: '/dencast_images/Dencast-Video.mp4',
     overview: 'High-production-value video content that elevates your brand and drives results. Our videography teams are equipped for everything from intimate interview setups to large multi-camera corporate productions.',
     features: ['Cinema-grade camera packages', 'Professional lighting & grip', 'Colour grading & VFX', 'Motion graphics & animation', 'Multi-format delivery', 'Scripting & storyboarding', '360° video capability'],
     mediaSectionTitle: 'Videography Highlights',
@@ -344,6 +346,7 @@ const ServiceDetailPage: React.FC = () => {
   const mediaVideos = (content.mediaLinks ?? []).filter((item) => isYoutubeUrl(item.url));
   const mediaResources = (content.mediaLinks ?? []).filter((item) => !isYoutubeUrl(item.url));
   const modalRoot = typeof document !== 'undefined' ? document.body : null;
+  const heroIsVideo = isVideoAsset(content.heroImage);
 
   // Related services (3 different ones)
   const relatedServices = SERVICES.filter(s => s.slug !== slug).slice(0, 3);
@@ -359,10 +362,21 @@ const ServiceDetailPage: React.FC = () => {
 
       {/* ── Hero ── */}
       <section ref={heroRef} className="relative min-h-[50vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
-        />
+        {heroIsVideo ? (
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src={content.heroImage}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
