@@ -45,12 +45,12 @@ const GALLERY_IMAGES = [
   { src: '/dencast_images/photography/photo8.jpg',  alt: 'Photography portfolio image 8',  caption: 'Conference Coverage',      description: '', objectPosition: 'center top' },
   { src: '/dencast_images/photography/photo9.jpg',  alt: 'Photography portfolio image 9',  caption: 'Live Event Capture',       description: '', objectPosition: 'center top' },
   { src: '/dencast_images/photography/photo10.jpg', alt: 'Photography portfolio image 10', caption: 'Brand Visuals',            description: '', objectPosition: 'center top' },
-  { src: '/dencast_images/photography/photo11.jpg', alt: 'Photography portfolio image 11', caption: 'Documentary Still',        description: '', objectPosition: 'center top' },
+  // { src: '/dencast_images/photography/photo11.jpg', alt: 'Photography portfolio image 11', caption: 'Documentary Still',        description: '', objectPosition: 'center top' },
   { src: '/dencast_images/photography/photo12.jpg', alt: 'Photography portfolio image 12', caption: 'Behind the Lens',          description: '', objectPosition: 'center top' },
   { src: '/dencast_images/photography/photo13.jpg', alt: 'Photography portfolio image 13', caption: 'Candid Moments',           description: '', objectPosition: 'center top' },
   { src: '/dencast_images/photography/photo14.jpg', alt: 'Photography portfolio image 14', caption: 'Stage & Performance',      description: '', objectPosition: 'center top' },
   { src: '/dencast_images/photography/photo15.jpg', alt: 'Photography portfolio image 15', caption: 'Creative Composition',     description: '', objectPosition: 'center top' },
-  { src: '/dencast_images/photography/photo16.jpg', alt: 'Photography portfolio image 16', caption: 'Premium Imagery',          description: '', objectPosition: 'center top' },
+  // { src: '/dencast_images/photography/photo16.jpg', alt: 'Photography portfolio image 16', caption: 'Premium Imagery',          description: '', objectPosition: 'center top' },
 ];
 
 const PROPERTY_GALLERY = [

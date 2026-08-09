@@ -9,7 +9,7 @@ import Button from '@/components/ui/Button';
 // Images
 import work1 from '/dencast_images/sasini_conference.jpg'
 import work2 from '/dencast_images/rhnk.jpg';
-import work3 from '/dencast_images/africatalyst.jpg';
+import work3 from '/dencast_images/eu1.jpg';
 import work4 from '/dencast_images/elf.png';
 import work5 from '/dencast_images/amakowe.jpg';
 import work6 from '/dencast_images/image.png';

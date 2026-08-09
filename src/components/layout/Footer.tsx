@@ -29,7 +29,7 @@ const SERVICES_LINKS = [
   { label: 'Motion Graphics and Creative Design', to: '/services/creative-media' },
   { label: 'Drone Services',           to: '/services/drone-services' },
   { label: 'Corporate Communications', to: '/services/corporate-communications' },
-  { label: 'Commercial Productions',   to: '/services/commercial-productions' },
+  // { label: 'Commercial Productions',   to: '/services/commercial-productions' },
   { label: 'Digital Content Creation', to: '/services/digital-content-creation' },
 ];
 

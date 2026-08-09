@@ -94,7 +94,7 @@ const BrandingPage: React.FC = () => {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: 'url(/dencast_images/graphics/RHNKgraphics.jpg)' }}
+          style={{ backgroundImage: 'url(/dencast_images/graphics/pencil.jpg)' }}
         />
         {/* Animated gradient */}
         <motion.div

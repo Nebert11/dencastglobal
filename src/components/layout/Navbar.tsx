@@ -11,7 +11,6 @@ import {
   Layers,
   Plane,
   Briefcase,
-  Monitor,
   PenTool,
   Menu,
   X,
@@ -67,7 +66,7 @@ const OTHER_SERVICES = [
   { name: 'Motion Graphics and Creative Design', slug: '/services/creative-media', icon: Layers   },
   { name: 'Drone Services',           slug: '/services/drone-services',           icon: Plane    },
   { name: 'Corporate Communications', slug: '/services/corporate-communications', icon: Briefcase },
-  { name: 'Commercial Productions',   slug: '/services/commercial-productions',   icon: Monitor  },
+  // { name: 'Commercial Productions',   slug: '/services/commercial-productions',   icon: Monitor  },
   { name: 'Digital Content Creation', slug: '/services/digital-content-creation', icon: PenTool  },
 ];
 
@@ -108,7 +107,7 @@ const MOBILE_ALL_LINKS = [
   { label: 'Motion Graphics and Creative Design', to: '/services/creative-media', group: 'services' },
   { label: 'Drone Services',            to: '/services/drone-services',           group: 'services' },
   { label: 'Corporate Communications',  to: '/services/corporate-communications', group: 'services' },
-  { label: 'Commercial Productions',    to: '/services/commercial-productions',   group: 'services' },
+  // { label: 'Commercial Productions',    to: '/services/commercial-productions',   group: 'services' },
   { label: 'Digital Content Creation',  to: '/services/digital-content-creation', group: 'services' },
 ];
 

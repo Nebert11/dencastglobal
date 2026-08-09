@@ -185,7 +185,7 @@ const DEFAULT_CONTENT: AboutContent = {
 };
 
 const JOURNEY_IMAGES = [
-  { src: '/dencast_images/journey1.jpg', objectPosition: 'center 110%' },
+  { src: '/dencast_images/journey4.jpg', objectPosition: 'center 110%' },
   { src: '/dencast_images/journey2.jpg', objectPosition: 'center 15%' },
   { src: '/dencast_images/journey3.jpg', objectPosition: 'center' },
 ];
@@ -236,8 +236,8 @@ const CSR_PROGRAMS: CsrProgram[] = [
       'The awards honour excellence while encouraging greater investment, participation and development in regional sports. Through this initiative, we continue to recognise sporting heroes, inspire young talent and highlight the important role of sport in community development.',
     ],
     videos: [
-      { title: 'Magharibi Michezo Awards 1', url: 'https://www.youtube.com/watch?v=SwCPD7KRX0M', duration: '4:15' },
-      { title: 'Magharibi Michezo Awards 2', url: 'https://www.youtube.com/watch?v=Gx5VT0ysbCw', duration: '1:45' },
+      { title: 'Uzani Band Performing at the 2018 Magharibi Michezo Awards', url: 'https://www.youtube.com/watch?v=SwCPD7KRX0M', duration: '4:15' },
+      { title: 'Ageless Producer Dominic Khaemba Thrilling Performance at 2018 MMA', url: 'https://www.youtube.com/watch?v=Gx5VT0ysbCw', duration: '1:45' },
     ],
   },
   {
@@ -247,7 +247,7 @@ const CSR_PROGRAMS: CsrProgram[] = [
       'Through the festival, Dencast Global seeks to preserve regional identity, promote emerging talent and create opportunities for collaboration, visibility and growth within the creative and sporting industries.',
     ],
     videos: [
-      { title: 'Magharibi Festival', url: 'https://www.youtube.com/watch?v=-vNPv6jrRx4', duration: '4:00' },
+      { title: 'Kidun Kibido & The Boda Boda band Performing "Mapenzi" in Live Bungoma Magharibi Festival', url: 'https://www.youtube.com/watch?v=-vNPv6jrRx4', duration: '4:00' },
     ],
   },
   {
@@ -259,11 +259,11 @@ const CSR_PROGRAMS: CsrProgram[] = [
     ],
     videos: [
       {
-        title: 'Music Development and Artist Support 1',
+        title: 'STEVE KAY - Mbe Omukhasi',
         url: 'https://www.youtube.com/watch?v=PJ4HC7318h4&list=RDPJ4HC7318h4&start_radio=1',
         duration: '6:36',
       },
-      { title: 'Music Development and Artist Support 2', url: 'https://www.youtube.com/watch?v=LOL6DHHFLmE', duration: '3:55' },
+      { title: 'VANISSY UWASE - Gharama Ya Wokovu', url: 'https://www.youtube.com/watch?v=LOL6DHHFLmE', duration: '3:55' },
     ],
   },
 ];

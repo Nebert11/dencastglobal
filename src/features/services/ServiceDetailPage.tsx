@@ -122,7 +122,7 @@ const isVideoAsset = (path: string) => /\.(mp4|webm|ogg)$/i.test(path);
 
 const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
   'documentary-production': {
-    heroImage: '/dencast_images/doc_hero.jpg',
+    heroImage: '/dencast_images/doc3.jpg',
     overview: 'Our documentary production team brings decades of combined experience to every project. We handle everything from the initial concept and research phase through principal photography, post-production, and final distribution — ensuring your story reaches the audience it deserves.',
     features: ['4K & 8K Cinema Camera Packages', 'Multi-lingual production capability', 'Archival research & fact-checking', 'Original score composition', 'Festival submission strategy', 'International distribution network', 'Subtitling & localisation'],
     mediaSectionTitle: 'Documentaries',
@@ -147,12 +147,12 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     features: ['Multi-camera live switching', 'Up to 4K streaming resolution', 'Redundant internet connectivity', 'Platform-agnostic delivery', 'Live graphics & lower thirds', 'Real-time audience engagement tools', 'Post-event VOD package'],
     mediaSectionTitle: 'Livestream',
     mediaLinks: [
-      { title: 'Sasini Impact Livestream', url: 'https://www.youtube.com/watch?v=F0sANQiiRxE&t=33s' },
-      { title: 'Tunaweza project report launch  ', url: 'https://www.youtube.com/watch?v=82Ex2fbk96o&t=3979s' },
-      { title: 'Equity Bank 22nd Annual AGM 2026 ', url: 'https://www.youtube.com/watch?v=Mx4MYVYGcnE' },
-      { title: "6TH National ECD Stakeholder's Conference", url: 'https://www.youtube.com/watch?v=Q7H3QgmaKp8&t=5075s' },
-      { title: 'Empowering Women & Men Through Enhanced Childcare Support System ', url: 'https://www.youtube.com/watch?v=eVXun6P1x98' },
-      { title: "6TH National ECD Stakeholder's Conference ", url: 'https://www.youtube.com/watch?v=aMxamcefU8Y&t=5594s' },
+      { title: 'Greening The Future One Tree At A Time', url: 'https://www.youtube.com/watch?v=F0sANQiiRxE&t=33s' },
+      { title: 'Tunaweza Project Report Launch', url: 'https://www.youtube.com/watch?v=82Ex2fbk96o&t=3979s' },
+      { title: 'RHNK Pan African Conference 2026 | Opening Ceremony Livestream', url: 'https://www.youtube.com/watch?v=Mx4MYVYGcnE' },
+      { title: "22nd Annual AGM 2026", url: 'https://www.youtube.com/watch?v=Q7H3QgmaKp8&t=5075s' },
+      { title: "6TH National ECD Stakeholder's Conference - Strategy Commitment & Closure", url: 'https://www.youtube.com/watch?v=eVXun6P1x98' },
+      { title: "Empowering Women & Men Through Enhanced Childcare Support System", url: 'https://www.youtube.com/watch?v=aMxamcefU8Y&t=5594s' },
       // { title: 'Livestream Session 7', url: 'https://www.youtube.com/watch?v=ueiIbj_OiV8&t=4s' },
     ],
     whyUs: [

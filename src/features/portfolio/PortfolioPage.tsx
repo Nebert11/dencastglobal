@@ -13,7 +13,7 @@ import { SITE_NAME } from '@/utils/constants';
 //Images
 import sasiniConference from '/dencast_images/sasini_conference.jpg';
 import amakowe from '/dencast_images/amakowe.jpg';
-import africatalyst from '/dencast_images/africatalyst.jpg';
+import eu from '/dencast_images/eu1.jpg';
 import europeday from '/dencast_images/DSC_3798-scaled.jpg';
 import elf from '/dencast_images/elf.png';
 import event1 from '/dencast_images/event1.jpg';
@@ -21,7 +21,7 @@ import rhnk from '/dencast_images/rhnk.jpg';
 import liveStreaming from '/dencast_images/Virtual-livestreaming-scaled.jpg';
 import whiteBeach from '/dencast_images/White-Beach-Palace.jpg';
 import conference from '/dencast_images/CONFERENCE.png';
-import graphics from '/dencast_images/image.png';
+import graphics from '/dencast_images/graphics/laptop.jpg';
 import ladonaWithCamera from '/dencast_images/9.png';
 
 // ─── Static portfolio data ────────────────────────────────────────────────────
@@ -119,7 +119,7 @@ const getVideoDurationByUrl = (url: string): string => {
 
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
   { id: '1',  slug: 'sasini-sustainability-report', title: 'Sasini Sustainability Report Launch', category: 'Corporate',   image: sasiniConference, featured: true },
-  { id: '3',  slug: 'european-union-videos',         title: 'European Union Ambassador — EU Business Forum', category: 'Corporate',   image: africatalyst, featured: true },
+  { id: '3',  slug: 'european-union-videos',         title: 'European Union Ambassador — EU Business Forum', category: 'Corporate',   image: eu, featured: true },
   { id: '2',  slug: 'elf-africa',                   title: 'ELF Africa',                         category: 'Corporate',   image: elf },
   { id: '4',  slug: 'europe-day-football',           title: 'Europe Day Football Tournament',      category: 'Corporate',   image: europeday },
   { id: '5',  slug: 'european-investment-bank',      title: 'European Investment Bank',           category: 'Corporate',   image: event1 },
