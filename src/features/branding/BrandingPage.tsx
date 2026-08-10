@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
+import LightboxImage from '@/components/ui/LightboxImage';
 import { SITE_NAME } from '@/utils/constants';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -347,10 +348,12 @@ const BrandingPage: React.FC = () => {
               transition={{ duration: 0.75, ease: 'easeOut', delay: 0.1 }}
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl h-[420px] sm:h-[560px] w-full">
-                <img
+                <LightboxImage
                   src="/dencast_images/giz_booth.jpg"
                   alt="GIZ Booth — Dencast Global Booth Management and Design"
+                  caption="Booth Management and Design"
                   className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
                   loading="lazy"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = '/dencast_images/SERVICES.png';

@@ -1,11 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
   Wifi, Monitor, Users, Music, Trophy, Star,
   ChevronRight, ArrowRight, Zap, Radio,
-  Youtube, Globe, MessageSquare, Video,
+  Youtube, Globe, MessageSquare, Video, X,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -60,6 +61,8 @@ const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } 
 // ─── LivestreamingPage ────────────────────────────────────────────────────────
 
 const LivestreamingPage: React.FC = () => {
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
+  const [activeEventImage, setActiveEventImage] = useState<{ src: string; title: string } | null>(null);
   const typesRef = useRef(null);
   const techRef = useRef(null);
   const eventsRef = useRef(null);
@@ -235,11 +238,13 @@ const LivestreamingPage: React.FC = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {PAST_EVENTS.map((event, i) => (
-              <motion.div
+              <motion.button
                 key={event.title}
+                type="button"
+                onClick={() => setActiveEventImage({ src: event.image, title: event.title })}
                 custom={i} variants={fadeUp} initial="hidden" animate={eventsInView ? 'visible' : 'hidden'}
                 whileHover={{ y: -4 }}
-                className="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 text-left"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <img
@@ -253,11 +258,41 @@ const LivestreamingPage: React.FC = () => {
                   <h3 className="font-bold text-slate-800 text-sm leading-snug">{event.title}</h3>
                   <p className="text-slate-500 text-xs mt-1">{event.summary}</p>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
+
+      {modalRoot && activeEventImage && createPortal(
+        <div
+          className="fixed inset-0 z-[200] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setActiveEventImage(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative w-full max-w-[1400px] h-[72vh] sm:w-[80vw] sm:h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <p className="text-sm sm:text-base font-semibold">{activeEventImage.title}</p>
+              <button
+                type="button"
+                onClick={() => setActiveEventImage(null)}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close image viewer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <div className="relative w-full h-full bg-black">
+              <img src={activeEventImage.src} alt={activeEventImage.title} className="w-full h-full object-contain" />
+            </div>
+          </div>
+        </div>,
+        modalRoot,
+      )}
 
       {/* ── CTA ── */}
       <section className="py-20 bg-[#D3232E]">

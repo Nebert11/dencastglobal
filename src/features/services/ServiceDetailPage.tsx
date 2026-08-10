@@ -329,6 +329,7 @@ const ServiceDetailPage: React.FC = () => {
   const whyRef = useRef(null);
   const relatedRef = useRef(null);
   const [activeVideo, setActiveVideo] = useState<{ title: string; url: string } | null>(null);
+  const [activeSampleImageIndex, setActiveSampleImageIndex] = useState<number | null>(null);
 
   const processInView = useInView(processRef, { once: true, margin: '-80px' });
   const whyInView = useInView(whyRef, { once: true, margin: '-80px' });
@@ -566,7 +567,8 @@ const ServiceDetailPage: React.FC = () => {
                   }))}
                   variant="showcase"
                   showMeta={false}
-                  imageClickable={false}
+                  imageClickable
+                  viewerMode="immersive"
                   showCardBorder={false}
                   aspectClassName="aspect-[4/3]"
                   className="rounded-[2rem]"
@@ -577,17 +579,19 @@ const ServiceDetailPage: React.FC = () => {
             {sampleImages.length > 0 && !isPhotographyService && (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                 {sampleImages.map((image, index) => (
-                  <article
+                  <button
                     key={image}
-                    className={`relative overflow-hidden rounded-xl border border-slate-200 bg-white ${index === 0 ? 'col-span-2 aspect-[4/3]' : 'aspect-square'}`}
+                    type="button"
+                    onClick={() => setActiveSampleImageIndex(index)}
+                    className={`relative overflow-hidden rounded-xl border border-slate-200 bg-white cursor-zoom-in ${index === 0 ? 'col-span-2 aspect-[4/3]' : 'aspect-square'}`}
                   >
                     <img
                       src={image}
                       alt={`${service.name} sample ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                  </article>
+                  </button>
                 ))}
               </div>
             )}
@@ -666,8 +670,6 @@ const ServiceDetailPage: React.FC = () => {
         </section>
       )}
 
-      {/* ── Why Choose Us ── */}
-
       {modalRoot && activeVideo && createPortal(
         <div
           className="fixed inset-0 z-[100] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
@@ -700,6 +702,40 @@ const ServiceDetailPage: React.FC = () => {
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
+          </div>
+        </div>,
+        modalRoot,
+      )}
+
+      {modalRoot && activeSampleImageIndex !== null && createPortal(
+        <div
+          className="fixed inset-0 z-[200] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setActiveSampleImageIndex(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative w-full max-w-[1400px] h-[72vh] sm:w-[80vw] sm:h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-white/50 mb-1">{service.name}</p>
+                <p className="text-sm sm:text-base font-semibold">Sample {activeSampleImageIndex + 1} of {sampleImages.length}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                {sampleImages.length > 1 && (
+                  <>
+                    <button type="button" onClick={() => setActiveSampleImageIndex((activeSampleImageIndex - 1 + sampleImages.length) % sampleImages.length)} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white text-sm font-bold" aria-label="Previous image">‹</button>
+                    <button type="button" onClick={() => setActiveSampleImageIndex((activeSampleImageIndex + 1) % sampleImages.length)} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white text-sm font-bold" aria-label="Next image">›</button>
+                  </>
+                )}
+                <button type="button" onClick={() => setActiveSampleImageIndex(null)} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="Close image viewer"><X size={18} /></button>
+              </div>
+            </div>
+            <div className="relative w-full h-full bg-black">
+              <img src={sampleImages[activeSampleImageIndex]} alt={`${service.name} sample ${activeSampleImageIndex + 1}`} className="w-full h-full object-contain" />
+            </div>
           </div>
         </div>,
         modalRoot,

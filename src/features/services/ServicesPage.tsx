@@ -10,6 +10,7 @@ import {
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import ServiceCard from '@/components/ui/ServiceCard';
+import LightboxImage from '@/components/ui/LightboxImage';
 import { SERVICES, SITE_NAME } from '@/utils/constants';
 
 // ─── Icon map ─────────────────────────────────────────────────────────────────
@@ -150,10 +151,12 @@ const IntroSection: React.FC = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl"
           >
-            <img
+            <LightboxImage
               src="/dencast_images/Dencast-Crew-11.jpg"
               alt="Dencast Global production team"
+              caption="Dencast Global Production Team"
               className="w-full h-full object-cover"
+              wrapperClassName="w-full h-full"
             />
           </motion.div>
         </div>

@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
+import LightboxImage from '@/components/ui/LightboxImage';
 import { SITE_NAME } from '@/utils/constants';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -171,10 +172,12 @@ const DocumentaryPage: React.FC = () => {
               className="relative"
             >
               <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
-                <img
+                <LightboxImage
                   src="/dencast_images/doc3.jpg"
                   alt="Documentary filming"
+                  caption="Documentary filming"
                   className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-[#D3232E] rounded-2xl p-6 text-white shadow-xl">

@@ -20,6 +20,7 @@ import { useQuery } from '@tanstack/react-query';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import PhotoCarousel from '@/components/ui/PhotoCarousel';
+import LightboxImage from '@/components/ui/LightboxImage';
 import { getClientLogoUrl } from '@/utils/clientLogos';
 import { SITE_NAME } from '@/utils/constants';
 import {
@@ -453,12 +454,15 @@ const MissionSection: React.FC<{ content: AboutContent }> = ({ content }) => {
 const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [storyOpen, setStoryOpen] = useState(false);
+  const modalRoot = typeof document !== 'undefined' ? document.body : null;
   const paragraphs = content.storyBody
     .split(/\n\s*\n/)
     .map((line) => line.trim())
     .filter(Boolean);
 
   return (
+    <>
     <section id="vision" ref={ref} className="py-28 lg:py-32 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -469,13 +473,20 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
             className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden aspect-[16/11] shadow-[0_40px_100px_-35px_rgba(15,23,42,0.55)]">
-              <img
-                src={content.storyImageUrl}
-                alt="Dencast Global team at work"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/10" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#25408F]/30 to-transparent" />
+              <button
+                type="button"
+                onClick={() => setStoryOpen(true)}
+                className="block w-full h-full cursor-zoom-in"
+                aria-label="View story image fullscreen"
+              >
+                <img
+                  src={content.storyImageUrl}
+                  alt="Dencast Global team at work"
+                  className="w-full h-full object-cover"
+                />
+              </button>
+              <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#25408F]/30 to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
@@ -499,6 +510,37 @@ const StorySection: React.FC<{ content: AboutContent }> = ({ content }) => {
         </div>
       </div>
     </section>
+
+    {modalRoot && storyOpen && createPortal(
+      <div
+        className="fixed inset-0 z-[200] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+        onClick={() => setStoryOpen(false)}
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          className="relative w-full max-w-[1400px] h-[72vh] sm:w-[80vw] sm:h-[80vh] rounded-3xl overflow-hidden bg-black shadow-2xl shadow-black/60 border border-white/10"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between gap-4 p-4 sm:p-6 bg-gradient-to-b from-black/75 via-black/30 to-transparent text-white/80">
+            <p className="text-sm sm:text-base font-semibold">{content.storyTitle}</p>
+            <button
+              type="button"
+              onClick={() => setStoryOpen(false)}
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Close image viewer"
+            >
+              <X size={18} />
+            </button>
+          </div>
+          <div className="relative w-full h-full bg-black">
+            <img src={content.storyImageUrl} alt="Dencast Global team at work" className="w-full h-full object-contain" />
+          </div>
+        </div>
+      </div>,
+      modalRoot,
+    )}
+    </>
   );
 };
 
@@ -817,12 +859,14 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
               >
                 <div className={`flex-1 ${i % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
                   <div className="mb-5 rounded-2xl overflow-hidden border border-white/20">
-                    <img
+                    <LightboxImage
                       src={journeyImage.src}
                       alt={`${item.title} milestone`}
+                      caption={item.title}
                       className="w-full h-56 sm:h-64"
                       style={{ objectFit: journeyImage.objectFit, objectPosition: journeyImage.objectPosition }}
                       loading="lazy"
+                      wrapperClassName="w-full"
                     />
                   </div>
                   <div className={`inline-flex items-center gap-3 mb-3 ${i % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
@@ -1008,7 +1052,8 @@ const TeamCarouselSection: React.FC = () => {
             items={TEAM_CAROUSEL_IMAGES}
             variant="showcase"
             showMeta={false}
-            imageClickable={false}
+            imageClickable
+            viewerMode="immersive"
             showCardBorder={false}
             aspectClassName="aspect-[4/3]"
             className="rounded-[2rem]"
