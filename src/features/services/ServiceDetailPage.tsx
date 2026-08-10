@@ -26,6 +26,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
 
 interface ServiceRichContent {
   heroImage: string;
+  heroImagePosition?: string;
+  heroTitleSize?: string;
   overview: string;
   features: string[];
   sampleImages?: string[];
@@ -282,6 +284,8 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
   }, 
   'digital-content-creation': {
     heroImage: '/dencast_images/DIGITAL.png',
+    heroImagePosition: 'right 30%',
+    heroTitleSize: 'text-4xl sm:text-5xl lg:text-6xl max-w-xl',
     overview: 'Scroll-stopping digital-first content engineered for engagement. We create content series, social media campaigns, and digital experiences that build communities, drive traffic, and convert audiences into loyal customers.',
     features: ['Social media content calendars', 'Short-form video (Reels, TikTok)', 'Podcast production', 'Newsletter content', 'SEO content strategy', 'Influencer campaign management', 'Analytics & performance reporting'],
     mediaSectionTitle: 'Digital Content',
@@ -375,7 +379,7 @@ const ServiceDetailPage: React.FC = () => {
         ) : (
           <div
             className="absolute inset-0"
-            style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }}
+            style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: content.heroImagePosition ?? 'right center', backgroundRepeat: 'no-repeat' }}
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
@@ -403,7 +407,7 @@ const ServiceDetailPage: React.FC = () => {
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tight mb-4 text-left"
+            className={`${content.heroTitleSize ?? 'text-5xl sm:text-6xl lg:text-7xl'} font-black text-white leading-none tracking-tight mb-4 text-left`}
           >
             {service.name}
           </motion.h1>
