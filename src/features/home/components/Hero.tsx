@@ -7,7 +7,7 @@ import Button from '@/components/ui/Button';
 import ScrollIndicator from '@/components/ui/ScrollIndicator';
 import type { HeroContent } from '@/types';
 
-const backgroundVideo = '/videos/background.mp4';
+const backgroundVideo = '/dencast_images/background.mp4';
 
 // ─── Static fallback ──────────────────────────────────────────────────────────
 

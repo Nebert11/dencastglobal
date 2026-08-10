@@ -174,8 +174,8 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
   },
   'events-management': {
     heroImage: '/dencast_images/CONFERENCE.png',
-    overview: 'Dencast Global delivers professionally planned and creatively executed events that bring people, brands, and ideas together. From conferences, corporate functions, launches, award ceremonies, exhibitions, and hybrid events to high-profile public engagements, we manage every detail with precision.',
-    features: ['Concept development and event strategy', 'Event branding and visual identity', 'Production coordination and stage management', 'Guest experience and protocol support', 'Technical management and on-site support', 'Integrated photography, videography, and livestreaming', 'Post-event evaluation and reporting'],
+    overview: 'Seamless Experiences. Lasting Impressions. Dencast Global delivers professionally planned and creatively executed events that bring people, brands, and ideas together. From conferences, corporate functions, launches, award ceremonies, exhibitions, and hybrid events to high-profile public engagements, we manage every detail with precision. Our services cover concept development, event branding, production coordination, stage management, guest experience, technical support, photography, videography, and livestreaming. We create memorable events that run smoothly, communicate clearly, and leave a lasting impression on every audience.',
+    features: ['Tailored Event Solutions', 'Virtual and Hybrid Events', 'Comprehensive Management', 'Cost-Effective Strategies', 'Post-Event Analysis', 'Event branding and visual identity', 'Production coordination and stage management'],
     whyUs: [
       { icon: Eye, title: 'End-to-End Coordination', desc: 'From concept to execution, we align every production detail to your event goals.' },
       { icon: Cpu, title: 'Hybrid Event Expertise', desc: 'We combine in-person excellence with dependable virtual and hybrid delivery.' },
@@ -254,7 +254,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     ],
   },
   'corporate-communications': {
-    heroImage: '/dencast_images/sasini_conference.jpg',
+    heroImage: '/dencast_images/sasini.jpg',
     overview: 'Clear, compelling corporate communications that align your organisation from the C-suite to the frontline. We produce executive messaging videos, investor presentations, internal communications, and annual reports that speak with one powerful voice.',
     features: ['Executive video messaging', 'Investor presentation production', 'Annual report design & video', 'Internal comms strategy', 'Town hall & AGM production', 'Employee onboarding content', 'Crisis communication support'],
     mediaSectionTitle: 'Corporate Productions',
@@ -361,7 +361,7 @@ const ServiceDetailPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section ref={heroRef} className="relative min-h-[50vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[50vh] sm:min-h-[70vh] flex items-center justify-start overflow-hidden">
         {heroIsVideo ? (
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -374,15 +374,15 @@ const ServiceDetailPage: React.FC = () => {
         ) : (
           <div
             className="absolute inset-0"
-            style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+            style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }}
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-left pl-6 sm:pl-12 lg:pl-20">
           <motion.nav
             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-            className="flex items-center justify-center gap-2 text-white/50 text-sm mb-6"
+            className="flex items-center justify-start gap-2 text-white/50 text-sm mb-6"
           >
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight size={14} />
@@ -400,7 +400,7 @@ const ServiceDetailPage: React.FC = () => {
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tight mb-4"
+            className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tight mb-4 text-left"
           >
             {service.name}
           </motion.h1>
@@ -414,7 +414,7 @@ const ServiceDetailPage: React.FC = () => {
 
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }}
-            className="text-white/70 text-lg max-w-2xl mx-auto"
+            className="text-white/70 text-lg max-w-2xl"
           >
             {service.description}
           </motion.p>
@@ -455,40 +455,90 @@ const ServiceDetailPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Process ── */}
+      {/* ── Process / What We Offer (Events) ── */}
       <section ref={processRef} className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={stagger} initial="hidden" animate={processInView ? 'visible' : 'hidden'}
-            className="text-center mb-16"
-          >
-            <motion.div variants={fadeUp}><SectionLabel label="Our Process" center /></motion.div>
-            <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">
-              How We Work
-            </motion.h2>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {PROCESS_STEPS.map((step, i) => (
-              <motion.div
-                key={step.number}
-                custom={i} variants={fadeUp} initial="hidden" animate={processInView ? 'visible' : 'hidden'}
-                className="relative"
-              >
-                {/* Connector line */}
-                {i < PROCESS_STEPS.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-slate-200 -translate-x-4 z-0" />
-                )}
-                <div className="relative z-10 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#25408F] text-white font-black text-xl mb-5 shadow-lg shadow-[#25408F]/25">
-                    {step.number}
-                  </div>
-                  <h3 className="font-bold text-slate-900 text-lg mb-3">{step.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-                </div>
+          {slug === 'events-management' ? (
+            <>
+              <motion.div variants={stagger} initial="hidden" animate={processInView ? 'visible' : 'hidden'} className="text-center mb-12">
+                <motion.div variants={fadeUp}><SectionLabel label="What We Offer" center /></motion.div>
+                {/* <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">
+                  Events Management
+                </motion.h2>
+                <motion.p variants={fadeUp} className="mt-4 text-slate-600 max-w-3xl mx-auto">
+                  Dencast Global delivers professionally planned and creatively executed events that bring people, brands, and ideas together. From conferences, corporate functions, launches, award ceremonies, exhibitions, and hybrid events to high-profile public engagements, we manage every detail with precision.
+                </motion.p> */}
               </motion.div>
-            ))}
-          </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    title: 'Tailored Event Solutions',
+                    desc: 'From concept to execution, we design bespoke events that align perfectly with your vision and objectives, ensuring a memorable experience for all attendees.',
+                  },
+                  {
+                    title: 'Virtual & Hybrid Events',
+                    desc: 'Leveraging cutting-edge technology, we create immersive virtual and hybrid experiences that provide unparalleled engagement and connectivity.',
+                  },
+                  {
+                    title: 'Comprehensive Management',
+                    desc: 'Our team handles logistics, sound design, coordination, and on-site support so you can focus on the big picture.',
+                  },
+                  {
+                    title: 'Cost-Effective Strategies',
+                    desc: 'We deliver high-quality event management while adhering to budget constraints, ensuring value for money without compromising excellence.',
+                  },
+                  {
+                    title: 'Post-Event Analysis',
+                    desc: 'We provide thorough post-event evaluations to measure success and gather insights, helping you understand impact and effectiveness.',
+                  },
+                  {
+                    title: 'Full Production & Livestreaming',
+                    desc: 'End-to-end production coordination including stage management, technical support, photography, videography, and livestreaming.',
+                  },
+                ].map((item) => (
+                  <motion.article key={item.title} variants={fadeUp} className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+                    <p className="text-slate-600 text-sm">{item.desc}</p>
+                  </motion.article>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <motion.div
+                variants={stagger} initial="hidden" animate={processInView ? 'visible' : 'hidden'}
+                className="text-center mb-16"
+              >
+                <motion.div variants={fadeUp}><SectionLabel label="Our Process" center /></motion.div>
+                <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">
+                  How We Work
+                </motion.h2>
+              </motion.div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {PROCESS_STEPS.map((step, i) => (
+                  <motion.div
+                    key={step.number}
+                    custom={i} variants={fadeUp} initial="hidden" animate={processInView ? 'visible' : 'hidden'}
+                    className="relative"
+                  >
+                    {/* Connector line */}
+                    {i < PROCESS_STEPS.length - 1 && (
+                      <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-slate-200 -translate-x-4 z-0" />
+                    )}
+                    <div className="relative z-10 text-center">
+                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#25408F] text-white font-black text-xl mb-5 shadow-lg shadow-[#25408F]/25">
+                        {step.number}
+                      </div>
+                      <h3 className="font-bold text-slate-900 text-lg mb-3">{step.title}</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 

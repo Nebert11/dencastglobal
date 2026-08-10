@@ -20,13 +20,16 @@ const itemVariants = {
 // ─── RecentBlog ───────────────────────────────────────────────────────────────
 
 const RecentBlog: React.FC = () => {
-  const latestPosts = useMemo(
-    () =>
-      [...BLOG_ARTICLES]
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        .slice(0, 3),
-    []
-  );
+  const latestPosts = useMemo(() => {
+    // Prefer the featured article first (if present), then fill with most recent posts.
+    const featured = BLOG_ARTICLES.find((a) => a.featured);
+    const recent = [...BLOG_ARTICLES]
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .filter((a) => !featured || a.slug !== featured.slug);
+
+    if (featured) return [featured, ...recent.slice(0, 2)];
+    return recent.slice(0, 3);
+  }, []);
 
   return (
     <section className="py-24 bg-white">

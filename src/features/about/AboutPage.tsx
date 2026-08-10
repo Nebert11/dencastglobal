@@ -409,9 +409,28 @@ const MissionSection: React.FC<{ content: AboutContent }> = ({ content }) => {
             {content.missionTitle}
           </motion.h2>
           <motion.div variants={fadeUp} className="mt-10 space-y-6 text-slate-600 text-xl leading-relaxed max-w-4xl mx-auto">
-            {missionParagraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
+            {missionParagraphs.map((paragraph) => {
+              const trimmed = paragraph.trim();
+
+              // Match patterns like:
+              // Our Vision: ...
+              // Our Vision - ...
+              // Our Mission: ...
+              const m = trimmed.match(/^(Our\s+(Vision|Mission))\s*[:\-–—]?\s*(.*)$/i);
+
+              if (m) {
+                const label = m[1];
+                const rest = m[3] || '';
+                return (
+                  <p key={trimmed} className="text-slate-800 text-xl">
+                    <span className="font-extrabold text-[#25408F]">{label}</span>
+                    {rest ? <span className="ml-2 text-slate-700 font-medium">{rest}</span> : null}
+                  </p>
+                );
+              }
+
+              return <p key={trimmed}>{trimmed}</p>;
+            })}
           </motion.div>
           <motion.div variants={fadeUp} className="mt-12 flex items-center justify-center gap-4">
             <Link to="/contact">

@@ -234,7 +234,7 @@ const PROJECTS: Record<string, ProjectData> = {
     category: 'Corporate',
     client: 'European Investment Bank',
     date: '2023 – Present',
-    heroImage: '/dencast_images/event1.jpg',
+    heroImage: '/dencast_images/eib.jpg',
     excerpt: 'Professional video production for the European Investment Bank, documenting their initiatives and investments across Africa.',
     description:
       'Dencast Global has had the honour of partnering with the European Investment Bank (EIB) to produce compelling video content that documents their investment initiatives, programmes, and partnerships across Africa.\n\nOur productions capture key meetings, project highlights, and the tangible impact of EIB investments on communities and economies — delivered with the highest production standards.\n\nAt Dencast Global, we believe in the power of visual storytelling to inspire change, engage audiences, and elevate brands. Partner with us, and let\'s bring your vision to life.',
@@ -648,7 +648,7 @@ const ProjectDetailPage: React.FC = () => {
               <PlayCircle size={30} className="text-[#D3232E]" />
               Watch the Work
             </h2>
-            <div className="grid lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,1fr)] gap-6 items-start">
+            <div className="grid lg:grid-cols-2 gap-6 items-start">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -687,14 +687,13 @@ const ProjectDetailPage: React.FC = () => {
                   </div>
                 </button>
                 <div className="mt-4 px-1">
-                  <p className="text-xs uppercase tracking-widest text-[#D3232E] font-bold mb-1">Featured Video</p>
-                  <h3 className="text-2xl font-black text-slate-900 leading-tight">
+                  <h3 className="text-sm sm:text-xl font-black text-slate-900 leading-tight">
                     {activeProjectVideo?.title ?? project.title}
                   </h3>
                 </div>
               </motion.div>
 
-              <div className="space-y-3">
+              <div className="grid gap-4">
                 {project.videos.map((video, i) => {
                   const isActive = i === activeVideoIndex;
                   const videoDuration = getVideoDurationByUrl(video.url);
@@ -716,8 +715,8 @@ const ProjectDetailPage: React.FC = () => {
                           : 'border-slate-200 bg-white hover:border-[#25408F]/30 hover:shadow-sm'
                       }`}
                     >
-                      <div className="flex gap-4 items-center">
-                        <div className="relative flex-shrink-0 w-32 sm:w-36 aspect-video overflow-hidden rounded-xl bg-black">
+                      <div>
+                        <div className="relative w-full aspect-video overflow-hidden rounded-[1.25rem] bg-black">
                           <img
                             src={`https://img.youtube.com/vi/${new URL(toEmbedUrl(video.url)).pathname.split('/').pop() ?? ''}/hqdefault.jpg`}
                             alt={video.title}
@@ -740,8 +739,8 @@ const ProjectDetailPage: React.FC = () => {
                             </div>
                           )}
                         </div>
-                        <div className="min-w-0 flex-1">
-                          <p className="text-sm font-bold text-slate-900 leading-snug line-clamp-2">{video.title}</p>
+                        <div className="mt-3">
+                          <p className="text-xs font-semibold text-slate-900 leading-snug line-clamp-2">{video.title}</p>
                           <p className="mt-1 text-xs text-slate-500">Watch directly within the website</p>
                         </div>
                       </div>

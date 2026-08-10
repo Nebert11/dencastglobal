@@ -16,7 +16,7 @@ import amakowe from '/dencast_images/amakowe.jpg';
 import eu from '/dencast_images/eu1.jpg';
 import europeday from '/dencast_images/DSC_3798-scaled.jpg';
 import elf from '/dencast_images/elf.png';
-import event1 from '/dencast_images/event1.jpg';
+import event1 from '/dencast_images/eib.jpg';
 import rhnk from '/dencast_images/rhnk.jpg';
 import liveStreaming from '/dencast_images/Virtual-livestreaming-scaled.jpg';
 import whiteBeach from '/dencast_images/White-Beach-Palace.jpg';

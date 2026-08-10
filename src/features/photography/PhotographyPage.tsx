@@ -127,14 +127,14 @@ const PhotographyPage: React.FC = () => {
       </Helmet>
 
       {/* ── Cinematic Hero ── */}
-      <section className="relative min-h-[60vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] sm:min-h-[90vh] flex items-center justify-start overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{ backgroundImage: 'url(/dencast_images/WEBSITE-PHOTO.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+          style={{ backgroundImage: 'url(/dencast_images/WEBSITE-PHOTO.jpg)', backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
+        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 text-left pl-6 sm:pl-12 lg:pl-20 py-32">
           <motion.nav
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
             className="flex items-center justify-center gap-2 text-white/50 text-sm mb-8"
@@ -148,7 +148,7 @@ const PhotographyPage: React.FC = () => {
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-6xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight mb-4"
+            className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tight mb-4 text-left"
           >
             One Frame.{' '}
             <span className="text-[#D3232E]">Infinite</span>
@@ -157,14 +157,14 @@ const PhotographyPage: React.FC = () => {
 
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.65 }}
-            className="text-white/70 text-xl max-w-2xl mx-auto mb-10"
+            className="text-white/70 text-xl max-w-2xl mb-10"
           >
             Professional photography that tells your story across every format, from medium-format portraits to commercial visual campaigns.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }}
-            className="flex items-center justify-center gap-4 flex-wrap"
+            className="flex items-center justify-start gap-4 flex-wrap"
           >
             <Link to="/contact">
               <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>

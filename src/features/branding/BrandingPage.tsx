@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import {
   Hexagon, PenTool, BookOpen, Target,
   Share2, FileText, ChevronRight, ArrowRight,
-  CheckCircle2, Sparkles,
+  CheckCircle2,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -116,13 +116,13 @@ const BrandingPage: React.FC = () => {
             <span className="text-white">Branding & Creative Media</span>
           </motion.nav>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
             className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
           >
             <Sparkles size={12} className="text-[#D3232E]" />
             Imagination Made Tangible
-          </motion.div>
+          </motion.div> */}
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
@@ -131,12 +131,12 @@ const BrandingPage: React.FC = () => {
             Branding &<br /><span className="text-[#D3232E]">Creative</span> Media
           </motion.h1>
 
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.65 }}
             className="text-white/70 text-xl max-w-2xl mx-auto mb-10"
           >
             We build brands that resonate, differentiate, and endure — combining strategic thinking with bold creative execution.
-          </motion.p>
+          </motion.p> */}
 
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }}
@@ -346,7 +346,7 @@ const BrandingPage: React.FC = () => {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.75, ease: 'easeOut', delay: 0.1 }}
             >
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <div className="rounded-2xl overflow-hidden shadow-2xl h-[420px] sm:h-[560px] w-full">
                 <img
                   src="/dencast_images/giz_booth.jpg"
                   alt="GIZ Booth — Dencast Global Booth Management and Design"
