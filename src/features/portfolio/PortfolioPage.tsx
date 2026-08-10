@@ -38,12 +38,12 @@ interface PortfolioItem {
 }
 
 const PORTFOLIO_VIDEO_LINKS = [
-  { title: 'Sasini Sustainability Report Launch — Full Event', url: 'https://www.youtube.com/watch?v=QnnVSv48PIM&t=1787s' },
+  { title: 'Sasini PLC 2025 Sustainability Report Launch', url: 'https://www.youtube.com/watch?v=QnnVSv48PIM&t=1787s' },
   { title: 'EU Ambassador — EU Business Forum Kenya', url: 'https://www.youtube.com/watch?v=WIWK8EugC1c' },
   { title: 'RHNK Pan-African Conference 2025 Highlights', url: 'https://www.youtube.com/watch?v=_0hFwZtRoqU' },
-  { title: 'ELF Africa Annual Report Film', url: 'https://www.youtube.com/watch?v=EgTs8_Bm_RQ&t=20s' },
-  { title: 'The Amakove Wala Show — Divorce and Separation', url: 'https://www.youtube.com/watch?v=D1QvoiMpK-Q&t=23s' },
-  { title: 'RHNK Pan-African Conference 2026', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
+  { title: 'What Leadership Looked Like in 2025 | ELF-Africa Annual Report', url: 'https://www.youtube.com/watch?v=EgTs8_Bm_RQ&t=20s' },
+  { title: 'The Amakove Wala Show 1 — Divorce and Separation', url: 'https://www.youtube.com/watch?v=D1QvoiMpK-Q&t=23s' },
+  { title: 'RHNK Pan-African Conference 2026 : Opening Ceremony Highlights', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
 ];
 
 const toYoutubeEmbedUrl = (url: string) => {
@@ -167,7 +167,7 @@ const PortfolioIntro: React.FC = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.75, ease: 'easeOut' }}
           >
-            <SectionLabel label="Where Our Story Becomes Our Mission" />
+            <SectionLabel label="Where Your Story Becomes Our Mission" />
 
             <h2 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight tracking-tight">
               Cinematic Stories,{' '}

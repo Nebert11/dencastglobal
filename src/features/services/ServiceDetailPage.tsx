@@ -391,12 +391,14 @@ const ServiceDetailPage: React.FC = () => {
             <span className="text-white font-medium">{service.name}</span>
           </motion.nav>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center justify-center w-16 h-16 bg-white/15 backdrop-blur-sm rounded-2xl mb-6 border border-white/20"
-          >
-            <Icon size={28} className="text-white" />
-          </motion.div>
+          {slug !== 'drone-services' && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center justify-center w-16 h-16 bg-white/15 backdrop-blur-sm rounded-2xl mb-6 border border-white/20"
+            >
+              <Icon size={28} className="text-white" />
+            </motion.div>
+          )}
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
@@ -462,12 +464,12 @@ const ServiceDetailPage: React.FC = () => {
             <>
               <motion.div variants={stagger} initial="hidden" animate={processInView ? 'visible' : 'hidden'} className="text-center mb-12">
                 <motion.div variants={fadeUp}><SectionLabel label="What We Offer" center /></motion.div>
-                {/* <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">
+                <motion.h2 variants={fadeUp} className="mt-4 text-4xl font-black text-slate-900">
                   Events Management
                 </motion.h2>
                 <motion.p variants={fadeUp} className="mt-4 text-slate-600 max-w-3xl mx-auto">
                   Dencast Global delivers professionally planned and creatively executed events that bring people, brands, and ideas together. From conferences, corporate functions, launches, award ceremonies, exhibitions, and hybrid events to high-profile public engagements, we manage every detail with precision.
-                </motion.p> */}
+                </motion.p>
               </motion.div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -768,7 +768,8 @@ const ProjectDetailPage: React.FC = () => {
               }))}
               variant="showcase"
               showMeta={false}
-              imageClickable={false}
+              imageClickable
+              viewerMode="immersive"
               showCardBorder={false}
               aspectClassName="aspect-[4/3]"
               className="rounded-[2rem]"

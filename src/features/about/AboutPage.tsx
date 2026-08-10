@@ -185,9 +185,9 @@ const DEFAULT_CONTENT: AboutContent = {
 };
 
 const JOURNEY_IMAGES = [
-  { src: '/dencast_images/journey4.jpg', objectPosition: 'center 110%' },
-  { src: '/dencast_images/journey2.jpg', objectPosition: 'center 15%' },
-  { src: '/dencast_images/journey3.jpg', objectPosition: 'center' },
+  { src: '/dencast_images/journey4.jpg', objectPosition: 'center', objectFit: 'contain' as const },
+  { src: '/dencast_images/journey2.jpg', objectPosition: 'center 15%', objectFit: 'cover' as const },
+  { src: '/dencast_images/journey3.jpg', objectPosition: 'center', objectFit: 'cover' as const },
 ];
 
 const ABOUT_VIDEO_URL = 'https://www.youtube.com/watch?v=C4XULlXngGM';
@@ -820,8 +820,8 @@ const TimelineSection: React.FC<{ content: AboutContent }> = ({ content }) => {
                     <img
                       src={journeyImage.src}
                       alt={`${item.title} milestone`}
-                      className="w-full h-56 sm:h-64 object-cover"
-                      style={{ objectPosition: journeyImage.objectPosition }}
+                      className="w-full h-56 sm:h-64"
+                      style={{ objectFit: journeyImage.objectFit, objectPosition: journeyImage.objectPosition }}
                       loading="lazy"
                     />
                   </div>

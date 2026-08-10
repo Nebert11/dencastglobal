@@ -354,7 +354,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     authorBio:
       'The Dencast Team publishes practical feature stories and behind-the-scenes analysis across food systems, culture, business operations, and media.',
     authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
-    date: '2026-08-02',
+    date: '2026-08-06',
     readTime: '6 min read',
     views: '1,031',
     coverImage: `${IMAGE_BASE}/java.png`,
@@ -905,7 +905,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     authorRole: 'Editorial Team',
     authorBio: 'The Dencast Global Editorial team covers practical guides, industry stories and everyday topics relevant to life and business in Kenya and across Africa.',
     authorAvatar: `${IMAGE_BASE}/dennis_machio.jpg`,
-    date: '2026-08-04',
+    date: '2026-07-10',
     readTime: '8 min read',
     views: '3,650',
     coverImage: '/articles_and_insights /apply-for-business.jpg',

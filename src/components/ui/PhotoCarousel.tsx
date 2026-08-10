@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation as SwiperNavigation, Autoplay } from 'swiper/modules';
@@ -176,9 +177,9 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
 
       </div>
 
-      {activeItem && activeIndex !== null && (
+      {activeItem && activeIndex !== null && createPortal(
         <div
-          className="fixed inset-0 z-50 bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-[200] bg-black/55 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
           onClick={() => setActiveIndex(null)}
           role="dialog"
           aria-modal="true"
@@ -240,7 +241,8 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
               </>
             )}
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );
