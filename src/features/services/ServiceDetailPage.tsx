@@ -231,6 +231,7 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
   'creative-media': {
     heroImage: '/dencast_images/graphics/motion-graphics.jpg',
     heroImagePosition: 'center 20%',
+    heroTitleSize: 'text-4xl sm:text-5xl lg:text-7xl',
     overview: 'Bold, boundary-pushing creative media that captures attention and refuses to be forgotten. We conceptualise and execute multimedia campaigns, motion graphics, and experimental content that makes your audience stop scrolling.',
     features: ['2D & 3D motion graphics', 'Animated explainer videos', 'Interactive digital experiences', 'Conceptual campaign development', 'Mixed media productions', 'Social-first content series', 'Branded entertainment'],
     mediaSectionTitle: 'Digital Campaigns',
@@ -353,6 +354,7 @@ const ServiceDetailPage: React.FC = () => {
   const mediaResources = (content.mediaLinks ?? []).filter((item) => !isYoutubeUrl(item.url));
   const modalRoot = typeof document !== 'undefined' ? document.body : null;
   const heroIsVideo = isVideoAsset(content.heroImage);
+  const isCreativeMediaService = slug === 'creative-media';
 
   // Related services (3 different ones)
   const relatedServices = SERVICES.filter(s => s.slug !== slug).slice(0, 3);
@@ -367,7 +369,10 @@ const ServiceDetailPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section ref={heroRef} className="relative min-h-[50vh] sm:min-h-[70vh] flex items-center justify-start overflow-hidden">
+      <section
+        ref={heroRef}
+        className={`relative flex items-center justify-start overflow-hidden ${isCreativeMediaService ? 'min-h-[40rem] sm:min-h-[58vh] lg:min-h-[72vh]' : 'min-h-[50vh] sm:min-h-[70vh]'}`}
+      >
         {heroIsVideo ? (
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -377,15 +382,22 @@ const ServiceDetailPage: React.FC = () => {
             loop
             playsInline
           />
+        ) : isCreativeMediaService ? (
+          <img
+            className="absolute inset-0 h-full w-full object-cover object-[70%_58%] sm:object-[68%_40%] lg:object-[center_20%]"
+            src={content.heroImage}
+            alt=""
+            aria-hidden="true"
+          />
         ) : (
           <div
             className="absolute inset-0"
             style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: content.heroImagePosition ?? 'right center', backgroundRepeat: 'no-repeat' }}
           />
         )}
-        {slug !== 'creative-media' && <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />}
+        {!isCreativeMediaService && <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />}
 
-        {slug !== 'creative-media' && (
+        {!isCreativeMediaService && (
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-left pl-6 sm:pl-12 lg:pl-20">
             <motion.nav
               initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
