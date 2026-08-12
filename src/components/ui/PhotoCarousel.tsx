@@ -26,6 +26,8 @@ interface PhotoCarouselProps {
   showMeta?: boolean;
   imageClickable?: boolean;
   viewerMode?: 'standard' | 'immersive';
+  slideToClickedSlide?: boolean;
+  centeredSlides?: boolean;
 }
 
 const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
@@ -40,6 +42,8 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
   showMeta = true,
   imageClickable = true,
   viewerMode = 'standard',
+  slideToClickedSlide = false,
+  centeredSlides,
 }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -71,7 +75,7 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
           modules={variant === 'showcase' ? [Autoplay] : [SwiperNavigation]}
           navigation={variant === 'default'}
           effect="slide"
-          centeredSlides={variant === 'showcase'}
+          centeredSlides={variant === 'showcase' ? (centeredSlides ?? true) : false}
           speed={variant === 'showcase' ? 720 : 450}
           autoplay={
             variant === 'showcase'
@@ -84,6 +88,7 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
           }
           allowTouchMove={!isTransitioning}
           onSwiper={setSwiperInstance}
+          slideToClickedSlide={slideToClickedSlide}
           onSlideChangeTransitionStart={() => {
             if (variant === 'showcase') setIsTransitioning(true);
           }}
@@ -119,10 +124,19 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({
                 viewport={{ once: true, amount: 0.35 }}
                 transition={{ duration: 0.45, delay: index * 0.05 }}
                 onClick={() => {
+                  if (slideToClickedSlide && swiperInstance) {
+                    if (swiperInstance.params.loop) {
+                      swiperInstance.slideToLoop(index);
+                    } else {
+                      swiperInstance.slideTo(index);
+                    }
+                    return;
+                  }
+
                   if (imageClickable) setActiveIndex(index);
                 }}
-                aria-disabled={!imageClickable}
-                className={`group w-full text-left ${imageClickable ? 'cursor-pointer' : 'cursor-default'}`}
+                aria-disabled={!imageClickable && !slideToClickedSlide}
+                className={`group w-full text-left ${(imageClickable || slideToClickedSlide) ? 'cursor-pointer' : 'cursor-default'}`}
               >
                 <div
                   className={`relative overflow-hidden ${variant === 'showcase' ? 'showcase-slide-card rounded-[2rem] shadow-2xl shadow-slate-300/30 ring-1 ring-slate-200/80' : 'rounded-2xl bg-slate-100 shadow-sm'} ${showCardBorder ? 'border border-slate-100' : ''} ${aspectClassName}`}

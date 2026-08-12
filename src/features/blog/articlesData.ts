@@ -647,7 +647,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2026-07-25',
     readTime: '6 min read',
     views: '2,190',
-    coverImage: `${IMAGE_BASE}/DIGITAL.png`,
+    coverImage: `${IMAGE_BASE}/goodconduct.jpg`,
     tags: ['Certificate of Good Conduct', 'Police Clearance', 'DCI', 'eCitizen', 'Kenya'],
     tableOfContents: [
       { id: 'what-you-need', label: 'What You Need Before Applying' },

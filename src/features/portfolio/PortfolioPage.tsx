@@ -23,7 +23,7 @@ import liveStreaming from '/dencast_images/Virtual-livestreaming-scaled.jpg';
 import whiteBeach from '/dencast_images/White-Beach-Palace.jpg';
 import conference from '/dencast_images/CONFERENCE.png';
 import graphics from '/dencast_images/graphics/laptop.jpg';
-import ladonaWithCamera from '/dencast_images/9.png';
+import ladonaWithCamera from '/dencast_images/graphics/terry.jpg';
 
 // ─── Static portfolio data ────────────────────────────────────────────────────
 
@@ -52,6 +52,8 @@ const GRAPHICS_SLIDER_IMAGES = [
   { src: '/dencast_images/graphics/Flyers.jpg', alt: 'Graphics design sample 2' },
   { src: '/dencast_images/graphics/RHNKgraphics.jpg', alt: 'Graphics design sample 3' },
 ];
+
+const GRAPHICS_SLIDER_LOOP_IMAGES = [...GRAPHICS_SLIDER_IMAGES, ...GRAPHICS_SLIDER_IMAGES];
 
 const toYoutubeEmbedUrl = (url: string) => {
   try {
@@ -544,8 +546,9 @@ const PortfolioPage: React.FC = () => {
 
           <PhotoCarousel
             title="Graphics Design"
-            items={GRAPHICS_SLIDER_IMAGES}
+            items={GRAPHICS_SLIDER_LOOP_IMAGES}
             variant="showcase"
+            centeredSlides={false}
             showMeta={false}
             imageClickable
             viewerMode="immersive"

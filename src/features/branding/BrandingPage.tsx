@@ -105,7 +105,7 @@ const BrandingPage: React.FC = () => {
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: 'url(/dencast_images/graphics/pencil.jpg)' }}
+          style={{ backgroundImage: 'url(/dencast_images/branding-hero.jpg)' }}
         />
         {/* Animated gradient */}
         <motion.div
@@ -115,7 +115,7 @@ const BrandingPage: React.FC = () => {
           style={{ background: 'radial-gradient(ellipse at 20% 50%, #25408F 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, #D3232E 0%, transparent 60%)' }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
+        {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
           <motion.nav
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
             className="flex items-center justify-center gap-2 text-white/50 text-sm mb-8"
@@ -127,39 +127,24 @@ const BrandingPage: React.FC = () => {
             <span className="text-white">Branding & Creative Media</span>
           </motion.nav>
 
-          {/* <motion.div
-            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
-            className="inline-flex items-center gap-2 border border-white/20 text-white/70 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
-          >
-            <Sparkles size={12} className="text-[#D3232E]" />
-            Imagination Made Tangible
-          </motion.div> */}
-
           <motion.h1
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-6xl sm:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-none tracking-tight mb-6"
           >
             Branding &<br /><span className="text-[#D3232E]">Creative</span> Media
           </motion.h1>
-
-          {/* <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.65 }}
-            className="text-white/70 text-xl max-w-2xl mx-auto mb-10"
-          >
-            We build brands that resonate, differentiate, and endure — combining strategic thinking with bold creative execution.
-          </motion.p> */}
 
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }}
             className="flex items-center justify-center gap-4 flex-wrap"
           >
             <Link to="/contact">
-              <Button variant="primary" size="lg" rightIcon={<ArrowRight size={16} />}>
+              <Button variant="primary" size="md" rightIcon={<ArrowRight size={16} />}>
                 Build Your Brand
               </Button>
             </Link>
           </motion.div>
-        </div>
+        </div> */}
       </section>
 
       {/* ── Branding Graphics Slider ── */}
