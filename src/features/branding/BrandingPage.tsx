@@ -10,6 +10,7 @@ import {
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import LightboxImage from '@/components/ui/LightboxImage';
+import PhotoCarousel from '@/components/ui/PhotoCarousel';
 import { SITE_NAME } from '@/utils/constants';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -29,6 +30,15 @@ const BRAND_PROCESS = [
   { step: '03', title: 'Visual Identity', desc: 'Logo design, colour systems, typography, and the full visual language for your brand.' },
   { step: '04', title: 'Execution', desc: 'Application of the brand system across all touchpoints — print, digital, environmental.' },
   { step: '05', title: 'Handover & Support', desc: 'Complete brand guidelines, asset library delivery, and ongoing brand stewardship.' },
+];
+
+const BRANDING_GRAPHICS = [
+  { src: '/dencast_images/graphics/Flyer1.jpg', alt: 'Branded flyer design sample' },
+  { src: '/dencast_images/graphics/Flyers.jpg', alt: 'Collection of branded flyers' },
+  { src: '/dencast_images/graphics/rhnk-report-cover.jpg', alt: 'RHNK report cover design' },
+  { src: '/dencast_images/graphics/rhnk-report1.jpg', alt: 'RHNK report interior page design' },
+  { src: '/dencast_images/graphics/RHNKgraphics.jpg', alt: 'RHNK campaign graphics' },
+  { src: '/dencast_images/graphics/stationery.jpg', alt: 'Branded stationery mockup' },
 ];
 
 // const CASE_STUDIES = [
@@ -149,6 +159,36 @@ const BrandingPage: React.FC = () => {
               </Button>
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── Branding Graphics Slider ── */}
+      <section className="py-20 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <SectionLabel label="Branding Graphics" center />
+            <h2 className="mt-4 text-3xl sm:text-4xl font-black text-slate-900">
+              Featured Branding Designs
+            </h2>
+          </motion.div>
+
+          <PhotoCarousel
+            title="Branding Graphics"
+            items={BRANDING_GRAPHICS}
+            variant="showcase"
+            showMeta={false}
+            imageClickable
+            viewerMode="immersive"
+            showCardBorder={false}
+            aspectClassName="aspect-[4/3]"
+            className="rounded-[2rem]"
+          />
         </div>
       </section>
 

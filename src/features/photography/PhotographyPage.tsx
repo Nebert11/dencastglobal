@@ -386,6 +386,19 @@ const PhotographyPage: React.FC = () => {
         </div>
       </section> */}
 
+<section className="py-20 bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-3xl shadow-2xl border border-slate-200 bg-slate-50">
+            <img
+              src="/dencast_images/graphics/creative-photography.jpg"
+              alt="Creative photography"
+              className="w-full h-auto block object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="py-20 bg-gradient-to-br from-[#25408F] to-[#001f3f]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -403,6 +416,8 @@ const PhotographyPage: React.FC = () => {
           </Link>
         </div>
       </section>
+
+      
     </>
   );
 };

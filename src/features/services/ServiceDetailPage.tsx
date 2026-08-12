@@ -229,7 +229,8 @@ const SERVICE_CONTENT: Record<string, ServiceRichContent> = {
     ],
   },
   'creative-media': {
-    heroImage: '/dencast_images/BANNER.png',
+    heroImage: '/dencast_images/graphics/motion-graphics.jpg',
+    heroImagePosition: 'center 20%',
     overview: 'Bold, boundary-pushing creative media that captures attention and refuses to be forgotten. We conceptualise and execute multimedia campaigns, motion graphics, and experimental content that makes your audience stop scrolling.',
     features: ['2D & 3D motion graphics', 'Animated explainer videos', 'Interactive digital experiences', 'Conceptual campaign development', 'Mixed media productions', 'Social-first content series', 'Branded entertainment'],
     mediaSectionTitle: 'Digital Campaigns',
@@ -382,51 +383,71 @@ const ServiceDetailPage: React.FC = () => {
             style={{ backgroundImage: `url(${content.heroImage})`, backgroundSize: 'cover', backgroundPosition: content.heroImagePosition ?? 'right center', backgroundRepeat: 'no-repeat' }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+        {slug !== 'creative-media' && <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-left pl-6 sm:pl-12 lg:pl-20">
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-            className="flex items-center justify-start gap-2 text-white/50 text-sm mb-6"
-          >
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <ChevronRight size={14} />
-            <Link to="/services" className="hover:text-white transition-colors">Services</Link>
-            <ChevronRight size={14} />
-            <span className="text-white font-medium">{service.name}</span>
-          </motion.nav>
-
-          {slug !== 'drone-services' && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center justify-center w-16 h-16 bg-white/15 backdrop-blur-sm rounded-2xl mb-6 border border-white/20"
+        {slug !== 'creative-media' && (
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-left pl-6 sm:pl-12 lg:pl-20">
+            <motion.nav
+              initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+              className="flex items-center justify-start gap-2 text-white/50 text-sm mb-6"
             >
-              <Icon size={28} className="text-white" />
-            </motion.div>
-          )}
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight size={14} />
+              <Link to="/services" className="hover:text-white transition-colors">Services</Link>
+              <ChevronRight size={14} />
+              <span className="text-white font-medium">{service.name}</span>
+            </motion.nav>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-            className={`${content.heroTitleSize ?? 'text-5xl sm:text-6xl lg:text-7xl'} font-black text-white leading-none tracking-tight mb-4 text-left`}
-          >
-            {service.name}
-          </motion.h1>
+            {slug !== 'drone-services' && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-flex items-center justify-center w-16 h-16 bg-white/15 backdrop-blur-sm rounded-2xl mb-6 border border-white/20"
+              >
+                <Icon size={28} className="text-white" />
+              </motion.div>
+            )}
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
-            className="text-[#D3232E] font-bold text-xl mb-4 italic"
-          >
-            "{service.tagline}"
-          </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+              className={`${content.heroTitleSize ?? 'text-5xl sm:text-6xl lg:text-7xl'} font-black text-white leading-none tracking-tight mb-4 text-left`}
+            >
+              {service.name}
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }}
-            className="text-white/70 text-lg max-w-2xl"
-          >
-            {service.description}
-          </motion.p>
-        </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
+              className="text-[#D3232E] font-bold text-xl mb-4 italic"
+            >
+              "{service.tagline}"
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }}
+              className="text-white/70 text-lg max-w-2xl"
+            >
+              {service.description}
+            </motion.p>
+          </div>
+        )}
       </section>
+
+      {slug === 'creative-media' && (
+        <section className="bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-slate-200 bg-white">
+              <video
+                className="w-full h-auto block"
+                src="/dencast_images/graphics/dencastgifs.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls={false}
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Service Overview ── */}
       <section className="py-24 bg-white">
@@ -616,6 +637,19 @@ const ServiceDetailPage: React.FC = () => {
                       </audio>
                     </article>
                   ))}
+                </div>
+              </div>
+            )}
+
+            {slug === 'digital-content-creation' && (
+              <div className={`${sampleImages.length > 0 || audioTracks.length > 0 ? 'mt-8' : ''}`}>
+                <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                  <img
+                    src="/dencast_images/graphics/idea.jpg"
+                    alt="Digital content idea concept"
+                    className="w-full h-auto block object-cover"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             )}
@@ -813,6 +847,21 @@ const ServiceDetailPage: React.FC = () => {
         </div>
       </section>
 
+      {slug === 'audio-management-soundtrack-development' && (
+        <section className="py-20 bg-white border-t border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="overflow-hidden rounded-3xl shadow-2xl border border-slate-200 bg-slate-50">
+              <img
+                src="/dencast_images/graphics/sound-creation.jpg"
+                alt="Sound creation and audio production"
+                className="w-full h-auto block object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── CTA ── */}
       <section className="py-24 bg-gradient-to-br from-slate-900 via-[#001f3f] to-[#25408F]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -835,8 +884,20 @@ const ServiceDetailPage: React.FC = () => {
               </Button>
             </Link>
           </div>
+
+          {slug === 'photography' && (
+            <div className="mt-12 overflow-hidden rounded-3xl shadow-2xl border border-white/10 bg-white/10 backdrop-blur-sm">
+              <img
+                src="/dencast_images/graphics/creative-photography.jpg"
+                alt="Creative photography"
+                className="w-full h-auto block object-cover"
+                loading="lazy"
+              />
+            </div>
+          )}
         </div>
       </section>
+
     </>
   );
 };

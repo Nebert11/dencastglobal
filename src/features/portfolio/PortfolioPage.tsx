@@ -7,6 +7,7 @@ import { Search, ChevronRight, ChevronDown, Filter, Play, X } from 'lucide-react
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 import MediaCard from '@/components/ui/MediaCard';
+import PhotoCarousel from '@/components/ui/PhotoCarousel';
 import { SITE_NAME } from '@/utils/constants';
 
 
@@ -44,6 +45,12 @@ const PORTFOLIO_VIDEO_LINKS = [
   { title: 'What Leadership Looked Like in 2025 | ELF-Africa Annual Report', url: 'https://www.youtube.com/watch?v=EgTs8_Bm_RQ&t=20s' },
   { title: 'The Amakove Wala Show 1 — Divorce and Separation', url: 'https://www.youtube.com/watch?v=D1QvoiMpK-Q&t=23s' },
   { title: 'RHNK Pan-African Conference 2026 : Opening Ceremony Highlights', url: 'https://www.youtube.com/watch?v=q-I1iYGhLPk&t=27s' },
+];
+
+const GRAPHICS_SLIDER_IMAGES = [
+  { src: '/dencast_images/graphics/Flyer1.jpg', alt: 'Graphics design sample 1' },
+  { src: '/dencast_images/graphics/Flyers.jpg', alt: 'Graphics design sample 2' },
+  { src: '/dencast_images/graphics/RHNKgraphics.jpg', alt: 'Graphics design sample 3' },
 ];
 
 const toYoutubeEmbedUrl = (url: string) => {
@@ -520,6 +527,32 @@ const PortfolioPage: React.FC = () => {
               </Button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <SectionLabel label="Graphics Design" center />
+            <h2 className="mt-4 text-4xl font-black text-slate-900">
+              Designs That Stand Out
+            </h2>
+            <p className="mt-4 text-slate-500 text-lg max-w-3xl mx-auto">
+              Our design team at Dencast Global brings visual ideas to life across digital and print mediums. From brand identity systems and social media templates to motion graphics and marketing collateral, we ensure every design communicates clearly and stands out.
+            </p>
+          </div>
+
+          <PhotoCarousel
+            title="Graphics Design"
+            items={GRAPHICS_SLIDER_IMAGES}
+            variant="showcase"
+            showMeta={false}
+            imageClickable
+            viewerMode="immersive"
+            showCardBorder={false}
+            aspectClassName="aspect-[4/3]"
+            className="rounded-[2rem]"
+          />
         </div>
       </section>
     </>
