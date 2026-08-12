@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import {
   Hexagon, PenTool, BookOpen, Target,
-  Share2, FileText, ChevronRight, ArrowRight,
+  Share2, FileText, ArrowRight,
   CheckCircle2,
 } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -102,17 +102,10 @@ const BrandingPage: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-25"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/dencast_images/branding-hero.jpg)' }}
-        />
-        {/* Animated gradient */}
-        <motion.div
-          animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
-          transition={{ repeat: Infinity, repeatType: 'reverse', duration: 8 }}
-          className="absolute inset-0 opacity-30"
-          style={{ background: 'radial-gradient(ellipse at 20% 50%, #25408F 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, #D3232E 0%, transparent 60%)' }}
         />
 
         {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">

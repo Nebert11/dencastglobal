@@ -371,7 +371,7 @@ const ServiceDetailPage: React.FC = () => {
       {/* ── Hero ── */}
       <section
         ref={heroRef}
-        className={`relative flex items-center justify-start overflow-hidden ${isCreativeMediaService ? 'min-h-[40rem] sm:min-h-[58vh] lg:min-h-[72vh]' : 'min-h-[50vh] sm:min-h-[70vh]'}`}
+        className={`relative flex items-center justify-start overflow-hidden ${isCreativeMediaService ? 'min-h-[34rem] sm:min-h-[38rem] md:min-h-[42rem] lg:min-h-[46rem] xl:min-h-[52rem] 2xl:min-h-[58rem]' : 'min-h-[50vh] sm:min-h-[70vh]'}`}
       >
         {heroIsVideo ? (
           <video
@@ -384,7 +384,7 @@ const ServiceDetailPage: React.FC = () => {
           />
         ) : isCreativeMediaService ? (
           <img
-            className="absolute inset-0 h-full w-full object-cover object-[70%_58%] sm:object-[68%_40%] lg:object-[center_20%]"
+            className="absolute inset-0 h-full w-full object-cover object-[72%_58%] sm:object-[70%_52%] md:object-[64%_44%] lg:object-[60%_34%] xl:object-[center_24%] 2xl:object-[center_18%]"
             src={content.heroImage}
             alt=""
             aria-hidden="true"
