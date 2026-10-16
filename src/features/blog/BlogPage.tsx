@@ -9,6 +9,7 @@ import BlogCard from '@/components/ui/BlogCard';
 import { SITE_NAME } from '@/utils/constants';
 import { subscribeNewsletter } from '@/services/data.service';
 import { BLOG_ARTICLES, BLOG_CATEGORIES } from './articlesData';
+import { usePublishedArticles } from './publishedArticles';
 
 const PAGE_SIZE = 6;
 
@@ -92,9 +93,19 @@ const BlogPage: React.FC = () => {
   const [page, setPage] = useState(1);
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: '-60px' });
+  const { data: publishedArticles = [] } = usePublishedArticles();
 
-  const featured = BLOG_ARTICLES.find(a => a.featured);
-  const regular = BLOG_ARTICLES.filter(a => !a.featured);
+  const articles = useMemo(() => {
+    const bySlug = new Map(BLOG_ARTICLES.map((article) => [article.slug, article]));
+    publishedArticles.forEach((article) => bySlug.set(article.slug, article));
+    return [...bySlug.values()].sort((left, right) => Date.parse(right.date) - Date.parse(left.date));
+  }, [publishedArticles]);
+  const featured = articles.find((article) => article.featured);
+  const regular = useMemo(() => articles.filter((article) => !article.featured), [articles]);
+  const categories = useMemo(
+    () => ['All', ...new Set([...BLOG_CATEGORIES.filter((category) => category !== 'All'), ...articles.map((article) => article.category)])],
+    [articles],
+  );
 
   const filtered = useMemo(() => {
     let items = regular;
@@ -220,7 +231,7 @@ const BlogPage: React.FC = () => {
       <section className="py-6 bg-slate-50 border-y border-slate-100 sticky top-16 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
           <div className="flex items-center gap-2 flex-wrap">
-            {BLOG_CATEGORIES.map(cat => (
+            {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
@@ -351,7 +362,7 @@ const BlogPage: React.FC = () => {
               <div className="bg-white rounded-2xl p-6 border border-slate-100">
                 <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wider mb-4">Popular Posts</h3>
                 <div className="space-y-4">
-                  {BLOG_ARTICLES.slice(0, 4).map(a => (
+                  {articles.slice(0, 4).map(a => (
                     <Link key={a.id} to={`/blog/${a.slug}`} className="flex items-start gap-3 group">
                       <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
                         <img

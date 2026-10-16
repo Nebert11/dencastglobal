@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -12,6 +12,7 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import BlogCard from '@/components/ui/BlogCard';
 import { SITE_NAME } from '@/utils/constants';
 import { BLOG_ARTICLES, BLOG_ARTICLES_LOOKUP, type BlogInlineImage, type BlogVideo } from './articlesData';
+import { usePublishedArticle, usePublishedArticles } from './publishedArticles';
 const DEFAULT_POST = BLOG_ARTICLES[0];
 
 const YOUTUBE_EMBED_PARAMS = 'rel=0&modestbranding=1&playsinline=1';
@@ -125,8 +126,21 @@ const BlogPostPage: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [activeToc, setActiveToc] = useState('');
   const [videoOpen, setVideoOpen] = useState(false);
+  const { data: publishedArticle } = usePublishedArticle(slug ?? '');
+  const { data: publishedArticles = [] } = usePublishedArticles();
 
-  const post = (slug && BLOG_ARTICLES_LOOKUP[slug]) ? BLOG_ARTICLES_LOOKUP[slug] : DEFAULT_POST;
+  const post = publishedArticle ?? ((slug && BLOG_ARTICLES_LOOKUP[slug]) ? BLOG_ARTICLES_LOOKUP[slug] : DEFAULT_POST);
+  const relatedArticles = useMemo(() => {
+    const staticRelated = post.relatedSlugs
+      .map((relatedSlug) => BLOG_ARTICLES_LOOKUP[relatedSlug])
+      .filter((article): article is (typeof BLOG_ARTICLES)[number] => Boolean(article));
+    const sqlRelated = publishedArticles.filter((article) => (
+      article.slug !== post.slug
+      && article.category === post.category
+      && !staticRelated.some((existing) => existing.slug === article.slug)
+    ));
+    return [...staticRelated, ...sqlRelated].slice(0, 3);
+  }, [post, publishedArticles]);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -403,17 +417,15 @@ const BlogPostPage: React.FC = () => {
             <h2 className="mt-4 text-3xl font-black text-slate-900">Related Articles</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {post.relatedSlugs.slice(0, 3).map(relSlug => {
-              const related = BLOG_ARTICLES_LOOKUP[relSlug];
-              if (!related) return null;
+            {relatedArticles.map((related) => {
               return (
                 <BlogCard
-                  key={relSlug}
+                  key={related.slug}
                   title={related.title}
                   excerpt={related.excerpt}
                   category={related.category}
                   coverImage={related.coverImage}
-                  slug={relSlug}
+                  slug={related.slug}
                   author={related.author}
                   date={related.date}
                   readTime={related.readTime}
