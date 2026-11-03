@@ -18,7 +18,9 @@ import {
 import SectionLabel from '@/components/ui/SectionLabel';
 import ServiceCard from '@/components/ui/ServiceCard';
 import Button from '@/components/ui/Button';
+import { useQuery } from '@tanstack/react-query';
 import { SERVICES } from '@/utils/constants';
+import { getServices } from '@/services/data.service';
 
 // ─── Icon map ─────────────────────────────────────────────────────────────────
 
@@ -62,9 +64,21 @@ const FeaturedServices: React.FC = () => {
     'audio-management-soundtrack-development',
     'videography',
   ];
-  const featured = featuredSlugs
+  const { data: cms } = useQuery({
+    queryKey: ['services', 'featured'],
+    queryFn: () => getServices(true),
+  });
+  const cmsServices = (cms?.data ?? []).slice(0, 6).map((s) => ({
+    id: s.id,
+    name: s.name,
+    slug: s.slug,
+    icon: s.icon ?? 'Film',
+    description: s.description ?? s.tagline ?? '',
+  }));
+  const fallback = featuredSlugs
     .map((slug) => SERVICES.find((service) => service.slug === slug))
     .filter((service): service is (typeof SERVICES)[number] => Boolean(service));
+  const featured = cmsServices.length ? cmsServices : fallback;
 
   return (
     <section className="py-24 bg-white">
