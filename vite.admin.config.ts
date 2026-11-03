@@ -4,7 +4,7 @@ import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
-const backendRoot = path.resolve(projectRoot, '../backend');
+const backendRoot = path.resolve(projectRoot, 'backend');
 
 function adminEntryFallback(): Plugin {
   return {

@@ -107,8 +107,29 @@ export async function getServiceCategories(): Promise<ApiResponse<ServiceCategor
   return ok([] as ServiceCategory[]);
 }
 
-export async function getServices(_featured?: boolean): Promise<ApiResponse<Service[]>> {
-  return ok([] as Service[]);
+async function queryCms<T>(body: Record<string, unknown>): Promise<ApiResponse<T>> {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL || '/api'}/data`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'select', ...body }),
+    });
+    const json = await res.json();
+    if (!res.ok || json.error) {
+      return { data: null, error: json.error?.message ?? 'Request failed', status: 'error' };
+    }
+    return ok(json.data as T);
+  } catch (e) {
+    return { data: null, error: (e as Error).message, status: 'error' };
+  }
+}
+
+export async function getServices(featured?: boolean): Promise<ApiResponse<Service[]>> {
+  return queryCms<Service[]>({
+    table: 'services',
+    filters: featured ? [{ column: 'is_featured', operator: 'eq', value: 1 }] : [],
+    orders: [{ column: 'sort_order', ascending: true }],
+  });
 }
 
 export async function getServiceBySlug(_slug: string): Promise<ApiResponse<Service>> {
