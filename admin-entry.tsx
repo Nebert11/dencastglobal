@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import AdminLogin from '@backend/admin/admin/AdminLogin';
-import AdminLayout from '@backend/admin/admin/layout/AdminLayout';
-import ManageBlogPosts from '@backend/admin/admin/pages/ManageBlogPosts';
-import ManageMedia from '@backend/admin/admin/pages/ManageMedia';
+import AdminLogin from '@backend/admin/AdminLogin';
+import AdminLayout from '@backend/admin/layout/AdminLayout';
+import ManageBlogPosts from '@backend/admin/pages/ManageBlogPosts';
+import ManageMedia from '@backend/admin/pages/ManageMedia';
 import './src/index.css';
 
 const queryClient = new QueryClient({
