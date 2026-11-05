@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@backend/*": ["./*"],
+      "@/*": ["../dencastglobal/src/*"]
+    },
+    "types": ["node", "react", "react-dom"]
+  },
+  "include": [
+    "admin/admin/AdminLogin.tsx",
+    "admin/admin/layout/AdminLayout.tsx",
+    "admin/admin/pages/ManageBlogPosts.tsx",
+    "admin/admin/pages/ManageMedia.tsx",
+    "admin/admin/pages/ManageServices.tsx",
+    "lib/db.ts",
+    "lib/mysql.ts",
+    "services/auth.service.ts",
+    "services/sql.service.ts"
+  ]
+}

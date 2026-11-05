@@ -1,0 +1,50 @@
+{
+  "name": "dencast-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch server/index.ts",
+    "start": "node dist/server/index.js",
+    "create-admin": "tsx scripts/create-admin.ts",
+    "setup-local-mysql": "tsx scripts/setup-local-mysql.ts",
+    "build": "tsc -p tsconfig.server.json",
+    "typecheck": "tsc --noEmit -p tsconfig.server.json",
+    "typecheck:admin": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mammoth": "^1.13.0",
+    "mysql2": "^3.14.4",
+    "pdf-parse": "^1.1.4"
+  },
+  "devDependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@tanstack/react-query": "^5.104.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.18.6",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "lucide-react": "^0.441.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.89.0",
+    "react-hot-toast": "^2.6.1",
+    "react-router-dom": "^6.30.6",
+    "tailwind-merge": "^2.6.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "zod": "^3.25.76"
+  }
+}
